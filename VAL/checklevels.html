@@ -1,0 +1,220 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Diagnostics &#8212; VAL</title>
+    
+    <link rel="stylesheet" href="_static/pycgns.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '4.2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/pyCGNS-logo-tiny.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="VAL" href="_index.html" />
+    <link rel="next" title="Extending with user defined rules" href="extending.html" />
+    <link rel="prev" title="Command line" href="commandline.html" /> 
+  </head>
+  <body role="document">
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        
+        <li class="right" style="margin-right: 10px">
+          <a href="search.html" title="search"
+             accesskey="S">search</a>
+          </li>
+        
+        <li class="right" >
+          <a href="../glossary.html" title="glossary"
+             accesskey="G">glossary</a>
+           |</li>
+        
+        <li class="right" >
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a>
+           |</li>
+        
+        <li class="right" >
+          <a href="extending.html" title="Extending with user defined rules"
+             accesskey="N">next</a>
+           |</li>
+        
+        <li class="right" >
+          <a href="commandline.html" title="Command line"
+             accesskey="P">previous</a>
+           |</li>
+        
+        <li class="right" >
+          <a href="../index.html" title="pyCGNS top page"
+             accesskey="M">top</a>
+           |</li>
+        
+	
+	  
+	    <li><a href=../index.html>pyCGNS</a> &raquo;</li>
+	  
+	    
+        <li class="nav-item nav-item-0"><a href="_index.html">VAL</a> &#187;</li>
+	
+        
+      </ul>
+    </div>
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+
+   <h1 align=center><a href="_index.html">
+      <img class="logo" src="_static/VAL-logo-small.png" alt="pyCGNS"/>
+   </a></h1>
+
+
+  <h3><a href="_index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Diagnostics</a><ul>
+<li><a class="reference internal" href="#generic-diagnostics">Generic diagnostics</a></li>
+<li><a class="reference internal" href="#sids-diagnostics">SIDS diagnostics</a></li>
+<li><a class="reference internal" href="#user-defined-diagnostics">User defined diagnostics</a></li>
+<li><a class="reference internal" href="#diagnostics-list">Diagnostics list</a></li>
+</ul>
+</li>
+</ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="diagnostics">
+<h1>Diagnostics<a class="headerlink" href="#diagnostics" title="Permalink to this headline">¶</a></h1>
+<p>There are two levels of diagnostics, the <cite>Error</cite> and the <cite>Warning</cite>.
+The check process continues even if it has and <cite>Error</cite>.
+A diagnostics has a key, <cite>S003</cite> for example, which is composed of a
+single letter and a unique number for each letter. The <cite>G</cite> series
+stand for <cite>generic</cite>, the <cite>S</cite> for <cite>SIDS</cite> and <cite>U</cite> for <cite>User</cite>.</p>
+<p>The checking process always starts with <cite>G</cite> checks, then <cite>S</cite> checks,
+then <cite>U</cite> checks if it has been requested.</p>
+<div class="section" id="generic-diagnostics">
+<h2>Generic diagnostics<a class="headerlink" href="#generic-diagnostics" title="Permalink to this headline">¶</a></h2>
+<p>The first checks are the generic checks. <strong>VAL</strong> performs very low level
+controls on the node structure, node name and <cite>CGNSLibraryVersion</cite>.
+This latter is an exception, it is the only <cite>SIDS</cite>-related data to be
+verified. As a matter of fact, <cite>CGNSLibraryVersion</cite> is more an implementation
+node than a <cite>SIDS</cite> node.</p>
+</div>
+<div class="section" id="sids-diagnostics">
+<h2>SIDS diagnostics<a class="headerlink" href="#sids-diagnostics" title="Permalink to this headline">¶</a></h2>
+<p>The core checks are <cite>SIDS</cite> checks. All the <strong>CGNS/SIDS</strong> document requirements
+are inspected, default values are reported.</p>
+</div>
+<div class="section" id="user-defined-diagnostics">
+<h2>User defined diagnostics<a class="headerlink" href="#user-defined-diagnostics" title="Permalink to this headline">¶</a></h2>
+<p>A user defined grammar is identified by a <cite>key</cite>.</p>
+</div>
+<div class="section" id="diagnostics-list">
+<h2>Diagnostics list<a class="headerlink" href="#diagnostics-list" title="Permalink to this headline">¶</a></h2>
+<p>The following table gives existing diagnostics including the <cite>elsA</cite> user
+defined set of checks:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">G001</span><span class="p">:</span><span class="n">E</span><span class="p">]</span> <span class="n">CGNSLibraryVersion</span> <span class="p">[</span><span class="o">%</span><span class="n">s</span><span class="p">]</span> <span class="ow">is</span> <span class="n">too</span> <span class="n">old</span> <span class="k">for</span> <span class="n">current</span> <span class="n">check</span> <span class="n">level</span>
+<span class="p">[</span><span class="n">G002</span><span class="p">:</span><span class="n">E</span><span class="p">]</span> <span class="n">CGNSLibraryVersion</span> <span class="ow">is</span> <span class="n">incorrect</span>
+<span class="p">[</span><span class="n">G003</span><span class="p">:</span><span class="n">E</span><span class="p">]</span> <span class="n">Name</span> <span class="p">[</span><span class="o">%</span><span class="n">s</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">valid</span>
+<span class="p">[</span><span class="n">G004</span><span class="p">:</span><span class="n">E</span><span class="p">]</span> <span class="n">Name</span> <span class="p">[</span><span class="o">%</span><span class="n">s</span><span class="p">]</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">duplicated</span> <span class="n">child</span> <span class="n">name</span>
+<span class="p">[</span><span class="n">G005</span><span class="p">:</span><span class="n">E</span><span class="p">]</span> <span class="n">PANIC</span><span class="p">:</span> <span class="n">Cannot</span> <span class="n">find</span> <span class="n">node</span> <span class="k">with</span> <span class="n">path</span> <span class="p">[</span><span class="o">%</span><span class="n">s</span><span class="p">]</span>
+<span class="p">[</span><span class="n">G006</span><span class="p">:</span><span class="n">E</span><span class="p">]</span> <span class="n">PANIC</span><span class="p">:</span> <span class="n">Node</span> <span class="n">data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ndarray</span> <span class="ow">or</span> <span class="kc">None</span> <span class="p">(</span><span class="n">child</span> <span class="n">of</span> <span class="p">[</span><span class="o">%</span><span class="n">s</span><span class="p">])</span>
+<span class="p">[</span><span class="n">G007</span><span class="p">:</span><span class="n">E</span><span class="p">]</span> <span class="n">PANIC</span><span class="p">:</span> <span class="n">Node</span> <span class="n">children</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">a</span> <span class="nb">list</span> <span class="p">(</span><span class="n">child</span> <span class="n">of</span> <span class="p">[</span><span class="o">%</span><span class="n">s</span><span class="p">])</span>
+<span class="p">[</span><span class="n">G008</span><span class="p">:</span><span class="n">E</span><span class="p">]</span> <span class="n">PANIC</span><span class="p">:</span> <span class="n">Node</span> <span class="n">name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">a</span> <span class="n">string</span> <span class="p">(</span><span class="n">child</span> <span class="n">of</span> <span class="p">[</span><span class="o">%</span><span class="n">s</span><span class="p">])</span>
+<span class="p">[</span><span class="n">G009</span><span class="p">:</span><span class="n">E</span><span class="p">]</span> <span class="n">PANIC</span><span class="p">:</span> <span class="n">Node</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">a</span> <span class="nb">list</span> <span class="n">of</span> <span class="mi">4</span> <span class="n">objects</span> <span class="p">(</span><span class="n">child</span> <span class="n">of</span> <span class="p">[</span><span class="o">%</span><span class="n">s</span><span class="p">])</span>
+<span class="p">[</span><span class="n">G010</span><span class="p">:</span><span class="n">E</span><span class="p">]</span> <span class="n">PANIC</span><span class="p">:</span> <span class="n">Node</span> <span class="ow">is</span> <span class="n">empty</span> <span class="nb">list</span> <span class="ow">or</span> <span class="kc">None</span> <span class="p">(</span><span class="n">child</span> <span class="n">of</span> <span class="p">[</span><span class="o">%</span><span class="n">s</span><span class="p">])</span>
+<span class="p">[</span><span class="n">S001</span><span class="p">:</span><span class="n">E</span><span class="p">]</span> <span class="n">Unknown</span> <span class="n">SIDS</span> <span class="nb">type</span> <span class="p">[</span><span class="o">%</span><span class="n">s</span><span class="p">]</span>
+<span class="p">[</span><span class="n">S002</span><span class="p">:</span><span class="n">E</span><span class="p">]</span> <span class="n">SIDS</span> <span class="nb">type</span> <span class="p">[</span><span class="o">%</span><span class="n">s</span><span class="p">]</span> <span class="ow">not</span> <span class="n">allowed</span> <span class="k">as</span> <span class="n">child</span> <span class="n">of</span> <span class="p">[</span><span class="o">%</span><span class="n">s</span><span class="p">]</span>
+<span class="p">[</span><span class="n">S003</span><span class="p">:</span><span class="n">E</span><span class="p">]</span> <span class="n">SIDS</span> <span class="nb">type</span> <span class="p">[</span><span class="o">%</span><span class="n">s</span><span class="p">]</span> <span class="ow">not</span> <span class="n">allowed</span> <span class="k">for</span> <span class="n">this</span> <span class="n">node</span>
+<span class="p">[</span><span class="n">S004</span><span class="p">:</span><span class="n">E</span><span class="p">]</span> <span class="n">DataType</span> <span class="p">[</span><span class="o">%</span><span class="n">s</span><span class="p">]</span> <span class="ow">not</span> <span class="n">allowed</span> <span class="k">for</span> <span class="n">this</span> <span class="n">node</span>
+<span class="p">[</span><span class="n">S005</span><span class="p">:</span><span class="n">E</span><span class="p">]</span> <span class="n">Node</span> <span class="p">[</span><span class="o">%</span><span class="n">s</span><span class="p">]</span> <span class="n">of</span> <span class="nb">type</span> <span class="p">[</span><span class="o">%</span><span class="n">s</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">allowed</span> <span class="k">as</span> <span class="n">child</span>
+<span class="p">[</span><span class="n">S006</span><span class="p">:</span><span class="n">E</span><span class="p">]</span> <span class="n">Node</span> <span class="p">[</span><span class="o">%</span><span class="n">s</span><span class="p">]</span> <span class="n">of</span> <span class="nb">type</span> <span class="p">[</span><span class="o">%</span><span class="n">s</span><span class="p">]</span> <span class="ow">is</span> <span class="n">allowed</span> <span class="n">only</span> <span class="n">once</span> <span class="k">as</span> <span class="n">child</span>
+<span class="p">[</span><span class="n">S007</span><span class="p">:</span><span class="n">E</span><span class="p">]</span> <span class="n">Node</span> <span class="p">[</span><span class="o">%</span><span class="n">s</span><span class="p">]</span> <span class="n">of</span> <span class="nb">type</span> <span class="p">[</span><span class="o">%</span><span class="n">s</span><span class="p">]</span> <span class="ow">is</span> <span class="n">mandatory</span>
+<span class="p">[</span><span class="n">S101</span><span class="p">:</span><span class="n">E</span><span class="p">]</span> <span class="n">Unknown</span> <span class="n">ZoneType</span> <span class="n">value</span>
+<span class="p">[</span><span class="n">S102</span><span class="p">:</span><span class="n">E</span><span class="p">]</span> <span class="n">Unknown</span> <span class="n">SimulationType</span> <span class="n">value</span>
+<span class="p">[</span><span class="n">S103</span><span class="p">:</span><span class="n">E</span><span class="p">]</span> <span class="n">Unknown</span> <span class="n">GridLocation</span> <span class="n">value</span>
+<span class="p">[</span><span class="n">S104</span><span class="p">:</span><span class="n">E</span><span class="p">]</span> <span class="n">Unknown</span> <span class="n">GridConnectivityType</span> <span class="n">value</span>
+<span class="p">[</span><span class="n">S105</span><span class="p">:</span><span class="n">E</span><span class="p">]</span> <span class="n">Unknown</span> <span class="n">DataClass</span> <span class="n">value</span>
+<span class="p">[</span><span class="n">S106</span><span class="p">:</span><span class="n">E</span><span class="p">]</span> <span class="n">Unknown</span> <span class="n">BCDataType</span> <span class="n">value</span>
+<span class="p">[</span><span class="n">S107</span><span class="p">:</span><span class="n">E</span><span class="p">]</span> <span class="n">Unknown</span> <span class="n">RigidMotionType</span> <span class="n">value</span>
+<span class="p">[</span><span class="n">S108</span><span class="p">:</span><span class="n">E</span><span class="p">]</span> <span class="n">Unknown</span> <span class="n">BCType</span> <span class="n">value</span>
+<span class="p">[</span><span class="n">S109</span><span class="p">:</span><span class="n">E</span><span class="p">]</span> <span class="n">Unknown</span> <span class="n">ElementType</span> <span class="n">value</span>
+<span class="p">[</span><span class="n">S110</span><span class="p">:</span><span class="n">E</span><span class="p">]</span> <span class="n">Unknown</span> <span class="n">MassUnit</span> <span class="n">value</span>
+<span class="p">[</span><span class="n">S111</span><span class="p">:</span><span class="n">E</span><span class="p">]</span> <span class="n">Unknown</span> <span class="n">TimeUnit</span> <span class="n">value</span>
+<span class="p">[</span><span class="n">S112</span><span class="p">:</span><span class="n">E</span><span class="p">]</span> <span class="n">Unknown</span> <span class="n">LengthUnit</span> <span class="n">value</span>
+<span class="p">[</span><span class="n">S113</span><span class="p">:</span><span class="n">E</span><span class="p">]</span> <span class="n">Unknown</span> <span class="n">TemperatureUnit</span> <span class="n">value</span>
+<span class="p">[</span><span class="n">S114</span><span class="p">:</span><span class="n">E</span><span class="p">]</span> <span class="n">Unknown</span> <span class="n">AngleUnit</span> <span class="n">value</span>
+<span class="p">[</span><span class="n">S115</span><span class="p">:</span><span class="n">E</span><span class="p">]</span> <span class="n">Unknown</span> <span class="n">ElectricCurrentUnit</span> <span class="n">value</span>
+<span class="p">[</span><span class="n">S116</span><span class="p">:</span><span class="n">E</span><span class="p">]</span> <span class="n">Unknown</span> <span class="n">SubstanceAmountUnit</span> <span class="n">value</span>
+<span class="p">[</span><span class="n">S117</span><span class="p">:</span><span class="n">E</span><span class="p">]</span> <span class="n">Unknown</span> <span class="n">LuminousIntensityUnit</span> <span class="n">value</span>
+<span class="p">[</span><span class="n">S151</span><span class="p">:</span><span class="n">W</span><span class="p">]</span> <span class="n">Default</span> <span class="n">GridLocation</span> <span class="ow">is</span> <span class="nb">set</span> <span class="n">to</span> <span class="n">Vertex</span>
+<span class="p">[</span><span class="n">S152</span><span class="p">:</span><span class="n">W</span><span class="p">]</span> <span class="n">Default</span> <span class="n">GridConnectivityType</span> <span class="ow">is</span> <span class="nb">set</span> <span class="n">to</span> <span class="n">Overset</span>
+<span class="p">[</span><span class="n">S191</span><span class="p">:</span><span class="n">E</span><span class="p">]</span> <span class="n">Bad</span> <span class="n">node</span> <span class="n">value</span> <span class="n">shape</span>
+<span class="p">[</span><span class="n">S201</span><span class="p">:</span><span class="n">E</span><span class="p">]</span> <span class="n">Inconsistent</span> <span class="n">PhysicalDimension</span><span class="o">/</span><span class="n">CellDimension</span>
+<span class="p">[</span><span class="n">S202</span><span class="p">:</span><span class="n">E</span><span class="p">]</span> <span class="n">Bad</span> <span class="n">value</span> <span class="k">for</span> <span class="n">CellDimension</span>
+<span class="p">[</span><span class="n">S203</span><span class="p">:</span><span class="n">E</span><span class="p">]</span> <span class="n">Bad</span> <span class="n">value</span> <span class="k">for</span> <span class="n">PhysicalDimension</span>
+<span class="p">[</span><span class="n">S204</span><span class="p">:</span><span class="n">E</span><span class="p">]</span> <span class="n">Bad</span> <span class="n">Transform</span> <span class="n">values</span>
+<span class="p">[</span><span class="n">S205</span><span class="p">:</span><span class="n">E</span><span class="p">]</span> <span class="n">Bad</span> <span class="n">ElementSizeBoundary</span> <span class="n">value</span>
+<span class="p">[</span><span class="n">S301</span><span class="p">:</span><span class="n">E</span><span class="p">]</span> <span class="n">Reference</span> <span class="n">to</span> <span class="n">unknown</span> <span class="n">family</span> <span class="p">[</span><span class="o">%</span><span class="n">s</span><span class="p">]</span>
+<span class="p">[</span><span class="n">S302</span><span class="p">:</span><span class="n">E</span><span class="p">]</span> <span class="n">Reference</span> <span class="n">to</span> <span class="n">unknown</span> <span class="n">additional</span> <span class="n">family</span> <span class="p">[</span><span class="o">%</span><span class="n">s</span><span class="p">]</span>
+<span class="p">[</span><span class="n">U101</span><span class="p">:</span><span class="n">W</span><span class="p">]</span> <span class="n">No</span> <span class="n">Zone</span> <span class="ow">in</span> <span class="n">this</span> <span class="n">Base</span>
+<span class="p">[</span><span class="n">U102</span><span class="p">:</span><span class="n">W</span><span class="p">]</span> <span class="n">No</span> <span class="n">GridCoordinates</span> <span class="ow">in</span> <span class="n">this</span> <span class="n">Zone</span>
+<span class="p">[</span><span class="n">U103</span><span class="p">:</span><span class="n">W</span><span class="p">]</span> <span class="n">No</span> <span class="n">ReferenceState</span> <span class="n">found</span> <span class="n">at</span> <span class="n">Base</span> <span class="n">level</span>
+<span class="p">[</span><span class="n">U104</span><span class="p">:</span><span class="n">W</span><span class="p">]</span> <span class="n">No</span> <span class="n">ReferenceState</span> <span class="n">found</span> <span class="n">at</span> <span class="n">Zone</span> <span class="n">level</span>
+<span class="p">[</span><span class="n">U105</span><span class="p">:</span><span class="n">E</span><span class="p">]</span> <span class="n">At</span> <span class="n">least</span> <span class="n">one</span> <span class="n">structured</span> <span class="n">Zone</span> <span class="ow">is</span> <span class="n">required</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">Base</span>
+<span class="p">[</span><span class="n">U106</span><span class="p">:</span><span class="n">E</span><span class="p">]</span> <span class="n">Transform</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">right</span><span class="o">-</span><span class="n">handed</span> <span class="p">(</span><span class="n">direct</span><span class="p">)</span>
+<span class="p">[</span><span class="n">U107</span><span class="p">:</span><span class="n">W</span><span class="p">]</span> <span class="n">No</span> <span class="n">FlowSolution</span><span class="c1"># found for output definition</span>
+<span class="p">[</span><span class="n">U108</span><span class="p">:</span><span class="n">W</span><span class="p">]</span> <span class="n">No</span> <span class="n">FlowSolution</span><span class="c1">#Init found for fields initialisation</span>
+<span class="p">[</span><span class="n">U109</span><span class="p">:</span><span class="n">E</span><span class="p">]</span> <span class="n">Cannot</span> <span class="n">handle</span> <span class="n">such</span> <span class="n">GridLocation</span> <span class="p">[</span><span class="o">%</span><span class="n">s</span><span class="p">]</span>
+<span class="p">[</span><span class="n">U110</span><span class="p">:</span><span class="n">E</span><span class="p">]</span> <span class="n">Cannot</span> <span class="n">handle</span> <span class="n">such</span> <span class="n">ElementType</span> <span class="p">[</span><span class="o">%</span><span class="n">s</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The list has been generated with the command <cite>CGNS.VAL -lu elsA</cite>.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2001-2016, Marc Poinot.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
+    </div>
+  </body>
+</html>

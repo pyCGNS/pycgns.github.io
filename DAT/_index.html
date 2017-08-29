@@ -1,0 +1,189 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>CGNS.DAT &#8212; DAT</title>
+    
+    <link rel="stylesheet" href="_static/pycgns.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '4.2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/pyCGNS-logo-tiny.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="DAT" href="#" /> 
+  </head>
+  <body role="document">
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        
+        <li class="right" style="margin-right: 10px">
+          <a href="search.html" title="search"
+             accesskey="S">search</a>
+          </li>
+        
+        <li class="right" >
+          <a href="../glossary.html" title="glossary"
+             accesskey="G">glossary</a>
+           |</li>
+        
+        <li class="right" >
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a>
+           |</li>
+        
+        <li class="right" >
+          <a href="../index.html" title="pyCGNS top page"
+             accesskey="M">top</a>
+           |</li>
+        
+	
+	  
+	    <li><a href=../index.html>pyCGNS</a> &raquo;</li>
+	  
+	    
+        <li class="nav-item nav-item-0"><a href="#">DAT</a> &#187;</li>
+	
+        
+      </ul>
+    </div>
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+
+   <h1 align=center><a href="#">
+      <img class="logo" src="_static/DAT-logo-small.png" alt="pyCGNS"/>
+   </a></h1>
+
+
+  <h3><a href="#">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">CGNS.DAT</a></li>
+<li><a class="reference internal" href="#glossary">Glossary</a><ul>
+<li><a class="reference internal" href="#id1">DAT Index</a></li>
+</ul>
+</li>
+</ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="cgns-dat">
+<h1>CGNS.DAT<a class="headerlink" href="#cgns-dat" title="Permalink to this headline">¶</a></h1>
+<p>The pyCGNS module is a set of tools for database management of your
+CGNS files.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">DAT is not up-to-date and there is no planned maintenance on it.</p>
+</div>
+<span class="target" id="dat-index"></span></div>
+<div class="section" id="glossary">
+<h1>Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h1>
+<dl class="glossary docutils">
+<dt id="term-cgns-org">cgns.org</dt>
+<dd>The official CGNS web site, by extension any document on this web
+site has an <em>official</em> taste...</dd>
+<dt id="term-cgns">CGNS</dt>
+<dd>The specific purpose of the
+<a class="reference external" href="http://www.cgns.org">CFD General Notation System (CGNS)</a>
+project is to provide a standard for recording and recovering
+computer data associated with the numerical solution of the
+equations of fluid dynamics. See also the
+<a class="reference external" href="/scratch/MOSAIC/W/Marc/pycgns/doc/../build/doc/html/ch2/cgnshowto.html#cgnshowto" title="(in pyCGNS v4)"><span class="xref std std-ref">How to?</span></a>.</dd>
+<dt id="term-cgns-sids">CGNS/SIDS</dt>
+<dd>The <a class="reference external" href="http://www.grc.nasa.gov/WWW/cgns/CGNS_docs_current/sids/index.html">Standard Interface Data Structure</a> is the
+specification of the data model.  This public document describes
+the syntax and the semantics of all tree-structured data required
+or proposed for a CFD simulation.</dd>
+<dt id="term-cgns-mll">CGNS/MLL</dt>
+<dd>The <a class="reference external" href="http://www.grc.nasa.gov/WWW/cgns/CGNS_docs_current/lidlevel/index.html">Mid-Level Library</a>
+is an example implementation of
+<em>CGNS/SIDS</em> on top of <em>CGNS/ADF</em> and <em>CGNS/HDF5</em> mappings. This
+library has a C and a Fortran API.</dd>
+<dt id="term-cgns-adf">CGNS/ADF</dt>
+<dd>The <a class="reference external" href="http://www.grc.nasa.gov/WWW/cgns/CGNS_docs_current/adf/index.html">Advanced Data Format *CGNS/SIDS* implementation</a>. A binary
+storage format and its companion library, developped by <em>Boeing</em>.</dd>
+<dt id="term-cgns-hdf5">CGNS/HDF5</dt>
+<dd>The <a class="reference external" href="http://www.grc.nasa.gov/WWW/cgns/CGNS_docs_current/hdf5/index.html">Hierarchical Data Format *CGNS/SIDS* implementation</a>. A binary
+storage format and its companion library (see below).</dd>
+<dt id="term-cgns-python">CGNS/Python</dt>
+<dd>The <a class="reference external" href="http://www.grc.nasa.gov/WWW/cgns/CGNS_docs_current/python/index.html">Python programming language *CGNS/SIDS*
+implementation</a>.</dd>
+<dt id="term-chlone">CHLone</dt>
+<dd>A <em>CGNS/HDF5</em> compliant implementation. The <a class="reference external" href="http://chlone.sourceforge.net">CHLone</a> library is available on
+SourceForge.</dd>
+<dt id="term-hdf5">HDF5</dt>
+<dd>A powerful storage system for large data.
+The <a class="reference external" href="http://www.hdfgroup.org/HDF5">HDF5</a>
+library should be seen as a middleware system with a lot of powerful
+features related to efficient, portable and trustable storage mean.</dd>
+<dt id="term-python">python</dt>
+<dd><a class="reference external" href="http://www.python.org">An object oriented interpreted programming language</a>.</dd>
+<dt id="term-cython">cython</dt>
+<dd>A <a class="reference external" href="http://cython.org">compiler tool</a> that translate Python/Numpy
+into C code for performance purpose.</dd>
+<dt id="term-numpy">numpy</dt>
+<dd>The <a class="reference external" href="http://numpy.scipy.org">numerical library</a> for Python. <em>Numpy</em>
+is used to store the data in Python arrays which have a direct memory
+mapping to actual C or Fortran memory.</dd>
+<dt id="term-vtk">VTK</dt>
+<dd>A <a class="reference external" href="http://www.vtk.org">visualization toolkit</a> used to display
+3D objects ni <em>CGNS.NAV</em>.</dd>
+<dt id="term-pyside">PySide</dt>
+<dd>The <a class="reference external" href="http://www.pyside.org">Python interface</a> for the Qt toolkit. PySide</dd>
+<dt id="term-qt">Qt</dt>
+<dd><a class="reference external" href="http://qt.nokia.com/products">A powerful graphical toolkit</a> available
+under GPL v3, LGPL v2 and a commercial license. The current use of Qt is
+under LGPL v2 in pyCGNS.</dd>
+</dl>
+<div class="section" id="id1">
+<h2>DAT Index<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2001-2016, Marc Poinot.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Extending with user defined rules &#8212; VAL</title>
+    
+    <link rel="stylesheet" href="_static/pycgns.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '4.2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/pyCGNS-logo-tiny.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="VAL" href="_index.html" />
+    <link rel="prev" title="Diagnostics" href="checklevels.html" /> 
+  </head>
+  <body role="document">
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        
+        <li class="right" style="margin-right: 10px">
+          <a href="search.html" title="search"
+             accesskey="S">search</a>
+          </li>
+        
+        <li class="right" >
+          <a href="../glossary.html" title="glossary"
+             accesskey="G">glossary</a>
+           |</li>
+        
+        <li class="right" >
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a>
+           |</li>
+        
+        <li class="right" >
+          <a href="checklevels.html" title="Diagnostics"
+             accesskey="P">previous</a>
+           |</li>
+        
+        <li class="right" >
+          <a href="../index.html" title="pyCGNS top page"
+             accesskey="M">top</a>
+           |</li>
+        
+	
+	  
+	    <li><a href=../index.html>pyCGNS</a> &raquo;</li>
+	  
+	    
+        <li class="nav-item nav-item-0"><a href="_index.html">VAL</a> &#187;</li>
+	
+        
+      </ul>
+    </div>
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+
+   <h1 align=center><a href="_index.html">
+      <img class="logo" src="_static/VAL-logo-small.png" alt="pyCGNS"/>
+   </a></h1>
+
+
+  <h3><a href="_index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Extending with user defined rules</a><ul>
+<li><a class="reference internal" href="#diagnostics">Diagnostics</a></li>
+<li><a class="reference internal" href="#per-node-check-methods">Per-node check methods</a></li>
+<li><a class="reference internal" href="#context">Context</a></li>
+</ul>
+</li>
+</ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="extending-with-user-defined-rules">
+<h1>Extending with user defined rules<a class="headerlink" href="#extending-with-user-defined-rules" title="Permalink to this headline">¶</a></h1>
+<p>The extension requires a top file with the name <cite>CGNS_VAL_USER_&lt;key&gt;.py</cite>
+with the <cite>CGNS_VAL_USER_Checks</cite> declaration. This file has to be importable,
+which means the file should be in one of the <cite>PYTHONPATH</cite> directories.</p>
+<p>Writing an extension requires good Python skills. The user has to define
+a new class, with <cite>CGNS.VAL.grammars.SIDS.SIDSbase</cite> as one of its base
+class, a set of per-node check methods and a set of associated diagnostics.</p>
+<div class="section" id="diagnostics">
+<h2>Diagnostics<a class="headerlink" href="#diagnostics" title="Permalink to this headline">¶</a></h2>
+<p>A diagnostic is composed of a key, a level and a message:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">(</span><span class="s1">&#39;U101&#39;</span><span class="p">,</span><span class="n">CGM</span><span class="o">.</span><span class="n">CHECK_WARN</span><span class="p">,</span><span class="s1">&#39;No Zone in this Base&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <cite>CGM.CHECK_WARN</cite> enumerate comes from the <cite>CGNS.VAL.parse.messages</cite>
+module, in that example impported as <cite>CGM</cite>.</p>
+<p>All diagnostics are set into the class as a dictionnary, using the method
+<cite>addMessages</cite> of the <cite>log</cite> object of the class. This is performed in the
+<cite>__init__</cite> method of the user class:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">log</span><span class="p">):</span>
+  <span class="n">CGS</span><span class="o">.</span><span class="n">SIDSbase</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">log</span><span class="p">)</span>
+  <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">addMessages</span><span class="p">(</span><span class="n">USER_MESSAGES</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Do not forget the base class initialisation. The <cite>log</cite> argument is managed
+by the <strong>CGNS.VAL</strong> internals, you should not take care about it.</p>
+</div>
+<div class="section" id="per-node-check-methods">
+<h2>Per-node check methods<a class="headerlink" href="#per-node-check-methods" title="Permalink to this headline">¶</a></h2>
+<p>The <strong>CGNS.VAL</strong> internals are in charge of parsing the tree. Each time a node
+is entered, the corresponding check function is called. The functions args
+are always the same: the <cite>path</cite> of the node in which you are entering,
+the <cite>node</cite> itself as a <strong>CGNS/Python</strong> list, the <cite>parent</cite> node as
+a <strong>CGNS/Python</strong> list, the complete <strong>CGNS/Python</strong> <cite>tree</cite> and
+the <cite>log</cite> object.</p>
+<p>The function should have the name of the entered node type. For example,
+the <cite>Zone_t</cite> is called each time the parser enters into a <cite>Zone_t</cite> node:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">Zone_t</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">pth</span><span class="p">,</span><span class="n">node</span><span class="p">,</span><span class="n">parent</span><span class="p">,</span><span class="n">tree</span><span class="p">,</span><span class="n">log</span><span class="p">):</span>
+  <span class="n">rs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">sids</span><span class="o">.</span><span class="n">Zone_t</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">pth</span><span class="p">,</span><span class="n">node</span><span class="p">,</span><span class="n">parent</span><span class="p">,</span><span class="n">tree</span><span class="p">,</span><span class="n">log</span><span class="p">)</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">CGK</span><span class="o">.</span><span class="n">GridCoordinates_s</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">CGU</span><span class="o">.</span><span class="n">childNames</span><span class="p">(</span><span class="n">node</span><span class="p">)):</span>
+    <span class="n">rs</span><span class="o">=</span><span class="n">log</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">pth</span><span class="p">,</span><span class="n">NOGRIDZONE</span><span class="p">)</span>
+  <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="n">CGU</span><span class="o">.</span><span class="n">hasChildNodeOfType</span><span class="p">(</span><span class="n">node</span><span class="p">,</span><span class="n">CGK</span><span class="o">.</span><span class="n">ReferenceState_ts</span><span class="p">)):</span>
+    <span class="n">rs</span><span class="o">=</span><span class="n">log</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">pth</span><span class="p">,</span><span class="n">NOZREFSTATE</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">rs</span>
+</pre></div>
+</div>
+<p>The first step is to call the <cite>Zone_t</cite> for the <cite>SIDS</cite> checker. This is
+strongly recommanded, but not mandatory... The <cite>rs</cite> variable contains the
+current status for this node: that can be <cite>CHECK_GOOD</cite>,`CHECK_FAIL` or
+<cite>CHECK_WARN</cite>. This status should be the return of your check function.</p>
+<p>We check values of the node and in case of problem, we <cite>push</cite> the
+diagnostic into the log. The <cite>path</cite> of the node is pushed as well.</p>
+<p>Now each check is a test on several values of the current node, the use
+of <cite>CGNS.PAT.cgnsutils</cite>, <cite>CGNS.PAT.cgnstypes</cite> and <cite>CGNS.PAT.cgnskeywords</cite>
+would help.</p>
+<p>You should not parse the tree by yourself, unless you have to check consistency
+with other node values. The example below shows a control on the mandatory
+<cite>ElementRange_s</cite> node of an <cite>Elements_t</cite> node (The <cite>context</cite> object is
+detailled in the next section).:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">Elements_t</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">pth</span><span class="p">,</span><span class="n">node</span><span class="p">,</span><span class="n">parent</span><span class="p">,</span><span class="n">tree</span><span class="p">,</span><span class="n">log</span><span class="p">):</span>
+  <span class="n">rs</span><span class="o">=</span><span class="n">CGM</span><span class="o">.</span><span class="n">CHECK_OK</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">CGU</span><span class="o">.</span><span class="n">getShape</span><span class="p">(</span><span class="n">node</span><span class="p">)</span><span class="o">!=</span><span class="p">(</span><span class="mi">2</span><span class="p">,)):</span>
+    <span class="n">rs</span><span class="o">=</span><span class="n">log</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">pth</span><span class="p">,</span><span class="n">BADVALUESHAPE</span><span class="p">)</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">et</span><span class="o">=</span><span class="n">node</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">eb</span><span class="o">=</span><span class="n">node</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="p">[</span><span class="n">CGK</span><span class="o">.</span><span class="n">ElementType_s</span><span class="p">]</span><span class="o">=</span><span class="n">et</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="p">[</span><span class="n">CGK</span><span class="o">.</span><span class="n">ElementSizeBoundary_s</span><span class="p">]</span><span class="o">=</span><span class="n">eb</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">et</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">CGK</span><span class="o">.</span><span class="n">ElementType</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)):</span>
+      <span class="n">rs</span><span class="o">=</span><span class="n">log</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">pth</span><span class="p">,</span><span class="n">UKELEMTYPE</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">eb</span><span class="o">==</span><span class="mi">0</span><span class="p">):</span> <span class="n">bad_eb</span><span class="o">=</span><span class="kc">False</span>
+    <span class="k">elif</span> <span class="p">(</span><span class="n">eb</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">):</span> <span class="n">bad_eb</span><span class="o">=</span><span class="kc">True</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">bad_eb</span><span class="o">=</span><span class="kc">True</span>
+      <span class="n">ecnode</span><span class="o">=</span><span class="n">CGU</span><span class="o">.</span><span class="n">getNodeByPath</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span><span class="n">pth</span><span class="o">+</span><span class="s1">&#39;/&#39;</span><span class="o">+</span><span class="n">CGK</span><span class="o">.</span><span class="n">ElementRange_s</span><span class="p">)</span>
+      <span class="k">if</span> <span class="p">(</span>    <span class="p">(</span><span class="n">ecnode</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span>
+          <span class="ow">and</span> <span class="p">(</span><span class="n">CGU</span><span class="o">.</span><span class="n">getShape</span><span class="p">(</span><span class="n">node</span><span class="p">)</span><span class="o">==</span><span class="p">(</span><span class="mi">2</span><span class="p">,))</span>
+          <span class="ow">and</span> <span class="p">(</span><span class="n">CGU</span><span class="o">.</span><span class="n">getValueDataType</span><span class="p">(</span><span class="n">ecnode</span><span class="p">)</span><span class="o">==</span><span class="n">CGK</span><span class="o">.</span><span class="n">I4</span><span class="p">)</span>
+          <span class="ow">and</span> <span class="p">(</span><span class="n">ecnode</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">&gt;</span><span class="n">eb</span><span class="p">)):</span> <span class="n">bad_eb</span><span class="o">=</span><span class="kc">False</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">bad_eb</span><span class="p">):</span>
+      <span class="n">rs</span><span class="o">=</span><span class="n">log</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">pth</span><span class="p">,</span><span class="n">BADELEMSZBND</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">rs</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="context">
+<h2>Context<a class="headerlink" href="#context" title="Permalink to this headline">¶</a></h2>
+<p>The parser has a <cite>context</cite> for global and local data. It is a dictionnary
+with <cite>SIDS</cite> names as keys, the values are overwritten during the parse but
+a value is always correct for a given sub-tree. For example to set
+the base dimension attributes:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span><span class="o">=</span><span class="n">node</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">pd</span><span class="o">=</span><span class="n">node</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="p">[</span><span class="n">CGK</span><span class="o">.</span><span class="n">CellDimension_s</span><span class="p">]</span><span class="o">=</span><span class="n">cd</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="p">[</span><span class="n">CGK</span><span class="o">.</span><span class="n">PhysicalDimension_s</span><span class="p">]</span><span class="o">=</span><span class="n">pd</span>
+</pre></div>
+</div>
+<p>And to get them later on in another node function:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="n">CGS</span><span class="o">.</span><span class="n">transformIsDirect</span><span class="p">(</span><span class="n">tr</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="p">[</span><span class="n">CGK</span><span class="o">.</span><span class="n">CellDimension_s</span><span class="p">])):</span>
+  <span class="n">rs</span><span class="o">=</span><span class="n">log</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">pth</span><span class="p">,</span><span class="n">NOTRHTRANSFORM</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In this test, <cite>CGS</cite> stands for <cite>CGNS.APP.sids.utils</cite>.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2001-2016, Marc Poinot.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
+    </div>
+  </body>
+</html>

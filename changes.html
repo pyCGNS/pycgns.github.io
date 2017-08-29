@@ -1,0 +1,211 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>&lt;no title&gt; &#8212; intro</title>
+    
+    <link rel="stylesheet" href="_static/pycgns.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '4.2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/pyCGNS-logo-tiny.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="intro" href="index.html" /> 
+  </head>
+  <body role="document">
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        
+        <li class="right" style="margin-right: 10px">
+          <a href="search.html" title="search"
+             accesskey="S">search</a>
+          </li>
+        
+        <li class="right" >
+          <a href="glossary.html" title="glossary"
+             accesskey="G">glossary</a>
+           |</li>
+        
+        <li class="right" >
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a>
+           |</li>
+        
+        <li class="right" >
+          <a href="index.html" title="pyCGNS top page"
+             accesskey="M">top</a>
+           |</li>
+        
+	
+	  
+	    <li><a href=index.html>pyCGNS</a> &raquo;</li>
+	  
+	    
+        <li class="nav-item nav-item-0"><a href="index.html">intro</a> &#187;</li>
+	
+        
+      </ul>
+    </div>
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+
+   <h1 align=center><a href="index.html">
+      <img class="logo" src="_static/intro-logo-small.png" alt="pyCGNS"/>
+   </a></h1>
+
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <p>#  &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-
+#  pyCGNS - Python package for CFD General Notation System
+#  See license.txt file in the root directory of this Python module source
+#  &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-</p>
+<p># v4.4 -
+- fixes in WRA, add old wrapper compatibility for new wrapper
+- adds to PAT.cgnskeywords</p>
+<p># v4.3 -
+- NAV on windows
+- VAL fixes
+- adds to PAT.cgnskeywords</p>
+<p># v4.2 -
+- Move MAP to CHLone
+- WRA now uses Cython
+- VAL re-born</p>
+<p># v4.1 -
+- Change pyS7 into CGNS.NAV, use Qt</p>
+<p># v3.2 -
+- Update to CGNS v3.x lib
+- Add CHLONE mapping HDF5 compliant without CGNS/MLL
+- Change tests
+- Fix some bugs</p>
+<p># v3.1 -
+- Add patterns for pyS7</p>
+<p># v3.0 -
+- Change Python arrays to Numpy. This is a <em>NOT</em> compatible change.</p>
+<blockquote>
+<div>Sorry about the mess, I hope it&#8217;s the last time Python changes its arrays...</div></blockquote>
+<ul class="simple">
+<li>Make MLL optional</li>
+<li>Fix some bugs</li>
+<li>Interface changes:
+&#8211; string arrays should pass len() as array size instead of shape
+&#8211; zone size tuple should be correctly set (i.e. 9 values for 3D structured)</li>
+</ul>
+<p># v2.3 -
+- Add in-memory trees
+- Add in-memory trees test suite
+- Fix some bugs</p>
+<p># v2.2 -
+- Update to CGNS v2.4 lib (See Doc, ADF still default)
+- Update to Numarray v1.4 (See Doc, Numarray is now default)
+- Docs
+- Fix some bugs</p>
+<p># v2.1 -
+- Formalize Python binding tree
+- First proto Python-CGNS translator
+- Fix problems with ADF.h and cgns_headers.h
+- Switch to move to numeric array (default is Numeric) <em>compatible</em> switch
+- Fix preprocessing concat ## with gcc</p>
+<p># v2.0 -
+- Change Python arrays to numarray. This is a <em>NOT</em> compatible change,</p>
+<blockquote>
+<div>as the string management is different (uint instead of chars).</div></blockquote>
+<ul class="simple">
+<li>Update to CGNS v2.3 lib</li>
+<li>Simple parsing tools are now into demo</li>
+<li>Remove other tools (see now pyCGNSxml)</li>
+<li>Does not require anymore pyXML, no more dependancies to XML</li>
+<li>Correct some bugs, more testing, update doc</li>
+<li>Applied Bill Perkins patch for 1D/2D/3D data in cgnsmodule.c</li>
+</ul>
+<p># v1.1 -
+- Add/change types to CGNS XML DTD
+- Correct bugs, update docs, add tests
+- Change svn fs, unfortunatly I loose the old repository (restart to rev 1)</p>
+<p># v1.0 -
+- 100% MLL mapping (CGNS MLL v2.2)
+- Add types to CGNS XML DTD
+- ADF/CGNS allocated arrays are now owned by Numeric (reduce memory leaks)
+- New tool cgg: CGNS tree generation from valid XML description</p>
+<p># v0.6 -
+- Add an XML Validator for CGNS trees (sift)
+- Tools changed (names, options)
+- Usual QA stuff: tests, docs, bugs corrections</p>
+<p># v0.5 -
+- Change imports, now use a single one: import CGNS
+- Stabilize path and node classes in SIDS (still experimental, see doc)
+- Continue to wrap MLL (not tested)
+- Update to new versions of CGNS/ADF and Python
+- Update + automatize doc
+- Correct some bugs, more testing
+- Now use subversion (<a class="reference external" href="http://subversion.tigris.org">http://subversion.tigris.org</a>)</p>
+<p># v0.4 -
+- Continue to wrap MLL
+- Add HTML docs
+- Extend tests/ docs/ demos
+- Correct some bugs
+- Change cg_goto to up to 10 elements in a path</p>
+<p># v0.3 -
+- Change &#8220;cgns&#8221; module to &#8220;midlevel&#8221; module
+- Add some SIDS classes
+- Continue to wrap MLL
+- Make version count more consistant
+- Change some packages stuff (setup, inits, names...)</p>
+<p># v0.2 -
+- Add some internal calls and files (cgi_*)
+- Feed a lot of dictionnaries with constants (C enumerates and strings)
+- Make some more documentation
+- Add demos (User&#8217;s Guide to CGNS examples in Python)
+- Add tools
+- Correct bug in CGNS/adf/adfmodule.c, else/if mismatch for I4 arrays
+- Move CGNS/demo/parseTree.py to CGNS/tools
+- Correct bug in CGNS/tools/parseTree.py, start parsing from root
+- Changes into CGNS/tools/parseTree.py to make it more functinonal and robust</p>
+<p># v0.1 - First release</p>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2001-2016, Marc Poinot.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
+    </div>
+  </body>
+</html>

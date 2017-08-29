@@ -1,0 +1,213 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>A Python package for CGNS &#8212; intro</title>
+    
+    <link rel="stylesheet" href="_static/pycgns.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '4.2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/pyCGNS-logo-tiny.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="intro" href="#" />
+    <link rel="next" title="About pyCGNS" href="introduction.html" /> 
+  </head>
+  <body role="document">
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        
+        <li class="right" style="margin-right: 10px">
+          <a href="search.html" title="search"
+             accesskey="S">search</a>
+          </li>
+        
+        <li class="right" >
+          <a href="glossary.html" title="glossary"
+             accesskey="G">glossary</a>
+           |</li>
+        
+        <li class="right" >
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a>
+           |</li>
+        
+        <li class="right" >
+          <a href="introduction.html" title="About pyCGNS"
+             accesskey="N">next</a>
+           |</li>
+        
+        <li class="right" >
+          <a href="#" title="pyCGNS top page"
+             accesskey="M">top</a>
+           |</li>
+        
+	
+	  
+	    <li><a href=#>pyCGNS</a> &raquo;</li>
+	  
+	    
+        <li class="nav-item nav-item-0"><a href="#">intro</a> &#187;</li>
+	
+        
+      </ul>
+    </div>
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+
+   <h1 align=center><a href="#">
+      <img class="logo" src="_static/intro-logo-small.png" alt="pyCGNS"/>
+   </a></h1>
+
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="a-python-package-for-cgns">
+<h1>A Python package for CGNS<a class="headerlink" href="#a-python-package-for-cgns" title="Permalink to this headline">¶</a></h1>
+ Click below for a quick access to modules (DAT module is not available
+ in this current version).<br>
+
+ <div>
+ <table width="100%" border=2 bordercolor=white>
+ <tr align="center" valign="middle">
+
+ <td align="center" valign="middle"><a href="MAP/_index.html">
+     <img src="images/MAP-logo-small.png" height="48" alt="MAP"/></a></td>
+
+ <td align="center" valign="middle"><a href="PAT/_index.html">
+     <img src="images/PAT-logo-small.png" height="48" alt="PAT"/></a></td>
+
+ <td align="center" valign="middle"><a href="NAV/_index.html">
+     <img src="images/NAV-logo-small.png" height="48" alt="NAV"/></a></td>
+
+ <td align="center" valign="middle"><a href="VAL/_index.html">
+   <img src="images/VAL-logo-small.png" height="48" alt="VAL"/></a></td>
+
+ <td align="center" valign="middle"><a href="WRA/_index.html">
+     <img src="images/WRA-logo-small.png" height="48" alt="WRA"/></a></td>
+
+ <td align="center" valign="middle"><a href="DAT/_index.html">
+   <img src="images/DAT-logo-small.png" height="48" alt="DAT"/></a></td>
+
+ <td align="center" valign="middle"><a href="APP/_index.html">
+   <img src="images/APP-logo-small.png" height="48" alt="APP"/></a></td>
+
+</tr></table></div><p>The package gathers various tools and libraries for CGNS end-users and
+Python application developpers. The The main object of <em>pyCGNS</em> is to
+provide the application developpers with a Python interface to
+<a class="reference internal" href="glossary.html#term-cgns-sids"><span class="xref std std-term">CGNS/SIDS</span></a>, the CGNS data model.  The <a class="reference external" href="http://www.cgns.org">CFD General Notation System
+(CGNS)</a> is both a data model for CFD and an
+implementation of this data model. CGNS should not be reduced to a
+file format, you can use pyCGNS without any file at all for your
+actual CFD data!</p>
+<div class="sidebar">
+<p class="first sidebar-title">Release 5.0 (Feb 2017)</p>
+<ul class="last simple">
+<li>Embedded CHLone (CGNS/HDF5 mapping)</li>
+<li>Windows version update</li>
+</ul>
+</div>
+<p>There are seven sub-modules in
+<em>pyCGNS</em>, some of them are libraries of functions, some other are
+tools and some are gathering various scripts and examples.
+The <em>MAP</em> and <em>PAT</em> modules are the most important modules, they map the
+<a class="reference internal" href="glossary.html#term-cgns-sids"><span class="xref std std-term">CGNS/SIDS</span></a> data model as <a class="reference internal" href="glossary.html#term-cgns-python"><span class="xref std std-term">CGNS/Python</span></a> implementation and
+provide manipulation function for it.
+The <em>WRA</em> module contains a wrapper on <a class="reference internal" href="glossary.html#term-cgns-mll"><span class="xref std std-term">CGNS/MLL</span></a>
+and a <em>MLL-like</em> set of functions that uses the
+<a class="reference internal" href="glossary.html#term-cgns-python"><span class="xref std std-term">CGNS/Python</span></a> mapping as implementation.
+The <em>NAV</em> module supports the <em>CGNS.NAV</em> graphical browser, with nice
+features about tree exploration, copy/paste and even global node changes.
+Then, the <em>VAL</em> module is a parser
+engine for <a class="reference internal" href="glossary.html#term-cgns-python"><span class="xref std std-term">CGNS/Python</span></a> tree compliance
+checking. The <em>CGNS.VAL</em> tool can analyze your <a class="reference internal" href="glossary.html#term-cgns-hdf5"><span class="xref std std-term">CGNS/HDF5</span></a> file
+and returns you a list of diagnostics.</p>
+<p>The package uses <a class="reference internal" href="glossary.html#term-numpy"><span class="xref std std-term">numpy</span></a>, <a class="reference internal" href="glossary.html#term-cython"><span class="xref std std-term">cython</span></a> and <a class="reference internal" href="glossary.html#term-hdf5"><span class="xref std std-term">HDF5</span></a>
+you should install before pyCGNS.
+The <em>CGNS.NAV</em> graphical tool uses <a class="reference internal" href="glossary.html#term-qt"><span class="xref std std-term">Qt</span></a> and has a <a class="reference internal" href="glossary.html#term-vtk"><span class="xref std std-term">VTK</span></a> viewer,
+the tool requires the <em>Qt libs</em>, <em>VTK libs</em> and their python interfaces.
+The <em>CGNS/SIDS</em> data model has a mapping the <em>HDF5</em> for file storage. The
+<em>MAP</em> module uses <a class="reference internal" href="glossary.html#term-chlone"><span class="xref std std-term">CHLone</span></a> (now embedded into <em>pyCGNS</em>)
+instead of <a class="reference internal" href="glossary.html#term-cgns-mll"><span class="xref std std-term">CGNS/MLL</span></a> to map its <a class="reference internal" href="glossary.html#term-cgns-python"><span class="xref std std-term">CGNS/Python</span></a> trees to <em>HDF5</em>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <em>pyCGNS</em> python package is released
+under <a class="reference external" href="http://opensource.org/licenses/lgpl-2.1">LGPL2 license</a> and hosted
+by <a class="reference external" href="http://sourceforge.net/projects/pycgns">sourceforge</a>
+where you can find there the
+<a class="reference external" href="http://sourceforge.net/projects/pycgns/files">source download</a>.</p>
+</div>
+<p>The listed chapters are the introduction chapters, each MAP, PAT, WRA,
+NAV, VAL module has its own documentation which doesn&#8217;t appear below.
+Click on the modules icons above to get their documentation.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">About pyCGNS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#cgns-standard">CGNS Standard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#package-contents">Package contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#quick-start">Quick start</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Build and Install</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="install.html#required-libraries">Required libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#optional-libraries">Optional libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#installation-process">Installation process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#single-module-installation">Single module installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#configuration-file-contents">Configuration file contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#nav-depends">NAV depends</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#map-depends">MAP depends</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#wra-depends">WRA depends</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="install.html#test">Test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2001-2016, Marc Poinot.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
+    </div>
+  </body>
+</html>

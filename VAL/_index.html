@@ -1,0 +1,273 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>CGNS.VAL &#8212; VAL</title>
+    
+    <link rel="stylesheet" href="_static/pycgns.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '4.2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/pyCGNS-logo-tiny.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="VAL" href="#" />
+    <link rel="next" title="Command line" href="commandline.html" /> 
+  </head>
+  <body role="document">
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        
+        <li class="right" style="margin-right: 10px">
+          <a href="search.html" title="search"
+             accesskey="S">search</a>
+          </li>
+        
+        <li class="right" >
+          <a href="../glossary.html" title="glossary"
+             accesskey="G">glossary</a>
+           |</li>
+        
+        <li class="right" >
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a>
+           |</li>
+        
+        <li class="right" >
+          <a href="commandline.html" title="Command line"
+             accesskey="N">next</a>
+           |</li>
+        
+        <li class="right" >
+          <a href="../index.html" title="pyCGNS top page"
+             accesskey="M">top</a>
+           |</li>
+        
+	
+	  
+	    <li><a href=../index.html>pyCGNS</a> &raquo;</li>
+	  
+	    
+        <li class="nav-item nav-item-0"><a href="#">VAL</a> &#187;</li>
+	
+        
+      </ul>
+    </div>
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+
+   <h1 align=center><a href="#">
+      <img class="logo" src="_static/VAL-logo-small.png" alt="pyCGNS"/>
+   </a></h1>
+
+
+  <h3><a href="#">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">CGNS.VAL</a><ul>
+<li><a class="reference internal" href="#quick-start">Quick start</a></li>
+<li><a class="reference internal" href="#api">API</a></li>
+<li><a class="reference internal" href="#reference">Reference</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#glossary">Glossary</a><ul>
+<li><a class="reference internal" href="#val-index">VAL Index</a></li>
+</ul>
+</li>
+</ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="cgns-val">
+<h1>CGNS.VAL<a class="headerlink" href="#cgns-val" title="Permalink to this headline">¶</a></h1>
+<p>The <strong>VALidator</strong> tool is a CGNS/Python tree checker. It parses a CGNS/Python
+tree and applies three kind of verifications. The first is the structural
+check, the second is the CGNS/SIDS check and the last is the user defined
+check.</p>
+<p>The <strong>CGNS.VAL</strong> tool has a command line interface, it can be run in a user&#8217;s
+shell window and returns a set of diagnostics on the standard output.
+The <strong>CGNS.VAL</strong> tool has an embedded check tool which actually makes calls
+to the <em>VALidator</em> API. Then any user can use this <em>VALidator</em> API to make
+his own embedded check tool.</p>
+<div class="section" id="quick-start">
+<h2>Quick start<a class="headerlink" href="#quick-start" title="Permalink to this headline">¶</a></h2>
+<p>The <strong>CGNS.VAL</strong> tool takes a CGNS/HDF5 file as argument and checks its
+contents, with respect to tree structure and CGNS/SIDS recommandations.
+The simple command line is:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">CGNS</span><span class="o">.</span><span class="n">VAL</span> <span class="n">naca012</span><span class="o">.</span><span class="n">hdf</span>
+</pre></div>
+</div>
+<p>Which loads the file, runs the checks and returns a list of diagnostics:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">---------------------------------------------------------------------------</span>
+<span class="o">/</span><span class="n">Base</span><span class="c1">#1/domain21/blockName</span>
+<span class="p">[</span><span class="n">S004</span><span class="p">:</span><span class="n">E</span><span class="p">]</span> <span class="n">DataType</span> <span class="p">[</span><span class="n">MT</span><span class="p">]</span> <span class="ow">not</span> <span class="n">allowed</span> <span class="k">for</span> <span class="n">this</span> <span class="n">node</span>
+<span class="p">[</span><span class="n">S007</span><span class="p">:</span><span class="n">E</span><span class="p">]</span> <span class="n">Node</span> <span class="p">[</span><span class="n">ElementRange</span><span class="p">]</span> <span class="n">of</span> <span class="nb">type</span> <span class="p">[</span><span class="n">IndexRange_t</span><span class="p">]</span> <span class="ow">is</span> <span class="n">mandatory</span>
+<span class="p">[</span><span class="n">S191</span><span class="p">:</span><span class="n">E</span><span class="p">]</span> <span class="n">Bad</span> <span class="n">node</span> <span class="n">value</span> <span class="n">shape</span>
+<span class="p">[</span><span class="n">U110</span><span class="p">:</span><span class="n">E</span><span class="p">]</span> <span class="n">Cannot</span> <span class="n">handle</span> <span class="n">such</span> <span class="n">ElementType</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span>
+
+<span class="o">---------------------------------------------------------------------------</span>
+<span class="o">/</span><span class="n">Base</span><span class="c1">#1/domain24</span>
+<span class="p">[</span><span class="n">U104</span><span class="p">:</span><span class="n">W</span><span class="p">]</span> <span class="n">No</span> <span class="n">ReferenceState</span> <span class="n">found</span> <span class="n">at</span> <span class="n">Zone</span> <span class="n">level</span>
+
+<span class="o">---------------------------------------------------------------------------</span>
+
+<span class="c1">### CGNS/Python tree *NOT* Compliant</span>
+</pre></div>
+</div>
+<p>Each diagnostic entry starts with the node path followed by the list of
+warnings and errors detected at this node level.</p>
+</div>
+<div class="section" id="api">
+<h2>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h2>
+<p>The only function you can call in your Python script are <em>run</em>, <em>showdiag</em>
+and <em>compliant</em>.</p>
+<p>The <em>run</em> function parses a full CGNS/Python tree and returns a complex
+diagnostic. This latter can be printed using <em>showdiag</em>.</p>
+<p>The <em>compliant</em> function parses a full CGNS/Python tree and returns two values,
+a boolean telling you if the CGNS/Python is compliant or not and a list
+or diagnostics messages:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">CGNS.PAT.cgnslib</span> <span class="k">as</span> <span class="nn">CGL</span>
+<span class="kn">import</span> <span class="nn">CGNS.VAL.simplecheck</span> <span class="k">as</span> <span class="nn">CGV</span>
+<span class="kn">import</span> <span class="nn">CGNS.MAP</span> <span class="k">as</span> <span class="nn">CGM</span>
+
+<span class="n">T</span><span class="o">=</span><span class="n">CGL</span><span class="o">.</span><span class="n">newCGNSTree</span><span class="p">()</span>
+
+<span class="n">diag</span><span class="o">=</span><span class="n">CGV</span><span class="o">.</span><span class="n">compliant</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">diag</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span> <span class="n">CGM</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">mfile</span><span class="p">,</span><span class="n">T</span><span class="p">,[])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="commandline.html">Command line</a></li>
+<li class="toctree-l1"><a class="reference internal" href="checklevels.html">Diagnostics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="checklevels.html#generic-diagnostics">Generic diagnostics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="checklevels.html#sids-diagnostics">SIDS diagnostics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="checklevels.html#user-defined-diagnostics">User defined diagnostics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="checklevels.html#diagnostics-list">Diagnostics list</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="extending.html">Extending with user defined rules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="extending.html#diagnostics">Diagnostics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extending.html#per-node-check-methods">Per-node check methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extending.html#context">Context</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<hr class="docutils" />
+</div>
+</div>
+<div class="section" id="glossary">
+<h1>Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h1>
+<dl class="glossary docutils">
+<dt id="term-cgns-org">cgns.org</dt>
+<dd>The official CGNS web site, by extension any document on this web
+site has an <em>official</em> taste...</dd>
+<dt id="term-cgns">CGNS</dt>
+<dd>The specific purpose of the
+<a class="reference external" href="http://www.cgns.org">CFD General Notation System (CGNS)</a>
+project is to provide a standard for recording and recovering
+computer data associated with the numerical solution of the
+equations of fluid dynamics. See also the
+<a class="reference external" href="/scratch/MOSAIC/W/Marc/pycgns/doc/../build/doc/html/ch2/cgnshowto.html#cgnshowto" title="(in pyCGNS v4)"><span class="xref std std-ref">How to?</span></a>.</dd>
+<dt id="term-cgns-sids">CGNS/SIDS</dt>
+<dd>The <a class="reference external" href="http://www.grc.nasa.gov/WWW/cgns/CGNS_docs_current/sids/index.html">Standard Interface Data Structure</a> is the
+specification of the data model.  This public document describes
+the syntax and the semantics of all tree-structured data required
+or proposed for a CFD simulation.</dd>
+<dt id="term-cgns-mll">CGNS/MLL</dt>
+<dd>The <a class="reference external" href="http://www.grc.nasa.gov/WWW/cgns/CGNS_docs_current/lidlevel/index.html">Mid-Level Library</a>
+is an example implementation of
+<em>CGNS/SIDS</em> on top of <em>CGNS/ADF</em> and <em>CGNS/HDF5</em> mappings. This
+library has a C and a Fortran API.</dd>
+<dt id="term-cgns-adf">CGNS/ADF</dt>
+<dd>The <a class="reference external" href="http://www.grc.nasa.gov/WWW/cgns/CGNS_docs_current/adf/index.html">Advanced Data Format *CGNS/SIDS* implementation</a>. A binary
+storage format and its companion library, developped by <em>Boeing</em>.</dd>
+<dt id="term-cgns-hdf5">CGNS/HDF5</dt>
+<dd>The <a class="reference external" href="http://www.grc.nasa.gov/WWW/cgns/CGNS_docs_current/hdf5/index.html">Hierarchical Data Format *CGNS/SIDS* implementation</a>. A binary
+storage format and its companion library (see below).</dd>
+<dt id="term-cgns-python">CGNS/Python</dt>
+<dd>The <a class="reference external" href="http://www.grc.nasa.gov/WWW/cgns/CGNS_docs_current/python/index.html">Python programming language *CGNS/SIDS*
+implementation</a>.</dd>
+<dt id="term-chlone">CHLone</dt>
+<dd>A <em>CGNS/HDF5</em> compliant implementation. The <a class="reference external" href="http://chlone.sourceforge.net">CHLone</a> library is available on
+SourceForge.</dd>
+<dt id="term-hdf5">HDF5</dt>
+<dd>A powerful storage system for large data.
+The <a class="reference external" href="http://www.hdfgroup.org/HDF5">HDF5</a>
+library should be seen as a middleware system with a lot of powerful
+features related to efficient, portable and trustable storage mean.</dd>
+<dt id="term-python">python</dt>
+<dd><a class="reference external" href="http://www.python.org">An object oriented interpreted programming language</a>.</dd>
+<dt id="term-cython">cython</dt>
+<dd>A <a class="reference external" href="http://cython.org">compiler tool</a> that translate Python/Numpy
+into C code for performance purpose.</dd>
+<dt id="term-numpy">numpy</dt>
+<dd>The <a class="reference external" href="http://numpy.scipy.org">numerical library</a> for Python. <em>Numpy</em>
+is used to store the data in Python arrays which have a direct memory
+mapping to actual C or Fortran memory.</dd>
+<dt id="term-vtk">VTK</dt>
+<dd>A <a class="reference external" href="http://www.vtk.org">visualization toolkit</a> used to display
+3D objects ni <em>CGNS.NAV</em>.</dd>
+<dt id="term-pyside">PySide</dt>
+<dd>The <a class="reference external" href="http://www.pyside.org">Python interface</a> for the Qt toolkit. PySide</dd>
+<dt id="term-qt">Qt</dt>
+<dd><a class="reference external" href="http://qt.nokia.com/products">A powerful graphical toolkit</a> available
+under GPL v3, LGPL v2 and a commercial license. The current use of Qt is
+under LGPL v2 in pyCGNS.</dd>
+</dl>
+<div class="section" id="val-index">
+<span id="id1"></span><h2>VAL Index<a class="headerlink" href="#val-index" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2001-2016, Marc Poinot.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
+    </div>
+  </body>
+</html>

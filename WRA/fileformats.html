@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Handling ADF and HDF5 file formats &#8212; WRA</title>
+    
+    <link rel="stylesheet" href="_static/pycgns.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '4.2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/pyCGNS-logo-tiny.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="WRA" href="_index.html" />
+    <link rel="prev" title="CGNS.WRA.mll" href="API.html" /> 
+  </head>
+  <body role="document">
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        
+        <li class="right" style="margin-right: 10px">
+          <a href="search.html" title="search"
+             accesskey="S">search</a>
+          </li>
+        
+        <li class="right" >
+          <a href="../glossary.html" title="glossary"
+             accesskey="G">glossary</a>
+           |</li>
+        
+        <li class="right" >
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a>
+           |</li>
+        
+        <li class="right" >
+          <a href="API.html" title="CGNS.WRA.mll"
+             accesskey="P">previous</a>
+           |</li>
+        
+        <li class="right" >
+          <a href="../index.html" title="pyCGNS top page"
+             accesskey="M">top</a>
+           |</li>
+        
+	
+	  
+	    <li><a href=../index.html>pyCGNS</a> &raquo;</li>
+	  
+	    
+        <li class="nav-item nav-item-0"><a href="_index.html">WRA</a> &#187;</li>
+	
+        
+      </ul>
+    </div>
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+
+   <h1 align=center><a href="_index.html">
+      <img class="logo" src="_static/WRA-logo-small.png" alt="pyCGNS"/>
+   </a></h1>
+
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="handling-adf-and-hdf5-file-formats">
+<span id="v3multifileformat"></span><h1>Handling ADF and HDF5 file formats<a class="headerlink" href="#handling-adf-and-hdf5-file-formats" title="Permalink to this headline">¶</a></h1>
+<p>Starting with the <strong>v3</strong> of <em>CGNS/MLL</em>, two file formats are now managed by
+the library: <em>ADF</em> and <em>HDF5</em>.
+If you build the <em>CGNS/MLL</em> library (that is the <code class="docutils literal"><span class="pre">libcgns.a</span></code>) with the
+default parameters, you will obtain a library with capabilities to handle
+these two file formats. The library tries to detect the format by scanning
+the actual file.</p>
+<p>The shell variables <code class="docutils literal"><span class="pre">HDF5_LINK_PATH</span></code> or <code class="docutils literal"><span class="pre">ADF_LINK_PATH</span></code> are used to
+find the linked-to files. The syntax of these variables is the same as
+the usual <code class="docutils literal"><span class="pre">PATH</span></code> or <code class="docutils literal"><span class="pre">LD_LIBRAR_PATH</span></code> of your Unix shell.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2001-2016, Marc Poinot.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
+    </div>
+  </body>
+</html>

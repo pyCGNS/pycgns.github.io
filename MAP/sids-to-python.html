@@ -1,0 +1,942 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>CGNS/Python Tree &#8212; MAP</title>
+    
+    <link rel="stylesheet" href="_static/pycgns.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '4.2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/pyCGNS-logo-tiny.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="MAP" href="_index.html" />
+    <link rel="next" title="About links" href="links.html" />
+    <link rel="prev" title="CGNS.MAP" href="_index.html" /> 
+  </head>
+  <body role="document">
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        
+        <li class="right" style="margin-right: 10px">
+          <a href="search.html" title="search"
+             accesskey="S">search</a>
+          </li>
+        
+        <li class="right" >
+          <a href="../glossary.html" title="glossary"
+             accesskey="G">glossary</a>
+           |</li>
+        
+        <li class="right" >
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a>
+           |</li>
+        
+        <li class="right" >
+          <a href="links.html" title="About links"
+             accesskey="N">next</a>
+           |</li>
+        
+        <li class="right" >
+          <a href="_index.html" title="CGNS.MAP"
+             accesskey="P">previous</a>
+           |</li>
+        
+        <li class="right" >
+          <a href="../index.html" title="pyCGNS top page"
+             accesskey="M">top</a>
+           |</li>
+        
+	
+	  
+	    <li><a href=../index.html>pyCGNS</a> &raquo;</li>
+	  
+	    
+        <li class="nav-item nav-item-0"><a href="_index.html">MAP</a> &#187;</li>
+	
+        
+      </ul>
+    </div>
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+
+   <h1 align=center><a href="_index.html">
+      <img class="logo" src="_static/MAP-logo-small.png" alt="pyCGNS"/>
+   </a></h1>
+
+
+  <h3><a href="_index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">CGNS/Python Tree</a><ul>
+<li><a class="reference internal" href="#commitment-with-cgns-standard">Commitment with CGNS standard</a></li>
+<li><a class="reference internal" href="#the-node-structure">The node structure</a></li>
+<li><a class="reference internal" href="#textual-representation">Textual representation</a></li>
+<li><a class="reference internal" href="#numpy-array-mapping">Numpy array mapping</a></li>
+<li><a class="reference internal" href="#data-types">Data types</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#specific-cgns-python-topics">Specific CGNS/Python topics</a><ul>
+<li><a class="reference internal" href="#the-cgnstree-t-type">The CGNSTree_t type</a></li>
+<li><a class="reference internal" href="#legacy-cgns-types-alternative">Legacy CGNS types alternative</a></li>
+<li><a class="reference internal" href="#links">Links</a></li>
+<li><a class="reference internal" href="#c-api">C API</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#examples-and-tips">Examples and tips</a><ul>
+<li><a class="reference internal" href="#indexrange-t">IndexRange_t</a></li>
+<li><a class="reference internal" href="#indexarray-t">IndexArray_t</a></li>
+<li><a class="reference internal" href="#dimensionalunits-t">DimensionalUnits_t</a></li>
+<li><a class="reference internal" href="#zone-t">Zone_t</a></li>
+<li><a class="reference internal" href="#sub-tree-imports">Sub-tree imports</a></li>
+<li><a class="reference internal" href="#sub-tree-share">Sub-tree share</a></li>
+</ul>
+</li>
+</ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="cgns-python-tree">
+<span id="reference-sids-to-python"></span><h1>CGNS/Python Tree<a class="headerlink" href="#cgns-python-tree" title="Permalink to this headline">¶</a></h1>
+<p>The CGNS/Python mapping defines a <strong>tree</strong> structure composed of
+<strong>nodes</strong> implemented for the <em>Python</em> programming langage.
+A special <strong>links</strong> structure is also defined for a correct mapping of
+the management of files on the disk.
+The mapping presented here is <em>NOT</em> a library <a class="footnote-reference" href="#n5" id="id1">[6]</a>, it is the lowest possible
+correspondance between a CGNS/SIDS structure and a Python
+representation.
+This specification is public and could be used as the basis for Python
+based CGNS application interoperability.
+<em>Python</em> is an interpreted langage and it has a textual representation of
+its objects, this representation can be used for CGNS/Python trees as well.</p>
+<div class="section" id="commitment-with-cgns-standard">
+<h2>Commitment with CGNS standard<a class="headerlink" href="#commitment-with-cgns-standard" title="Permalink to this headline">¶</a></h2>
+<p>The mapping of the SIDS into a CGNS/Python structure uses the node as atomic
+structure. Comparing to CGNS/ADF or CGNS/HDF5, the contents
+of a node is
+unchanged in CGNS/Python. The way we represent data is different but all
+nodes attributes found in the section 6 of
+the <em>SIDS-to-ADF File Mapping Manual</em> <a class="footnote-reference" href="#n0" id="id2">[1]</a> are applicable to the
+CGNS/Python mapping.</p>
+<p>The <strong>data type</strong> mapping is changed compared to CGNS/ADF or CGNS/HDF5, the
+actual representation of basic types such as integers, floats and strings
+are closely mapped to the Python data types.
+See the table <a class="reference internal" href="#table-data-types"><span class="std std-ref">Data types</span></a>.</p>
+<p>Other elements of the node description are like the CGNS/ADF or CGNS/HDF5
+mappings, in particular the <strong>dimensions</strong> and the order of these dimensions.
+The CGNS/SIDS section 3.1 states that the dimensions order should be the
+so-called <em>Fortran indexing convention</em> which states the column index is
+the first. The CGNS/Python nodes should respect this requirements.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The Python arrays can be defined with either a <em>C</em> or a <em>Fortran</em> <cite>flag</cite>,
+this <cite>flag</cite> is used to set or to find the order used for the internal
+storage of an array. It has <strong>no effect</strong> on the dimensions of a <em>numpy</em>
+array, but on its internal memory layout.
+It&#8217;s up to the user to manage this flag and its impact on the use of an
+array, in particular for the read/write on the disks through the C API.</p>
+</div>
+<p>For example, section 6.1.2.2  describes the <code class="docutils literal"><span class="pre">DimensionalUnits_t</span></code> node
+with dimensions values <code class="docutils literal"><span class="pre">(32,5)</span></code>.
+This should be understood as <em>Fortran</em> order values, and thus <code class="docutils literal"><span class="pre">(32,5)</span></code>
+should be found as this in the <cite>shape</cite> of the <em>numpy</em> array <a class="footnote-reference" href="#n1" id="id3">[2]</a>
+whichever status the <em>Fortran</em> flag set has.</p>
+<p>A <em>numpy</em> array with the <em>C</em> flag set should also have a shape of
+<code class="docutils literal"><span class="pre">(32,5)</span></code>, again, the internal representation of this <em>C</em> array has to
+be taken into account during read/write operations.</p>
+<p>See the <em>C API</em> and <em>Examples and Tips</em> sections about this requirement and
+its impact on <em>numpy</em> array use.</p>
+</div>
+<div class="section" id="the-node-structure">
+<h2>The node structure<a class="headerlink" href="#the-node-structure" title="Permalink to this headline">¶</a></h2>
+<p>The structure of a CGNS data set is held in a so-called <strong>CGNS/Python tree</strong>.
+The tree is composed of nodes, each node may have children which are nodes
+too. The node structure is a python sequence (i.e. list or tuple), composed
+of four entries: the name, the value, the list of children and the type.</p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="31%" />
+<col width="69%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><em>Attribute</em></th>
+<th class="head"><em>type</em></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Name</td>
+<td>string</td>
+</tr>
+<tr class="row-odd"><td>Value</td>
+<td><em>numpy</em> array</td>
+</tr>
+<tr class="row-even"><td>Children</td>
+<td>list of CGNS/Python nodes</td>
+</tr>
+<tr class="row-odd"><td>Type</td>
+<td>string</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p>The CGNS/Python mapping requires that:</p>
+<blockquote>
+<div><p>The <em>name</em> is a Python string, it should not be empty. The name should
+not have more than 32 chars and should not have <code class="docutils literal"><span class="pre">/</span></code> in it. The names
+<code class="docutils literal"><span class="pre">.</span></code> (a single dot) And <code class="docutils literal"><span class="pre">..</span></code> (dot dot) are forbidden (but names with dot
+and something else are allowed, for example <code class="docutils literal"><span class="pre">Zone.001</span></code> is ok).</p>
+<p>The representation of <em>values</em> uses the numpy library array. It makes
+it possible to share an already existing memory zone with
+the Python object. The numpy mapping of the values is detailled
+hereafter. An empty value should be represented as None, any other
+value is forbidden.</p>
+<p>The <em>children list</em> can be a list or a tuple. The use of a list is
+strongly recommended but not mandatory. A read-only tree can be
+declared as a tuple. It is the responsibility of the applications to
+parse sequences wether these are lists or tuples. A node without child
+has the empty list <code class="docutils literal"><span class="pre">[]</span></code> as children list.</p>
+<p>The <em>type</em> is the Python string representation of the CGNS/SIDS type <a class="footnote-reference" href="#n8" id="id4">[9]</a>
+(i.e. it is the same for CGNS/ADF or CGNS/HDF5). A type string cannot be
+empty.</p>
+</div></blockquote>
+<p>We have now a typical CGNS/Python node, which can be represented with
+the pattern <a class="footnote-reference" href="#n7" id="id5">[8]</a>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">node</span> <span class="o">=</span> <span class="p">[</span> <span class="o">&lt;</span><span class="n">name</span><span class="p">:</span><span class="n">string</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">value</span><span class="p">:</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="o">&gt;</span><span class="p">,</span> <span class="p">[</span> <span class="o">&lt;</span><span class="n">child</span><span class="p">:</span><span class="n">node</span><span class="o">&gt;*</span> <span class="p">],</span> <span class="o">&lt;</span><span class="n">cgns</span><span class="o">-</span><span class="nb">type</span><span class="p">:</span><span class="n">string</span><span class="o">&gt;</span> <span class="p">]</span>
+</pre></div>
+</div>
+<p>We use there the textual representation of a Python object. All the Python
+types used in this CGNS/Python mapping have a full textual representation.
+This is detailled in the next section.</p>
+<p>The order of the values is significant, for example <code class="docutils literal"><span class="pre">node[0]</span></code> should always
+be the name of the node (Python has an index ordering starting with zero)</p>
+<p>We see now that a CGNS/Python tree is a node. This node has children
+which have children and so on... Any node can be held as a subpart of a
+complete tree, we say each node is a <em>sub-tree</em>.
+Our CGNS/Python tree has a <em>root</em> node which is its first node.
+There is no clear definition of a <em>root</em> node in the CGNS/SIDS or in the
+SIDS mappings.</p>
+<p>In the case of a <cite>CGNSBase_t</cite> level node, the CGNS/ADF or CGNS/HDF5
+defines a sound node which can be mapped to CGNS/Python. However, the CGNS/SIDS
+states that several bases can be found in a CGNS tree. The father node of a
+base would have the pattern:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">root</span> <span class="o">=</span> <span class="p">[</span> <span class="o">&lt;</span><span class="n">CGNSLibraryVersion</span><span class="p">:</span><span class="n">node</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">CGNSBase</span><span class="p">:</span><span class="n">node</span><span class="o">&gt;*</span> <span class="p">]</span>
+</pre></div>
+</div>
+<p>Which is not consistent with a <em>normal</em> node. We want to remove this exception,
+we define a CGNS/Python tree root, or first node, as a list with a compliant
+CGNS/Python node. which is not the <cite>node</cite> pattern.
+Then the applications have to have a specific
+way to manage this first node. This lack of <cite>root</cite> node is not that important
+when you use the CGNS/MLL because the function are hidding the actual node
+implementation. With CGNS/Python, the user can manage the nodes as true
+Python objects, and we have to provide him with a sound interface, or at
+least as sound as possible. For this consistency reason,
+the CGNS/Python mapping defines a new type for the <cite>root</cite> node,
+see the <a class="reference internal" href="#reference-cgnstree-t"><span class="std std-ref">CGNSTree_t type</span></a> section.</p>
+</div>
+<div class="section" id="textual-representation">
+<h2>Textual representation<a class="headerlink" href="#textual-representation" title="Permalink to this headline">¶</a></h2>
+<p>It is possible to declare a CGNS/Python node as a textual
+representation. There is a exemple of a zone connectivity sub-tree
+with the CGNS/Python in textual mode, a simple <code class="docutils literal"><span class="pre">PointRange</span></code> node with
+two 3D indices:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pr</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;PointRange&#39;</span><span class="p">,</span>
+    <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">25</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">9</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]],</span><span class="n">dtype</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">int32</span><span class="p">,</span><span class="n">order</span><span class="o">=</span><span class="s1">&#39;Fortran&#39;</span><span class="p">),</span>
+    <span class="p">[],</span>
+    <span class="s1">&#39;IndexRange_t&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">PointRange</span></code> node has no child, the children list is an empty
+list. The values of the array are initialized with a list, the order
+of the elements in the list matches the <cite>Fortran</cite> indexing: in that
+example the first point indices are <code class="docutils literal"><span class="pre">[1,1,1]</span></code> and the second point
+indicies are <code class="docutils literal"><span class="pre">[25,9,1]</span></code>.</p>
+<p>The evaluation of this string by the Python interpreter creates a CGNS/Python
+compliant node as a Python list. Please note the types of this
+<code class="docutils literal"><span class="pre">pr</span></code> node, there are only native Python types (list, string,
+integer) and <em>numpy</em> types or enumerates. You have to have a variable to
+hold the node or the CGNS sub-tree, if you have no reference to the actually
+created Python objects these will be unreachable and thus garbaged.</p>
+<p>The textual representation can be <cite>import</cite>-ed as any Python textual file,
+with all possible Python use you can imagine.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The Python lists are objects. When you refer to a list you do not
+copy this list unless you ask for such a copy. This is important because
+if you modify an existing list you modify an object that could be used
+by others. In the CGNS/Python mapping the children of a node is a list of
+nodes. If you refer to such a list without a copy, any modification of this
+child list will impact nodes using this list. This is detailled in the
+section <em>Examples and Tips</em> .</p>
+</div>
+</div>
+<div class="section" id="numpy-array-mapping">
+<h2>Numpy array mapping<a class="headerlink" href="#numpy-array-mapping" title="Permalink to this headline">¶</a></h2>
+<p>A CGNS/Python node value is a <em>numpy</em> array, this python object contains
+the <strong>number of dimensions</strong>, the <strong>dimensions</strong>, the <strong>data type</strong> and
+the actual
+<strong>data</strong> array. Then this implicit information is not a part of the <em>node</em>
+structure.
+As we really want to have the most generic node as possible, we require that
+even single dimension values should be stored as <em>numpy</em> array. A single
+integer, float or a single string should be embedded into a <em>numpy</em> array.</p>
+<p>As we mentionned before, an empty value has to be represented by <code class="docutils literal"><span class="pre">None</span></code>
+which is a native Python value, not a <em>numpy</em> value:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">gc</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Grid#002&#39;</span><span class="p">,</span><span class="kc">None</span><span class="p">,[</span><span class="n">cx</span><span class="p">,</span><span class="n">cy</span><span class="p">,</span><span class="n">cz</span><span class="p">],</span><span class="s1">&#39;GridCoordinates_t&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Here <code class="docutils literal"><span class="pre">cx</span></code>, <code class="docutils literal"><span class="pre">cy</span></code>, <code class="docutils literal"><span class="pre">cz</span></code>, are nodes, not arrays.</p>
+<p>The <em>numpy</em> end-user interface makes it possible to define
+some of these required data as deduction of required
+parameters. The number of dimensions is the size of the so-called
+shape. The dimensions can be forced for empty values or can be deduced
+from the data itself:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.4</span><span class="p">])</span>
+<span class="n">b</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="s1">&#39;i&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The first declaration has dimension 1, number of dims 1, data type
+<code class="docutils literal"><span class="pre">float64</span></code>, all deduced from the data declaration, the second has
+dimensions <code class="docutils literal"><span class="pre">(5,3,7)</span></code>, number of dimensions 3, data type set as
+<code class="docutils literal"><span class="pre">int32</span></code>.</p>
+<p>A <em>numpy</em> array can be declared as <em>C order</em> or <em>Fortran order</em>.
+There is no requirements in this mapping wether the internal layout of the
+memory should be <em>C</em> or <em>Fortran</em>. However, an array should have a shape
+with the same order of dimensions as described in
+the <em>SIDS-to-ADF File Mapping Manual</em> (<a class="reference internal" href="#cg2" id="id6">[CG2]</a>).</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">If you use the Python C API, it is the responsability to the
+application to check the <em>numpy</em> ordering flag and to manage
+the arrays with respect to memory layout. See the <em>C API</em> section.</p>
+</div>
+<p>The way to get the node data information regarding the <a class="reference internal" href="#cg2" id="id7">[CG2]</a>
+datatypes and dimensions requirements is to access to the <em>numpy</em> object
+attributes:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pr</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]])</span>
+
+<span class="n">dims</span><span class="o">=</span><span class="n">pr</span><span class="o">.</span><span class="n">shape</span>
+<span class="n">ndims</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">pr</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">datatype</span><span class="o">=</span><span class="n">pr</span><span class="o">.</span><span class="n">dtype</span>
+<span class="n">fortranorder</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">isfortran</span><span class="p">(</span><span class="n">pr</span><span class="p">)</span>
+<span class="n">corder</span><span class="o">=</span><span class="ow">not</span> <span class="n">numpy</span><span class="o">.</span><span class="n">isfortran</span><span class="p">(</span><span class="n">pr</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="data-types">
+<span id="table-data-types"></span><h2>Data types<a class="headerlink" href="#data-types" title="Permalink to this headline">¶</a></h2>
+<p>A value is a numpy array, the contents of an array is homogeneous and has a
+data type. The data types of your CGNS/Python arrays depends on the
+data type as defined in <a class="reference internal" href="#cg2" id="id8">[CG2]</a>.</p>
+<p>The type of the data can be set at the creation time,
+the <cite>numpy</cite> type is associated to the <cite>ADF</cite> type required by the
+CGNS/SIDS. A bad data type, even if it silently looks like the result
+you want, would lead to an non-compliant CGNS tree.
+The required mapping for the end-user interface uses the types :</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="32%" />
+<col width="41%" />
+<col width="27%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><em>ADF type</em></th>
+<th class="head"><em>Numpy type(s)</em></th>
+<th class="head"><em>Remarks</em></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><cite>I4</cite></td>
+<td><cite>&#8216;i&#8217; int32</cite></td>
+<td>(1)</td>
+</tr>
+<tr class="row-odd"><td><cite>I8</cite></td>
+<td><cite>&#8216;l&#8217; int64</cite></td>
+<td>(2)</td>
+</tr>
+<tr class="row-even"><td><cite>R4</cite></td>
+<td><cite>&#8216;f&#8217; float32</cite></td>
+<td>(3)</td>
+</tr>
+<tr class="row-odd"><td><cite>R8</cite></td>
+<td><cite>&#8216;d&#8217; float64</cite></td>
+<td>(4)</td>
+</tr>
+<tr class="row-even"><td><cite>C1</cite></td>
+<td><cite>&#8216;c&#8217; &#8216;|S1&#8217;</cite></td>
+<td>(5)</td>
+</tr>
+</tbody>
+</table>
+<p>All other <cite>ADF</cite> or <cite>numpy</cite> types are ignored. The string type is a bit special,
+see the remark (5) about the strings used in <cite>numpy</cite> arrays.</p>
+<p><strong>Remarks:</strong></p>
+<blockquote>
+<div><ol class="arabic">
+<li><p class="first">The 32bits precision has to be forced, the default
+integer size in python the <code class="docutils literal"><span class="pre">int64</span></code> data type.
+To create an <cite>I4</cite> array, you can use:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span><span class="s1">&#39;i&#39;</span><span class="p">,</span><span class="n">order</span><span class="o">=</span><span class="s1">&#39;Fortran&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">The 64bits precision is the default integer in python.
+To create an <cite>I8</cite> array, you can use:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span><span class="n">order</span><span class="o">=</span><span class="s1">&#39;Fortran&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">The 32bits precision has to be forced, the default
+float size in python is <code class="docutils literal"><span class="pre">float64</span></code>.
+To create an <cite>R4</cite> array, you can use:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.4</span><span class="p">],</span><span class="s1">&#39;f&#39;</span><span class="p">,</span><span class="n">order</span><span class="o">=</span><span class="s1">&#39;Fortran&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">The 64bits precision is the default float in python.
+To create an <cite>R8</cite> array, you can use:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.4</span><span class="p">],</span><span class="n">order</span><span class="o">=</span><span class="s1">&#39;Fortran&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">The array has to be created as a char multi-dimensionnal
+array. An incorrect creation with a simple statement
+such as: <code class="docutils literal"><span class="pre">numpy.array('GoverningEquations')</span></code> produces
+a <em>wrong</em> zero dimension array. The correct creation for
+a single value could be:
+<code class="docutils literal"><span class="pre">numpy.array(tuple('GoverningEquations'),'|S1')</span></code>
+where the shape (i.e. the dimensions of the array)
+is <code class="docutils literal"><span class="pre">(18,)</span></code>.</p>
+</li>
+</ol>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="specific-cgns-python-topics">
+<h1>Specific CGNS/Python topics<a class="headerlink" href="#specific-cgns-python-topics" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="the-cgnstree-t-type">
+<span id="reference-cgnstree-t"></span><h2>The CGNSTree_t type<a class="headerlink" href="#the-cgnstree-t-type" title="Permalink to this headline">¶</a></h2>
+<p>The tree structure of a CGNS data set is broken by the exception of the root
+node. We take the opportunity of this new CGNS/Python mapping to add a
+consistent root node for the CGNS tree <a class="footnote-reference" href="#n6" id="id9">[7]</a>.</p>
+<p>The <cite>CGNSTree_t</cite> type is a node with the pattern:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">root</span><span class="o">=</span> <span class="p">[</span> <span class="o">&lt;</span><span class="n">name</span><span class="p">:</span><span class="n">string</span><span class="o">&gt;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="p">[</span> <span class="o">&lt;</span><span class="n">CGNSLibraryVersion</span><span class="p">:</span><span class="n">node</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">CGNSBase</span><span class="p">:</span><span class="n">node</span><span class="o">&gt;*</span> <span class="p">],</span> <span class="s1">&#39;CGNSTree_t&#39;</span> <span class="p">]</span>
+</pre></div>
+</div>
+<p>The children list is the CGNS/ADF-like root node. The <cite>CGNSTree</cite> node has a
+user-defined name, no value and a fixed <cite>CGNSTree_t</cite> type.</p>
+</div>
+<div class="section" id="legacy-cgns-types-alternative">
+<h2>Legacy CGNS types alternative<a class="headerlink" href="#legacy-cgns-types-alternative" title="Permalink to this headline">¶</a></h2>
+<p>The CGNS/SIDS defines all CGNS types and has a rule to suffix them with <code class="docutils literal"><span class="pre">_t</span></code>.
+There are some exceptions where some CGNS/SIDS types have been translated
+into strings with a special syntax.</p>
+<p>The CGNS/Python mapping allows the use of alternate types for these, the
+user can either use the legacy type or the alternate CGNS/Python type.
+The alternate types are:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="56%" />
+<col width="44%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">CGNS/SIDS type</th>
+<th class="head">CGNS/Python optional type</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">&quot;int[1+...+IndexDimension]&quot;</span></code></td>
+<td><code class="docutils literal"><span class="pre">DiffusionModel_t</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">&quot;int[IndexDimension]&quot;</span></code></td>
+<td><code class="docutils literal"><span class="pre">Transform_t</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">&quot;int[IndexDimension]&quot;</span></code></td>
+<td><code class="docutils literal"><span class="pre">InwardNormalIndex_t</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">&quot;int&quot;</span></code></td>
+<td><code class="docutils literal"><span class="pre">EquationDimension_t</span></code></td>
+</tr>
+</tbody>
+</table>
+<p>Please note the <code class="docutils literal"><span class="pre">[&quot;]</span></code> character which is part of the CGNS legacy type.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This CGNS/Python feature adds <em>NON-SIDS</em> type(s) and this should be
+added or removed by the user application during the read and the
+write to the disk with a CGNS/ADF or CGNS/HDF5 compliance.
+The CGNS.MAP module has an option to check and remove these alternate
+types. As long as your application has
+interoperability with another CGNS/Python application there should be
+no problem.</p>
+</div>
+</div>
+<div class="section" id="links">
+<h2>Links<a class="headerlink" href="#links" title="Permalink to this headline">¶</a></h2>
+<p>The <strong>links</strong> are used to set and get CGNS symbolic links information.
+This information is relevant only during read/write operations on disks.
+A CGNS/Python tree cannot have embedded links, as this tree is a list of
+lists making a link to another list is non-sense in Python <a class="footnote-reference" href="#n2" id="id10">[3]</a>.
+The <strong>links</strong> list is an extra information, not embedded into the CGNS/Python
+tree, and only used as disk-related operations.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">In the case a CGNS/Python application would not like to follow a
+link and then to have some <em>missing</em> data in its CGNS tree, the
+so-called <em>linked-from</em> node has to be removed from its parent
+children list.</p>
+</div>
+<p>This <strong>links</strong> list is an unsorted list of <em>link-entries</em> with only one
+entry per link. A <em>link-entry</em> is an ordered list of Python string values:</p>
+<blockquote>
+<div><p>The <em>target directory name</em> is the linked-to directory name, as it would be
+used to open it. It should be a valid absolute/relative file path as a plain
+Python string or <code class="docutils literal"><span class="pre">None</span></code>.</p>
+<p>The <cite>target file name</cite> is the linked-to file name, as it would be used to
+open it. It should be a valid absolute/relative path as a plain Python string.
+Its path-prefix part and its file extension part can be empty but the
+filename itself cannot.</p>
+<p>The <cite>target node name</cite> is the linked-to node name as a plain Python string.
+It should be the <strong>absolute</strong> path of the node in the linked-to file.
+This value cannot be empty.</p>
+<p>The <cite>local node name</cite> is the <strong>absolute path</strong> of the node in the source
+Python/CGNS tree. This plain Python string cannot be empty.</p>
+</div></blockquote>
+<p>The links with a second level file, in other words the links in a file you
+are parsing after following a first link, are <strong>always</strong> referred as if you
+where in the <em>target filename</em>. Then, a list of links can be reused from one
+parse to another, because the <code class="docutils literal"><span class="pre">links</span></code> list is relative to the target file.
+The example hereafter can be an <cite>input</cite> as well as an <cite>output</cite> links list,
+an application would set it for a <cite>save</cite> or get it from a <cite>load</cite>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span> <span class="p">[</span><span class="s1">&#39;/tools/CFD/ref#M6&#39;</span><span class="p">,</span><span class="s1">&#39;M6_A.cgns&#39;</span>  <span class="p">,</span><span class="s1">&#39;/Base#1/ReferenceState&#39;</span><span class="p">,</span>
+                                     <span class="s1">&#39;/Base/ReferenceState&#39;</span><span class="p">],</span>
+  <span class="p">[</span><span class="s1">&#39;/tmp/restart&#39;</span>     <span class="p">,</span><span class="s1">&#39;M6#001.cgns&#39;</span><span class="p">,</span><span class="s1">&#39;/Base#1/Zone1/FlowSolution#EndOfRun&#39;</span><span class="p">,</span>
+                                     <span class="s1">&#39;/Base/Zone1/FlowSolution#Init&#39;</span><span class="p">]</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>The <cite>target directory name</cite> information is distinct to the filename,
+because you can have different actual target files depending on the search
+paths you set. This information is relevant as ouput from the read of an
+actual file, it should be set to <cite>None</cite> or ignored for a write. During a write,
+the only information taken into account should be the <cite>target file name</cite>,
+<cite>target node name</cite>  and the <cite>local node name</cite>.</p>
+<p>In the example above, the entries are interpreted in a different way depending
+if they are result of a <cite>read</cite> or directives for a <cite>write</cite>. In the case of a
+read, the first entry means that the file we have read has a node
+<code class="docutils literal"><span class="pre">/Base/ReferenceState</span></code> which is a link to the node <code class="docutils literal"><span class="pre">/Base#1/ReferenceState</span></code>
+in the file <code class="docutils literal"><span class="pre">M6_A.cgns</span></code>. The first directory of the file search path
+in which the file <code class="docutils literal"><span class="pre">M6_A.cgns</span></code> has been found is <code class="docutils literal"><span class="pre">/tools/CFD/ref#M6</span></code>.
+In the case of a <cite>write</cite>, the same entry means that the application should
+create a link for the node <code class="docutils literal"><span class="pre">/Base/ReferenceState</span></code> when it reaches it.
+This link would have <code class="docutils literal"><span class="pre">M6_A.cgns</span></code> as target file and
+<code class="docutils literal"><span class="pre">/Base#1/ReferenceState</span></code> as target node. The <code class="docutils literal"><span class="pre">/tools/CFD/ref#M6</span></code> value
+is ignored.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The links list is relative to the current tree. If you want to track
+links of links your application has to manage this by itself, setting or
+getting links list during the different tree traversals.</p>
+</div>
+</div>
+<div class="section" id="c-api">
+<h2>C API<a class="headerlink" href="#c-api" title="Permalink to this headline">¶</a></h2>
+<p>There is no requirement on the way you would create or manage a numpy array
+at the C API level. But you have to remember that the definition of the
+node contents is SIDS-to-ADF which states that data arrays and index ordering
+use the <cite>Fortran</cite> convention.</p>
+<p>You can manage all your numpy arrays with the C order in memory, but you have
+to be sure that the storage on the disk, i.e. using ADF or HDF5, has the
+correct fortran orders. The storage also has to be contiguous in the memory.
+When you create or obtain a copy of a numpy array you can set a flag to
+force a C or Fortran ordering:
+one of the <code class="docutils literal"><span class="pre">NPY_CCONTIGUOUS</span></code> or <code class="docutils literal"><span class="pre">NPY_FCONTIGUOUS</span></code> flag can be set.
+In the case of a <code class="docutils literal"><span class="pre">NPY_CCONTIGUOUS</span></code> flag set, it is up to the application to
+set a Fortran memory layout and a Fortran index ordering while reading/writing
+data to/form a CGNS/ADF or CGNS/HDF5 file <a class="footnote-reference" href="#n4" id="id11">[5]</a>.</p>
+<p>The <em>numpy</em> <em>C API</em> allows the share of memory zone. In other words you can
+have a <em>Fortran</em> or <em>C</em> array you can directly set as your <em>numpy</em> array
+without duplication. You can reduce the memory use when your application
+can handle this, you can also set the <code class="docutils literal"><span class="pre">NPY_OWNDATA</span></code> flag to indicate to
+<em>numpy</em> that it should not release the array memory when the <em>numpy</em>
+array object is garbaged.</p>
+</div>
+</div>
+<div class="section" id="examples-and-tips">
+<h1>Examples and tips<a class="headerlink" href="#examples-and-tips" title="Permalink to this headline">¶</a></h1>
+<p>Python comes from the C world, as well as the numpy library. This means
+that many behavior are assuming C-order in dimensions. The
+CGNS/Python mapping states that arrays should have a Fortran indexing
+for their actual data and that the dimension
+order of the data is those detailled in the <a class="reference internal" href="#cg2" id="id12">[CG2]</a> and <a class="reference internal" href="#cg3" id="id13">[CG3]</a>
+documents.</p>
+<p>We give here some known issues and tips to handle this Fortran indexing in
+CGNS/Python. We use specific CGNS/SIDS structures to illustrate our
+examples.</p>
+<div class="section" id="indexrange-t">
+<h2>IndexRange_t<a class="headerlink" href="#indexrange-t" title="Permalink to this headline">¶</a></h2>
+<p>The <cite>IndexRange_t</cite> is an integer array of dimensions <cite>(IndexDimensions,2)</cite>
+as detailled in <a class="footnote-reference" href="#n0" id="id14">[1]</a>. The node data, in the example here, is two points with
+three indices. The <em>Python-ish</em> way to define them is to have a list of
+two lists of integers, which leads to problems if you forget your fortran
+order. We want to set a node with the following Python code:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">node</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;PointRange&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="p">[],</span> <span class="s1">&#39;IndexRange_t&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Now we see how to declare a correct <cite>a</cite> variable as a <em>numpy</em> array.
+If you do not specify an order to <em>numpy</em>, the default is the C-order:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]],</span><span class="n">dtype</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">numpy</span><span class="o">.</span><span class="n">isfortran</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">array([1,2,3], dtype=int32)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(2,3)</span>
+</pre></div>
+</div>
+<p>This <em>numpy</em> array is correct but you would have to transpose dimensions
+are memory layout before a storage on disk.
+Or you can enter the list itself using an explicit Fortran-order:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">]],</span><span class="n">dtype</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">numpy</span><span class="o">.</span><span class="n">isfortran</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">array([1,4], dtype=int32)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(3,2)</span>
+</pre></div>
+</div>
+<p>In that case, the <cite>shape</cite> is correct but the user has no mean to know wether
+your convention is C or Fortran. You can set the fortran flag for this.
+The possible creation of the array above is then:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">]],</span><span class="n">dtype</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">int32</span><span class="p">,</span><span class="n">order</span><span class="o">=</span><span class="s1">&#39;Fortran&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">numpy</span><span class="o">.</span><span class="n">isfortran</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">array([1,4], dtype=int32)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(3,2)</span>
+</pre></div>
+</div>
+<p>Then an application can detect your array has <em>Fortran</em> order and should
+be stored as found without any transpose.</p>
+</div>
+<div class="section" id="indexarray-t">
+<h2>IndexArray_t<a class="headerlink" href="#indexarray-t" title="Permalink to this headline">¶</a></h2>
+<p>There is another example switching from one order to another, this is used
+to add a point in a list in an easier way</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">node</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;PointList&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="p">[],</span> <span class="s1">&#39;IndexArray_t&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>The possible creation of the array <code class="docutils literal"><span class="pre">a</span></code> above is then:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">]],</span><span class="n">dtype</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">int32</span><span class="p">,</span><span class="n">order</span><span class="o">=</span><span class="s1">&#39;Fortran&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<span class="go">array([[1, 4],</span>
+<span class="go">       [2, 5],</span>
+<span class="go">       [3, 6]], dtype=int32)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span><span class="o">+</span><span class="p">[[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]],</span><span class="n">dtype</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">int32</span><span class="p">,</span><span class="n">order</span><span class="o">=</span><span class="s1">&#39;Fortran&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<span class="go">array([[1, 2, 3],</span>
+<span class="go">       [4, 5, 6],</span>
+<span class="go">       [7, 8, 9]], dtype=int32)</span>
+</pre></div>
+</div>
+<p>You see that the syntax is completely unreadable, we use the <em>numpy</em> transpose
+attribute <code class="docutils literal"><span class="pre">T</span></code> to switch from <em>Fortran</em> to <em>C</em> order and back..
+If you start with the <em>C</em> order, the Python syntax is clear:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]],</span><span class="n">dtype</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<span class="go">array([[1,2,3],</span>
+<span class="go">       [4,5,6],  dtype=int32)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span><span class="o">+</span><span class="p">[[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]],</span><span class="n">dtype</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<span class="go">array([[1, 2, 3],</span>
+<span class="go">       [4, 5, 6],</span>
+<span class="go">       [7, 8, 9]], dtype=int32)</span>
+</pre></div>
+</div>
+<p>And the application in charge of the <cite>write</cite> to the disk that would
+detect the abscence of <em>Fortran</em> flag and then transpose the array and its
+dimension.</p>
+</div>
+<div class="section" id="dimensionalunits-t">
+<h2>DimensionalUnits_t<a class="headerlink" href="#dimensionalunits-t" title="Permalink to this headline">¶</a></h2>
+<p>This node contains strings. The strings are an issue in CGNS/Python because
+we want to use the raw level for <em>numpy</em> (instead of <em>numpy</em> module proposed
+for string manipulation). We want to keep a common interface for all nodes
+and we do not want an exception with strings. The <cite>DimensionalUnits_t</cite> node
+can be defined as:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>node=[`DimensionalUnits`, a, [], `DimensionalUnits_t`]
+</pre></div>
+</div>
+<p>Now we see how we can defined the <em>numpy</em> array in variable <cite>a</cite>.
+The <cite>DimensionalUnits_t</cite> states we need a <cite>(32,5)</cite> array of chars.
+In the case of a fixed size multi-dimensionnal string array, each entry
+should be split as a sequence with a fixed max size (usually 32
+chars):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+                <span class="nb">tuple</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%-32s</span><span class="s1">&#39;</span><span class="o">%</span><span class="s1">&#39;Kilogram&#39;</span><span class="p">),</span>
+                <span class="nb">tuple</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%-32s</span><span class="s1">&#39;</span><span class="o">%</span><span class="s1">&#39;Meter&#39;</span><span class="p">),</span>
+                <span class="nb">tuple</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%-32s</span><span class="s1">&#39;</span><span class="o">%</span><span class="s1">&#39;Second&#39;</span><span class="p">,)</span>
+                <span class="nb">tuple</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%-32s</span><span class="s1">&#39;</span><span class="o">%</span><span class="s1">&#39;Kelvin&#39;</span><span class="p">),</span>
+                <span class="nb">tuple</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%-32s</span><span class="s1">&#39;</span><span class="o">%</span><span class="s1">&#39;Radian&#39;</span><span class="p">),</span>
+              <span class="p">],</span><span class="s1">&#39;|S32&#39;</span><span class="p">,</span><span class="n">order</span><span class="o">=</span><span class="s1">&#39;Fortran&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+<p>The shape of the resulting array is <code class="docutils literal"><span class="pre">(32,5)</span></code> again note the <code class="docutils literal"><span class="pre">T</span></code>
+at the end of the command which produces the transpose.
+You can use a <code class="docutils literal"><span class="pre">S32</span></code>, <code class="docutils literal"><span class="pre">|S1</span></code> or <code class="docutils literal"><span class="pre">c</span></code> type directive.
+An important point in this <cite>string</cite> as an array is the trailing
+<cite>spaces</cite> you have to fill the array cell. You have to use a
+<code class="docutils literal"><span class="pre">string.strip</span></code> before any string operation unless your Python
+application is aware of this <em>forced</em> size.</p>
+</div>
+<div class="section" id="zone-t">
+<h2>Zone_t<a class="headerlink" href="#zone-t" title="Permalink to this headline">¶</a></h2>
+<p>There we have an interesting example with the use of a data of a node.
+The <cite>Zone_t</cite> node has the dimensions of the <em>zone</em>. These dimensions are
+a data and theses data values should be used as <em>dimension</em> attribute
+of the children nodes. In other words, the user takes the <cite>Zone_t</cite>
+dimensions and creates a <em>numpy</em> array with them:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">zonenode</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Zone001&#39;</span><span class="p">,</span><span class="n">zonedims</span><span class="p">,</span><span class="n">zonechildrenlist</span><span class="p">,</span><span class="s1">&#39;Zone_t&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">zonedims</span></code> <em>numpy</em> array can b set as:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">zonedims</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">7</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">0</span><span class="p">]],</span><span class="n">dtype</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">int32</span><span class="p">,</span><span class="n">order</span><span class="o">=</span><span class="s1">&#39;Fortran&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>in the case of a 3D structured zone with <code class="docutils literal"><span class="pre">(ni,nj,nk)=(3,5,7)</span></code>.
+If you want to create a solution array with these dimensions, you can
+to use the following syntax:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">zonevertexsize</span><span class="o">=</span><span class="n">zonedims</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">zonecellsize</span><span class="o">=</span><span class="n">zonedims</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">zonevertexboundarysize</span><span class="o">=</span><span class="n">zonedims</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>This numpy syntax allows the user to take the whole column as a
+so-called <em>slice</em>.</p>
+</div>
+<div class="section" id="sub-tree-imports">
+<h2>Sub-tree imports<a class="headerlink" href="#sub-tree-imports" title="Permalink to this headline">¶</a></h2>
+<p>For example, the following snippet <cite>imports</cite> a truncated <cite>ReferenceState</cite>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span>
+
+<span class="n">refvalues</span><span class="o">=</span><span class="p">[</span>
+            <span class="p">[</span><span class="s1">&#39;Mach&#39;</span><span class="p">,</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.2</span><span class="p">]),[],</span><span class="s1">&#39;DataArray_t&#39;</span><span class="p">]</span>
+            <span class="p">[</span><span class="s1">&#39;Reynolds&#39;</span><span class="p">,</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">23300000.0</span><span class="p">]),[],</span><span class="s1">&#39;DataArray_t&#39;</span><span class="p">]</span>
+            <span class="p">[</span><span class="s1">&#39;LengthReference&#39;</span><span class="p">,</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.5</span><span class="p">]),[],</span><span class="s1">&#39;DataArray_t&#39;</span><span class="p">]</span>
+            <span class="p">[</span><span class="s1">&#39;Density&#39;</span><span class="p">,</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.22524863848</span><span class="p">]),[],</span><span class="s1">&#39;DataArray_t&#39;</span><span class="p">]</span>
+<span class="p">]</span>
+
+<span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;ReferenceState&#39;</span><span class="p">,</span><span class="kc">None</span><span class="p">,</span><span class="n">refvalues</span><span class="p">,</span><span class="s1">&#39;ReferenceState_t&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Once <cite>import</cite>-ed, your Python code can insert this node in its
+structure (here our previous code snippet is in the file <code class="docutils literal"><span class="pre">refstate.py</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span>
+<span class="kn">import</span> <span class="nn">refstate</span>
+
+<span class="n">tree</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;CGNSTree&#39;</span><span class="p">,</span><span class="kc">None</span><span class="p">,[],</span><span class="s1">&#39;CGNSTree_t&#39;</span><span class="p">]</span>
+<span class="n">base</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Fuselage&#39;</span><span class="p">,</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span><span class="n">dtype</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">int32</span><span class="p">),[],</span><span class="s1">&#39;CGNSBase_t&#39;</span><span class="p">]</span>
+
+<span class="n">tree</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">base</span><span class="p">)</span>
+<span class="n">base</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">refstate</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="sub-tree-share">
+<h2>Sub-tree share<a class="headerlink" href="#sub-tree-share" title="Permalink to this headline">¶</a></h2>
+<p>A list is a reference. If you put a list into another one, you do not
+perform a copy, you use a reference. Then the modification of the first list
+is in the second:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="o">=</span><span class="p">[</span><span class="n">a</span><span class="p">,[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span>
+<span class="go">[[1, 2, 3], [4, 5, 6]]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">9</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span>
+<span class="go">[[1, 9, 3], [4, 5, 6]]</span>
+</pre></div>
+</div>
+<p>You always have to take care of the lists, in particular if you use large
+CGNS/Python trees you want to share to optimize memory. Another point to
+keep in mind is that <em>numpy</em> copies do <em>NOT</em> propagate <em>Fortran</em> flag.</p>
+<p class="rubric">Footnotes</p>
+<table class="docutils footnote" frame="void" id="n0" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id14">2</a>)</em> The <em>SIDS-to-ADF</em> <a class="reference internal" href="#cg2" id="id15">[CG2]</a> or <em>SIDS-toHDF5</em> <a class="reference internal" href="#cg3" id="id16">[CG3]</a> documents
+of <em>cgns.org</em> have the
+detailled description of each node of the standard.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="n1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[2]</a></td><td>We show in the textual representation section that this dimension
+ordering could lead to quite complicated Python code, but our choice
+was to take the implementation from the &#8216;Fortran&#8217; world,
+which is the basis of the CFD world. It would be up to the user to
+write his own application layer for a better Python interface.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="n2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id10">[3]</a></td><td>A Python list is a reference, if you put a list as a child of another
+list the Python interpreter actually refers to the child list. Then
+a child can be shared by two different lists if you do not ask for
+a copy. In other words, the links are the natural way of referencing
+to lists in Python.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="n3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[4]</td><td><p class="first">The No-class paradigm:
+One would ask why we do not have a Python class or module
+that would implement the CGNS/Python mapping.
+For example, we could define a class like:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">=</span><span class="n">CGNSnode</span><span class="p">()</span>
+<span class="n">n</span><span class="o">.</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;PointRange&quot;</span>
+<span class="n">n</span><span class="o">.</span><span class="n">value</span><span class="o">=</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]]</span>
+<span class="n">n</span><span class="o">.</span><span class="n">type</span><span class="o">=</span><span class="s2">&quot;IndexRange_t&quot;</span>
+</pre></div>
+</div>
+<p>The answer is that we do <em>not</em> want to force people to use a specific
+implementation for this mapping.</p>
+<p>The object-oriented paradigm leads to have a hierarchy of types
+(classes) resulting from the factorization of the actual values found
+in the application. In our case, we do not want such a hierarchy to be
+imposed to users. We want the mapping to be open and to lay on freely
+and publicly available libraries such as <cite>numpy</cite>. Then, the types used
+in this CGNS/Python are Python native types and numpy types.</p>
+<p>The CGNS/Python mapping requires <strong>NO IMPLEMENTATION</strong> at all,
+no module, no class, no piece of code that would lead to a
+dependancy to a software provider.</p>
+<p class="last">One should also note that Python has no tree class.</p>
+</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="n4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id11">[5]</a></td><td>For example, <em>CGNS.MAP</em> detects th <code class="docutils literal"><span class="pre">NPY_FCONTIGUOUS</span></code> and forces
+a data and dimensions transpose during the read/write (unless the
+user forces the <em>CGNS.MAP.S2P_NOTRANSPOSE</em> flag in the <code class="docutils literal"><span class="pre">load</span></code> or
+the <code class="docutils literal"><span class="pre">save</span></code>).</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="n5" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[6]</a></td><td>The Open Source <em>pyCGNS</em> Python module defines services on the top
+of this CGNS/Python mapping.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="n6" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id9">[7]</a></td><td>This CGNS/Python feature adds <em>NON-SIDS</em> type(s) and this should be
+added or removed by the user application during the read and the
+write to the disk with a CGNS/ADF or CGNS/HDF5 compliance.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="n7" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id5">[8]</a></td><td>The syntax is: <code class="docutils literal"><span class="pre">&lt;A:T&gt;</span></code> with <code class="docutils literal"><span class="pre">A</span></code> attribute name and <code class="docutils literal"><span class="pre">T</span></code> attribute
+type. The types are detailled in another section. The <code class="docutils literal"><span class="pre">&lt;A:T&gt;*</span></code> means
+zero or more <code class="docutils literal"><span class="pre">&lt;A:T&gt;</span></code> separated by <code class="docutils literal"><span class="pre">,</span></code> if more than one.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="n8" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id4">[9]</a></td><td>The CGNS/SIDS type (see <a class="reference internal" href="#cg1" id="id17">[CG1]</a>) is the type of the node, <em>NOT</em> the
+type of the data contained into the node.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="cg1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id17">[CG1]</a></td><td>CGNS SIDS - Standard Interface Data Structure <a class="reference external" href="http://www.grc.nasa.gov/WWW/cgns/sids">http://www.grc.nasa.gov/WWW/cgns/sids</a></td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="cg2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[CG2]</td><td><em>(<a class="fn-backref" href="#id6">1</a>, <a class="fn-backref" href="#id7">2</a>, <a class="fn-backref" href="#id8">3</a>, <a class="fn-backref" href="#id12">4</a>, <a class="fn-backref" href="#id15">5</a>)</em> SIDS-to-ADF Mapping Reference Manual <a class="reference external" href="http://www.grc.nasa.gov/WWW/cgns/filemap">http://www.grc.nasa.gov/WWW/cgns/filemap</a></td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="cg3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[CG3]</td><td><em>(<a class="fn-backref" href="#id13">1</a>, <a class="fn-backref" href="#id16">2</a>)</em> SIDS-to-HDF Mapping Reference Manual <a class="reference external" href="http://www.grc.nasa.gov/WWW/cgns/filemap_hdf">http://www.grc.nasa.gov/WWW/cgns/filemap_hdf</a></td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="py1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[PY1]</td><td>Python Programming langage <a class="reference external" href="http://www.python.org">http://www.python.org</a></td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="py2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[PY2]</td><td>Numpy <a class="reference external" href="http://numpy.scipy.org">http://numpy.scipy.org</a></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2001-2016, Marc Poinot.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
+    </div>
+  </body>
+</html>
