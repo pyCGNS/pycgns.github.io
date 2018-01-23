@@ -1,23 +1,21 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>CGNS/Python Tree &#8212; MAP</title>
-    
     <link rel="stylesheet" href="_static/pycgns.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
         VERSION:     '4.2.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -26,11 +24,10 @@
     <link rel="shortcut icon" href="_static/pyCGNS-logo-tiny.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="top" title="MAP" href="_index.html" />
     <link rel="next" title="About links" href="links.html" />
     <link rel="prev" title="CGNS.MAP" href="_index.html" /> 
   </head>
-  <body role="document">
+  <body>
     <div class="related">
       <h3>Navigation</h3>
       <ul>
@@ -167,7 +164,7 @@ the first. The CGNS/Python nodes should respect this requirements.</p>
 this <cite>flag</cite> is used to set or to find the order used for the internal
 storage of an array. It has <strong>no effect</strong> on the dimensions of a <em>numpy</em>
 array, but on its internal memory layout.
-It&#8217;s up to the user to manage this flag and its impact on the use of an
+It’s up to the user to manage this flag and its impact on the use of an
 array, in particular for the read/write on the disks through the C API.</p>
 </div>
 <p>For example, section 6.1.2.2  describes the <code class="docutils literal"><span class="pre">DimensionalUnits_t</span></code> node
@@ -245,7 +242,7 @@ This is detailled in the next section.</p>
 <p>The order of the values is significant, for example <code class="docutils literal"><span class="pre">node[0]</span></code> should always
 be the name of the node (Python has an index ordering starting with zero)</p>
 <p>We see now that a CGNS/Python tree is a node. This node has children
-which have children and so on... Any node can be held as a subpart of a
+which have children and so on… Any node can be held as a subpart of a
 complete tree, we say each node is a <em>sub-tree</em>.
 Our CGNS/Python tree has a <em>root</em> node which is its first node.
 There is no clear definition of a <em>root</em> node in the CGNS/SIDS or in the
@@ -382,23 +379,23 @@ The required mapping for the end-user interface uses the types :</p>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td><cite>I4</cite></td>
-<td><cite>&#8216;i&#8217; int32</cite></td>
+<td><cite>‘i’ int32</cite></td>
 <td>(1)</td>
 </tr>
 <tr class="row-odd"><td><cite>I8</cite></td>
-<td><cite>&#8216;l&#8217; int64</cite></td>
+<td><cite>‘l’ int64</cite></td>
 <td>(2)</td>
 </tr>
 <tr class="row-even"><td><cite>R4</cite></td>
-<td><cite>&#8216;f&#8217; float32</cite></td>
+<td><cite>‘f’ float32</cite></td>
 <td>(3)</td>
 </tr>
 <tr class="row-odd"><td><cite>R8</cite></td>
-<td><cite>&#8216;d&#8217; float64</cite></td>
+<td><cite>‘d’ float64</cite></td>
 <td>(4)</td>
 </tr>
 <tr class="row-even"><td><cite>C1</cite></td>
-<td><cite>&#8216;c&#8217; &#8216;|S1&#8217;</cite></td>
+<td><cite>‘c’ ‘|S1’</cite></td>
 <td>(5)</td>
 </tr>
 </tbody>
@@ -813,7 +810,7 @@ detailled description of each node of the standard.</td></tr>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id3">[2]</a></td><td>We show in the textual representation section that this dimension
 ordering could lead to quite complicated Python code, but our choice
-was to take the implementation from the &#8216;Fortran&#8217; world,
+was to take the implementation from the ‘Fortran’ world,
 which is the basis of the CFD world. It would be up to the user to
 write his own application layer for a better Python interface.</td></tr>
 </tbody>
@@ -898,19 +895,19 @@ type of the data contained into the node.</td></tr>
 <table class="docutils citation" frame="void" id="cg1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id17">[CG1]</a></td><td>CGNS SIDS - Standard Interface Data Structure <a class="reference external" href="http://www.grc.nasa.gov/WWW/cgns/sids">http://www.grc.nasa.gov/WWW/cgns/sids</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id17">[CG1]</a></td><td>CGNS SIDS - Standard Interface Data Structure <a class="reference external" href="http://cgns.github.io/sids">http://cgns.github.io/sids</a></td></tr>
 </tbody>
 </table>
 <table class="docutils citation" frame="void" id="cg2" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[CG2]</td><td><em>(<a class="fn-backref" href="#id6">1</a>, <a class="fn-backref" href="#id7">2</a>, <a class="fn-backref" href="#id8">3</a>, <a class="fn-backref" href="#id12">4</a>, <a class="fn-backref" href="#id15">5</a>)</em> SIDS-to-ADF Mapping Reference Manual <a class="reference external" href="http://www.grc.nasa.gov/WWW/cgns/filemap">http://www.grc.nasa.gov/WWW/cgns/filemap</a></td></tr>
+<tr><td class="label">[CG2]</td><td><em>(<a class="fn-backref" href="#id6">1</a>, <a class="fn-backref" href="#id7">2</a>, <a class="fn-backref" href="#id8">3</a>, <a class="fn-backref" href="#id12">4</a>, <a class="fn-backref" href="#id15">5</a>)</em> SIDS-to-ADF Mapping Reference Manual <a class="reference external" href="http://cgns.github.io/filemap">http://cgns.github.io/filemap</a></td></tr>
 </tbody>
 </table>
 <table class="docutils citation" frame="void" id="cg3" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[CG3]</td><td><em>(<a class="fn-backref" href="#id13">1</a>, <a class="fn-backref" href="#id16">2</a>)</em> SIDS-to-HDF Mapping Reference Manual <a class="reference external" href="http://www.grc.nasa.gov/WWW/cgns/filemap_hdf">http://www.grc.nasa.gov/WWW/cgns/filemap_hdf</a></td></tr>
+<tr><td class="label">[CG3]</td><td><em>(<a class="fn-backref" href="#id13">1</a>, <a class="fn-backref" href="#id16">2</a>)</em> SIDS-to-HDF Mapping Reference Manual <a class="reference external" href="http://cgns.github.io/filemap_hdf">http://cgns.github.io/filemap_hdf</a></td></tr>
 </tbody>
 </table>
 <table class="docutils citation" frame="void" id="py1" rules="none">
@@ -936,7 +933,7 @@ type of the data contained into the node.</td></tr>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2001-2016, Marc Poinot.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
     </div>
   </body>
 </html>

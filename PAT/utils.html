@@ -1,23 +1,21 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>Utility functions (cgnsutils.py) &#8212; PAT</title>
-    
     <link rel="stylesheet" href="_static/pycgns.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
         VERSION:     '4.2.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -26,11 +24,10 @@
     <link rel="shortcut icon" href="_static/pyCGNS-logo-tiny.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="top" title="PAT" href="_index.html" />
     <link rel="next" title="Mid-level-like library (cgnslib.py)" href="lib.html" />
     <link rel="prev" title="CGNS.PAT" href="_index.html" /> 
   </head>
-  <body role="document">
+  <body>
     <div class="related">
       <h3>Navigation</h3>
       <ul>
@@ -111,7 +108,7 @@
 <span id="utility-functions-cgnsutils-py"></span><h1>Utility functions (cgnsutils.py)<a class="headerlink" href="#module-CGNS.PAT.cgnsutils" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="CGNS.PAT.cgnsutils.nodeCreate">
-<code class="descclassname">CGNS.PAT.cgnsutils.</code><code class="descname">nodeCreate</code><span class="sig-paren">(</span><em>name</em>, <em>value</em>, <em>children</em>, <em>type</em>, <em>parent=None</em>, <em>dienow=False</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnsutils.nodeCreate" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">CGNS.PAT.cgnsutils.</code><code class="descname">nodeCreate</code><span class="sig-paren">(</span><em>name</em>, <em>value</em>, <em>children</em>, <em>ntype</em>, <em>parent=None</em>, <em>dienow=False</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnsutils.nodeCreate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a new node with and bind it to its parent:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">CGNS.PAT.cgnskeywords</span> <span class="k">as</span> <span class="nn">CK</span>
 <span class="kn">import</span> <span class="nn">numpy</span>
@@ -129,12 +126,12 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>name</strong> (<em>str</em>) &#8211; new node name</li>
-<li><strong>value</strong> (<em>numpy.ndarray</em>) &#8211; node value</li>
-<li><strong>children</strong> (<em>list</em>) &#8211; list of node children (list of CGNS/Python nodes)</li>
-<li><strong>type</strong> (<em>str</em>) &#8211; CGNS/SIDS node type</li>
-<li><strong>parent</strong> (<em>node</em>) &#8211; node where to insert the new node (default: None)</li>
-<li><strong>dienow</strong> (<em>bool</em>) &#8211; If <cite>True</cite> raises an exception on error (default:<cite>False</cite>)</li>
+<li><strong>name</strong> (<em>str</em>) – new node name</li>
+<li><strong>value</strong> (<em>numpy.ndarray</em>) – node value</li>
+<li><strong>children</strong> (<em>list</em>) – list of node children (list of CGNS/Python nodes)</li>
+<li><strong>ntype</strong> (<em>str</em>) – CGNS/SIDS node type</li>
+<li><strong>parent</strong> (<em>node</em>) – node where to insert the new node (default: None)</li>
+<li><strong>dienow</strong> (<em>bool</em>) – If <cite>True</cite> raises an exception on error (default:<cite>False</cite>)</li>
 </ul>
 </td>
 </tr>
@@ -168,9 +165,9 @@ lead to a very large memory use:</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>node</strong> (<em>node</em>) &#8211; node to copy</li>
-<li><strong>name</strong> (<em>str</em>) &#8211; new node (copy) name</li>
-<li><strong>share</strong> (<em>bool</em>) &#8211; if True then actual numpy.ndarray in not copied (if possible)</li>
+<li><strong>node</strong> (<em>node</em>) – node to copy</li>
+<li><strong>newname</strong> (<em>str</em>) – new node (copy) name</li>
+<li><strong>share</strong> (<em>bool</em>) – if True then actual numpy.ndarray in not copied (if possible)</li>
 </ul>
 </td>
 </tr>
@@ -181,7 +178,7 @@ lead to a very large memory use:</p>
 <li>The new node name is the same by default, thus user would have to check
 for potential duplicated name</li>
 <li>The node value is a copy too, numpy.ndarray is duplicated</li>
-<li>Default is to deep copy including numpy.ndarrays</li>
+<li>Default is to deep copy including numpy.ndarray</li>
 </ul>
 </td>
 </tr>
@@ -196,7 +193,7 @@ for potential duplicated name</li>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">CGNS.PAT.cgnslib</span> <span class="k">as</span> <span class="nn">CL</span>
 <span class="kn">import</span> <span class="nn">CGNS.PAT.cgnsutils</span> <span class="k">as</span> <span class="nn">CU</span>
 <span class="kn">import</span> <span class="nn">numpy</span>
-    
+
 <span class="n">T</span> <span class="o">=</span><span class="n">CL</span><span class="o">.</span><span class="n">newCGNSTree</span><span class="p">()</span>
 <span class="n">b1</span><span class="o">=</span><span class="n">CL</span><span class="o">.</span><span class="n">newBase</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="s1">&#39;Base&#39;</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">z1</span><span class="o">=</span><span class="n">CL</span><span class="o">.</span><span class="n">newZone</span><span class="p">(</span><span class="n">b1</span><span class="p">,</span><span class="s1">&#39;Zone1&#39;</span><span class="p">,</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]))</span>
@@ -215,8 +212,8 @@ for potential duplicated name</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>tree</strong> (<em>node</em>) &#8211; target tree where to find the node to remove</li>
-<li><strong>node</strong> &#8211; a CGNS/Python node or str (node name) as absolute path to remove</li>
+<li><strong>tree</strong> (<em>node</em>) – target tree where to find the node to remove</li>
+<li><strong>node</strong> – a CGNS/Python node or str (node name) as absolute path to remove</li>
 </ul>
 </td>
 </tr>
@@ -246,7 +243,7 @@ for potential duplicated name</li>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>node</strong> (<em>CGNS/Python</em>) &#8211; node to check</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>node</strong> (<em>CGNS/Python</em>) – node to check</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">True if the name has a correct syntax</p>
@@ -268,14 +265,14 @@ arg instead of string</li>
 <code class="descclassname">CGNS.PAT.cgnsutils.</code><code class="descname">checkName</code><span class="sig-paren">(</span><em>name</em>, <em>dienow=False</em>, <em>strict=False</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnsutils.checkName" title="Permalink to this definition">¶</a></dt>
 <dd><p>Checks if the name is CGNS/Python compliant node name. The name should be a
 Python string of type <code class="docutils literal"><span class="pre">str</span></code> or <code class="docutils literal"><span class="pre">unicode</span></code>, but <code class="docutils literal"><span class="pre">str</span></code> is strongly
-recommanded.
+recommended.
 A name should follow these requirements:</p>
 <ul class="simple">
 <li>No more than 32 chars</li>
 <li>No <code class="docutils literal"><span class="pre">/</span></code> in the string</li>
 <li>Empty name or name with only spaces is forbidden</li>
 <li>Names <code class="docutils literal"><span class="pre">.</span></code> and <code class="docutils literal"><span class="pre">..</span></code> are forbidden</li>
-<li>Allowed chars are <code class="xref py py-data docutils literal"><span class="pre">string.letters</span></code> + <code class="xref py py-data docutils literal"><span class="pre">string.digits</span></code> + <code class="xref py py-data docutils literal"><span class="pre">string.punctuation</span></code> + <code class="docutils literal"><span class="pre">'</span> <span class="pre">'</span></code></li>
+<li>Allowed chars are <code class="xref py py-data docutils literal"><span class="pre">string.ascii_letters</span></code> + <code class="xref py py-data docutils literal"><span class="pre">string.digits</span></code> + <code class="xref py py-data docutils literal"><span class="pre">string.punctuation</span></code> + <code class="docutils literal"><span class="pre">'</span> <span class="pre">'</span></code></li>
 </ul>
 <p>Additional checks can be performed with the <cite>strict</cite> flag set to True, these
 checks are not CGNS compliant:</p>
@@ -296,8 +293,8 @@ checks are not CGNS compliant:</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>name</strong> (<em>str</em>) &#8211; string to check</li>
-<li><strong>strict</strong> (<em>bool</em>) &#8211; forces the &#8216;strict&#8217; mode checks (default is False)</li>
+<li><strong>name</strong> (<em>str</em>) – string to check</li>
+<li><strong>strict</strong> (<em>bool</em>) – forces the ‘strict’ mode checks (default is False)</li>
 </ul>
 </td>
 </tr>
@@ -320,7 +317,7 @@ checks are not CGNS compliant:</p>
 
 <dl class="function">
 <dt id="CGNS.PAT.cgnsutils.checkNameOrGenerate">
-<code class="descclassname">CGNS.PAT.cgnsutils.</code><code class="descname">checkNameOrGenerate</code><span class="sig-paren">(</span><em>name</em>, <em>pattern='%32s'</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnsutils.checkNameOrGenerate" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">CGNS.PAT.cgnsutils.</code><code class="descname">checkNameOrGenerate</code><span class="sig-paren">(</span><em>name</em>, <em>pattern=u'%32s'</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnsutils.checkNameOrGenerate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Checks if a name is CGNS/SIDS compliant, if not generate a new
 name using a hash fonction with arg name as input.
 The check is performed using checkName.
@@ -345,8 +342,8 @@ A pattern can be used only if it actually leads to a compliant name:</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>parent</strong> (<em>CGNS/Python</em>) &#8211; the parent node</li>
-<li><strong>node</strong> (<em>CGNS/Python</em>) &#8211; the child node to add to parent</li>
+<li><strong>parent</strong> (<em>CGNS/Python</em>) – the parent node</li>
+<li><strong>node</strong> (<em>CGNS/Python</em>) – the child node to add to parent</li>
 </ul>
 </td>
 </tr>
@@ -375,8 +372,8 @@ A pattern can be used only if it actually leads to a compliant name:</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>parent</strong> (<em>CGNS/Python</em>) &#8211; the parent node</li>
-<li><strong>name</strong> (<em>str</em>) &#8211; the child name to look for</li>
+<li><strong>parent</strong> (<em>CGNS/Python</em>) – the parent node</li>
+<li><strong>name</strong> (<em>str</em>) – the child name to look for</li>
 </ul>
 </td>
 </tr>
@@ -412,8 +409,8 @@ A pattern can be used only if it actually leads to a compliant name:</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>parent</strong> (<em>CGNS/Python</em>) &#8211; the parent node</li>
-<li><strong>name</strong> (<em>str</em>) &#8211; the child name to look for</li>
+<li><strong>parent</strong> (<em>CGNS/Python</em>) – the parent node</li>
+<li><strong>name</strong> (<em>str</em>) – the child name to look for</li>
 </ul>
 </td>
 </tr>
@@ -437,23 +434,21 @@ A pattern can be used only if it actually leads to a compliant name:</p>
 <dt id="CGNS.PAT.cgnsutils.getChildName">
 <code class="descclassname">CGNS.PAT.cgnsutils.</code><code class="descname">getChildName</code><span class="sig-paren">(</span><em>parent</em>, <em>name</em>, <em>dienow=False</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnsutils.getChildName" title="Permalink to this definition">¶</a></dt>
 <dd><p>Checks if the name is in the children list of the parent, if the name
-already exists, a new name is returned. If the name doesn&#8217;t exist the
+already exists, a new name is returned. If the name doesn’t exist the
 name itself is returned:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">z</span><span class="o">=</span><span class="n">CGU</span><span class="o">.</span><span class="n">setAsChild</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="n">CGU</span><span class="o">.</span><span class="n">getChildName</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="s1">&#39;BASE&#39;</span><span class="p">))</span>
-</pre></div>
-</div>
+<p>z=CGU.setAsChild(T,CGU.getChildName(T,’BASE’))</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>parent</strong> (<em>CGNS/Python</em>) &#8211; the parent node</li>
-<li><strong>name</strong> (<em>str</em>) &#8211; the child name to look for</li>
+<li><strong>parent</strong> (<em>CGNS/Python</em>) – the parent node</li>
+<li><strong>name</strong> (<em>str</em>) – the child name to look for</li>
 </ul>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
-<li>arg name is it doesn&#8217;t exist</li>
+<li>arg name is it doesn’t exist</li>
 <li>a new unique name if arg name already exists</li>
 </ul>
 </p>
@@ -465,11 +460,13 @@ name itself is returned:</p>
 
 <dl class="function">
 <dt id="CGNS.PAT.cgnsutils.checkNodeType">
-<code class="descclassname">CGNS.PAT.cgnsutils.</code><code class="descname">checkNodeType</code><span class="sig-paren">(</span><em>node</em>, <em>cgnstype=[]</em>, <em>dienow=False</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnsutils.checkNodeType" title="Permalink to this definition">¶</a></dt>
-<dd><p>Check the CGNS type of a node. The type can be a single value or
-a list of values. Each type to check is a string such as
-<cite>CGNS.PAT.cgnskeywords.CGNSBase_ts</cite> constant for example.
-If the list is empty, the check uses the list of all existing CGNS types:</p>
+<code class="descclassname">CGNS.PAT.cgnsutils.</code><code class="descname">checkNodeType</code><span class="sig-paren">(</span><em>node</em>, <em>cgnstype=None</em>, <em>dienow=False</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnsutils.checkNodeType" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>Check the CGNS type of a node. The type can be a single value or
+a list of values. Each type to check is a string such as</div></blockquote>
+<dl class="docutils">
+<dt><cite>CGNS.PAT.cgnskeywords.CGNSBase_ts</cite> constant for example.</dt>
+<dd><p class="first">If the list is empty, the check uses the list of all existing CGNS types:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">CGNS.PAT.cgnskeywords</span> <span class="k">as</span> <span class="nn">CK</span>
 
 <span class="n">n</span><span class="o">=</span><span class="n">nodeCreate</span><span class="p">(</span><span class="s1">&#39;Base&#39;</span><span class="p">,</span><span class="n">numpy</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">]),[],</span><span class="n">CK</span><span class="o">.</span><span class="n">CGNSBase_ts</span><span class="p">)</span>
@@ -478,34 +475,36 @@ If the list is empty, the check uses the list of all existing CGNS types:</p>
 <span class="n">checkNodeType</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">CGK</span><span class="o">.</span><span class="n">FamilyName_ts</span><span class="p">)</span>
 </pre></div>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
+<table class="last docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>node</strong> (<em>node</em>) &#8211; target node to check</li>
-<li><strong>cgnstype</strong> (<em>list</em>) &#8211; a list of strings with the CGNS/SIDS types to check</li>
-</ul>
+<tr class="field-odd field"><th class="field-name">arg node node:</th><td class="field-body"><p class="first">target node to check</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><ul class="simple">
+<tr class="field-even field"><th class="field-name" colspan="2">arg list cgnstype:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><p class="first">a list of strings with the CGNS/SIDS types to check</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">return:</th><td class="field-body"><ul class="first simple">
 <li><cite>True</cite> if the type is a CGNS/SIDS the argument list.</li>
 <li><cite>False</cite> if the type is a CGNSType or a type in the argument list.</li>
 <li><cite>None</cite> if the parent is None (<cite>may change to have consistent return</cite>)</li>
 </ul>
-</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><a class="reference internal" href="_index.html#cgnstypeerror"><span class="std std-ref">cgnsTypeError</span></a> codes 103,104,40 if <cite>dienow</cite> is True</p>
+<tr class="field-even field"><th class="field-name">raises:</th><td class="field-body"><p class="first"><a class="reference internal" href="_index.html#cgnstypeerror"><span class="std std-ref">cgnsTypeError</span></a> codes 103,104,40 if <cite>dienow</cite> is True</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Remarks:</th><td class="field-body"><ul class="first last simple">
+<tr class="field-odd field"><th class="field-name">Remarks:</th><td class="field-body"><ul class="first last simple">
 <li>The default value for <cite>cgnstype</cite> is the list of all CGNS/SIDS types</li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
@@ -517,7 +516,8 @@ If the list is empty, the check uses the list of all existing CGNS types:</p>
 <dl class="function">
 <dt id="CGNS.PAT.cgnsutils.checkParentType">
 <code class="descclassname">CGNS.PAT.cgnsutils.</code><code class="descname">checkParentType</code><span class="sig-paren">(</span><em>parent</em>, <em>stype</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnsutils.checkParentType" title="Permalink to this definition">¶</a></dt>
-<dd><p>same as <a class="reference internal" href="#CGNS.PAT.cgnsutils.checkType" title="CGNS.PAT.cgnsutils.checkType"><code class="xref py py-func docutils literal"><span class="pre">checkType</span></code></a> but checks the parent type instead of the current node</p>
+<dd><p>same as <a class="reference internal" href="#CGNS.PAT.cgnsutils.checkType" title="CGNS.PAT.cgnsutils.checkType"><code class="xref py py-func docutils literal"><span class="pre">checkType</span></code></a> but
+checks the parent type instead of the current node</p>
 </dd></dl>
 
 <dl class="function">
@@ -530,7 +530,7 @@ The syntax for a compliant node structure is:</p>
 </div>
 <p>With the following exception: a <cite>value</cite> can be None.</p>
 <p>The function checks the syntax of the node and the types of its contents,
-it doesn&#8217;t perform sub checks such as <cite>checkNodeName</cite>, <cite>checkNodeType</cite>...</p>
+it doesn’t perform sub checks such as <cite>checkNodeName</cite>, <cite>checkNodeType</cite>…</p>
 <p>You should always check first the node structure, a function such as
 <cite>checkNodeName</cite> blindly access to the first item of the list and would raise
 an exception if the structure is not correct.</p>
@@ -538,7 +538,7 @@ an exception if the structure is not correct.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>node</strong> (<em>CGNS/Python</em>) &#8211; the CGNS/Python node to check</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>node</strong> (<em>CGNS/Python</em>) – the CGNS/Python node to check</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">True if the node is ok</p>
@@ -574,7 +574,7 @@ the one above by giving this pattern as child of a fake node:</p>
 
 <span class="n">tmp</span><span class="o">=</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="p">[</span><span class="n">flatpattern</span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span>
 <span class="k">if</span> <span class="p">(</span><span class="n">checkRootNode</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span><span class="kc">True</span><span class="p">)):</span>
-  <span class="nb">print</span> <span class="s1">&#39;CGNS/Python tree has a legacy root node&#39;</span>
+    <span class="nb">print</span> <span class="s1">&#39;CGNS/Python tree has a legacy root node&#39;</span>
 </pre></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -582,8 +582,8 @@ the one above by giving this pattern as child of a fake node:</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>node</strong> (<em>CGNS/Python</em>) &#8211; the node to check</li>
-<li><strong>legacy</strong> (<em>bool</em>) &#8211; True means you accept non-CGNSTree_t node</li>
+<li><strong>node</strong> (<em>CGNS/Python</em>) – the node to check</li>
+<li><strong>legacy</strong> (<em>bool</em>) – True means you accept non-CGNSTree_t node</li>
 </ul>
 </td>
 </tr>
@@ -611,8 +611,8 @@ Does not says where it may differ, only True or False is returned</p>
 same number of children, same value type (None of numpy).
 The children are not parsed, the value itself is not checked
 (see <a class="reference internal" href="#CGNS.PAT.cgnsutils.checkSameValue" title="CGNS.PAT.cgnsutils.checkSameValue"><code class="xref py py-func docutils literal"><span class="pre">checkSameValue()</span></code></a>):</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">checkSameNode</span><span class="p">(</span><span class="n">nodeA</span><span class="p">,</span><span class="n">nodeB</span><span class="p">)):</span>
-  <span class="n">nodeB</span><span class="o">=</span><span class="n">copyNode</span><span class="p">(</span><span class="n">nodeB</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">checkSameNode</span><span class="p">(</span><span class="n">nodeA</span><span class="p">,</span><span class="n">nodeB</span><span class="p">):</span>
+    <span class="n">nodeB</span> <span class="o">=</span> <span class="n">copyNode</span><span class="p">(</span><span class="n">nodeB</span><span class="p">)</span>
 </pre></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -620,8 +620,8 @@ The children are not parsed, the value itself is not checked
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>nodeA</strong> (<em>CGNS/Python</em>) &#8211; first node to compare</li>
-<li><strong>nodeB</strong> (<em>CGNS/Python</em>) &#8211; seconf node to compare</li>
+<li><strong>nodeA</strong> (<em>CGNS/Python</em>) – first node to compare</li>
+<li><strong>nodeB</strong> (<em>CGNS/Python</em>) – second node to compare</li>
 </ul>
 </td>
 </tr>
@@ -646,8 +646,8 @@ The children are not parsed, the value itself is not checked
 <dd><p>Checks if two nodes have the same value. There is no tolerance on actual
 array values when these are compared one to one. This could lead to time
 consuming operations for large arrays:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="n">checkSameValue</span><span class="p">(</span><span class="n">nodeA</span><span class="p">,</span><span class="n">nodeB</span><span class="p">)):</span>
-  <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Not the same value&#39;</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="ow">not</span> <span class="n">checkSameValue</span><span class="p">(</span><span class="n">nodeA</span><span class="p">,</span><span class="n">nodeB</span><span class="p">):</span>
+    <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Not the same value&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -655,8 +655,8 @@ consuming operations for large arrays:</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>nodeA</strong> (<em>CGNS/Python</em>) &#8211; first node to compare the value with</li>
-<li><strong>nodeB</strong> (<em>CGNS/Python</em>) &#8211; second node to compare the value with</li>
+<li><strong>nodeA</strong> (<em>CGNS/Python</em>) – first node to compare the value with</li>
+<li><strong>nodeB</strong> (<em>CGNS/Python</em>) – second node to compare the value with</li>
 </ul>
 </td>
 </tr>
@@ -674,19 +674,26 @@ consuming operations for large arrays:</p>
 <dt id="CGNS.PAT.cgnsutils.checkArray">
 <code class="descclassname">CGNS.PAT.cgnsutils.</code><code class="descname">checkArray</code><span class="sig-paren">(</span><em>a</em>, <em>dienow=False</em>, <em>orNone=True</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnsutils.checkArray" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check if the array value of a node is a numpy array:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="n">checkArray</span><span class="p">(</span><span class="n">node</span><span class="p">[</span><span class="mi">1</span><span class="p">])):</span>
-  <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Bad array (for a CGNS/Python node)&#39;</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="ow">not</span> <span class="n">checkArray</span><span class="p">(</span><span class="n">node</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+    <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Bad array (for a CGNS/Python node)&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>a</strong> (<em>object</em>) &#8211; value to check</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>a</strong> (<em>numpy.ndarray</em>) – value to check</li>
+<li><strong>dienow</strong> (<em>bool</em>) – If <cite>True</cite> raises an exception on error (default:<cite>False</cite>)</li>
+<li><strong>orNone</strong> (<em>bool</em>) – If <a href="#id1"><span class="problematic" id="id2">`</span></a>True’ return True when <a href="#id3"><span class="problematic" id="id4">`</span></a>a’ is None</li>
+</ul>
+</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True if the arg array is suitable as CGNS/Python value</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">True if the arg array is suitable as CGNS/Python value</p>
+</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Raise:</th><td class="field-body">error codes 109,170 if <cite>dienow</cite> is True</td>
+<tr class="field-odd field"><th class="field-name">Raise:</th><td class="field-body"><p class="first last">error codes 109,170 if <cite>dienow</cite> is True</p>
+</td>
 </tr>
 </tbody>
 </table>
@@ -746,9 +753,9 @@ a single float or a single string</p>
 <code class="descclassname">CGNS.PAT.cgnsutils.</code><code class="descname">checkNodeCompliant</code><span class="sig-paren">(</span><em>node</em>, <em>parent=None</em>, <em>dienow=False</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnsutils.checkNodeCompliant" title="Permalink to this definition">¶</a></dt>
 <dd><p>Performs all possible checks on a node. Can raise any of the exceptions
 related to node checks (<a class="reference internal" href="#CGNS.PAT.cgnsutils.checkNodeName" title="CGNS.PAT.cgnsutils.checkNodeName"><code class="xref py py-func docutils literal"><span class="pre">checkNodeName()</span></code></a>, <a class="reference internal" href="#CGNS.PAT.cgnsutils.checkNodeType" title="CGNS.PAT.cgnsutils.checkNodeType"><code class="xref py py-func docutils literal"><span class="pre">checkNodeType()</span></code></a>,
-<a class="reference internal" href="#CGNS.PAT.cgnsutils.checkArray" title="CGNS.PAT.cgnsutils.checkArray"><code class="xref py py-func docutils literal"><span class="pre">checkArray()</span></code></a>...):</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="n">checkNodeCompliant</span><span class="p">(</span><span class="n">node</span><span class="p">)):</span>
-  <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Bad Node&#39;</span><span class="p">)</span>
+<a class="reference internal" href="#CGNS.PAT.cgnsutils.checkArray" title="CGNS.PAT.cgnsutils.checkArray"><code class="xref py py-func docutils literal"><span class="pre">checkArray()</span></code></a>…):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="ow">not</span> <span class="n">checkNodeCompliant</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
+    <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Bad Node&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -756,8 +763,8 @@ related to node checks (<a class="reference internal" href="#CGNS.PAT.cgnsutils.
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>node</strong> (<em>CGNS/Python</em>) &#8211; the CGNS/Python node to check</li>
-<li><strong>parent</strong> (<em>CGNS/Python</em>) &#8211; CGNS/Python parent node to check (if not None)</li>
+<li><strong>node</strong> (<em>CGNS/Python</em>) – the CGNS/Python node to check</li>
+<li><strong>parent</strong> (<em>CGNS/Python</em>) – CGNS/Python parent node to check (if not None)</li>
 </ul>
 </td>
 </tr>
@@ -782,9 +789,9 @@ related to node checks (<a class="reference internal" href="#CGNS.PAT.cgnsutils.
 <span class="n">a</span><span class="o">=</span><span class="n">concatenateForArrayChar2D</span><span class="p">(</span><span class="n">udims</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The result is a numpy.ndarray of type &#8216;S&#8217; with a shape of (32,N) for
-N strings. In the example above the value of a[:,1] is &#8216;Meter&#8217; with
-an added padding of 27 &#8216;spaces&#8217;.
+<p>The result is a numpy.ndarray of type ‘S’ with a shape of (32,N) for
+N strings. In the example above the value of a[:,1] is ‘Meter’ with
+an added padding of 27 ‘spaces’.
 The order of the values in the second axis is kept unchanged.</p>
 </dd></dl>
 
@@ -797,7 +804,7 @@ The order of the values in the second axis is kept unchanged.</p>
 <dl class="function">
 <dt id="CGNS.PAT.cgnsutils.getValueType">
 <code class="descclassname">CGNS.PAT.cgnsutils.</code><code class="descname">getValueType</code><span class="sig-paren">(</span><em>v</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnsutils.getValueType" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the node&#8217;s value type as CGNS/MLL type.
+<dd><p>Returns the node’s value type as CGNS/MLL type.
 The return value is a string in:
 Character, RealSingle, RealDouble, Integer, LongInteger</p>
 </dd></dl>
@@ -812,14 +819,13 @@ data type.</p>
 
 <dl class="function">
 <dt id="CGNS.PAT.cgnsutils.setStringByPath">
-<code class="descclassname">CGNS.PAT.cgnsutils.</code><code class="descname">setStringByPath</code><span class="sig-paren">(</span><em>T</em>, <em>path</em>, <em>s</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnsutils.setStringByPath" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">CGNS.PAT.cgnsutils.</code><code class="descname">setStringByPath</code><span class="sig-paren">(</span><em>tree</em>, <em>path</em>, <em>s</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnsutils.setStringByPath" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates a 1D numpy.ndarray from one string, set to node by path:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">p</span><span class="o">=</span><span class="s1">&#39;/{Base#1}/BaseIterativeData/DataClass&#39;</span>
-<span class="n">setStringByPath</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="s1">&#39;UserDefined&#39;</span><span class="p">)</span>
-
-<span class="n">Remark</span><span class="p">:</span> <span class="n">target</span> <span class="n">node</span> <span class="n">should</span> <span class="n">already</span> <span class="n">exist</span>
+<span class="n">setStringByPath</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="s1">&#39;UserDefined&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>Remark: target node should already exist</p>
 </dd></dl>
 
 <dl class="function">
@@ -834,7 +840,7 @@ data type.</p>
 
 <dl class="function">
 <dt id="CGNS.PAT.cgnsutils.setIntegerByPath">
-<code class="descclassname">CGNS.PAT.cgnsutils.</code><code class="descname">setIntegerByPath</code><span class="sig-paren">(</span><em>T</em>, <em>path</em>, <em>*i</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnsutils.setIntegerByPath" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">CGNS.PAT.cgnsutils.</code><code class="descname">setIntegerByPath</code><span class="sig-paren">(</span><em>tree</em>, <em>path</em>, <em>*i</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnsutils.setIntegerByPath" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates a 1D numpy.ndarray from one or more integers,
 set to node by path. Same as <a class="reference internal" href="#CGNS.PAT.cgnsutils.setLongByPath" title="CGNS.PAT.cgnsutils.setLongByPath"><code class="xref py py-func docutils literal"><span class="pre">setLongByPath()</span></code></a> but with a
 numpy.int32 data type.</p>
@@ -851,15 +857,15 @@ numpy.int32 data type.</p>
 
 <dl class="function">
 <dt id="CGNS.PAT.cgnsutils.setLongByPath">
-<code class="descclassname">CGNS.PAT.cgnsutils.</code><code class="descname">setLongByPath</code><span class="sig-paren">(</span><em>T</em>, <em>path</em>, <em>*l</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnsutils.setLongByPath" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">CGNS.PAT.cgnsutils.</code><code class="descname">setLongByPath</code><span class="sig-paren">(</span><em>tree</em>, <em>path</em>, <em>*l</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnsutils.setLongByPath" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates a 1D numpy.ndarray from one or more longs,
 set to node by path:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">p</span><span class="o">=</span><span class="s1">&#39;/{Base#1}/BaseIterativeData/NumberOfZones&#39;</span>
-<span class="n">setFloatByPath</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">setFloatByPath</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 
 <span class="n">p</span><span class="o">=</span><span class="s1">&#39;/{Base#1}/BaseIterativeData/IterationValues&#39;</span>
-<span class="n">setFloatByPath</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-<span class="n">setFloatByPath</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">1010</span><span class="p">,</span><span class="mi">10</span><span class="p">)))</span>
+<span class="n">setFloatByPath</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">setFloatByPath</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">1010</span><span class="p">,</span><span class="mi">10</span><span class="p">)))</span>
 </pre></div>
 </div>
 <p>The set value has numpy.int64 data type</p>
@@ -880,14 +886,14 @@ set to node by path:</p>
 
 <dl class="function">
 <dt id="CGNS.PAT.cgnsutils.setFloatByPath">
-<code class="descclassname">CGNS.PAT.cgnsutils.</code><code class="descname">setFloatByPath</code><span class="sig-paren">(</span><em>T</em>, <em>path</em>, <em>*f</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnsutils.setFloatByPath" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">CGNS.PAT.cgnsutils.</code><code class="descname">setFloatByPath</code><span class="sig-paren">(</span><em>tree</em>, <em>path</em>, <em>*f</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnsutils.setFloatByPath" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates a 1D numpy.ndarray from one or more floats,
 set to node by path:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">p</span><span class="o">=</span><span class="s1">&#39;/{Base#1}/{Zone-A}/ReferenceState/Coef_PressureDynamic&#39;</span>
-<span class="n">setFloatByPath</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="mf">2837.153</span><span class="p">)</span>
+<span class="n">setFloatByPath</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="mf">2837.153</span><span class="p">)</span>
 
 <span class="n">p</span><span class="o">=</span><span class="s1">&#39;/{Base#1}/{Zone-A}/ReferenceState/Coef_Local&#39;</span>
-<span class="n">setFloatByPath</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="mf">2.1</span><span class="p">,</span> <span class="mf">2.2</span><span class="p">,</span> <span class="mf">2.3</span><span class="p">,</span> <span class="mf">2.4</span><span class="p">)</span>
+<span class="n">setFloatByPath</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="mf">2.1</span><span class="p">,</span> <span class="mf">2.2</span><span class="p">,</span> <span class="mf">2.3</span><span class="p">,</span> <span class="mf">2.4</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The set value has numpy.float32 data type</p>
@@ -908,7 +914,7 @@ set to node by path:</p>
 
 <dl class="function">
 <dt id="CGNS.PAT.cgnsutils.setDoubleByPath">
-<code class="descclassname">CGNS.PAT.cgnsutils.</code><code class="descname">setDoubleByPath</code><span class="sig-paren">(</span><em>T</em>, <em>path</em>, <em>*d</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnsutils.setDoubleByPath" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">CGNS.PAT.cgnsutils.</code><code class="descname">setDoubleByPath</code><span class="sig-paren">(</span><em>tree</em>, <em>path</em>, <em>*d</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnsutils.setDoubleByPath" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates a 1D numpy.ndarray from one or more doubles,
 set to node by path. Same as <a class="reference internal" href="#CGNS.PAT.cgnsutils.setFloatByPath" title="CGNS.PAT.cgnsutils.setFloatByPath"><code class="xref py py-func docutils literal"><span class="pre">setFloatByPath()</span></code></a> but with a
 numpy.float64 data type.</p>
@@ -970,7 +976,7 @@ If the shape cannot be determined a <cite>-</cite> is returned:</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>node</strong> (<em>CGNS/Python</em>) &#8211; the target node</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>node</strong> (<em>CGNS/Python</em>) – the target node</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A string with the shape</td>
 </tr>
@@ -982,17 +988,17 @@ If the shape cannot be determined a <cite>-</cite> is returned:</p>
 <dt id="CGNS.PAT.cgnsutils.getAuthNames">
 <code class="descclassname">CGNS.PAT.cgnsutils.</code><code class="descname">getAuthNames</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnsutils.getAuthNames" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the authorized names for a CGNS/Python node.
-If the names cannot be determined a None is returned:</p>
+If the names cannot be determined an empty list is returned:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">node</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;gasmodel&#39;</span><span class="p">,</span><span class="kc">None</span><span class="p">,[],</span><span class="s1">&#39;GasModel_t&#39;</span><span class="p">]</span>
 <span class="k">if</span> <span class="p">(</span><span class="n">node</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">getAuthNames</span><span class="p">(</span><span class="n">node</span><span class="p">)):</span>
-  <span class="nb">print</span> <span class="s1">&#39;not SIDS compliant name&#39;</span>
+    <span class="nb">print</span> <span class="s1">&#39;not SIDS compliant name&#39;</span>
 </pre></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>node</strong> (<em>CGNS/Python</em>) &#8211; the target node</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>node</strong> (<em>CGNS/Python</em>) – the target node</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A list of authorized names (empty list if not found)</td>
 </tr>
@@ -1006,14 +1012,14 @@ If the names cannot be determined a None is returned:</p>
 <dd><p>Returns the authorized types for a CGNS/Python node.
 If the types cannot be determined a None is returned:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">getValueType</span><span class="p">(</span><span class="n">node</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">getAuthDataTypes</span><span class="p">(</span><span class="n">node</span><span class="p">)):</span>
-  <span class="nb">print</span> <span class="s1">&#39;Type of node value is not SIDS comliant&#39;</span>
+    <span class="nb">print</span> <span class="s1">&#39;Type of node value is not SIDS comliant&#39;</span>
 </pre></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>node</strong> (<em>CGNS/Python</em>) &#8211; the target node</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>node</strong> (<em>CGNS/Python</em>) – the target node</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A list of authorized data types (empty if not found)</td>
 </tr>
@@ -1028,15 +1034,15 @@ If the types cannot be determined a None is returned:</p>
 If the parent types cannot be determined a None is returned:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">=</span><span class="n">getParentFromNode</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="n">node</span><span class="p">)</span>
 <span class="k">if</span> <span class="p">(</span><span class="n">np</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">getAuthParentTypes</span><span class="p">(</span><span class="n">node</span><span class="p">)):</span>
-   <span class="n">p</span><span class="o">=</span><span class="n">getPathByNode</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="n">node</span><span class="p">)</span>
-   <span class="nb">print</span> <span class="s1">&#39;[</span><span class="si">%s</span><span class="s1">] cannot have parent of type [</span><span class="si">%s</span><span class="s1">]&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">np</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+    <span class="n">p</span><span class="o">=</span><span class="n">getPathByNode</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="n">node</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="s1">&#39;[</span><span class="si">%s</span><span class="s1">] cannot have parent of type [</span><span class="si">%s</span><span class="s1">]&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">np</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
 </pre></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>node</strong> (<em>CGNS/Python</em>) &#8211; the target node</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>node</strong> (<em>CGNS/Python</em>) – the target node</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A list of authorized parent types (empty list is none)</td>
 </tr>
@@ -1049,16 +1055,16 @@ If the parent types cannot be determined a None is returned:</p>
 <code class="descclassname">CGNS.PAT.cgnsutils.</code><code class="descname">getAuthShapes</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnsutils.getAuthShapes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the authorized shapes for a CGNS/Python node.
 If the shapes cannot be determined a None is returned:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">getShape</span><span class="p">(</span><span class="n">node</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">getAuthShapes</span><span class="p">(</span><span class="n">node</span><span class="p">)):</span>
-  <span class="n">p</span><span class="o">=</span><span class="n">getPathByNode</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="n">node</span><span class="p">)</span>
-  <span class="nb">print</span> <span class="s1">&#39;[</span><span class="si">%s</span><span class="s1">] cannot have shape [</span><span class="si">%s</span><span class="s1">]&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">getShape</span><span class="p">(</span><span class="n">node</span><span class="p">))</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">getShape</span><span class="p">(</span><span class="n">node</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">getAuthShapes</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
+    <span class="n">p</span><span class="o">=</span><span class="n">getPathByNode</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="n">node</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="s1">&#39;[</span><span class="si">%s</span><span class="s1">] cannot have shape [</span><span class="si">%s</span><span class="s1">]&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">getShape</span><span class="p">(</span><span class="n">node</span><span class="p">))</span>
 </pre></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>node</strong> (<em>CGNS/Python</em>) &#8211; the target node</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>node</strong> (<em>CGNS/Python</em>) – the target node</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A list of authorized shapes</td>
 </tr>
@@ -1071,16 +1077,16 @@ If the shapes cannot be determined a None is returned:</p>
 <code class="descclassname">CGNS.PAT.cgnsutils.</code><code class="descname">getAuthChildren</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnsutils.getAuthChildren" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the authorized children for a CGNS/Python node.
 If the children types cannot be determined a None is returned:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">hasChildNodeOfType</span><span class="p">(</span><span class="n">node</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">getAuthChildren</span><span class="p">(</span><span class="n">node</span><span class="p">)):</span>
-  <span class="n">p</span><span class="o">=</span><span class="n">getPathByNode</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="n">node</span><span class="p">)</span>
-  <span class="nb">print</span> <span class="s1">&#39;[</span><span class="si">%s</span><span class="s1">] cannot have [</span><span class="si">%s</span><span class="s1">] of type [</span><span class="si">%s</span><span class="s1">] as child&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">node</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">node</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">hasChildNodeOfType</span><span class="p">(</span><span class="n">node</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">getAuthChildren</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">getPathByNode</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="n">node</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="s1">&#39;[</span><span class="si">%s</span><span class="s1">] cannot have [</span><span class="si">%s</span><span class="s1">] of type [</span><span class="si">%s</span><span class="s1">] as child&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">node</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">node</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
 </pre></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>node</strong> (<em>node</em>) &#8211; target node</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>node</strong> (<em>node</em>) – target node</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">list of str, authorized CGNS/SIDS types for children</td>
 </tr>
@@ -1099,7 +1105,7 @@ If the children types cannot be determined a None is returned:</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>node</strong> (<em>CGNS/Python</em>) &#8211; function target</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>node</strong> (<em>CGNS/Python</em>) – function target</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A data type as string in <code class="docutils literal"><span class="pre">[`C1`,`I4`,`I8`,`R4`,`R8`,`??`]</span></code></p>
@@ -1118,7 +1124,7 @@ If the children types cannot be determined a None is returned:</p>
 
 <dl class="function">
 <dt id="CGNS.PAT.cgnsutils.hasFirstPathItem">
-<code class="descclassname">CGNS.PAT.cgnsutils.</code><code class="descname">hasFirstPathItem</code><span class="sig-paren">(</span><em>path</em>, <em>item='CGNSTree'</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnsutils.hasFirstPathItem" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">CGNS.PAT.cgnsutils.</code><code class="descname">hasFirstPathItem</code><span class="sig-paren">(</span><em>path</em>, <em>item=u'CGNSTree'</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnsutils.hasFirstPathItem" title="Permalink to this definition">¶</a></dt>
 <dd><p>True if the arg string is the item of the path:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">p</span><span class="o">=</span><span class="s1">&#39;/{Base#1}/{Zone-A}/ZoneGridConnectivity&#39;</span>
 <span class="nb">print</span> <span class="n">hasFirstPathItem</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="s1">&#39;{Base#1}&#39;</span><span class="p">)</span>
@@ -1130,8 +1136,8 @@ If the children types cannot be determined a None is returned:</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>path</strong> (<em>str</em>) &#8211; path to process</li>
-<li><strong>item</strong> (<em>str</em>) &#8211; item to check against</li>
+<li><strong>path</strong> (<em>str</em>) – path to process</li>
+<li><strong>item</strong> (<em>str</em>) – item to check against</li>
 </ul>
 </td>
 </tr>
@@ -1160,7 +1166,7 @@ If the children types cannot be determined a None is returned:</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>path</strong> (<em>str</em>) &#8211; path to process</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>path</strong> (<em>str</em>) – path to process</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">path without first token</p>
@@ -1179,21 +1185,21 @@ If the children types cannot be determined a None is returned:</p>
 <dt id="CGNS.PAT.cgnsutils.getNodeByPath">
 <code class="descclassname">CGNS.PAT.cgnsutils.</code><code class="descname">getNodeByPath</code><span class="sig-paren">(</span><em>tree</em>, <em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnsutils.getNodeByPath" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the CGNS/Python node with the argument path:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">zbc</span><span class="o">=</span><span class="n">getNodeByPath</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="s1">&#39;/Base/Zone001/ZoneBC&#39;</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">zbc</span><span class="o">=</span><span class="n">getNodeByPath</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span><span class="s1">&#39;/Base/Zone001/ZoneBC&#39;</span><span class="p">)</span>
 <span class="n">nchildren</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">childrenNames</span><span class="p">(</span><span class="n">zbc</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>The path is compared as a string, you should provide the exact path
 if you have a sub-tree or a tree with its <cite>CGNSTree</cite> fake node. The
 following lines are not equivalent (sic!):</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">zbc</span><span class="o">=</span><span class="n">getNodeByPath</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="s1">&#39;/Base/Zone001/ZoneBC&#39;</span><span class="p">)</span>
-<span class="n">zbc</span><span class="o">=</span><span class="n">getNodeByPath</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="s1">&#39;/CGNSTree/Base/Zone001/ZoneBC&#39;</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">zbc</span><span class="o">=</span><span class="n">getNodeByPath</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span><span class="s1">&#39;/Base/Zone001/ZoneBC&#39;</span><span class="p">)</span>
+<span class="n">zbc</span><span class="o">=</span><span class="n">getNodeByPath</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span><span class="s1">&#39;/CGNSTree/Base/Zone001/ZoneBC&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>You can change the relative root by giving any sub-node of the complete tree.
 For example, to get a specific BC node in a zone, you first look for the
 <code class="docutils literal"><span class="pre">ZoneBC</span></code> of the zone and you use the returned node a the new root:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">zbc</span><span class="o">=</span><span class="n">getNodeByPath</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="s1">&#39;/Base/Zone001/ZoneBC&#39;</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">zbc</span><span class="o">=</span><span class="n">getNodeByPath</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span><span class="s1">&#39;/Base/Zone001/ZoneBC&#39;</span><span class="p">)</span>
 <span class="n">nbc</span><span class="o">=</span><span class="n">getNodeByPath</span><span class="p">(</span><span class="n">zbc</span><span class="p">,</span><span class="s1">&#39;./wall01&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1202,8 +1208,8 @@ For example, to get a specific BC node in a zone, you first look for the
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>tree</strong> (<em>node</em>) &#8211; the target tree to parse</li>
-<li><strong>path</strong> (<em>str</em>) &#8211; absolute or relative path</li>
+<li><strong>tree</strong> (<em>node</em>) – the target tree to parse</li>
+<li><strong>path</strong> (<em>str</em>) – absolute or relative path</li>
 </ul>
 </td>
 </tr>
@@ -1241,8 +1247,8 @@ concatenation of children node names (and then recurse)</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>tree</strong> (<em>CGNS/Python</em>) &#8211; target tree to parse</li>
-<li><strong>path</strong> (<em>str</em>) &#8211; absolute or relative path</li>
+<li><strong>tree</strong> (<em>CGNS/Python</em>) – target tree to parse</li>
+<li><strong>path</strong> (<em>str</em>) – absolute or relative path</li>
 </ul>
 </td>
 </tr>
@@ -1270,8 +1276,8 @@ and <a class="reference internal" href="#CGNS.PAT.cgnsutils.getPathsByNameFilter
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">CGNS.PAT.cgnskeywords</span> <span class="k">as</span> <span class="nn">CK</span>
 
 <span class="k">for</span> <span class="n">bc</span> <span class="ow">in</span> <span class="n">getChildrenByPath</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="s1">&#39;/Base/Zone01/ZoneBC&#39;</span><span class="p">):</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">bc</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="n">CK</span><span class="o">.</span><span class="n">BC_ts</span><span class="p">):</span> 
-    <span class="nb">print</span> <span class="s1">&#39;BC found:&#39;</span><span class="p">,</span> <span class="n">bc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">bc</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="n">CK</span><span class="o">.</span><span class="n">BC_ts</span><span class="p">):</span>
+        <span class="nb">print</span> <span class="s1">&#39;BC found:&#39;</span><span class="p">,</span> <span class="n">bc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1279,8 +1285,8 @@ and <a class="reference internal" href="#CGNS.PAT.cgnsutils.getPathsByNameFilter
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>tree</strong> (<em>CGNS/Python</em>) &#8211; target tree to parse</li>
-<li><strong>path</strong> (<em>str</em>) &#8211; absolute or relative path</li>
+<li><strong>tree</strong> (<em>CGNS/Python</em>) – target tree to parse</li>
+<li><strong>path</strong> (<em>str</em>) – absolute or relative path</li>
 </ul>
 </td>
 </tr>
@@ -1324,9 +1330,9 @@ an alternate sort list/dictionnary:</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>node</strong> (<em>CGNS/Python</em>) &#8211; the target</li>
-<li><strong>parent</strong> (<em>CGNS/Python</em>) &#8211; the parent</li>
-<li><strong>criteria</strong> (<em>list</em>) &#8211; a list or a dictionnary used as the sort criteria</li>
+<li><strong>node</strong> (<em>CGNS/Python</em>) – the target</li>
+<li><strong>parent</strong> (<em>CGNS/Python</em>) – the parent</li>
+<li><strong>criteria</strong> (<em>list</em>) – a list or a dictionnary used as the sort criteria</li>
 </ul>
 </td>
 </tr>
@@ -1356,8 +1362,8 @@ and the values are list of types.</li>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">CGNS.PAT.cgnskeywords</span> <span class="k">as</span> <span class="nn">CK</span>
 
 <span class="k">if</span> <span class="p">(</span><span class="n">getTypeByPath</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="s1">&#39;/Base/Zone01/ZoneBC/&#39;</span><span class="p">)):</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">bc</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="n">CK</span><span class="o">.</span><span class="n">BC_ts</span><span class="p">):</span> 
-    <span class="nb">print</span> <span class="s1">&#39;BC found:&#39;</span><span class="p">,</span> <span class="n">bc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">bc</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="n">CK</span><span class="o">.</span><span class="n">BC_ts</span><span class="p">):</span>
+        <span class="nb">print</span> <span class="s1">&#39;BC found:&#39;</span><span class="p">,</span> <span class="n">bc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1365,8 +1371,8 @@ and the values are list of types.</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>tree</strong> (<em>CGNS/Python</em>) &#8211; target tree to parse</li>
-<li><strong>path</strong> (<em>str</em>) &#8211; absolute or relative path</li>
+<li><strong>tree</strong> (<em>CGNS/Python</em>) – target tree to parse</li>
+<li><strong>path</strong> (<em>str</em>) – absolute or relative path</li>
 </ul>
 </td>
 </tr>
@@ -1396,7 +1402,7 @@ used to match at least one of the token of the path:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">CGNS.PAT.cgnskeywords</span> <span class="k">as</span> <span class="nn">CK</span>
 
 <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">getPathsByTokenFilter</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="s1">&#39;Family.*&#39;</span><span class="p">):</span>
-   <span class="nb">print</span> <span class="s1">&#39;Family &#39;</span><span class="p">,</span><span class="n">path</span><span class="p">,</span><span class="s1">&#39; is &#39;</span><span class="p">,</span><span class="n">path</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+    <span class="nb">print</span> <span class="s1">&#39;Family &#39;</span><span class="p">,</span><span class="n">path</span><span class="p">,</span><span class="s1">&#39; is &#39;</span><span class="p">,</span><span class="n">path</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
 </pre></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1404,8 +1410,8 @@ used to match at least one of the token of the path:</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>tree</strong> (<em>CGNS/Python</em>) &#8211; target tree to parse</li>
-<li><strong>filter</strong> (<em>str</em>) &#8211; a regular expression for the token to match to</li>
+<li><strong>tree</strong> (<em>CGNS/Python</em>) – target tree to parse</li>
+<li><strong>filter</strong> (<em>str</em>) – a regular expression for the token to match to</li>
 </ul>
 </td>
 </tr>
@@ -1443,8 +1449,8 @@ used to match the path of <strong>node names</strong>:</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>tree</strong> (<em>CGNS/Python</em>) &#8211; target tree to parse</li>
-<li><strong>filter</strong> (<em>str</em>) &#8211; a regular expression for the complete path to match to</li>
+<li><strong>tree</strong> (<em>CGNS/Python</em>) – target tree to parse</li>
+<li><strong>filter</strong> (<em>str</em>) – a regular expression for the complete path to match to</li>
 </ul>
 </td>
 </tr>
@@ -1456,10 +1462,10 @@ used to match the path of <strong>node names</strong>:</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Remarks:</th><td class="field-body"><ul class="first last simple">
-<li>The &#8216;/&#8217; is the separator for the path tokens, so you cannot use it
+<li>The ‘/’ is the separator for the path tokens, so you cannot use it
 in the regular expression for any other purpose. Then you cannot match
 any number of tokens in the filter, you must have the exact count of
-&#8216;/&#8217; chars.</li>
+‘/’ chars.</li>
 <li>Always skips <cite>CGNSTree_t</cite></li>
 </ul>
 </td>
@@ -1470,11 +1476,11 @@ any number of tokens in the filter, you must have the exact count of
 
 <dl class="function">
 <dt id="CGNS.PAT.cgnsutils.getPathAsTemplate">
-<code class="descclassname">CGNS.PAT.cgnsutils.</code><code class="descname">getPathAsTemplate</code><span class="sig-paren">(</span><em>sidslist</em>, <em>namelist</em>, <em>required=[]</em>, <em>enclosed=False</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnsutils.getPathAsTemplate" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">CGNS.PAT.cgnsutils.</code><code class="descname">getPathAsTemplate</code><span class="sig-paren">(</span><em>sidslist</em>, <em>namelist</em>, <em>required=None</em>, <em>enclosed=False</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnsutils.getPathAsTemplate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a list of CGNS/SIDS type or name (strings) by replacing in a path
 all the user defined names by their CGNS/SIDS type. If the name is a
 non-ambiguous SIDS name, it is kept as name (for example GridLocation and
-GridLocation_t, ZoneBC_t and ZoneBC...).
+GridLocation_t, ZoneBC_t and ZoneBC…).
 The required list of boolean forces the name to be kept if True.
 For example:</p>
 <blockquote>
@@ -1504,8 +1510,8 @@ used to match the path of <strong>node types</strong>:</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>tree</strong> (<em>node</em>) &#8211; the target tree to parse</li>
-<li><strong>filter</strong> (<em>str</em>) &#8211; a regular expression for the complete path to match to</li>
+<li><strong>tree</strong> (<em>node</em>) – the target tree to parse</li>
+<li><strong>filter</strong> (<em>str</em>) – a regular expression for the complete path to match to</li>
 </ul>
 </td>
 </tr>
@@ -1516,7 +1522,7 @@ used to match the path of <strong>node types</strong>:</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Remarks:</th><td class="field-body"><ul class="first simple">
-<li>The &#8216;/&#8217; is the separator for the path tokens, so you cannot use it</li>
+<li>The ‘/’ is the separator for the path tokens, so you cannot use it</li>
 </ul>
 <blockquote>
 <div><p>in the regular expression for any other purpose</p>
@@ -1539,8 +1545,8 @@ used to match the path of <strong>node types</strong>:</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>node</strong> (<em>CGNS/Python</em>) &#8211; node where to find the child name</li>
-<li><strong>name</strong> (<em>str</em>) &#8211; name of the child to delete (with all its sub-tree)</li>
+<li><strong>node parent</strong> (<em>CGNS/Python</em>) – node where to find the child name</li>
+<li><strong>name</strong> (<em>str</em>) – name of the child to delete (with all its sub-tree)</li>
 </ul>
 </td>
 </tr>
@@ -1570,8 +1576,8 @@ returned:</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>tree</strong> (<em>CGNS/Python</em>) &#8211; target tree to parse</li>
-<li><strong>node</strong> (<em>CGNS/Python</em>) &#8211; child node</li>
+<li><strong>tree</strong> (<em>CGNS/Python</em>) – target tree to parse</li>
+<li><strong>node</strong> (<em>CGNS/Python</em>) – child node</li>
 </ul>
 </td>
 </tr>
@@ -1591,8 +1597,8 @@ returned:</p>
 <code class="descclassname">CGNS.PAT.cgnsutils.</code><code class="descname">getAncestorByType</code><span class="sig-paren">(</span><em>tree</em>, <em>node</em>, <em>ptype</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnsutils.getAncestorByType" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the parent node of a node which has the CGNS/SIDS type. If the node is root node, itself is
 returned:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">CGNS.PAT.keywords</span> <span class="k">as</span> <span class="nn">CGK</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">base</span><span class="o">=</span><span class="n">getParentByType</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="n">node</span><span class="p">,</span><span class="n">CGK</span><span class="o">.</span><span class="n">CGNSBase_ts</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">CGNS.PAT.cgnskeywords</span> <span class="k">as</span> <span class="nn">CGK</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">base</span> <span class="o">=</span> <span class="n">getAncestorByType</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">CGK</span><span class="o">.</span><span class="n">CGNSBase_ts</span><span class="p">)</span>
 </pre></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1600,9 +1606,9 @@ returned:</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>tree</strong> (<em>CGNS/Python</em>) &#8211; target tree to parse</li>
-<li><strong>node</strong> (<em>CGNS/Python</em>) &#8211; child node</li>
-<li><strong>type</strong> (<em>CGNS/SIDS</em>) &#8211; required type of the parent</li>
+<li><strong>tree</strong> (<em>CGNS/Python</em>) – target tree to parse</li>
+<li><strong>node</strong> (<em>CGNS/Python</em>) – child node</li>
+<li><strong>ptype</strong> (<em>CGNS/SIDS</em>) – required type of the parent</li>
 </ul>
 </td>
 </tr>
@@ -1638,8 +1644,8 @@ node name:</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>tree</strong> (<em>CGNS/Python</em>) &#8211; target tree to parse</li>
-<li><strong>node</strong> (<em>CGNS/Python</em>) &#8211; target node</li>
+<li><strong>tree</strong> (<em>CGNS/Python</em>) – target tree to parse</li>
+<li><strong>node</strong> (<em>CGNS/Python</em>) – target node</li>
 </ul>
 </td>
 </tr>
@@ -1655,7 +1661,7 @@ node name:</p>
 
 <dl class="function">
 <dt id="CGNS.PAT.cgnsutils.getPathFromNode">
-<code class="descclassname">CGNS.PAT.cgnsutils.</code><code class="descname">getPathFromNode</code><span class="sig-paren">(</span><em>tree</em>, <em>node</em>, <em>path=''</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnsutils.getPathFromNode" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">CGNS.PAT.cgnsutils.</code><code class="descname">getPathFromNode</code><span class="sig-paren">(</span><em>tree</em>, <em>node</em>, <em>path=u''</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnsutils.getPathFromNode" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the path from a node in a tree. The argument tree is parsed and
 a path is built-up until the node is found. Then the <strong>start node</strong> name
 is not taken into account. For example:</p>
@@ -1692,9 +1698,9 @@ references to the same node, the first found is used for the path:</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>tree</strong> (<em>CGNS/Python</em>) &#8211; target tree to parse</li>
-<li><strong>node</strong> (<em>CGNS/Python</em>) &#8211; target node to find</li>
-<li><strong>path</strong> (<em>string</em>) &#8211; name of the root node to add if desired</li>
+<li><strong>tree</strong> (<em>CGNS/Python</em>) – target tree to parse</li>
+<li><strong>node</strong> (<em>CGNS/Python</em>) – target node to find</li>
+<li><strong>path</strong> (<em>string</em>) – name of the root node to add if desired</li>
 </ul>
 </td>
 </tr>
@@ -1720,7 +1726,7 @@ references to the same node, the first found is used for the path:</p>
 <dd><p>Mixes two lists for pattern search: the CGNS/SIDS type list and the
 name list.</p>
 <p>For example with two lists:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">zipTypeOrNameList</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">,</span><span class="s1">&#39;d&#39;</span><span class="p">]):</span> <span class="nb">print</span> <span class="n">q</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">zipTypeOrNameList</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">,</span><span class="s1">&#39;d&#39;</span><span class="p">]):</span> <span class="nb">print</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
 <span class="go">[1, 2, 3, 4]</span>
 <span class="go">[1, 2, 3, &#39;d&#39;]</span>
 <span class="go">[1, 2, &#39;c&#39;, 4]</span>
@@ -1750,8 +1756,8 @@ have if you pick the node type or the node name during the parse:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">tnlist</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;CGNSTree_t&#39;</span><span class="p">,</span><span class="s1">&#39;Base#001&#39;</span><span class="p">,</span><span class="s1">&#39;Zone_t&#39;</span><span class="p">]</span>
 
 <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">getPathsByTypeOrNameList</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="n">tnlist</span><span class="p">):</span>
-   <span class="n">node</span><span class="o">=</span><span class="n">getNodeByPath</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="n">path</span><span class="p">)</span>
-   <span class="c1"># do something with node</span>
+    <span class="n">node</span><span class="o">=</span><span class="n">getNodeByPath</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="n">path</span><span class="p">)</span>
+    <span class="c1"># do something with node</span>
 </pre></div>
 </div>
 <p>Would return all the zones of the named base.
@@ -1762,8 +1768,8 @@ See also <a class="reference internal" href="#CGNS.PAT.cgnsutils.getPathsByTypeL
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>tree</strong> (<em>CGNS/Python</em>) &#8211; the start node of the CGNS tree to parse</li>
-<li><strong>typeornamelist</strong> (<em>list</em>) &#8211; the (ordered) list of CGNS/SIDS types</li>
+<li><strong>tree</strong> (<em>CGNS/Python</em>) – the start node of the CGNS tree to parse</li>
+<li><strong>typeornamelist</strong> (<em>list</em>) – the (ordered) list of CGNS/SIDS types</li>
 </ul>
 </td>
 </tr>
@@ -1792,7 +1798,7 @@ of all types paths allowed by CGNS/SIDS.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>nodetype</strong> (<em>str</em>) &#8211; a CGNS/SIDS type as string</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>nodetype</strong> (<em>str</em>) – a CGNS/SIDS type as string</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">a list of list of strings, each string is a CGNS/SIDS type path</p>
@@ -1829,8 +1835,8 @@ See also <a class="reference internal" href="#CGNS.PAT.cgnsutils.getPathsByTypeS
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>tree</strong> (<em>CGNS/Python</em>) &#8211; the start node of the CGNS tree to parse</li>
-<li><strong>typelist</strong> (<em>list</em>) &#8211; the (ordered) list of types</li>
+<li><strong>tree</strong> (<em>CGNS/Python</em>) – the start node of the CGNS tree to parse</li>
+<li><strong>typelist</strong> (<em>list</em>) – the (ordered) list of types</li>
 </ul>
 </td>
 </tr>
@@ -1858,8 +1864,8 @@ See also <a class="reference internal" href="#CGNS.PAT.cgnsutils.getPathsByTypeS
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>path</strong> (<em>str</em>) &#8211; original path</li>
-<li><strong>items</strong> (<em>*str</em>) &#8211; <p>tuple of strings to be de-referenced</p>
+<li><strong>path</strong> (<em>str</em>) – original path</li>
+<li><strong>items</strong> (<em>*str</em>) – <p>tuple of strings to be de-referenced</p>
 </li>
 </ul>
 </td>
@@ -1876,14 +1882,14 @@ See also <a class="reference internal" href="#CGNS.PAT.cgnsutils.getPathsByTypeS
 <code class="descclassname">CGNS.PAT.cgnsutils.</code><code class="descname">getPathsFullTree</code><span class="sig-paren">(</span><em>tree</em>, <em>width=False</em>, <em>raw=False</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnsutils.getPathsFullTree" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the list of all possible node paths of a CGNS/Python tree:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">getPathsFullTree</span><span class="p">(</span><span class="n">T</span><span class="p">):</span>
-   <span class="nb">print</span> <span class="n">path</span>
+    <span class="nb">print</span> <span class="n">path</span>
 </pre></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>tree</strong> (<em>CGNS/Python</em>) &#8211; target tree to parse</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>tree</strong> (<em>CGNS/Python</em>) – target tree to parse</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Arb bool width:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">True</span></code> for width sorting (default is <code class="docutils literal"><span class="pre">False</span></code>)</p>
@@ -1922,7 +1928,7 @@ path with constraints on each node name:</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<em>str</em>) &#8211; path to check</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<em>str</em>) – path to check</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><code class="docutils literal"><span class="pre">True</span></code> if the path is ok, <code class="docutils literal"><span class="pre">False</span></code> if a problem is found</td>
 </tr>
@@ -1945,17 +1951,17 @@ path with constraints on each node name:</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>pathroot</strong> (<em>str</em>) &#8211; root path to compare</li>
-<li><strong>pathtocompare</strong> (<em>str</em>) &#8211; path which is supposed to have rootpath as substring</li>
+<li><strong>pathroot</strong> (<em>str</em>) – root path to compare</li>
+<li><strong>pathtocompare</strong> (<em>str</em>) – path which is supposed to have rootpath as substring</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">True if &#8216;rootpath&#8217; is a prefix of &#8216;pathtocompare&#8217;</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">True if ‘rootpath’ is a prefix of ‘pathtocompare’</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Remark:</th><td class="field-body"><ul class="first last simple">
 <li>Each node name is a token, see example below: the second example
-doesn&#8217;t match as a path while it matches as a string.</li>
+doesn’t match as a path while it matches as a string.</li>
 </ul>
 </td>
 </tr>
@@ -1977,9 +1983,9 @@ doesn&#8217;t match as a path while it matches as a string.</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name" colspan="2">Args list pathlist:</th></tr>
-<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">list of path strings</td>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">list of path strings</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The common root path (at least &#8216;/&#8217;)</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The common root path (at least ‘/’)</td>
 </tr>
 </tbody>
 </table>
@@ -1993,7 +1999,7 @@ doesn&#8217;t match as a path while it matches as a string.</li>
 <span class="c1"># [&#39;&#39;,&#39;Base&#39;,&#39;Zone&#39;,&#39;ZoneBC&#39;]</span>
 <span class="nb">print</span> <span class="n">getPathToList</span><span class="p">(</span><span class="s1">&#39;/Base/Zone/ZoneBC&#39;</span><span class="p">,</span><span class="kc">True</span><span class="p">)</span>
 <span class="c1"># [&#39;Base&#39;,&#39;Zone&#39;,&#39;ZoneBC&#39;]</span>
-<span class="nb">print</span> <span class="n">getPathToList</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span> 
+<span class="nb">print</span> <span class="n">getPathToList</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
 <span class="c1"># []</span>
 </pre></div>
 </div>
@@ -2002,15 +2008,15 @@ doesn&#8217;t match as a path while it matches as a string.</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>path</strong> (<em>str</em>) &#8211; path string to split</li>
-<li><strong>nofirst</strong> (<em>bool</em>) &#8211; removes first empty string for absolute paths (default: False)</li>
-<li><strong>noroot</strong> (<em>bool</em>) &#8211; If true then removes the CGNS/HDF5 root if found (default: True)</li>
+<li><strong>path</strong> (<em>str</em>) – path string to split</li>
+<li><strong>nofirst</strong> (<em>bool</em>) – removes first empty string for absolute paths (default: False)</li>
+<li><strong>noroot</strong> (<em>bool</em>) – If true then removes the CGNS/HDF5 root if found (default: True)</li>
 </ul>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><ul class="simple">
 <li>The list of path elements as strings</li>
-<li>with &#8216;/&#8217; as argument, the function returns an empty list</li>
+<li>with ‘/’ as argument, the function returns an empty list</li>
 </ul>
 </p>
 </td>
@@ -2037,14 +2043,14 @@ doesn&#8217;t match as a path while it matches as a string.</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>path</strong> (<em>str</em>) &#8211; string of the child node</li>
-<li><strong>level</strong> (<em>int</em>) &#8211; number of levels back from the child (default: 1 means the father of the node)</li>
+<li><strong>path</strong> (<em>str</em>) – string of the child node</li>
+<li><strong>level</strong> (<em>int</em>) – number of levels back from the child (default: 1 means the father of the node)</li>
 </ul>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
 <li>The ancestor path</li>
-<li>If the path is &#8216;/&#8217; its ancestor is None.</li>
+<li>If the path is ‘/’ its ancestor is None.</li>
 </ul>
 </p>
 </td>
@@ -2065,11 +2071,11 @@ doesn&#8217;t match as a path while it matches as a string.</li>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<em>str</em>) &#8211; a CGNS/Python path</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<em>str</em>) – a CGNS/Python path</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><ul class="simple">
 <li>The leaf node name (the last token of the path)</li>
-<li>If the path is &#8216;/&#8217; the function returns &#8216;&#8217; (empty string)</li>
+<li>If the path is ‘/’ the function returns ‘’ (empty string)</li>
 </ul>
 </td>
 </tr>
@@ -2080,8 +2086,8 @@ doesn&#8217;t match as a path while it matches as a string.</li>
 <dl class="function">
 <dt id="CGNS.PAT.cgnsutils.getPathNoRoot">
 <code class="descclassname">CGNS.PAT.cgnsutils.</code><code class="descname">getPathNoRoot</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnsutils.getPathNoRoot" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return an absolute path without the implementation nodes &#8216;HDF5 Mother node&#8217;
-or &#8216;CGNSTree&#8217; if detected as first element:</p>
+<dd><p>Return an absolute path without the implementation nodes ‘HDF5 Mother node’
+or ‘CGNSTree’ if detected as first element:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">print</span> <span class="n">getPathNoRoot</span><span class="p">(</span><span class="s1">&#39;/HDF5 Mother Node/Base/Zone/ZoneBC&#39;</span><span class="p">)</span>
 <span class="c1"># [&#39;Base&#39;,&#39;Zone&#39;,&#39;ZoneBC&#39;]</span>
 </pre></div>
@@ -2090,16 +2096,16 @@ or &#8216;CGNSTree&#8217; if detected as first element:</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>path</strong> (<em>str</em>) &#8211; the path of the node</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>path</strong> (<em>str</em>) – the path of the node</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The new path without root implementation node if found</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Remarks:</th><td class="field-body"><ul class="first last simple">
-<li>a &#8216;/&#8217; is expected as first char, it is forced if not found</li>
+<li>a ‘/’ is expected as first char, it is forced if not found</li>
 <li>The path is processed by <a class="reference internal" href="#CGNS.PAT.cgnsutils.getPathNormalize" title="CGNS.PAT.cgnsutils.getPathNormalize"><code class="xref py py-func docutils literal"><span class="pre">getPathNormalize()</span></code></a></li>
-<li>Implementation root can be CGNS.PAT.cgnskeywords.CGNSHDF5ROOT_s as 
+<li>Implementation root can be CGNS.PAT.cgnskeywords.CGNSHDF5ROOT_s as
 well as CGNS.PAT.cgnskeywords.CGNSTree_s</li>
 </ul>
 </td>
@@ -2121,8 +2127,8 @@ well as CGNS.PAT.cgnskeywords.CGNSTree_s</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>tree</strong> (<em>CGNS/Python</em>) &#8211; target tree</li>
-<li><strong>path</strong> (<em>str</em>) &#8211; path to parse get</li>
+<li><strong>tree</strong> (<em>CGNS/Python</em>) – target tree</li>
+<li><strong>path</strong> (<em>str</em>) – path to parse get</li>
 </ul>
 </td>
 </tr>
@@ -2140,26 +2146,23 @@ well as CGNS.PAT.cgnskeywords.CGNSTree_s</li>
 <dl class="function">
 <dt id="CGNS.PAT.cgnsutils.getPathNormalize">
 <code class="descclassname">CGNS.PAT.cgnsutils.</code><code class="descname">getPathNormalize</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnsutils.getPathNormalize" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="docutils">
-<dt>Return the same path as minimal string, removes <cite>////</cite> and <cite>/./</cite> and</dt>
-<dd><p class="first">other simplifiable UNIX-like path elements:</p>
-<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="c1"># a checkPath here would fail, because single or double dots are not</span>
+<dd><p>Return the same path as minimal string, removes <cite>////</cite> and <cite>/./</cite> and
+other simplifiable UNIX-like path elements:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># a checkPath here would fail, because single or double dots are not</span>
 <span class="c1"># allowed as a node name. But actually this is allowed as a</span>
 <span class="c1"># path description</span>
 <span class="n">p</span><span class="o">=</span><span class="n">getPathNormalize</span><span class="p">(</span><span class="s1">&#39;///Base/././//Zone/../Zone/./ZoneBC//.&#39;</span><span class="p">)</span>
 
 <span class="c1"># would return &#39;/Base/Zone/ZoneBC&#39;</span>
 <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="n">checkPath</span><span class="p">(</span><span class="n">p</span><span class="p">)):</span>
-   <span class="nb">print</span> <span class="s1">&#39;something bad happens&#39;</span>
+    <span class="nb">print</span> <span class="s1">&#39;something bad happens&#39;</span>
 </pre></div>
 </div>
-</dd>
-</dl>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>path</strong> (<em>str</em>) &#8211; the path of the node</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>path</strong> (<em>str</em>) – the path of the node</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The simplified path</p>
@@ -2180,14 +2183,14 @@ well as CGNS.PAT.cgnskeywords.CGNSTree_s</li>
 <code class="descclassname">CGNS.PAT.cgnsutils.</code><code class="descname">childrenNames</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnsutils.childrenNames" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets the children names as a list of strings:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">childrenNames</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
-  <span class="nb">print</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">/</span><span class="si">%s</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">node</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">c</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">/</span><span class="si">%s</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">node</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">c</span><span class="p">)</span>
 </pre></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>node</strong> (<em>CGNS/Python</em>) &#8211; the parent node</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>node</strong> (<em>CGNS/Python</em>) – the parent node</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">List of children names (str)</td>
 </tr>
@@ -2204,8 +2207,8 @@ one of the names in the list:</p>
 <span class="n">tset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;BCWall&#39;</span><span class="p">,</span><span class="s1">&#39;BCExt&#39;</span><span class="p">]</span>
 
 <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">getPathsByNameSet</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="n">tset</span><span class="p">):</span>
-   <span class="n">node</span><span class="o">=</span><span class="n">getNodeByPath</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="n">path</span><span class="p">)</span>
-   <span class="c1"># do something</span>
+    <span class="n">node</span><span class="o">=</span><span class="n">getNodeByPath</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="n">path</span><span class="p">)</span>
+    <span class="c1"># do something</span>
 </pre></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -2213,8 +2216,8 @@ one of the names in the list:</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>tree</strong> (<em>CGNS/Python</em>) &#8211; start node of the CGNS tree to parse</li>
-<li><strong>nameset</strong> (<em>list</em>) &#8211; the list of names</li>
+<li><strong>tree</strong> (<em>CGNS/Python</em>) – start node of the CGNS tree to parse</li>
+<li><strong>nameset</strong> (<em>list</em>) – the list of names</li>
 </ul>
 </td>
 </tr>
@@ -2237,8 +2240,8 @@ one of the types in the list:</p>
 <span class="n">tset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;BC_t&#39;</span><span class="p">,</span><span class="s1">&#39;Zone_t&#39;</span><span class="p">]</span>
 
 <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">getPathsByTypeSet</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="n">tset</span><span class="p">):</span>
-   <span class="n">node</span><span class="o">=</span><span class="n">getNodeByPath</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="n">path</span><span class="p">)</span>
-   <span class="c1"># do something</span>
+    <span class="n">node</span><span class="o">=</span><span class="n">getNodeByPath</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="n">path</span><span class="p">)</span>
+    <span class="c1"># do something</span>
 </pre></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -2246,8 +2249,8 @@ one of the types in the list:</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>tree</strong> (<em>CGNS/Python</em>) &#8211; start node of the CGNS tree to parse</li>
-<li><strong>typeset</strong> (<em>list</em>) &#8211; the list of CGNS/SIDS types as strings</li>
+<li><strong>tree</strong> (<em>CGNS/Python</em>) – start node of the CGNS tree to parse</li>
+<li><strong>typeset</strong> (<em>list</em>) – the list of CGNS/SIDS types as strings</li>
 </ul>
 </td>
 </tr>
@@ -2282,12 +2285,12 @@ you simple loop by getting only the path:</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>paths</strong> (<em>list</em>) &#8211; list of paths to order</li>
-<li><strong>fileindex</strong> (<em>int</em>) &#8211; index of the current &#8220;file&#8221; (default is 1)</li>
+<li><strong>paths</strong> (<em>list</em>) – list of paths to order</li>
+<li><strong>fileindex</strong> (<em>int</em>) – index of the current “file” (default is 1)</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">ordered list with the pattern [ [&lt;int:file-index&gt;, &lt;int:child-index&gt;, &lt;string:path&gt;] ... ]</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">ordered list with the pattern [ [&lt;int:file-index&gt;, &lt;int:child-index&gt;, &lt;string:path&gt;] … ]</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Remarks:</th><td class="field-body"><ul class="first last simple">
@@ -2306,7 +2309,7 @@ you simple loop by getting only the path:</p>
 <dt>Returns all allowed CGNS-types for the node. The parent is mandatory::</dt>
 <dd><dl class="first last docutils">
 <dt>if (node[2] not in getNodeAllowedChildrenTypes(parent,node)):</dt>
-<dd>print &#8216;Such a child is not SIDS compliant&#8217;</dd>
+<dd>print ‘Such a child is not SIDS compliant’</dd>
 </dl>
 </dd>
 </dl>
@@ -2315,8 +2318,8 @@ you simple loop by getting only the path:</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>pnode</strong> (<em>CGNS/Python</em>) &#8211; parent node of second argument</li>
-<li><strong>node</strong> (<em>CGNS/Python</em>) &#8211; target node</li>
+<li><strong>pnode</strong> (<em>CGNS/Python</em>) – parent node of second argument</li>
+<li><strong>node</strong> (<em>CGNS/Python</em>) – target node</li>
 </ul>
 </td>
 </tr>
@@ -2339,17 +2342,17 @@ father node.</li>
 <code class="descclassname">CGNS.PAT.cgnsutils.</code><code class="descname">getNodeAllowedDataTypes</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnsutils.getNodeAllowedDataTypes" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="docutils">
 <dt>Returns a list of string with all allowed CGNS data types for the node::</dt>
-<dd><p class="first">node=[&#8216;ReferenceState&#8217;,numpy.array((1,2,3)),[],&#8217;ReferenceState_t&#8217;]
+<dd><p class="first">node=[‘ReferenceState’,numpy.array((1,2,3)),[],’ReferenceState_t’]
 if (getValueDataType(node) not in getNodeAllowedDataTypes(node)):</p>
 <blockquote class="last">
-<div>print &#8216;Node %s has bad value type&#8217;%(node[0])</div></blockquote>
+<div>print ‘Node %s has bad value type’%(node[0])</div></blockquote>
 </dd>
 </dl>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>node</strong> (<em>CGNS/Python</em>) &#8211; target node</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>node</strong> (<em>CGNS/Python</em>) – target node</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><ul class="simple">
 <li>A list of CGNS/SIDS value data types (strings)</li>
@@ -2377,9 +2380,9 @@ FamilyName_t or AdditionalFamilyName_t.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>tree</strong> (<em>CGNS/Python</em>) &#8211; target tree to parse</li>
-<li><strong>str families</strong> (<em>list</em>) &#8211; list of family names to look for</li>
-<li><strong>additional</strong> (<em>boolean</em>) &#8211; also looks for AdditionalFamilyName_t (default True)</li>
+<li><strong>tree</strong> (<em>CGNS/Python</em>) – target tree to parse</li>
+<li><strong>str families</strong> (<em>list</em>) – list of family names to look for</li>
+<li><strong>additional</strong> (<em>boolean</em>) – also looks for AdditionalFamilyName_t (default True)</li>
 </ul>
 </td>
 </tr>
@@ -2400,9 +2403,9 @@ FamilyName_t or AdditionalFamilyName_t.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>tree</strong> (<em>CGNS/Python</em>) &#8211; target tree to parse</li>
-<li><strong>str families</strong> (<em>list</em>) &#8211; list of family names to look for</li>
-<li><strong>additional</strong> (<em>boolean</em>) &#8211; also looks for AdditionalFamilyName_t (default True)</li>
+<li><strong>tree</strong> (<em>CGNS/Python</em>) – target tree to parse</li>
+<li><strong>str families</strong> (<em>list</em>) – list of family names to look for</li>
+<li><strong>additional</strong> (<em>boolean</em>) – also looks for AdditionalFamilyName_t (default True)</li>
 </ul>
 </td>
 </tr>
@@ -2415,7 +2418,7 @@ FamilyName_t or AdditionalFamilyName_t.</p>
 
 <dl class="function">
 <dt id="CGNS.PAT.cgnsutils.getZoneSubRegionFromFamily">
-<code class="descclassname">CGNS.PAT.cgnsutils.</code><code class="descname">getZoneSubRegionFromFamily</code><span class="sig-paren">(</span><em>tree</em>, <em>families</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnsutils.getZoneSubRegionFromFamily" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">CGNS.PAT.cgnsutils.</code><code class="descname">getZoneSubRegionFromFamily</code><span class="sig-paren">(</span><em>tree</em>, <em>families</em>, <em>additional=True</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnsutils.getZoneSubRegionFromFamily" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the ZoneSubRegion paths for all having the target families as
 FamilyName_t or AdditionalFamilyName_t.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -2423,9 +2426,9 @@ FamilyName_t or AdditionalFamilyName_t.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>tree</strong> (<em>CGNS/Python</em>) &#8211; target tree to parse</li>
-<li><strong>str families</strong> (<em>list</em>) &#8211; list of family names to look for</li>
-<li><strong>additional</strong> (<em>boolean</em>) &#8211; also looks for AdditionalFamilyName_t (default True)</li>
+<li><strong>tree</strong> (<em>CGNS/Python</em>) – target tree to parse</li>
+<li><strong>str families</strong> (<em>list</em>) – list of family names to look for</li>
+<li><strong>additional</strong> (<em>boolean</em>) – also looks for AdditionalFamilyName_t (default True)</li>
 </ul>
 </td>
 </tr>
@@ -2439,14 +2442,14 @@ FamilyName_t or AdditionalFamilyName_t.</p>
 <dl class="function">
 <dt id="CGNS.PAT.cgnsutils.getFamiliesFromZone">
 <code class="descclassname">CGNS.PAT.cgnsutils.</code><code class="descname">getFamiliesFromZone</code><span class="sig-paren">(</span><em>tree</em>, <em>zonepath</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnsutils.getFamiliesFromZone" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return all the Zone&#8217;s FamilyName_t or AdditionalFamilyName_t.</p>
+<dd><p>Return all the Zone’s FamilyName_t or AdditionalFamilyName_t.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>tree</strong> (<em>CGNS/Python</em>) &#8211; target tree to parse</li>
-<li><strong>zonepath</strong> (<em>str</em>) &#8211; target zone</li>
+<li><strong>tree</strong> (<em>CGNS/Python</em>) – target tree to parse</li>
+<li><strong>zonepath</strong> (<em>str</em>) – target zone</li>
 </ul>
 </td>
 </tr>
@@ -2459,15 +2462,15 @@ FamilyName_t or AdditionalFamilyName_t.</p>
 
 <dl class="function">
 <dt id="CGNS.PAT.cgnsutils.getFamiliesFromBC">
-<code class="descclassname">CGNS.PAT.cgnsutils.</code><code class="descname">getFamiliesFromBC</code><span class="sig-paren">(</span><em>tree</em>, <em>bcpath</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnsutils.getFamiliesFromBC" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return all the BC&#8217;s FamilyName_t or AdditionalFamilyName_t.</p>
+<code class="descclassname">CGNS.PAT.cgnsutils.</code><code class="descname">getFamiliesFromBC</code><span class="sig-paren">(</span><em>tree</em>, <em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnsutils.getFamiliesFromBC" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return all the BC’s FamilyName_t or AdditionalFamilyName_t.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>tree</strong> (<em>CGNS/Python</em>) &#8211; target tree to parse</li>
-<li><strong>zonepath</strong> (<em>str</em>) &#8211; target zone</li>
+<li><strong>tree</strong> (<em>CGNS/Python</em>) – target tree to parse</li>
+<li><strong>path</strong> (<em>str</em>) – target path</li>
 </ul>
 </td>
 </tr>
@@ -2480,15 +2483,15 @@ FamilyName_t or AdditionalFamilyName_t.</p>
 
 <dl class="function">
 <dt id="CGNS.PAT.cgnsutils.getFamiliesFromZoneSubRegion">
-<code class="descclassname">CGNS.PAT.cgnsutils.</code><code class="descname">getFamiliesFromZoneSubRegion</code><span class="sig-paren">(</span><em>tree</em>, <em>zsrpath</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnsutils.getFamiliesFromZoneSubRegion" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return all the ZoneSubRegion&#8217;s FamilyName_t or AdditionalFamilyName_t.</p>
+<code class="descclassname">CGNS.PAT.cgnsutils.</code><code class="descname">getFamiliesFromZoneSubRegion</code><span class="sig-paren">(</span><em>tree</em>, <em>zonepath</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnsutils.getFamiliesFromZoneSubRegion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return all the ZoneSubRegion’s FamilyName_t or AdditionalFamilyName_t.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>tree</strong> (<em>CGNS/Python</em>) &#8211; target tree to parse</li>
-<li><strong>zonepath</strong> (<em>str</em>) &#8211; target zone</li>
+<li><strong>tree</strong> (<em>CGNS/Python</em>) – target tree to parse</li>
+<li><strong>zonepath</strong> (<em>str</em>) – target zone</li>
 </ul>
 </td>
 </tr>
@@ -2514,8 +2517,8 @@ FamilyName_t or AdditionalFamilyName_t.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>parent</strong> (<em>CGNS/Python</em>) &#8211; target node</li>
-<li><strong>ntype</strong> (<em>str</em>) &#8211; CGNS/SIDS node type to look for</li>
+<li><strong>parent</strong> (<em>CGNS/Python</em>) – target node</li>
+<li><strong>ntype</strong> (<em>str</em>) – CGNS/SIDS node type to look for</li>
 </ul>
 </td>
 </tr>
@@ -2543,7 +2546,7 @@ integer.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>node</strong> (<em>CGNS/Python</em>) &#8211; target node</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>node</strong> (<em>CGNS/Python</em>) – target node</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A string corresponding to the SIDS enumerate value</p>
@@ -2574,7 +2577,7 @@ integer.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>node</strong> (<em>CGNS/Python</em>) &#8211; target node</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>node</strong> (<em>CGNS/Python</em>) – target node</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">True if the node value is a SIDS enumerate</p>
@@ -2601,7 +2604,7 @@ integer.</p>
 <dd><p>Changes the name of an existing node:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">=</span><span class="n">hasChildNode</span><span class="p">(</span><span class="n">zone</span><span class="p">,</span><span class="n">CGK</span><span class="o">.</span><span class="n">ZoneType_s</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">nc</span> <span class="ow">in</span> <span class="n">childrenNames</span>
-  <span class="n">nc</span><span class="o">=</span><span class="n">setChildName</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span><span class="n">zonename</span><span class="p">,</span><span class="n">zonename</span><span class="o">+</span><span class="s1">&#39;#01&#39;</span><span class="p">)</span>
+    <span class="n">nc</span><span class="o">=</span><span class="n">setChildName</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span><span class="n">zonename</span><span class="p">,</span><span class="n">zonename</span><span class="o">+</span><span class="s1">&#39;#01&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -2609,9 +2612,9 @@ integer.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>parent</strong> (<em>CGNS/Python</em>) &#8211; the parent node</li>
-<li><strong>oldname</strong> (<em>str</em>) &#8211; the child name to look for</li>
-<li><strong>newname</strong> (<em>str</em>) &#8211; the new name</li>
+<li><strong>parent</strong> (<em>CGNS/Python</em>) – the parent node</li>
+<li><strong>oldname</strong> (<em>str</em>) – the child name to look for</li>
+<li><strong>newname</strong> (<em>str</em>) – the new name</li>
 </ul>
 </td>
 </tr>
@@ -2637,7 +2640,7 @@ does not.</li>
 <dd><p>Returns a child node if it exists:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">=</span><span class="n">hasChildNode</span><span class="p">(</span><span class="n">zone</span><span class="p">,</span><span class="n">CGK</span><span class="o">.</span><span class="n">ZoneType_s</span><span class="p">)</span>
 <span class="k">if</span> <span class="p">((</span><span class="n">n</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">stringValueMatches</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">CGK</span><span class="o">.</span><span class="n">Unstructured_s</span><span class="p">)):</span>
-  <span class="c1"># found unstructured zone</span>
+    <span class="c1"># found unstructured zone</span>
 </pre></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -2645,8 +2648,8 @@ does not.</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>parent</strong> (<em>CGNS/Python</em>) &#8211; the parent node</li>
-<li><strong>name</strong> (<em>str</em>) &#8211; the child name to look for</li>
+<li><strong>parent</strong> (<em>CGNS/Python</em>) – the parent node</li>
+<li><strong>name</strong> (<em>str</em>) – the child name to look for</li>
 </ul>
 </td>
 </tr>
@@ -2696,7 +2699,7 @@ does not.</li>
 
 <dl class="function">
 <dt id="CGNS.PAT.cgnsutils.checkLinkFile">
-<code class="descclassname">CGNS.PAT.cgnsutils.</code><code class="descname">checkLinkFile</code><span class="sig-paren">(</span><em>lkfile, lksearch=['']</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnsutils.checkLinkFile" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">CGNS.PAT.cgnsutils.</code><code class="descname">checkLinkFile</code><span class="sig-paren">(</span><em>lkfile</em>, <em>lksearch=None</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnsutils.checkLinkFile" title="Permalink to this definition">¶</a></dt>
 <dd><p>Checks if the file exists</p>
 </dd></dl>
 
@@ -2720,7 +2723,7 @@ does not.</li>
 
 <dl class="function">
 <dt id="CGNS.PAT.cgnsutils.prettyPrint">
-<code class="descclassname">CGNS.PAT.cgnsutils.</code><code class="descname">prettyPrint</code><span class="sig-paren">(</span><em>tree</em>, <em>path=''</em>, <em>depth=0</em>, <em>sort=False</em>, <em>links=[]</em>, <em>paths=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnsutils.prettyPrint" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">CGNS.PAT.cgnsutils.</code><code class="descname">prettyPrint</code><span class="sig-paren">(</span><em>tree</em>, <em>path=u''</em>, <em>depth=0</em>, <em>sort=False</em>, <em>links=None</em>, <em>paths=None</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnsutils.prettyPrint" title="Permalink to this definition">¶</a></dt>
 <dd><p>ASCII pretty print of the whole tree.</p>
 </dd></dl>
 
@@ -2736,7 +2739,7 @@ does not.</li>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>tree</strong> (<em>CGNS/Python</em>) &#8211; the CGNS/Python tree to parse</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>tree</strong> (<em>CGNS/Python</em>) – the CGNS/Python tree to parse</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A string representation of the whole tree</p>
@@ -2768,14 +2771,51 @@ representation of a <cite>numpy</cite> array, include <cite>dtype</cite> and <ci
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>tree</strong> (<em>CGNS/Python</em>) &#8211; the tree structure to save</li>
-<li><strong>filename</strong> (<em>str</em>) &#8211; the name of the file</li>
+<li><strong>tree</strong> (<em>CGNS/Python</em>) – the tree structure to save</li>
+<li><strong>filename</strong> (<em>str</em>) – the name of the file</li>
 </ul>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Remarks:</th><td class="field-body"><ul class="first last simple">
 <li>you have to use the``.py`` file extension if you use usual imports</li>
 <li>calls <a class="reference internal" href="#CGNS.PAT.cgnsutils.toString" title="CGNS.PAT.cgnsutils.toString"><code class="xref py py-func docutils literal"><span class="pre">toString()</span></code></a></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="CGNS.PAT.cgnsutils.getNodesFromTypeSet">
+<code class="descclassname">CGNS.PAT.cgnsutils.</code><code class="descname">getNodesFromTypeSet</code><span class="sig-paren">(</span><em>tree</em>, <em>typeset</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnsutils.getNodesFromTypeSet" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Iterator</strong> returns the children nodes of the argument CGNS/Python
+matching one of the type in the list. It allows an alternate traversal
+of the CGNS/Python tree:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">path</span><span class="p">,</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">getNodesFromTypeSet</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="p">[</span><span class="n">CGK</span><span class="o">.</span><span class="n">Zone_ts</span><span class="p">]):</span>
+    <span class="nb">print</span> <span class="s1">&#39;Next child:&#39;</span><span class="p">,</span> <span class="n">child</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>tree</strong> (<em>CGNS/Python</em>) – the tree structure to traverse</li>
+<li><strong>typeset</strong> (<em>list</em>) – the list of CGNS/SIDS types as strings</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><ul class="simple">
+<li>This is an iterator, it returns a tuple (path, CGNS/Python node)</li>
+</ul>
+</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Remarks:</th><td class="field-body"><ul class="first last simple">
+<li>this iterator must be used carefully to scan a CGNS/Python tree
+or do inplace modification. Modification of tree structure while
+using this iterator is hazardous.</li>
 </ul>
 </td>
 </tr>
@@ -2793,7 +2833,7 @@ representation of a <cite>numpy</cite> array, include <cite>dtype</cite> and <ci
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2001-2016, Marc Poinot.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
     </div>
   </body>
 </html>

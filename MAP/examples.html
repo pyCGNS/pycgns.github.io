@@ -1,23 +1,21 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>MAP Examples &#8212; MAP</title>
-    
     <link rel="stylesheet" href="_static/pycgns.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
         VERSION:     '4.2.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -26,10 +24,9 @@
     <link rel="shortcut icon" href="_static/pyCGNS-logo-tiny.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="top" title="MAP" href="_index.html" />
     <link rel="prev" title="About links" href="links.html" /> 
   </head>
-  <body role="document">
+  <body>
     <div class="related">
       <h3>Navigation</h3>
       <ul>
@@ -144,7 +141,7 @@ performed with the simple line:</p>
 </div>
 <p>If the <code class="docutils literal"><span class="pre">testfile.cgns</span></code> has no link the <code class="docutils literal"><span class="pre">links</span></code> and <code class="docutils literal"><span class="pre">paths</span></code> are
 empty lists and <code class="docutils literal"><span class="pre">tree</span></code> contains the <em>CGNS/Python</em> tree.
-The file name extension is not required, if the file doesn&#8217;t exist
+The file name extension is not required, if the file doesn’t exist
 or if it is not a <em>CGNS/HDF5</em> file exceptions are raised:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">T</span><span class="o">=</span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;a.hdf&#39;</span><span class="p">)</span>
 <span class="gt">Traceback (most recent call last):</span>
@@ -198,7 +195,7 @@ the name you want as far as the file system is happy with it:</p>
 <p>Of course, all these files are <em>HDF5</em> files, and you may have problem
 with tools is you play with file names. Then we strongly suggest you
 stay with usual file extensions such as <code class="docutils literal"><span class="pre">cgns</span></code> or <code class="docutils literal"><span class="pre">hdf</span></code>.</p>
-<p>If the file exist or if your file system doesn&#8217;t want you to write
+<p>If the file exist or if your file system doesn’t want you to write
 for any reason, you have an exception.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">T</span><span class="o">=</span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;r.hdf&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;r.hdf&#39;</span><span class="p">,</span><span class="n">T</span><span class="p">)</span>
@@ -424,7 +421,7 @@ described <a class="reference internal" href="#updatemode"><span class="std std-
 </div>
 <div class="section" id="some-usual-issues">
 <h2>Some usual issues<a class="headerlink" href="#some-usual-issues" title="Permalink to this headline">¶</a></h2>
-<p><em>to do: add here users&#8217; usual mistakes</em></p>
+<p><em>to do: add here users’ usual mistakes</em></p>
 </div>
 </div>
 
@@ -436,7 +433,7 @@ described <a class="reference internal" href="#updatemode"><span class="std std-
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2001-2016, Marc Poinot.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
     </div>
   </body>
 </html>

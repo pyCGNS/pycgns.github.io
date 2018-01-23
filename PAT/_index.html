@@ -1,23 +1,21 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>CGNS.PAT &#8212; PAT</title>
-    
     <link rel="stylesheet" href="_static/pycgns.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
         VERSION:     '4.2.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -26,10 +24,9 @@
     <link rel="shortcut icon" href="_static/pyCGNS-logo-tiny.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="top" title="PAT" href="#" />
     <link rel="next" title="Utility functions (cgnsutils.py)" href="utils.html" /> 
   </head>
-  <body role="document">
+  <body>
     <div class="related">
       <h3>Navigation</h3>
       <ul>
@@ -144,7 +141,7 @@ The <em>PAT</em> defines also constant modules such as
 <a class="reference internal" href="#pat-cgnskeywords"><span class="std std-ref">PAT.cgnskeywords</span></a> for all
 <em>SIDS</em> names or constant strings,
 <a class="reference internal" href="#pat-cgnstypes"><span class="std std-ref">PAT.cgnstypes</span></a> for the <em>SIDS</em> types
-descriptions (enumerates, allowed list of children...) and the
+descriptions (enumerates, allowed list of children…) and the
 <a class="reference internal" href="#pat-cgnserrors"><span class="std std-ref">PAT.cgnserrors</span></a>
 with error codes and their messages.</p>
 <p>A special module <a class="reference internal" href="#sids-patterns"><span class="std std-ref">PAT.SIDS</span></a> has all <em>CGNS/SIDS</em>
@@ -173,7 +170,7 @@ raises an <a class="reference internal" href="#pat-cgnserrors"><span class="std 
 Some functions also have an
 optional legacy management, to take into account old CGNS/Python stuff.
 When set to <cite>True</cite>, the <cite>CGNSTree_t</cite> top node should not appear and is
-not inserted when needed. The weird CGNS/SIDS types such as <cite>&#8220;int[IndexDimension]&#8221;</cite>
+not inserted when needed. The weird CGNS/SIDS types such as <cite>“int[IndexDimension]”</cite>
 are used instead of CGNS/Python replacements.
 The <cite>legacy</cite> argument is set to <cite>False</cite> as default.</p>
 <p>The list below gives an overview of publicly available functions.</p>
@@ -195,7 +192,7 @@ The <cite>legacy</cite> argument is set to <cite>False</cite> as default.</p>
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><strong>Node Basics</strong></td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="utils.html#CGNS.PAT.cgnsutils.nodeCreate" title="CGNS.PAT.cgnsutils.nodeCreate"><code class="xref py py-func docutils literal"><span class="pre">nodeCreate</span></code></a></td>
 <td>Create a new node</td>
@@ -224,7 +221,7 @@ The <cite>legacy</cite> argument is set to <cite>False</cite> as default.</p>
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><strong>Node Structure and Contents</strong>   <a class="reference internal" href="#pat-cgnsutils"><span class="std std-ref">(top)</span></a></td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="utils.html#CGNS.PAT.cgnsutils.checkNode" title="CGNS.PAT.cgnsutils.checkNode"><code class="xref py py-func docutils literal"><span class="pre">checkNode</span></code></a></td>
 <td>Checks basic node structure</td>
@@ -248,7 +245,7 @@ The <cite>legacy</cite> argument is set to <cite>False</cite> as default.</p>
 <td>Checks name syntax (str arg)</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="utils.html#CGNS.PAT.cgnsutils.checkSameValue" title="CGNS.PAT.cgnsutils.checkSameValue"><code class="xref py py-func docutils literal"><span class="pre">checkSameNode</span></code></a></td>
-<td>Compare node contents (name,type,...)</td>
+<td>Compare node contents (name,type,…)</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="utils.html#CGNS.PAT.cgnsutils.checkDuplicatedName" title="CGNS.PAT.cgnsutils.checkDuplicatedName"><code class="xref py py-func docutils literal"><span class="pre">checkDuplicatedName</span></code></a></td>
 <td>Checks name against children</td>
@@ -292,7 +289,7 @@ The <cite>legacy</cite> argument is set to <cite>False</cite> as default.</p>
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><strong>Search and Retrieve</strong>  <a class="reference internal" href="#pat-cgnsutils"><span class="std std-ref">(top)</span></a></td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="utils.html#CGNS.PAT.cgnsutils.getNodeByPath" title="CGNS.PAT.cgnsutils.getNodeByPath"><code class="xref py py-func docutils literal"><span class="pre">getNodeByPath</span></code></a></td>
 <td>Return  a node from its path</td>
@@ -333,7 +330,7 @@ The <cite>legacy</cite> argument is set to <cite>False</cite> as default.</p>
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><strong>CGNS/SIDS information</strong>    <a class="reference internal" href="#pat-cgnsutils"><span class="std std-ref">(top)</span></a></td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="utils.html#CGNS.PAT.cgnsutils.getAuthNames" title="CGNS.PAT.cgnsutils.getAuthNames"><code class="xref py py-func docutils literal"><span class="pre">getAuthNames</span></code></a></td>
 <td>List of allowed CGNS/SIDS names as child of node</td>
@@ -362,7 +359,7 @@ The <cite>legacy</cite> argument is set to <cite>False</cite> as default.</p>
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><strong>Value manipulation</strong>  <a class="reference internal" href="#pat-cgnsutils"><span class="std std-ref">(top)</span></a></td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="utils.html#CGNS.PAT.cgnsutils.getValueShape" title="CGNS.PAT.cgnsutils.getValueShape"><code class="xref py py-func docutils literal"><span class="pre">getValueShape</span></code></a></td>
 <td>Return node value shape (numpy.ndarray)</td>
@@ -430,7 +427,7 @@ The <cite>legacy</cite> argument is set to <cite>False</cite> as default.</p>
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><strong>Path functions</strong> <a class="reference internal" href="#pat-cgnsutils"><span class="std std-ref">(top)</span></a></td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="utils.html#CGNS.PAT.cgnsutils.getPathFromNode" title="CGNS.PAT.cgnsutils.getPathFromNode"><code class="xref py py-func docutils literal"><span class="pre">getPathFromNode</span></code></a></td>
 <td>Get the path of a node not including root name</td>
@@ -492,7 +489,7 @@ The <cite>legacy</cite> argument is set to <cite>False</cite> as default.</p>
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><strong>Miscellaneous</strong>  <a class="reference internal" href="#pat-cgnsutils"><span class="std std-ref">(top)</span></a></td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="utils.html#CGNS.PAT.cgnsutils.toString" title="CGNS.PAT.cgnsutils.toString"><code class="xref py py-func docutils literal"><span class="pre">toString</span></code></a></td>
 <td>Get a tree as a string</td>
@@ -538,7 +535,7 @@ The function names patterns are:</p>
 <tr class="row-odd"><td>SIDS</td>
 <td>Function</td>
 </tr>
-<tr class="row-even"><td>&nbsp;</td>
+<tr class="row-even"><td>&#160;</td>
 <td><a class="reference internal" href="lib.html#CGNS.PAT.cgnslib.newCGNSTree" title="CGNS.PAT.cgnslib.newCGNSTree"><code class="xref py py-func docutils literal"><span class="pre">newCGNSTree</span></code></a></td>
 </tr>
 <tr class="row-odd"><td>6.2</td>
@@ -562,10 +559,10 @@ The function names patterns are:</p>
 <tr class="row-odd"><td>4.6</td>
 <td><a class="reference internal" href="lib.html#CGNS.PAT.cgnslib.newIndexArray" title="CGNS.PAT.cgnslib.newIndexArray"><code class="xref py py-func docutils literal"><span class="pre">newIndexArray</span></code></a></td>
 </tr>
-<tr class="row-even"><td>&nbsp;</td>
+<tr class="row-even"><td>&#160;</td>
 <td><a class="reference internal" href="lib.html#CGNS.PAT.cgnslib.newPointList" title="CGNS.PAT.cgnslib.newPointList"><code class="xref py py-func docutils literal"><span class="pre">newPointList</span></code></a></td>
 </tr>
-<tr class="row-odd"><td>&nbsp;</td>
+<tr class="row-odd"><td>&#160;</td>
 <td><a class="reference internal" href="lib.html#CGNS.PAT.cgnslib.newPointRange" title="CGNS.PAT.cgnslib.newPointRange"><code class="xref py py-func docutils literal"><span class="pre">newPointRange</span></code></a></td>
 </tr>
 <tr class="row-even"><td>4.8</td>
@@ -574,13 +571,13 @@ The function names patterns are:</p>
 <tr class="row-odd"><td>5.1.1</td>
 <td><a class="reference internal" href="lib.html#CGNS.PAT.cgnslib.newDataConversion" title="CGNS.PAT.cgnslib.newDataConversion"><code class="xref py py-func docutils literal"><span class="pre">newDataConversion</span></code></a></td>
 </tr>
-<tr class="row-even"><td>&nbsp;</td>
+<tr class="row-even"><td>&#160;</td>
 <td><a class="reference internal" href="lib.html#CGNS.PAT.cgnslib.newSimulationType" title="CGNS.PAT.cgnslib.newSimulationType"><code class="xref py py-func docutils literal"><span class="pre">newSimulationType</span></code></a></td>
 </tr>
-<tr class="row-odd"><td>&nbsp;</td>
+<tr class="row-odd"><td>&#160;</td>
 <td><code class="xref py py-func docutils literal"><span class="pre">newBase</span></code></td>
 </tr>
-<tr class="row-even"><td>&nbsp;</td>
+<tr class="row-even"><td>&#160;</td>
 <td><a class="reference internal" href="lib.html#CGNS.PAT.cgnslib.newOrdinal" title="CGNS.PAT.cgnslib.newOrdinal"><code class="xref py py-func docutils literal"><span class="pre">newOrdinal</span></code></a></td>
 </tr>
 <tr class="row-odd"><td>6.3</td>
@@ -592,7 +589,7 @@ The function names patterns are:</p>
 <tr class="row-odd"><td>5.1</td>
 <td><a class="reference internal" href="lib.html#CGNS.PAT.cgnslib.newDataArray" title="CGNS.PAT.cgnslib.newDataArray"><code class="xref py py-func docutils literal"><span class="pre">newDataArray</span></code></a></td>
 </tr>
-<tr class="row-even"><td>&nbsp;</td>
+<tr class="row-even"><td>&#160;</td>
 <td><a class="reference internal" href="lib.html#CGNS.PAT.cgnslib.newDiscreteData" title="CGNS.PAT.cgnslib.newDiscreteData"><code class="xref py py-func docutils literal"><span class="pre">newDiscreteData</span></code></a></td>
 </tr>
 <tr class="row-odd"><td>7.3</td>
@@ -604,7 +601,7 @@ The function names patterns are:</p>
 <tr class="row-odd"><td>9.3</td>
 <td><code class="xref py py-func docutils literal"><span class="pre">newBC</span></code></td>
 </tr>
-<tr class="row-even"><td>&nbsp;</td>
+<tr class="row-even"><td>&#160;</td>
 <td><a class="reference internal" href="lib.html#CGNS.PAT.cgnslib.newBoundary" title="CGNS.PAT.cgnslib.newBoundary"><code class="xref py py-func docutils literal"><span class="pre">newBoundary</span></code></a></td>
 </tr>
 <tr class="row-odd"><td>9.4</td>
@@ -616,7 +613,7 @@ The function names patterns are:</p>
 <tr class="row-odd"><td>9.6</td>
 <td><a class="reference internal" href="lib.html#CGNS.PAT.cgnslib.newBCProperty" title="CGNS.PAT.cgnslib.newBCProperty"><code class="xref py py-func docutils literal"><span class="pre">newBCProperty</span></code></a></td>
 </tr>
-<tr class="row-even"><td>&nbsp;</td>
+<tr class="row-even"><td>&#160;</td>
 <td><a class="reference internal" href="lib.html#CGNS.PAT.cgnslib.newCoordinates" title="CGNS.PAT.cgnslib.newCoordinates"><code class="xref py py-func docutils literal"><span class="pre">newCoordinates</span></code></a></td>
 </tr>
 <tr class="row-odd"><td>7.5</td>
@@ -703,7 +700,7 @@ The function names patterns are:</p>
 <tr class="row-even"><td>12.6</td>
 <td><a class="reference internal" href="lib.html#CGNS.PAT.cgnslib.newFamily" title="CGNS.PAT.cgnslib.newFamily"><code class="xref py py-func docutils literal"><span class="pre">newFamily</span></code></a></td>
 </tr>
-<tr class="row-odd"><td>&nbsp;</td>
+<tr class="row-odd"><td>&#160;</td>
 <td><code class="xref py py-func docutils literal"><span class="pre">newFamilyName</span></code></td>
 </tr>
 <tr class="row-even"><td>12.7</td>
@@ -721,19 +718,19 @@ The function names patterns are:</p>
 <tr class="row-even"><td>12.11</td>
 <td><a class="reference internal" href="lib.html#CGNS.PAT.cgnslib.newGravity" title="CGNS.PAT.cgnslib.newGravity"><code class="xref py py-func docutils literal"><span class="pre">newGravity</span></code></a></td>
 </tr>
-<tr class="row-odd"><td>&nbsp;</td>
+<tr class="row-odd"><td>&#160;</td>
 <td><code class="xref py py-func docutils literal"><span class="pre">newField</span></code></td>
 </tr>
-<tr class="row-even"><td>&nbsp;</td>
+<tr class="row-even"><td>&#160;</td>
 <td><code class="xref py py-func docutils literal"><span class="pre">newModel</span></code></td>
 </tr>
-<tr class="row-odd"><td>&nbsp;</td>
+<tr class="row-odd"><td>&#160;</td>
 <td><code class="xref py py-func docutils literal"><span class="pre">newDiffusionModel</span></code></td>
 </tr>
-<tr class="row-even"><td>&nbsp;</td>
+<tr class="row-even"><td>&#160;</td>
 <td><code class="xref py py-func docutils literal"><span class="pre">newParentElements</span></code></td>
 </tr>
-<tr class="row-odd"><td>&nbsp;</td>
+<tr class="row-odd"><td>&#160;</td>
 <td><code class="xref py py-func docutils literal"><span class="pre">newParentElementsPosition</span></code></td>
 </tr>
 </tbody>
@@ -802,8 +799,8 @@ variables. This leads to several advantages:</p>
 <blockquote>
 <div><ul class="simple">
 <li>You cannot make a typo on a name. For example, if you use
-&#8220;ZoneGridConnectivity&#8221; as a plain string you may mistype it as
-&#8220;Zonegridconnectivity&#8221; or &#8220;ZoneGridConectivity&#8221; and this may silently
+“ZoneGridConnectivity” as a plain string you may mistype it as
+“Zonegridconnectivity” or “ZoneGridConectivity” and this may silently
 produce a bad CGNS tree.</li>
 <li>You can handle enumerate as lists. For example you have lists for
 units: MassUnits_l, LengthUnits_l, AllDimensionalUnits_l, AllUnits_l</li>
@@ -839,14 +836,15 @@ units: MassUnits_l, LengthUnits_l, AllDimensionalUnits_l, AllUnits_l</li>
 
 <span class="sd"> [6] The variables are declared with an integer value (not enumerates)</span>
 <span class="sd"> wrt their position in the _l list, for example:</span>
-<span class="sd"> (Null,UserDefined,Structured,Unstructured)=ZoneType_.keys()</span>
+<span class="sd"> (Null,UserDefined,Structured,Unstructured)=list(ZoneType_)</span>
 
 <span class="sd"> [7] The _t type names are reserved for Cython, enums are then used as int:</span>
 <span class="sd"> ctypedef int DataType_t</span>
 <span class="sd"> int cg_array_read_as(int A, DataType_t type, void *Data)</span>
 <span class="sd"> </span>
 <span class="sd">&quot;&quot;&quot;</span>
-
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">unicode_literals</span>
+<span class="kn">from</span> <span class="nn">builtins</span> <span class="k">import</span> <span class="p">(</span><span class="nb">bytes</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">range</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span>
 <span class="c1"># ----------------------------------------------------------------------------</span>
 <span class="kn">import</span> <span class="nn">CGNS.pyCGNSconfig</span>
 
@@ -942,7 +940,7 @@ units: MassUnits_l, LengthUnits_l, AllDimensionalUnits_l, AllUnits_l</li>
 <span class="n">MassUnits</span> <span class="o">=</span> <span class="n">stringAsKeyDict</span><span class="p">(</span><span class="n">MassUnits_l</span><span class="p">)</span>
 <span class="n">MassUnits_</span> <span class="o">=</span> <span class="n">enumAsKeyDict</span><span class="p">(</span><span class="n">MassUnits_l</span><span class="p">)</span>
 <span class="p">(</span><span class="n">MassUnitsNull</span><span class="p">,</span> <span class="n">MassUnitsUserDefined</span><span class="p">,</span>
- <span class="n">Kilogram</span><span class="p">,</span> <span class="n">Gram</span><span class="p">,</span> <span class="n">Slug</span><span class="p">,</span> <span class="n">PoundMass</span><span class="p">)</span> <span class="o">=</span> <span class="n">MassUnits_</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+ <span class="n">Kilogram</span><span class="p">,</span> <span class="n">Gram</span><span class="p">,</span> <span class="n">Slug</span><span class="p">,</span> <span class="n">PoundMass</span><span class="p">)</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">MassUnits_</span><span class="p">)</span>
 
 <span class="c1"># --------------------------------------------------</span>
 <span class="n">Meter_s</span> <span class="o">=</span> <span class="s2">&quot;Meter&quot;</span>
@@ -956,7 +954,7 @@ units: MassUnits_l, LengthUnits_l, AllDimensionalUnits_l, AllUnits_l</li>
 <span class="n">LengthUnits</span> <span class="o">=</span> <span class="n">stringAsKeyDict</span><span class="p">(</span><span class="n">LengthUnits_l</span><span class="p">)</span>
 <span class="n">LengthUnits_</span> <span class="o">=</span> <span class="n">enumAsKeyDict</span><span class="p">(</span><span class="n">LengthUnits_l</span><span class="p">)</span>
 <span class="p">(</span><span class="n">LengthUnitsNull</span><span class="p">,</span> <span class="n">LengthUnitsUserDefined</span><span class="p">,</span>
- <span class="n">Meter</span><span class="p">,</span> <span class="n">Centimeter</span><span class="p">,</span> <span class="n">Millimeter</span><span class="p">,</span> <span class="n">Foot</span><span class="p">,</span> <span class="n">Inch</span><span class="p">)</span> <span class="o">=</span> <span class="n">LengthUnits_</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+ <span class="n">Meter</span><span class="p">,</span> <span class="n">Centimeter</span><span class="p">,</span> <span class="n">Millimeter</span><span class="p">,</span> <span class="n">Foot</span><span class="p">,</span> <span class="n">Inch</span><span class="p">)</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">LengthUnits_</span><span class="p">)</span>
 
 <span class="c1"># --------------------------------------------------</span>
 <span class="n">Second_s</span> <span class="o">=</span> <span class="s2">&quot;Second&quot;</span>
@@ -964,7 +962,7 @@ units: MassUnits_l, LengthUnits_l, AllDimensionalUnits_l, AllUnits_l</li>
 
 <span class="n">TimeUnits</span> <span class="o">=</span> <span class="n">stringAsKeyDict</span><span class="p">(</span><span class="n">TimeUnits_l</span><span class="p">)</span>
 <span class="n">TimeUnits_</span> <span class="o">=</span> <span class="n">enumAsKeyDict</span><span class="p">(</span><span class="n">TimeUnits_l</span><span class="p">)</span>
-<span class="p">(</span><span class="n">TimeUnitsNull</span><span class="p">,</span> <span class="n">TimeUnitsUserDefined</span><span class="p">,</span> <span class="n">Second</span><span class="p">)</span> <span class="o">=</span> <span class="n">TimeUnits_</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="p">(</span><span class="n">TimeUnitsNull</span><span class="p">,</span> <span class="n">TimeUnitsUserDefined</span><span class="p">,</span> <span class="n">Second</span><span class="p">)</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">TimeUnits_</span><span class="p">)</span>
 
 <span class="c1"># --------------------------------------------------</span>
 <span class="n">Kelvin_s</span> <span class="o">=</span> <span class="s2">&quot;Kelvin&quot;</span>
@@ -977,7 +975,7 @@ units: MassUnits_l, LengthUnits_l, AllDimensionalUnits_l, AllUnits_l</li>
 <span class="n">TemperatureUnits</span> <span class="o">=</span> <span class="n">stringAsKeyDict</span><span class="p">(</span><span class="n">TemperatureUnits_l</span><span class="p">)</span>
 <span class="n">TemperatureUnits_</span> <span class="o">=</span> <span class="n">enumAsKeyDict</span><span class="p">(</span><span class="n">TemperatureUnits_l</span><span class="p">)</span>
 <span class="p">(</span><span class="n">TemperatureUnitsNull</span><span class="p">,</span> <span class="n">TemperatureUnitsUserDefined</span><span class="p">,</span>
- <span class="n">Kelvin</span><span class="p">,</span> <span class="n">Celcius</span><span class="p">,</span> <span class="n">Rankine</span><span class="p">,</span> <span class="n">Fahrenheit</span><span class="p">)</span> <span class="o">=</span> <span class="n">TemperatureUnits_</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+ <span class="n">Kelvin</span><span class="p">,</span> <span class="n">Celcius</span><span class="p">,</span> <span class="n">Rankine</span><span class="p">,</span> <span class="n">Fahrenheit</span><span class="p">)</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">TemperatureUnits_</span><span class="p">)</span>
 
 <span class="c1"># --------------------------------------------------</span>
 <span class="n">Degree_s</span> <span class="o">=</span> <span class="s2">&quot;Degree&quot;</span>
@@ -986,7 +984,7 @@ units: MassUnits_l, LengthUnits_l, AllDimensionalUnits_l, AllUnits_l</li>
 
 <span class="n">AngleUnits</span> <span class="o">=</span> <span class="n">stringAsKeyDict</span><span class="p">(</span><span class="n">AngleUnits_l</span><span class="p">)</span>
 <span class="n">AngleUnits_</span> <span class="o">=</span> <span class="n">enumAsKeyDict</span><span class="p">(</span><span class="n">AngleUnits_l</span><span class="p">)</span>
-<span class="p">(</span><span class="n">AngleUnitsNull</span><span class="p">,</span> <span class="n">AngleUnitsUserDefined</span><span class="p">,</span> <span class="n">Degree</span><span class="p">,</span> <span class="n">Radian</span><span class="p">)</span> <span class="o">=</span> <span class="n">AngleUnits_</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="p">(</span><span class="n">AngleUnitsNull</span><span class="p">,</span> <span class="n">AngleUnitsUserDefined</span><span class="p">,</span> <span class="n">Degree</span><span class="p">,</span> <span class="n">Radian</span><span class="p">)</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">AngleUnits_</span><span class="p">)</span>
 
 <span class="c1"># --------------------------------------------------</span>
 <span class="n">Ampere_s</span> <span class="o">=</span> <span class="s2">&quot;Ampere&quot;</span>
@@ -1002,7 +1000,7 @@ units: MassUnits_l, LengthUnits_l, AllDimensionalUnits_l, AllUnits_l</li>
 <span class="n">ElectricCurrentUnits_</span> <span class="o">=</span> <span class="n">enumAsKeyDict</span><span class="p">(</span><span class="n">ElectricCurrentUnits_l</span><span class="p">)</span>
 <span class="p">(</span><span class="n">ElectricCurrentUnitsNull</span><span class="p">,</span> <span class="n">ElectricCurrentUnitsUserDefined</span><span class="p">,</span>
  <span class="n">Ampere</span><span class="p">,</span> <span class="n">Abampere</span><span class="p">,</span> <span class="n">Statampere</span><span class="p">,</span>
- <span class="n">Edison</span><span class="p">,</span> <span class="n">auCurrent</span><span class="p">)</span> <span class="o">=</span> <span class="n">ElectricCurrentUnits_</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+ <span class="n">Edison</span><span class="p">,</span> <span class="n">auCurrent</span><span class="p">)</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">ElectricCurrentUnits_</span><span class="p">)</span>
 
 <span class="c1"># --------------------------------------------------</span>
 <span class="n">Mole_s</span> <span class="o">=</span> <span class="s2">&quot;Mole&quot;</span>
@@ -1017,7 +1015,7 @@ units: MassUnits_l, LengthUnits_l, AllDimensionalUnits_l, AllUnits_l</li>
 <span class="n">SubstanceAmountUnits_</span> <span class="o">=</span> <span class="n">enumAsKeyDict</span><span class="p">(</span><span class="n">SubstanceAmountUnits_l</span><span class="p">)</span>
 <span class="p">(</span><span class="n">SubstanceAmountUnitsNull</span><span class="p">,</span> <span class="n">SubstanceAmountUnitsUserDefined</span><span class="p">,</span>
  <span class="n">Mole</span><span class="p">,</span> <span class="n">Entities</span><span class="p">,</span>
- <span class="n">StandardCubicFoot</span><span class="p">,</span> <span class="n">StandardCubicMeter</span><span class="p">)</span> <span class="o">=</span> <span class="n">SubstanceAmountUnits_</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+ <span class="n">StandardCubicFoot</span><span class="p">,</span> <span class="n">StandardCubicMeter</span><span class="p">)</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">SubstanceAmountUnits_</span><span class="p">)</span>
 
 <span class="c1"># --------------------------------------------------</span>
 <span class="n">Candela_s</span> <span class="o">=</span> <span class="s2">&quot;Candela&quot;</span>
@@ -1031,7 +1029,7 @@ units: MassUnits_l, LengthUnits_l, AllDimensionalUnits_l, AllUnits_l</li>
 <span class="n">LuminousIntensityUnits</span> <span class="o">=</span> <span class="n">stringAsKeyDict</span><span class="p">(</span><span class="n">LuminousIntensityUnits_l</span><span class="p">)</span>
 <span class="n">LuminousIntensityUnits_</span> <span class="o">=</span> <span class="n">enumAsKeyDict</span><span class="p">(</span><span class="n">LuminousIntensityUnits_l</span><span class="p">)</span>
 <span class="p">(</span><span class="n">LuminousIntensityUnitsNull</span><span class="p">,</span> <span class="n">LuminousIntensityUnitsUserDefined</span><span class="p">,</span>
- <span class="n">Candela</span><span class="p">,</span> <span class="n">Candle</span><span class="p">,</span> <span class="n">Carcel</span><span class="p">,</span> <span class="n">Hefner</span><span class="p">,</span> <span class="n">Violle</span><span class="p">)</span> <span class="o">=</span> <span class="n">LuminousIntensityUnits_</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+ <span class="n">Candela</span><span class="p">,</span> <span class="n">Candle</span><span class="p">,</span> <span class="n">Carcel</span><span class="p">,</span> <span class="n">Hefner</span><span class="p">,</span> <span class="n">Violle</span><span class="p">)</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">LuminousIntensityUnits_</span><span class="p">)</span>
 
 <span class="c1"># --------------------------------------------------</span>
 <span class="n">DimensionalUnits_s</span> <span class="o">=</span> <span class="s2">&quot;DimensionalUnits&quot;</span>
@@ -1061,7 +1059,7 @@ units: MassUnits_l, LengthUnits_l, AllDimensionalUnits_l, AllUnits_l</li>
 <span class="n">DataClass_</span> <span class="o">=</span> <span class="n">enumAsKeyDict</span><span class="p">(</span><span class="n">DataClass_l</span><span class="p">)</span>
 <span class="p">(</span><span class="n">Null</span><span class="p">,</span> <span class="n">UserDefined</span><span class="p">,</span> <span class="n">Dimensional</span><span class="p">,</span> <span class="n">NormalizedByDimensional</span><span class="p">,</span>
  <span class="n">NormalizedByUnknownDimensional</span><span class="p">,</span> <span class="n">NondimensionalParameter</span><span class="p">,</span>
- <span class="n">DimensionlessConstant</span><span class="p">)</span> <span class="o">=</span> <span class="n">DataClass_</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+ <span class="n">DimensionlessConstant</span><span class="p">)</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">DataClass_</span><span class="p">)</span>
 
 <span class="c1"># ------------------------------------------------------------</span>
 <span class="n">GridLocation_ts</span> <span class="o">=</span> <span class="s2">&quot;GridLocation_t&quot;</span>
@@ -1084,7 +1082,7 @@ units: MassUnits_l, LengthUnits_l, AllDimensionalUnits_l, AllUnits_l</li>
 <span class="n">GridLocation</span> <span class="o">=</span> <span class="n">stringAsKeyDict</span><span class="p">(</span><span class="n">GridLocation_l</span><span class="p">)</span>
 <span class="n">GridLocation_</span> <span class="o">=</span> <span class="n">enumAsKeyDict</span><span class="p">(</span><span class="n">GridLocation_l</span><span class="p">)</span>
 <span class="p">(</span><span class="n">Null</span><span class="p">,</span> <span class="n">UserDefined</span><span class="p">,</span> <span class="n">Vertex</span><span class="p">,</span> <span class="n">CellCenter</span><span class="p">,</span> <span class="n">FaceCenter</span><span class="p">,</span>
- <span class="n">IFaceCenter</span><span class="p">,</span> <span class="n">JFaceCenter</span><span class="p">,</span> <span class="n">KFaceCenter</span><span class="p">,</span> <span class="n">EdgeCenter</span><span class="p">)</span> <span class="o">=</span> <span class="n">GridLocation_</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+ <span class="n">IFaceCenter</span><span class="p">,</span> <span class="n">JFaceCenter</span><span class="p">,</span> <span class="n">KFaceCenter</span><span class="p">,</span> <span class="n">EdgeCenter</span><span class="p">)</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">GridLocation_</span><span class="p">)</span>
 
 <span class="n">VertexSize_s</span> <span class="o">=</span> <span class="s2">&quot;VertexSize&quot;</span>
 <span class="n">CellSize_s</span> <span class="o">=</span> <span class="s2">&quot;CellSize&quot;</span>
@@ -1108,7 +1106,7 @@ units: MassUnits_l, LengthUnits_l, AllDimensionalUnits_l, AllUnits_l</li>
 <span class="n">PointSetType</span> <span class="o">=</span> <span class="n">stringAsKeyDict</span><span class="p">(</span><span class="n">PointSetType_l</span><span class="p">)</span>
 <span class="n">PointSetType_</span> <span class="o">=</span> <span class="n">enumAsKeyDict</span><span class="p">(</span><span class="n">PointSetType_l</span><span class="p">)</span>
 <span class="p">(</span><span class="n">Null</span><span class="p">,</span> <span class="n">UserDefined</span><span class="p">,</span> <span class="n">PointList</span><span class="p">,</span> <span class="n">PointListDonor</span><span class="p">,</span> <span class="n">PointRange</span><span class="p">,</span> <span class="n">PointRangeDonor</span><span class="p">,</span>
- <span class="n">ElementRange</span><span class="p">,</span> <span class="n">ElementList</span><span class="p">,</span> <span class="n">CellListDonor</span><span class="p">)</span> <span class="o">=</span> <span class="n">PointSetType_</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+ <span class="n">ElementRange</span><span class="p">,</span> <span class="n">ElementList</span><span class="p">,</span> <span class="n">CellListDonor</span><span class="p">)</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">PointSetType_</span><span class="p">)</span>
 
 <span class="n">ZoneDonorName_s</span> <span class="o">=</span> <span class="s2">&quot;ZoneDonorName&quot;</span>
 
@@ -1124,7 +1122,7 @@ units: MassUnits_l, LengthUnits_l, AllDimensionalUnits_l, AllUnits_l</li>
 <span class="n">BCDataType_l</span> <span class="o">=</span> <span class="p">[</span><span class="n">Null_s</span><span class="p">,</span> <span class="n">UserDefined_s</span><span class="p">,</span> <span class="n">Dirichlet_s</span><span class="p">,</span> <span class="n">Neumann_s</span><span class="p">]</span>
 <span class="n">BCDataType</span> <span class="o">=</span> <span class="n">stringAsKeyDict</span><span class="p">(</span><span class="n">BCDataType_l</span><span class="p">)</span>
 <span class="n">BCDataType_</span> <span class="o">=</span> <span class="n">enumAsKeyDict</span><span class="p">(</span><span class="n">BCDataType_l</span><span class="p">)</span>
-<span class="p">(</span><span class="n">BCDataTypeNull</span><span class="p">,</span> <span class="n">BCDataTypeUserDefined</span><span class="p">,</span> <span class="n">Dirichlet</span><span class="p">,</span> <span class="n">Neumann</span><span class="p">)</span> <span class="o">=</span> <span class="n">BCDataType_</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="p">(</span><span class="n">BCDataTypeNull</span><span class="p">,</span> <span class="n">BCDataTypeUserDefined</span><span class="p">,</span> <span class="n">Dirichlet</span><span class="p">,</span> <span class="n">Neumann</span><span class="p">)</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">BCDataType_</span><span class="p">)</span>
 
 <span class="n">FullPotential_s</span> <span class="o">=</span> <span class="s2">&quot;FullPotential&quot;</span>
 <span class="n">Euler_s</span> <span class="o">=</span> <span class="s2">&quot;Euler&quot;</span>
@@ -1188,7 +1186,7 @@ units: MassUnits_l, LengthUnits_l, AllDimensionalUnits_l, AllUnits_l</li>
 <span class="n">DataType_</span> <span class="o">=</span> <span class="n">enumAsKeyDict</span><span class="p">(</span><span class="n">DataType_l</span><span class="p">)</span>
 
 <span class="p">(</span><span class="n">DataTypeNull</span><span class="p">,</span> <span class="n">DataTypeUserDefined</span><span class="p">,</span>
- <span class="n">Integer</span><span class="p">,</span> <span class="n">RealSingle</span><span class="p">,</span> <span class="n">RealDouble</span><span class="p">,</span> <span class="n">Character</span><span class="p">,</span> <span class="n">LongInteger</span><span class="p">)</span> <span class="o">=</span> <span class="n">DataType_</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+ <span class="n">Integer</span><span class="p">,</span> <span class="n">RealSingle</span><span class="p">,</span> <span class="n">RealDouble</span><span class="p">,</span> <span class="n">Character</span><span class="p">,</span> <span class="n">LongInteger</span><span class="p">)</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">DataType_</span><span class="p">)</span>
 
 <span class="c1"># --------------------------------------------------</span>
 <span class="n">GridConnectivityType_ts</span> <span class="o">=</span> <span class="s2">&quot;GridConnectivityType_t&quot;</span>
@@ -1207,7 +1205,7 @@ units: MassUnits_l, LengthUnits_l, AllDimensionalUnits_l, AllUnits_l</li>
 <span class="n">GridConnectivityType_</span> <span class="o">=</span> <span class="n">enumAsKeyDict</span><span class="p">(</span><span class="n">GridConnectivityType_l</span><span class="p">)</span>
 
 <span class="p">(</span><span class="n">Null</span><span class="p">,</span> <span class="n">UserDefined</span><span class="p">,</span>
- <span class="n">Overset</span><span class="p">,</span> <span class="n">Abutting</span><span class="p">,</span> <span class="n">Abutting1to1</span><span class="p">)</span> <span class="o">=</span> <span class="n">GridConnectivityType_</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+ <span class="n">Overset</span><span class="p">,</span> <span class="n">Abutting</span><span class="p">,</span> <span class="n">Abutting1to1</span><span class="p">)</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">GridConnectivityType_</span><span class="p">)</span>
 
 <span class="c1"># --------------------------------------------------</span>
 <span class="n">ZoneType_ts</span> <span class="o">=</span> <span class="s2">&quot;ZoneType_t&quot;</span>
@@ -1221,7 +1219,7 @@ units: MassUnits_l, LengthUnits_l, AllDimensionalUnits_l, AllUnits_l</li>
 <span class="n">ZoneType</span> <span class="o">=</span> <span class="n">stringAsKeyDict</span><span class="p">(</span><span class="n">ZoneType_l</span><span class="p">)</span>
 <span class="n">ZoneType_</span> <span class="o">=</span> <span class="n">enumAsKeyDict</span><span class="p">(</span><span class="n">ZoneType_l</span><span class="p">)</span>
 
-<span class="p">(</span><span class="n">ZoneTypeNull</span><span class="p">,</span> <span class="n">ZoneTypeUserdefined</span><span class="p">,</span> <span class="n">Structured</span><span class="p">,</span> <span class="n">Unstructured</span><span class="p">)</span> <span class="o">=</span> <span class="n">ZoneType_</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="p">(</span><span class="n">ZoneTypeNull</span><span class="p">,</span> <span class="n">ZoneTypeUserdefined</span><span class="p">,</span> <span class="n">Structured</span><span class="p">,</span> <span class="n">Unstructured</span><span class="p">)</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">ZoneType_</span><span class="p">)</span>
 
 <span class="n">ZoneSubRegion_ts</span> <span class="o">=</span> <span class="s2">&quot;ZoneSubRegion_t&quot;</span>
 <span class="n">BCRegionName_s</span> <span class="o">=</span> <span class="s2">&quot;BCRegionName&quot;</span>
@@ -1238,7 +1236,7 @@ units: MassUnits_l, LengthUnits_l, AllDimensionalUnits_l, AllUnits_l</li>
 <span class="n">SimulationType</span> <span class="o">=</span> <span class="n">stringAsKeyDict</span><span class="p">(</span><span class="n">SimulationType_l</span><span class="p">)</span>
 <span class="n">SimulationType_</span> <span class="o">=</span> <span class="n">enumAsKeyDict</span><span class="p">(</span><span class="n">SimulationType_l</span><span class="p">)</span>
 
-<span class="p">(</span><span class="n">Null</span><span class="p">,</span> <span class="n">UserDefined</span><span class="p">,</span> <span class="n">TimeAccurate</span><span class="p">,</span> <span class="n">NonTimeAccurate</span><span class="p">)</span> <span class="o">=</span> <span class="n">SimulationType_</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="p">(</span><span class="n">Null</span><span class="p">,</span> <span class="n">UserDefined</span><span class="p">,</span> <span class="n">TimeAccurate</span><span class="p">,</span> <span class="n">NonTimeAccurate</span><span class="p">)</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">SimulationType_</span><span class="p">)</span>
 
 <span class="c1"># --------------------------------------------------</span>
 <span class="n">RigidGridMotionType_s</span> <span class="o">=</span> <span class="s2">&quot;RigidGridMotionType&quot;</span>
@@ -1251,7 +1249,7 @@ units: MassUnits_l, LengthUnits_l, AllDimensionalUnits_l, AllUnits_l</li>
 <span class="n">RigidGridMotionType</span> <span class="o">=</span> <span class="n">stringAsKeyDict</span><span class="p">(</span><span class="n">RigidGridMotionType_l</span><span class="p">)</span>
 <span class="n">RigidGridMotionType_</span> <span class="o">=</span> <span class="n">enumAsKeyDict</span><span class="p">(</span><span class="n">RigidGridMotionType_l</span><span class="p">)</span>
 
-<span class="p">(</span><span class="n">Null</span><span class="p">,</span> <span class="n">UserDefined</span><span class="p">,</span> <span class="n">ConstantRate</span><span class="p">,</span> <span class="n">VariableRate</span><span class="p">)</span> <span class="o">=</span> <span class="n">RigidGridMotionType_</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="p">(</span><span class="n">Null</span><span class="p">,</span> <span class="n">UserDefined</span><span class="p">,</span> <span class="n">ConstantRate</span><span class="p">,</span> <span class="n">VariableRate</span><span class="p">)</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">RigidGridMotionType_</span><span class="p">)</span>
 
 <span class="n">ArbitraryGridMotionType_s</span> <span class="o">=</span> <span class="s2">&quot;ArbitraryGridMotionType&quot;</span>
 <span class="n">ArbitraryGridMotionType_ts</span> <span class="o">=</span> <span class="s2">&quot;ArbitraryGridMotionType_t&quot;</span>
@@ -1266,7 +1264,7 @@ units: MassUnits_l, LengthUnits_l, AllDimensionalUnits_l, AllUnits_l</li>
 <span class="n">ArbitraryGridMotion</span> <span class="o">=</span> <span class="n">stringAsKeyDict</span><span class="p">(</span><span class="n">ArbitraryGridMotionType_l</span><span class="p">)</span>
 <span class="n">ArbitraryGridMotion_</span> <span class="o">=</span> <span class="n">enumAsKeyDict</span><span class="p">(</span><span class="n">ArbitraryGridMotionType_l</span><span class="p">)</span>
 
-<span class="p">(</span><span class="n">Null</span><span class="p">,</span> <span class="n">UserDefined</span><span class="p">,</span> <span class="n">NonDeformingGrid</span><span class="p">,</span> <span class="n">DeformingGrid</span><span class="p">)</span> <span class="o">=</span> <span class="n">ArbitraryGridMotion_</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="p">(</span><span class="n">Null</span><span class="p">,</span> <span class="n">UserDefined</span><span class="p">,</span> <span class="n">NonDeformingGrid</span><span class="p">,</span> <span class="n">DeformingGrid</span><span class="p">)</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">ArbitraryGridMotion_</span><span class="p">)</span>
 
 <span class="c1"># --------------------------------------------------</span>
 <span class="n">WallFunction_ts</span> <span class="o">=</span> <span class="s2">&quot;WallFunction_t&quot;</span>
@@ -1281,7 +1279,7 @@ units: MassUnits_l, LengthUnits_l, AllDimensionalUnits_l, AllUnits_l</li>
 <span class="n">WallFunctionType</span> <span class="o">=</span> <span class="n">stringAsKeyDict</span><span class="p">(</span><span class="n">WallFunctionType_l</span><span class="p">)</span>
 <span class="n">WallFunctionType_</span> <span class="o">=</span> <span class="n">enumAsKeyDict</span><span class="p">(</span><span class="n">WallFunctionType_l</span><span class="p">)</span>
 
-<span class="p">(</span><span class="n">Null</span><span class="p">,</span> <span class="n">UserDefined</span><span class="p">,</span> <span class="n">Generic</span><span class="p">)</span> <span class="o">=</span> <span class="n">WallFunctionType_</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="p">(</span><span class="n">Null</span><span class="p">,</span> <span class="n">UserDefined</span><span class="p">,</span> <span class="n">Generic</span><span class="p">)</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">WallFunctionType_</span><span class="p">)</span>
 
 <span class="c1"># --------------------------------------------------</span>
 <span class="n">Area_ts</span> <span class="o">=</span> <span class="s2">&quot;Area_t&quot;</span>
@@ -1295,7 +1293,7 @@ units: MassUnits_l, LengthUnits_l, AllDimensionalUnits_l, AllUnits_l</li>
 <span class="n">AreaType_l</span> <span class="o">=</span> <span class="p">[</span><span class="n">Null_s</span><span class="p">,</span> <span class="n">UserDefined_s</span><span class="p">,</span> <span class="n">BleedArea_s</span><span class="p">,</span> <span class="n">CaptureArea_s</span><span class="p">]</span>
 <span class="n">AreaType</span> <span class="o">=</span> <span class="n">stringAsKeyDict</span><span class="p">(</span><span class="n">AreaType_l</span><span class="p">)</span>
 <span class="n">AreaType_</span> <span class="o">=</span> <span class="n">enumAsKeyDict</span><span class="p">(</span><span class="n">AreaType_l</span><span class="p">)</span>
-<span class="p">(</span><span class="n">Null</span><span class="p">,</span> <span class="n">UserDefined</span><span class="p">,</span> <span class="n">BleedArea</span><span class="p">,</span> <span class="n">CaptureArea</span><span class="p">)</span> <span class="o">=</span> <span class="n">AreaType_</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="p">(</span><span class="n">Null</span><span class="p">,</span> <span class="n">UserDefined</span><span class="p">,</span> <span class="n">BleedArea</span><span class="p">,</span> <span class="n">CaptureArea</span><span class="p">)</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">AreaType_</span><span class="p">)</span>
 
 <span class="c1"># --------------------------------------------------</span>
 <span class="n">ZoneBC_ts</span> <span class="o">=</span> <span class="s2">&quot;ZoneBC_t&quot;</span>
@@ -1699,7 +1697,7 @@ units: MassUnits_l, LengthUnits_l, AllDimensionalUnits_l, AllUnits_l</li>
 <span class="p">(</span><span class="n">GoverningEquationsNull</span><span class="p">,</span> <span class="n">GoverningEquationUserDefined</span><span class="p">,</span>
  <span class="n">FullPotential</span><span class="p">,</span> <span class="n">Euler</span><span class="p">,</span> <span class="n">NSLaminar</span><span class="p">,</span>
  <span class="n">NSTurbulent</span><span class="p">,</span> <span class="n">NSLaminarIncompressible</span><span class="p">,</span>
- <span class="n">NSTurbulentIncompressible_s</span><span class="p">)</span> <span class="o">=</span> <span class="n">GoverningEquationsType_</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+ <span class="n">NSTurbulentIncompressible</span><span class="p">)</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">GoverningEquationsType_</span><span class="p">)</span>
 
 <span class="c1"># --------------------------------------------------</span>
 <span class="n">BCType_s</span> <span class="o">=</span> <span class="s2">&quot;BCType&quot;</span>
@@ -1754,7 +1752,7 @@ units: MassUnits_l, LengthUnits_l, AllDimensionalUnits_l, AllUnits_l</li>
  <span class="n">BCTunnelInflow</span><span class="p">,</span> <span class="n">BCTunnelOutflow</span><span class="p">,</span>
  <span class="n">BCWall</span><span class="p">,</span> <span class="n">BCWallInviscid</span><span class="p">,</span> <span class="n">BCWallViscous</span><span class="p">,</span>
  <span class="n">BCWallViscousHeatFlux</span><span class="p">,</span> <span class="n">BCWallViscousIsothermal</span><span class="p">,</span>
- <span class="n">FamilySpecified</span><span class="p">)</span> <span class="o">=</span> <span class="n">BCType_</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+ <span class="n">FamilySpecified</span><span class="p">)</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">BCType_</span><span class="p">)</span>
 
 <span class="n">BC_l</span> <span class="o">=</span> <span class="n">BCType_l</span>
 <span class="n">BC</span> <span class="o">=</span> <span class="n">BCType</span>
@@ -1913,7 +1911,7 @@ units: MassUnits_l, LengthUnits_l, AllDimensionalUnits_l, AllUnits_l</li>
  <span class="n">ChemicalEquilibMinimization</span><span class="p">,</span> <span class="n">ChemicalNonequilib</span><span class="p">,</span>
  <span class="n">EMElectricField</span><span class="p">,</span> <span class="n">EMMagneticField</span><span class="p">,</span> <span class="n">EMConductivity</span><span class="p">,</span>
  <span class="n">Voltage</span><span class="p">,</span> <span class="n">Interpolated</span><span class="p">,</span> <span class="n">Equilibrium_LinRessler</span><span class="p">,</span>
- <span class="n">Chemistry_LinRessler</span><span class="p">)</span> <span class="o">=</span> <span class="n">ModelType_</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+ <span class="n">Chemistry_LinRessler</span><span class="p">)</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">ModelType_</span><span class="p">)</span>
 
 <span class="n">DiffusionModel_s</span> <span class="o">=</span> <span class="s1">&#39;DiffusionModel&#39;</span>
 <span class="n">EquationDimension_s</span> <span class="o">=</span> <span class="s1">&#39;EquationDimension&#39;</span>
@@ -1930,7 +1928,7 @@ units: MassUnits_l, LengthUnits_l, AllDimensionalUnits_l, AllUnits_l</li>
 <span class="n">AverageInterfaceType_</span> <span class="o">=</span> <span class="n">enumAsKeyDict</span><span class="p">(</span><span class="n">AverageInterfaceType_l</span><span class="p">)</span>
 <span class="p">(</span><span class="n">Null</span><span class="p">,</span> <span class="n">UserDefined</span><span class="p">,</span>
  <span class="n">AverageAll</span><span class="p">,</span> <span class="n">AverageCircumferential</span><span class="p">,</span>
- <span class="n">AverageRadial</span><span class="p">,</span> <span class="n">AverageI</span><span class="p">,</span> <span class="n">AverageJ</span><span class="p">,</span> <span class="n">AverageK</span><span class="p">)</span> <span class="o">=</span> <span class="n">AverageInterfaceType_</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+ <span class="n">AverageRadial</span><span class="p">,</span> <span class="n">AverageI</span><span class="p">,</span> <span class="n">AverageJ</span><span class="p">,</span> <span class="n">AverageK</span><span class="p">)</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">AverageInterfaceType_</span><span class="p">)</span>
 
 <span class="n">AverageInterface_s</span> <span class="o">=</span> <span class="s2">&quot;AverageInterface&quot;</span>
 <span class="n">AverageInterface_ts</span> <span class="o">=</span> <span class="s2">&quot;AverageInterface_t&quot;</span>
@@ -2100,7 +2098,7 @@ units: MassUnits_l, LengthUnits_l, AllDimensionalUnits_l, AllUnits_l</li>
  <span class="n">TETRA_35</span><span class="p">,</span> <span class="n">PYRA_P4_29</span><span class="p">,</span> <span class="n">PYRA_50</span><span class="p">,</span> <span class="n">PYRA_55</span><span class="p">,</span>
  <span class="n">PENTA_33</span><span class="p">,</span>
  <span class="n">PENTA_66</span><span class="p">,</span> <span class="n">PENTA_75</span><span class="p">,</span>
- <span class="n">HEXA_44</span><span class="p">,</span> <span class="n">HEXA_98</span><span class="p">,</span> <span class="n">HEXA_125</span><span class="p">)</span> <span class="o">=</span> <span class="n">ElementType_</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+ <span class="n">HEXA_44</span><span class="p">,</span> <span class="n">HEXA_98</span><span class="p">,</span> <span class="n">HEXA_125</span><span class="p">)</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">ElementType_</span><span class="p">)</span>
 
 <span class="n">ElementType3D</span> <span class="o">=</span> <span class="p">[</span><span class="n">TETRA_4</span><span class="p">,</span> <span class="n">TETRA_10</span><span class="p">,</span> <span class="n">PYRA_5</span><span class="p">,</span> <span class="n">PYRA_14</span><span class="p">,</span>
                  <span class="n">PENTA_6</span><span class="p">,</span> <span class="n">PENTA_15</span><span class="p">,</span> <span class="n">PENTA_18</span><span class="p">,</span>
@@ -2136,7 +2134,7 @@ units: MassUnits_l, LengthUnits_l, AllDimensionalUnits_l, AllUnits_l</li>
 
 <span class="c1"># ---</span>
 <span class="n">cgnsnames</span> <span class="o">=</span> <span class="p">[</span><span class="nb">globals</span><span class="p">()[</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">()</span> <span class="k">if</span> <span class="p">(</span><span class="n">k</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">==</span> <span class="s1">&#39;_s&#39;</span><span class="p">)]</span>
-<span class="n">cgnstypes</span> <span class="o">=</span> <span class="p">[</span><span class="nb">globals</span><span class="p">()[</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">()</span> <span class="k">if</span> <span class="p">(</span><span class="n">k</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:]</span> <span class="o">==</span> <span class="s1">&#39;_ts&#39;</span><span class="p">)]</span> <span class="o">+</span> <span class="n">weirdSIDStypes</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="n">cgnstypes</span> <span class="o">=</span> <span class="p">[</span><span class="nb">globals</span><span class="p">()[</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">()</span> <span class="k">if</span> <span class="p">(</span><span class="n">k</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:]</span> <span class="o">==</span> <span class="s1">&#39;_ts&#39;</span><span class="p">)]</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">weirdSIDStypes</span><span class="p">)</span>
 <span class="n">cgnsenums</span> <span class="o">=</span> <span class="p">{</span>
     <span class="n">GoverningEquations_ts</span><span class="p">:</span> <span class="n">GoverningEquationsType_l</span><span class="p">,</span>
     <span class="n">GasModel_ts</span><span class="p">:</span> <span class="n">GasModelType_l</span><span class="p">,</span>
@@ -2294,9 +2292,9 @@ units: MassUnits_l, LengthUnits_l, AllDimensionalUnits_l, AllUnits_l</li>
 <span id="pat-cgnstypes"></span><h3>CGNS Types<a class="headerlink" href="#cgns-types" title="Permalink to this headline">¶</a></h3>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="cgnstypes.html">&#8220;int&#8221;</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cgnstypes.html#int-1-indexdimension">&#8220;int[1+...+IndexDimension]&#8221;</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cgnstypes.html#int-indexdimension">&#8220;int[IndexDimension]&#8221;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cgnstypes.html">“int”</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cgnstypes.html#int-1-indexdimension">“int[1+…+IndexDimension]”</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cgnstypes.html#int-indexdimension">“int[IndexDimension]”</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cgnstypes.html#additionalexponents-t">AdditionalExponents_t</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cgnstypes.html#additionalfamilyname-t">AdditionalFamilyName_t</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cgnstypes.html#additionalunits-t">AdditionalUnits_t</a></li>
@@ -2433,7 +2431,7 @@ detailled error diagnostic with the error code:</p>
 <td>Empty string is not allowed for a node name</td>
 </tr>
 <tr class="row-odd"><td>24</td>
-<td>Node name should not contain a &#8216;/&#8217;</td>
+<td>Node name should not contain a ‘/’</td>
 </tr>
 <tr class="row-even"><td>25</td>
 <td>Node name length should not be greater than 32 chars</td>
@@ -2511,7 +2509,7 @@ detailled error diagnostic with the error code:</p>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>000</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 </tr>
 </tbody>
 </table>
@@ -2523,32 +2521,32 @@ detailled error diagnostic with the error code:</p>
 <dl class="glossary docutils">
 <dt id="term-cgns-org">cgns.org</dt>
 <dd>The official CGNS web site, by extension any document on this web
-site has an <em>official</em> taste...</dd>
+site has an <em>official</em> taste…</dd>
 <dt id="term-cgns">CGNS</dt>
 <dd>The specific purpose of the
 <a class="reference external" href="http://www.cgns.org">CFD General Notation System (CGNS)</a>
 project is to provide a standard for recording and recovering
 computer data associated with the numerical solution of the
 equations of fluid dynamics. See also the
-<a class="reference external" href="/scratch/MOSAIC/W/Marc/pycgns/doc/../build/doc/html/ch2/cgnshowto.html#cgnshowto" title="(in pyCGNS v4)"><span class="xref std std-ref">How to?</span></a>.</dd>
+<a class="reference external" href="D:\Users\u0568134\Documents\GitHub\pyCGNS\doc/../build/doc/html/ch2/cgnshowto.html#cgnshowto" title="(in pyCGNS v4)"><span class="xref std std-ref">How to?</span></a>.</dd>
 <dt id="term-cgns-sids">CGNS/SIDS</dt>
-<dd>The <a class="reference external" href="http://www.grc.nasa.gov/WWW/cgns/CGNS_docs_current/sids/index.html">Standard Interface Data Structure</a> is the
+<dd>The <a class="reference external" href="http://cgns.github.io/CGNS_docs_current/sids/index.html">Standard Interface Data Structure</a> is the
 specification of the data model.  This public document describes
 the syntax and the semantics of all tree-structured data required
 or proposed for a CFD simulation.</dd>
 <dt id="term-cgns-mll">CGNS/MLL</dt>
-<dd>The <a class="reference external" href="http://www.grc.nasa.gov/WWW/cgns/CGNS_docs_current/lidlevel/index.html">Mid-Level Library</a>
+<dd>The <a class="reference external" href="http://cgns.github.io/CGNS_docs_current/lidlevel/index.html">Mid-Level Library</a>
 is an example implementation of
 <em>CGNS/SIDS</em> on top of <em>CGNS/ADF</em> and <em>CGNS/HDF5</em> mappings. This
 library has a C and a Fortran API.</dd>
 <dt id="term-cgns-adf">CGNS/ADF</dt>
-<dd>The <a class="reference external" href="http://www.grc.nasa.gov/WWW/cgns/CGNS_docs_current/adf/index.html">Advanced Data Format *CGNS/SIDS* implementation</a>. A binary
+<dd>The <a class="reference external" href="http://cgns.github.io/CGNS_docs_current/adf/index.html">Advanced Data Format *CGNS/SIDS* implementation</a>. A binary
 storage format and its companion library, developped by <em>Boeing</em>.</dd>
 <dt id="term-cgns-hdf5">CGNS/HDF5</dt>
-<dd>The <a class="reference external" href="http://www.grc.nasa.gov/WWW/cgns/CGNS_docs_current/hdf5/index.html">Hierarchical Data Format *CGNS/SIDS* implementation</a>. A binary
+<dd>The <a class="reference external" href="http://cgns.github.io/CGNS_docs_current/hdf5/index.html">Hierarchical Data Format *CGNS/SIDS* implementation</a>. A binary
 storage format and its companion library (see below).</dd>
 <dt id="term-cgns-python">CGNS/Python</dt>
-<dd>The <a class="reference external" href="http://www.grc.nasa.gov/WWW/cgns/CGNS_docs_current/python/index.html">Python programming language *CGNS/SIDS*
+<dd>The <a class="reference external" href="http://cgns.github.io/CGNS_docs_current/python/index.html">Python programming language *CGNS/SIDS*
 implementation</a>.</dd>
 <dt id="term-chlone">CHLone</dt>
 <dd>A <em>CGNS/HDF5</em> compliant implementation. The <a class="reference external" href="http://chlone.sourceforge.net">CHLone</a> library is available on
@@ -2593,7 +2591,7 @@ under LGPL v2 in pyCGNS.</dd>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2001-2016, Marc Poinot.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
     </div>
   </body>
 </html>

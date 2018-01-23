@@ -1,23 +1,21 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>Mid-level-like library (cgnslib.py) &#8212; PAT</title>
-    
     <link rel="stylesheet" href="_static/pycgns.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
         VERSION:     '4.2.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -26,11 +24,10 @@
     <link rel="shortcut icon" href="_static/pyCGNS-logo-tiny.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="top" title="PAT" href="_index.html" />
     <link rel="next" title="“int”" href="cgnstypes.html" />
     <link rel="prev" title="Utility functions (cgnsutils.py)" href="utils.html" /> 
   </head>
-  <body role="document">
+  <body>
     <div class="related">
       <h3>Navigation</h3>
       <ul>
@@ -120,7 +117,7 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>version</strong> (<em>float32</em>) &#8211; force the CGNSLibraryVersion</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>version</strong> (<em>float32</em>) – force the CGNSLibraryVersion</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">a new <a class="reference internal" href="cgnstypes.html#xcgnstree-t"><span class="std std-ref">CGNSTree_t</span></a> node</p>
@@ -166,10 +163,10 @@ disk HDF5 file.</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>node</strong> (<em>CGNS/Python</em>) &#8211; the parent node (<cite>&lt;node&gt;</cite> or <cite>None</cite>)</li>
-<li><strong>name</strong> (<em>str</em>) &#8211; base name</li>
-<li><strong>cdim</strong> (<em>int</em>) &#8211; cell dimensions</li>
-<li><strong>pdim</strong> (<em>int</em>) &#8211; physical dimensions</li>
+<li><strong>node tree</strong> (<em>CGNS/Python</em>) – the parent node (<cite>&lt;node&gt;</cite> or <cite>None</cite>)</li>
+<li><strong>name</strong> (<em>str</em>) – base name</li>
+<li><strong>ncell</strong> (<em>int</em>) – cell dimensions</li>
+<li><strong>nphys</strong> (<em>int</em>) – physical dimensions</li>
 </ul>
 </td>
 </tr>
@@ -186,7 +183,7 @@ disk HDF5 file.</li>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">See:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference external" href="http://www.grc.nasa.gov/WWW/cgns/CGNS_docs_current/sids/cgnsbase#CGNSBase">SIDS CGNSBase</a></li>
+<li><a class="reference external" href="http://cgns.github.io/CGNS_docs_current/sids/cgnsbase#CGNSBase">SIDS CGNSBase</a></li>
 </ul>
 </td>
 </tr>
@@ -196,9 +193,9 @@ disk HDF5 file.</li>
 
 <dl class="function">
 <dt id="CGNS.PAT.cgnslib.newZone">
-<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newZone</code><span class="sig-paren">(</span><em>parent</em>, <em>name</em>, <em>zsize=None</em>, <em>ztype='Structured'</em>, <em>family=''</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newZone" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newZone</code><span class="sig-paren">(</span><em>parent</em>, <em>name</em>, <em>zsize=None</em>, <em>ztype=u'Structured'</em>, <em>family=u''</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newZone" title="Permalink to this definition">¶</a></dt>
 <dd><p><em>Zone</em> node creation, the sub-tree defining a topological domain:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">s</span><span class="o">=</span><span class="n">NPY</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">10</span><span class="p">],[</span><span class="mi">2</span><span class="p">],[</span><span class="mi">0</span><span class="p">]],</span><span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;i&#39;</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">s</span><span class="o">=</span><span class="n">NPY</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">10</span><span class="p">],[</span><span class="mi">2</span><span class="p">],[</span><span class="mi">0</span><span class="p">]],</span><span class="n">dtype</span><span class="o">=</span><span class="n">NPY</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
 
 <span class="n">T</span><span class="o">=</span><span class="n">newCGNSTree</span><span class="p">()</span>
 <span class="n">B</span><span class="o">=</span><span class="n">newBase</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="s1">&#39;Box-1&#39;</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
@@ -210,11 +207,11 @@ disk HDF5 file.</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>node</strong> (<em>CGNS/Python</em>) &#8211; the parent node (<cite>&lt;node&gt;</cite> or <cite>None</cite>)</li>
-<li><strong>name</strong> (<em>str</em>) &#8211; zone name</li>
-<li><strong>size</strong> (<em>ndarray</em>) &#8211; array of zone dimensions</li>
-<li><strong>zonetype</strong> (<em>str</em>) &#8211; type of the zone</li>
-<li><strong>family</strong> (<em>str</em>) &#8211; main FamilyName of the zone</li>
+<li><strong>node parent</strong> (<em>CGNS/Python</em>) – the parent node (<cite>&lt;node&gt;</cite> or <cite>None</cite>)</li>
+<li><strong>name</strong> (<em>str</em>) – zone name</li>
+<li><strong>zsize</strong> (<em>ndarray</em>) – array of zone dimensions</li>
+<li><strong>ztype</strong> (<em>str</em>) – type of the zone</li>
+<li><strong>family</strong> (<em>str</em>) – main FamilyName of the zone</li>
 </ul>
 </td>
 </tr>
@@ -232,7 +229,7 @@ disk HDF5 file.</li>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">See:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference external" href="http://www.grc.nasa.gov/WWW/cgns/CGNS_docs_current/sids/cgnsbase#Zone">SIDS Zone</a></li>
+<li><a class="reference external" href="http://cgns.github.io/CGNS_docs_current/sids/cgnsbase#Zone">SIDS Zone</a></li>
 </ul>
 </td>
 </tr>
@@ -255,8 +252,8 @@ disk HDF5 file.</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>node</strong> (<em>CGNS/Python</em>) &#8211; the parent node (<cite>&lt;node&gt;</cite> or <cite>None</cite>)</li>
-<li><strong>name</strong> (<em>str</em>) &#8211; new node name</li>
+<li><strong>node parent</strong> (<em>CGNS/Python</em>) – the parent node (<cite>&lt;node&gt;</cite> or <cite>None</cite>)</li>
+<li><strong>name</strong> (<em>str</em>) – new node name</li>
 </ul>
 </td>
 </tr>
@@ -272,7 +269,7 @@ node if missing, at the first coordinate add.</li>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">See:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference external" href="http://www.grc.nasa.gov/WWW/cgns/CGNS_docs_current/sids/gridflow#GridCoordinates">SIDS GridCoordinates</a></li>
+<li><a class="reference external" href="http://cgns.github.io/CGNS_docs_current/sids/gridflow#GridCoordinates">SIDS GridCoordinates</a></li>
 </ul>
 </td>
 </tr>
@@ -282,13 +279,13 @@ node if missing, at the first coordinate add.</li>
 
 <dl class="function">
 <dt id="CGNS.PAT.cgnslib.newCoordinates">
-<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newCoordinates</code><span class="sig-paren">(</span><em>parent</em>, <em>name='GridCoordinates'</em>, <em>value=None</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newCoordinates" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newCoordinates</code><span class="sig-paren">(</span><em>parent</em>, <em>name=u'GridCoordinates'</em>, <em>value=None</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newCoordinates" title="Permalink to this definition">¶</a></dt>
 <dd><p><em>GridCoordinates_t</em> and <em>DataArray_t</em> nodes creation:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cx</span><span class="o">=</span><span class="n">newCoordinates</span><span class="p">(</span><span class="n">zone</span><span class="p">,</span><span class="n">CK</span><span class="o">.</span><span class="n">CoordinateX_s</span><span class="p">,</span><span class="n">x_array</span><span class="p">)</span>
 <span class="n">cy</span><span class="o">=</span><span class="n">newCoordinates</span><span class="p">(</span><span class="n">zone</span><span class="p">,</span><span class="n">CK</span><span class="o">.</span><span class="n">CoordinateY_s</span><span class="p">,</span><span class="n">y_array</span><span class="p">)</span>
 <span class="n">cz</span><span class="o">=</span><span class="n">newCoordinates</span><span class="p">(</span><span class="n">zone</span><span class="p">,</span><span class="n">CK</span><span class="o">.</span><span class="n">CoordinateZ_s</span><span class="p">,</span><span class="n">z_array</span><span class="p">)</span>
 
-<span class="c1"># the following function sequence performs the same action   </span>
+<span class="c1"># the following function sequence performs the same action</span>
 <span class="n">gc</span><span class="o">=</span><span class="n">newGridCoordinates</span><span class="p">(</span><span class="n">zone</span><span class="p">,</span><span class="n">CK</span><span class="o">.</span><span class="n">GridCoordinates_s</span><span class="p">)</span>
 <span class="n">newDataArray</span><span class="p">(</span><span class="n">gc</span><span class="p">,</span><span class="n">CK</span><span class="o">.</span><span class="n">CoordinateX_s</span><span class="p">,</span><span class="n">x_array</span><span class="p">)</span>
 <span class="n">newDataArray</span><span class="p">(</span><span class="n">gc</span><span class="p">,</span><span class="n">CK</span><span class="o">.</span><span class="n">CoordinateY_s</span><span class="p">,</span><span class="n">y_array</span><span class="p">)</span>
@@ -300,9 +297,9 @@ node if missing, at the first coordinate add.</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>node</strong> (<em>CGNS/Python</em>) &#8211; the parent node (<cite>&lt;node&gt;</cite> or <cite>None</cite>)</li>
-<li><strong>name</strong> (<em>str</em>) &#8211; new node name</li>
-<li><strong>value</strong> (<em>ndarray</em>) &#8211; the coordinates array to set</li>
+<li><strong>node parent</strong> (<em>CGNS/Python</em>) – the parent node (<cite>&lt;node&gt;</cite> or <cite>None</cite>)</li>
+<li><strong>name</strong> (<em>str</em>) – new node name</li>
+<li><strong>value</strong> (<em>ndarray</em>) – the coordinates array to set</li>
 </ul>
 </td>
 </tr>
@@ -321,7 +318,7 @@ only the DataArray is created.</li>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">See:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference external" href="http://www.grc.nasa.gov/WWW/cgns/CGNS_docs_current/sids/gridflow#GridCoordinates">SIDS GridCoordinates</a></li>
+<li><a class="reference external" href="http://cgns.github.io/CGNS_docs_current/sids/gridflow#GridCoordinates">SIDS GridCoordinates</a></li>
 </ul>
 </td>
 </tr>
@@ -335,7 +332,7 @@ only the DataArray is created.</li>
 <dd><p><em>DataArray</em> node creation, the all purpose array node:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">NPY</span>
 
-<span class="n">da</span><span class="o">=</span><span class="n">newDataArray</span><span class="p">(</span><span class="n">dd</span><span class="p">,</span><span class="s1">&#39;</span><span class="si">{DataArray}</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">value</span><span class="o">=</span><span class="n">NPY</span><span class="o">.</span><span class="n">array</span><span class="p">(((</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">),(</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">)),</span><span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;d&#39;</span><span class="p">))</span>
+<span class="n">da</span><span class="o">=</span><span class="n">newDataArray</span><span class="p">(</span><span class="n">dd</span><span class="p">,</span><span class="s1">&#39;</span><span class="si">{DataArray}</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">value</span><span class="o">=</span><span class="n">NPY</span><span class="o">.</span><span class="n">array</span><span class="p">(((</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">),(</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">)),</span><span class="n">dtype</span><span class="o">=</span><span class="n">NPY</span><span class="o">.</span><span class="n">float64</span><span class="p">))</span>
 </pre></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -343,8 +340,9 @@ only the DataArray is created.</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>node</strong> (<em>CGNS/Python</em>) &#8211; the parent node (<cite>&lt;node&gt;</cite> or <cite>None</cite>)</li>
-<li><strong>name</strong> (<em>str</em>) &#8211; array name</li>
+<li><strong>node parent</strong> (<em>CGNS/Python</em>) – the parent node (<cite>&lt;node&gt;</cite> or <cite>None</cite>)</li>
+<li><strong>name</strong> (<em>str</em>) – array name</li>
+<li><strong>value</strong> – optional value used to set the new array</li>
 </ul>
 </td>
 </tr>
@@ -352,7 +350,7 @@ only the DataArray is created.</li>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">See:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference external" href="http://www.grc.nasa.gov/WWW/cgns/CGNS_docs_current/sids/data#DataArray">SIDS DataArray</a></li>
+<li><a class="reference external" href="http://cgns.github.io/CGNS_docs_current/sids/data#DataArray">SIDS DataArray</a></li>
 </ul>
 </td>
 </tr>
@@ -362,7 +360,7 @@ only the DataArray is created.</li>
 
 <dl class="function">
 <dt id="CGNS.PAT.cgnslib.newDataClass">
-<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newDataClass</code><span class="sig-paren">(</span><em>parent</em>, <em>value='UserDefined'</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newDataClass" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newDataClass</code><span class="sig-paren">(</span><em>parent</em>, <em>value=u'UserDefined'</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newDataClass" title="Permalink to this definition">¶</a></dt>
 <dd><p><em>DataClass</em> node creation, sets the class of a data array:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">CGNS.PAT.cgnskeywords</span> <span class="k">as</span> <span class="nn">CK</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">NPY</span>
@@ -370,7 +368,7 @@ only the DataArray is created.</li>
 <span class="c1"># N is an already existing CGNS/Python node</span>
 <span class="n">dd</span><span class="o">=</span><span class="n">newDiscreteData</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="s1">&#39;</span><span class="si">{DiscreteData}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="n">dc</span><span class="o">=</span><span class="n">newDataClass</span><span class="p">(</span><span class="n">dd</span><span class="p">,</span><span class="n">CK</span><span class="o">.</span><span class="n">DimensionalUnits_s</span><span class="p">)</span>
-<span class="n">da</span><span class="o">=</span><span class="n">newDataArray</span><span class="p">(</span><span class="n">dd</span><span class="p">,</span><span class="s1">&#39;</span><span class="si">{DataArray}</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">value</span><span class="o">=</span><span class="n">NPY</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="mi">1</span><span class="p">,),</span><span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;d&#39;</span><span class="p">))</span>
+<span class="n">da</span><span class="o">=</span><span class="n">newDataArray</span><span class="p">(</span><span class="n">dd</span><span class="p">,</span><span class="s1">&#39;</span><span class="si">{DataArray}</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">value</span><span class="o">=</span><span class="n">NPY</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="mi">1</span><span class="p">,),</span><span class="n">dtype</span><span class="o">=</span><span class="n">NPY</span><span class="o">.</span><span class="n">float64</span><span class="p">))</span>
 </pre></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -378,8 +376,8 @@ only the DataArray is created.</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>node</strong> (<em>CGNS/Python</em>) &#8211; the parent node (<cite>&lt;node&gt;</cite> or <cite>None</cite>)</li>
-<li><strong>value</strong> (<em>str</em>) &#8211; DataClass type to set</li>
+<li><strong>node parent</strong> (<em>CGNS/Python</em>) – the parent node (<cite>&lt;node&gt;</cite> or <cite>None</cite>)</li>
+<li><strong>value</strong> (<em>str</em>) – DataClass type to set</li>
 </ul>
 </td>
 </tr>
@@ -393,7 +391,7 @@ only the DataArray is created.</li>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">See:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference external" href="http://www.grc.nasa.gov/WWW/cgns/CGNS_docs_current/sids/build#DataClass">SIDS DataClass</a></li>
+<li>:rsids:<a href="#id1"><span class="problematic" id="id2">`</span></a>SIDS DataClass &lt;build#DataClass&gt;</li>
 </ul>
 </td>
 </tr>
@@ -403,7 +401,7 @@ only the DataArray is created.</li>
 
 <dl class="function">
 <dt id="CGNS.PAT.cgnslib.newDimensionalUnits">
-<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newDimensionalUnits</code><span class="sig-paren">(</span><em>parent, value=['Kilogram', 'Meter', 'Second', 'Kelvin', 'Radian']</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newDimensionalUnits" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newDimensionalUnits</code><span class="sig-paren">(</span><em>parent</em>, <em>value=None</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newDimensionalUnits" title="Permalink to this definition">¶</a></dt>
 <dd><p><em>DimensionalUnits</em> node creation, sets the units of a data array:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">CGNS.PAT.cgnskeywords</span> <span class="k">as</span> <span class="nn">CK</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">NPY</span>
@@ -413,7 +411,7 @@ only the DataArray is created.</li>
 <span class="n">dc</span><span class="o">=</span><span class="n">newDataClass</span><span class="p">(</span><span class="n">dd</span><span class="p">,</span><span class="n">CK</span><span class="o">.</span><span class="n">DimensionalUnits_s</span><span class="p">)</span>
 <span class="n">units</span><span class="o">=</span><span class="p">(</span><span class="n">CK</span><span class="o">.</span><span class="n">Gram_s</span><span class="p">,</span><span class="n">CK</span><span class="o">.</span><span class="n">Foot_s</span><span class="p">,</span><span class="n">CK</span><span class="o">.</span><span class="n">UserDefined_s</span><span class="p">,</span><span class="n">CK</span><span class="o">.</span><span class="n">Celcius_s</span><span class="p">,</span><span class="n">CK</span><span class="o">.</span><span class="n">Degree_s</span><span class="p">)</span>
 <span class="n">du</span><span class="o">=</span><span class="n">newDimensionalUnits</span><span class="p">(</span><span class="n">dd</span><span class="p">,</span><span class="n">units</span><span class="p">)</span>
-<span class="n">da</span><span class="o">=</span><span class="n">newDataArray</span><span class="p">(</span><span class="n">dd</span><span class="p">,</span><span class="s1">&#39;</span><span class="si">{DataArray}</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">value</span><span class="o">=</span><span class="n">NPY</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="mi">1</span><span class="p">,),</span><span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;d&#39;</span><span class="p">))</span>
+<span class="n">da</span><span class="o">=</span><span class="n">newDataArray</span><span class="p">(</span><span class="n">dd</span><span class="p">,</span><span class="s1">&#39;</span><span class="si">{DataArray}</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">value</span><span class="o">=</span><span class="n">NPY</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="mi">1</span><span class="p">,),</span><span class="n">dtype</span><span class="o">=</span><span class="n">NPY</span><span class="o">.</span><span class="n">float64</span><span class="p">))</span>
 </pre></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -421,8 +419,8 @@ only the DataArray is created.</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>node</strong> (<em>CGNS/Python</em>) &#8211; the parent node (<cite>&lt;node&gt;</cite> or <cite>None</cite>)</li>
-<li><strong>value</strong> (<em>list(str)</em>) &#8211; list of 5 units, order is significant</li>
+<li><strong>node parent</strong> (<em>CGNS/Python</em>) – the parent node (<cite>&lt;node&gt;</cite> or <cite>None</cite>)</li>
+<li><strong>value</strong> (<em>list</em><em>(</em><em>str</em><em>)</em>) – list of 5 units, order is significant</li>
 </ul>
 </td>
 </tr>
@@ -436,7 +434,7 @@ TemperatureUnit,AngleUnit</li>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">See:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference external" href="http://www.grc.nasa.gov/WWW/cgns/CGNS_docs_current/sids/build#DimensionalUnits">SIDS DimensionalUnits</a></li>
+<li><a class="reference external" href="http://cgns.github.io/CGNS_docs_current/sids/build#DimensionalUnits">SIDS DimensionalUnits</a></li>
 </ul>
 </td>
 </tr>
@@ -458,7 +456,7 @@ TemperatureUnit,AngleUnit</li>
 <span class="n">du</span><span class="o">=</span><span class="n">newDimensionalUnits</span><span class="p">(</span><span class="n">dd</span><span class="p">,</span><span class="n">units</span><span class="p">)</span>
 <span class="n">exps</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">du</span><span class="o">=</span><span class="n">newDimensionalExponents</span><span class="p">(</span><span class="n">dd</span><span class="p">,</span><span class="n">exps</span><span class="p">)</span>
-<span class="n">da</span><span class="o">=</span><span class="n">newDataArray</span><span class="p">(</span><span class="n">dd</span><span class="p">,</span><span class="s1">&#39;</span><span class="si">{DataArray}</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">value</span><span class="o">=</span><span class="n">NPY</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="mi">1</span><span class="p">,),</span><span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;d&#39;</span><span class="p">))</span>
+<span class="n">da</span><span class="o">=</span><span class="n">newDataArray</span><span class="p">(</span><span class="n">dd</span><span class="p">,</span><span class="s1">&#39;</span><span class="si">{DataArray}</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">value</span><span class="o">=</span><span class="n">NPY</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="mi">1</span><span class="p">,),</span><span class="n">dtype</span><span class="o">=</span><span class="n">NPY</span><span class="o">.</span><span class="n">float64</span><span class="p">))</span>
 </pre></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -466,8 +464,12 @@ TemperatureUnit,AngleUnit</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>node</strong> (<em>CGNS/Python</em>) &#8211; the parent node (<cite>&lt;node&gt;</cite> or <cite>None</cite>)</li>
-<li><strong>value</strong> (<em>list(float)</em>) &#8211; list of 5 exponents, order is significant</li>
+<li><strong>node parent</strong> (<em>CGNS/Python</em>) – the parent node (<cite>&lt;node&gt;</cite> or <cite>None</cite>)</li>
+<li><strong>MassExponent</strong> (<em>float</em>) – exponent for mass</li>
+<li><strong>LengthExponent</strong> (<em>float</em>) – exponent for length</li>
+<li><strong>TimeExponent</strong> (<em>float</em>) – exponent for time</li>
+<li><strong>TemperatureExponent</strong> (<em>float</em>) – exponent for temperature</li>
+<li><strong>AngleExponent</strong> (<em>float</em>) – exponent for angle</li>
 </ul>
 </td>
 </tr>
@@ -482,7 +484,7 @@ TemperatureExponent,AngleExponent</li>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">See:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference external" href="http://www.grc.nasa.gov/WWW/cgns/CGNS_docs_current/sids/build#DimensionalExponents">SIDS DimensionalExponents</a></li>
+<li><a class="reference external" href="http://cgns.github.io/CGNS_docs_current/sids/build#DimensionalExponents">SIDS DimensionalExponents</a></li>
 </ul>
 </td>
 </tr>
@@ -505,7 +507,7 @@ TemperatureExponent,AngleExponent</li>
 <span class="n">exps</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">du</span><span class="o">=</span><span class="n">newDimensionalExponents</span><span class="p">(</span><span class="n">dd</span><span class="p">,</span><span class="n">exps</span><span class="p">)</span>
 <span class="n">ds</span><span class="o">=</span><span class="n">newDataConversion</span><span class="p">(</span><span class="n">dd</span><span class="p">,</span><span class="mf">2.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">)</span>
-<span class="n">da</span><span class="o">=</span><span class="n">newDataArray</span><span class="p">(</span><span class="n">dd</span><span class="p">,</span><span class="s1">&#39;</span><span class="si">{DataArray}</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">value</span><span class="o">=</span><span class="n">NPY</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="mi">1</span><span class="p">,),</span><span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;d&#39;</span><span class="p">))</span>
+<span class="n">da</span><span class="o">=</span><span class="n">newDataArray</span><span class="p">(</span><span class="n">dd</span><span class="p">,</span><span class="s1">&#39;</span><span class="si">{DataArray}</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">value</span><span class="o">=</span><span class="n">NPY</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="mi">1</span><span class="p">,),</span><span class="n">dtype</span><span class="o">=</span><span class="n">NPY</span><span class="o">.</span><span class="n">float64</span><span class="p">))</span>
 </pre></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -513,9 +515,9 @@ TemperatureExponent,AngleExponent</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>node</strong> (<em>CGNS/Python</em>) &#8211; the parent node (<cite>&lt;node&gt;</cite> or <cite>None</cite>)</li>
-<li><strong>scale</strong> (<em>float</em>) &#8211; scale of the conversion to apply</li>
-<li><strong>offset</strong> (<em>float</em>) &#8211; offset of the conversion to apply</li>
+<li><strong>node parent</strong> (<em>CGNS/Python</em>) – the parent node (<cite>&lt;node&gt;</cite> or <cite>None</cite>)</li>
+<li><strong>ConversionScale</strong> (<em>float</em>) – scale of the conversion to apply</li>
+<li><strong>ConversionOffset</strong> (<em>float</em>) – offset of the conversion to apply</li>
 </ul>
 </td>
 </tr>
@@ -528,7 +530,7 @@ TemperatureExponent,AngleExponent</li>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">See:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference external" href="http://www.grc.nasa.gov/WWW/cgns/CGNS_docs_current/sids/data#DataConversion">SIDS DataConversion</a></li>
+<li><a class="reference external" href="http://cgns.github.io/CGNS_docs_current/sids/data#DataConversion">SIDS DataConversion</a></li>
 </ul>
 </td>
 </tr>
@@ -538,7 +540,7 @@ TemperatureExponent,AngleExponent</li>
 
 <dl class="function">
 <dt id="CGNS.PAT.cgnslib.newDescriptor">
-<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newDescriptor</code><span class="sig-paren">(</span><em>parent</em>, <em>name</em>, <em>value=''</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newDescriptor" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newDescriptor</code><span class="sig-paren">(</span><em>parent</em>, <em>name</em>, <em>value=u''</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newDescriptor" title="Permalink to this definition">¶</a></dt>
 <dd><p><em>Descriptor</em> node creation, to contain user-defined textual contents:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">txt</span><span class="o">=</span><span class="n">newDescriptor</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span><span class="s1">&#39;CommandLine&#39;</span><span class="p">,</span><span class="s1">&#39;python -c import elsA.CGNS&#39;</span><span class="p">)</span>
 </pre></div>
@@ -548,9 +550,9 @@ TemperatureExponent,AngleExponent</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>node</strong> (<em>CGNS/Python</em>) &#8211; the parent node (<cite>&lt;node&gt;</cite> or <cite>None</cite>)</li>
-<li><strong>name</strong> (<em>str</em>) &#8211; new node name</li>
-<li><strong>value</strong> (<em>str</em>) &#8211; text to enter (python string)</li>
+<li><strong>node parent</strong> (<em>CGNS/Python</em>) – the parent node (<cite>&lt;node&gt;</cite> or <cite>None</cite>)</li>
+<li><strong>name</strong> (<em>str</em>) – new node name</li>
+<li><strong>value</strong> (<em>str</em>) – text to enter (python string)</li>
 </ul>
 </td>
 </tr>
@@ -558,7 +560,7 @@ TemperatureExponent,AngleExponent</li>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">See:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference external" href="http://www.grc.nasa.gov/WWW/cgns/CGNS_docs_current/sids/build#Descriptor">SIDS Descriptor</a></li>
+<li><a class="reference external" href="http://cgns.github.io/CGNS_docs_current/sids/build#Descriptor">SIDS Descriptor</a></li>
 </ul>
 </td>
 </tr>
@@ -568,7 +570,7 @@ TemperatureExponent,AngleExponent</li>
 
 <dl class="function">
 <dt id="CGNS.PAT.cgnslib.newGridLocation">
-<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newGridLocation</code><span class="sig-paren">(</span><em>parent</em>, <em>value='CellCenter'</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newGridLocation" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newGridLocation</code><span class="sig-paren">(</span><em>parent</em>, <em>value=u'CellCenter'</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newGridLocation" title="Permalink to this definition">¶</a></dt>
 <dd><p><em>GridLocation</em> node creation, set location of data value wrt grid:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">=</span><span class="n">newGridLocation</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span><span class="n">CK</span><span class="o">.</span><span class="n">Vertex_s</span><span class="p">)</span>
 </pre></div>
@@ -578,8 +580,8 @@ TemperatureExponent,AngleExponent</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>node</strong> (<em>CGNS/Python</em>) &#8211; the parent node (<cite>&lt;node&gt;</cite> or <cite>None</cite>)</li>
-<li><strong>value</strong> (<em>str</em>) &#8211; GridLocation to set</li>
+<li><strong>node parent</strong> (<em>CGNS/Python</em>) – the parent node (<cite>&lt;node&gt;</cite> or <cite>None</cite>)</li>
+<li><strong>value</strong> (<em>str</em>) – GridLocation to set</li>
 </ul>
 </td>
 </tr>
@@ -592,7 +594,7 @@ TemperatureExponent,AngleExponent</li>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">See:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference external" href="http://www.grc.nasa.gov/WWW/cgns/CGNS_docs_current/sids/build#GridLocation">SIDS GridLocation</a></li>
+<li><a class="reference external" href="http://cgns.github.io/CGNS_docs_current/sids/build#GridLocation">SIDS GridLocation</a></li>
 </ul>
 </td>
 </tr>
@@ -614,9 +616,9 @@ TemperatureExponent,AngleExponent</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>node</strong> (<em>CGNS/Python</em>) &#8211; the parent node (<cite>&lt;node&gt;</cite> or <cite>None</cite>)</li>
-<li><strong>name</strong> (<em>str</em>) &#8211; new node name</li>
-<li><strong>value</strong> (<em>ndarray</em>) &#8211; array to set</li>
+<li><strong>node parent</strong> (<em>CGNS/Python</em>) – the parent node (<cite>&lt;node&gt;</cite> or <cite>None</cite>)</li>
+<li><strong>name</strong> (<em>str</em>) – new node name</li>
+<li><strong>value</strong> (<em>ndarray</em>) – array to set</li>
 </ul>
 </td>
 </tr>
@@ -630,7 +632,7 @@ TemperatureExponent,AngleExponent</li>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">See:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference external" href="http://www.grc.nasa.gov/WWW/cgns/CGNS_docs_current/sids/build#IndexArray">SIDS IndexArray</a></li>
+<li><a class="reference external" href="http://cgns.github.io/CGNS_docs_current/sids/build#IndexArray">SIDS IndexArray</a></li>
 </ul>
 </td>
 </tr>
@@ -640,7 +642,7 @@ TemperatureExponent,AngleExponent</li>
 
 <dl class="function">
 <dt id="CGNS.PAT.cgnslib.newPointList">
-<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newPointList</code><span class="sig-paren">(</span><em>parent</em>, <em>name='PointList'</em>, <em>value=None</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newPointList" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newPointList</code><span class="sig-paren">(</span><em>parent</em>, <em>name=u'PointList'</em>, <em>value=None</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newPointList" title="Permalink to this definition">¶</a></dt>
 <dd><p><em>PointList</em> node creation, integer array for indexing purpose:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">NPY</span>
 
@@ -652,9 +654,9 @@ TemperatureExponent,AngleExponent</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>node</strong> (<em>CGNS/Python</em>) &#8211; the parent node (<cite>&lt;node&gt;</cite> or <cite>None</cite>)</li>
-<li><strong>name</strong> (<em>str</em>) &#8211; new node name</li>
-<li><strong>value</strong> (<em>ndarray</em>) &#8211; array to set</li>
+<li><strong>node parent</strong> (<em>CGNS/Python</em>) – the parent node (<cite>&lt;node&gt;</cite> or <cite>None</cite>)</li>
+<li><strong>name</strong> (<em>str</em>) – new node name</li>
+<li><strong>value</strong> (<em>ndarray</em>) – array to set</li>
 </ul>
 </td>
 </tr>
@@ -669,7 +671,7 @@ TemperatureExponent,AngleExponent</li>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">See:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference external" href="http://www.grc.nasa.gov/WWW/cgns/CGNS_docs_current/sids/build#IndexArray">SIDS IndexArray</a></li>
+<li><a class="reference external" href="http://cgns.github.io/CGNS_docs_current/sids/build#IndexArray">SIDS IndexArray</a></li>
 </ul>
 </td>
 </tr>
@@ -679,7 +681,7 @@ TemperatureExponent,AngleExponent</li>
 
 <dl class="function">
 <dt id="CGNS.PAT.cgnslib.newPointRange">
-<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newPointRange</code><span class="sig-paren">(</span><em>parent</em>, <em>name='PointRange'</em>, <em>value=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newPointRange" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newPointRange</code><span class="sig-paren">(</span><em>parent</em>, <em>name=u'PointRange'</em>, <em>value=None</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newPointRange" title="Permalink to this definition">¶</a></dt>
 <dd><p><em>PointRange</em> node creation, integer array for Structured indexing purpose:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">NPY</span>
 
@@ -692,9 +694,9 @@ TemperatureExponent,AngleExponent</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>node</strong> (<em>CGNS/Python</em>) &#8211; the parent node (<cite>&lt;node&gt;</cite> or <cite>None</cite>)</li>
-<li><strong>name</strong> (<em>str</em>) &#8211; new node name</li>
-<li><strong>value</strong> (<em>ndarray</em>) &#8211; array to set</li>
+<li><strong>node parent</strong> (<em>CGNS/Python</em>) – the parent node (<cite>&lt;node&gt;</cite> or <cite>None</cite>)</li>
+<li><strong>name</strong> (<em>str</em>) – new node name</li>
+<li><strong>value</strong> (<em>ndarray</em>) – array to set</li>
 </ul>
 </td>
 </tr>
@@ -710,7 +712,7 @@ TemperatureExponent,AngleExponent</li>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">See:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference external" href="http://www.grc.nasa.gov/WWW/cgns/CGNS_docs_current/sids/build#IndexRange">SIDS IndexRange</a></li>
+<li><a class="reference external" href="http://cgns.github.io/CGNS_docs_current/sids/build#IndexRange">SIDS IndexRange</a></li>
 </ul>
 </td>
 </tr>
@@ -731,8 +733,8 @@ TemperatureExponent,AngleExponent</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>node</strong> (<em>CGNS/Python</em>) &#8211; the parent node (<cite>&lt;node&gt;</cite> or <cite>None</cite>)</li>
-<li><strong>value</strong> (<em>ndarray</em>) &#8211; array to set</li>
+<li><strong>node parent</strong> (<em>CGNS/Python</em>) – the parent node (<cite>&lt;node&gt;</cite> or <cite>None</cite>)</li>
+<li><strong>value</strong> (<em>ndarray</em>) – array to set</li>
 </ul>
 </td>
 </tr>
@@ -749,7 +751,7 @@ TemperatureExponent,AngleExponent</li>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">See:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference external" href="http://www.grc.nasa.gov/WWW/cgns/CGNS_docs_current/sids/build#Rind">SIDS Rind</a></li>
+<li><a class="reference external" href="http://cgns.github.io/CGNS_docs_current/sids/build#Rind">SIDS Rind</a></li>
 </ul>
 </td>
 </tr>
@@ -759,7 +761,7 @@ TemperatureExponent,AngleExponent</li>
 
 <dl class="function">
 <dt id="CGNS.PAT.cgnslib.newSimulationType">
-<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newSimulationType</code><span class="sig-paren">(</span><em>parent</em>, <em>stype='NonTimeAccurate'</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newSimulationType" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newSimulationType</code><span class="sig-paren">(</span><em>parent</em>, <em>stype=u'NonTimeAccurate'</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newSimulationType" title="Permalink to this definition">¶</a></dt>
 <dd><p><em>SimulationType</em> node creation, set the TimeAccurate type:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">newSimulationType</span><span class="p">(</span><span class="n">base</span><span class="p">,</span><span class="n">CK</span><span class="o">.</span><span class="n">TimeAccurate_s</span><span class="p">)</span>
 </pre></div>
@@ -769,8 +771,8 @@ TemperatureExponent,AngleExponent</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>node</strong> (<em>CGNS/Python</em>) &#8211; the parent node (<cite>&lt;node&gt;</cite> or <cite>None</cite>)</li>
-<li><strong>stype</strong> (<em>str</em>) &#8211; enumerate from CK.SimulationType_l</li>
+<li><strong>node parent</strong> (<em>CGNS/Python</em>) – the parent node (<cite>&lt;node&gt;</cite> or <cite>None</cite>)</li>
+<li><strong>stype</strong> (<em>str</em>) – enumerate from CK.SimulationType_l</li>
 </ul>
 </td>
 </tr>
@@ -778,7 +780,7 @@ TemperatureExponent,AngleExponent</li>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">See:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference external" href="http://www.grc.nasa.gov/WWW/cgns/CGNS_docs_current/sids/cgnsbase#CGNSBase">SIDS SimulationType</a></li>
+<li><a class="reference external" href="http://cgns.github.io/CGNS_docs_current/sids/cgnsbase#CGNSBase">SIDS SimulationType</a></li>
 </ul>
 </td>
 </tr>
@@ -798,8 +800,8 @@ TemperatureExponent,AngleExponent</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>node</strong> (<em>CGNS/Python</em>) &#8211; the parent node (<cite>&lt;node&gt;</cite> or <cite>None</cite>)</li>
-<li><strong>value</strong> (<em>int</em>) &#8211; arbtrary integer</li>
+<li><strong>node parent</strong> (<em>CGNS/Python</em>) – the parent node (<cite>&lt;node&gt;</cite> or <cite>None</cite>)</li>
+<li><strong>value</strong> (<em>int</em>) – arbtrary integer</li>
 </ul>
 </td>
 </tr>
@@ -807,7 +809,7 @@ TemperatureExponent,AngleExponent</li>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">See:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference external" href="http://www.grc.nasa.gov/WWW/cgns/CGNS_docs_current/sids/cgnsbase#Zone">SIDS Ordinal</a></li>
+<li><a class="reference external" href="http://cgns.github.io/CGNS_docs_current/sids/cgnsbase#Zone">SIDS Ordinal</a></li>
 </ul>
 </td>
 </tr>
@@ -827,8 +829,8 @@ TemperatureExponent,AngleExponent</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>node</strong> (<em>CGNS/Python</em>) &#8211; the parent node (<cite>&lt;node&gt;</cite> or <cite>None</cite>)</li>
-<li><strong>name</strong> (<em>str</em>) &#8211; new node name</li>
+<li><strong>node parent</strong> (<em>CGNS/Python</em>) – the parent node (<cite>&lt;node&gt;</cite> or <cite>None</cite>)</li>
+<li><strong>name</strong> (<em>str</em>) – new node name</li>
 </ul>
 </td>
 </tr>
@@ -836,7 +838,7 @@ TemperatureExponent,AngleExponent</li>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">See:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference external" href="http://www.grc.nasa.gov/WWW/cgns/CGNS_docs_current/sids/misc#DiscreteData">SIDS DiscreteData</a></li>
+<li><a class="reference external" href="http://cgns.github.io/CGNS_docs_current/sids/misc#DiscreteData">SIDS DiscreteData</a></li>
 </ul>
 </td>
 </tr>
@@ -856,8 +858,8 @@ TemperatureExponent,AngleExponent</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>node</strong> (<em>CGNS/Python</em>) &#8211; the parent node (<cite>&lt;node&gt;</cite> or <cite>None</cite>)</li>
-<li><strong>name</strong> (<em>str</em>) &#8211; new node name</li>
+<li><strong>node parent</strong> (<em>CGNS/Python</em>) – the parent node (<cite>&lt;node&gt;</cite> or <cite>None</cite>)</li>
+<li><strong>name</strong> (<em>str</em>) – new node name</li>
 </ul>
 </td>
 </tr>
@@ -865,7 +867,7 @@ TemperatureExponent,AngleExponent</li>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">See:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference external" href="http://www.grc.nasa.gov/WWW/cgns/CGNS_docs_current/sids/misc#IntegralData">SIDS IntegralData</a></li>
+<li><a class="reference external" href="http://cgns.github.io/CGNS_docs_current/sids/misc#IntegralData">SIDS IntegralData</a></li>
 </ul>
 </td>
 </tr>
@@ -875,7 +877,7 @@ TemperatureExponent,AngleExponent</li>
 
 <dl class="function">
 <dt id="CGNS.PAT.cgnslib.newElements">
-<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newElements</code><span class="sig-paren">(</span><em>parent</em>, <em>name</em>, <em>etype='UserDefined'</em>, <em>econnectivity=None</em>, <em>erange=None</em>, <em>eboundary=0</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newElements" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newElements</code><span class="sig-paren">(</span><em>parent</em>, <em>name</em>, <em>etype=u'UserDefined'</em>, <em>econnectivity=None</em>, <em>erange=None</em>, <em>eboundary=0</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newElements" title="Permalink to this definition">¶</a></dt>
 <dd><p><em>Elements_t</em> node creation, indexing unstructured meshes:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">quads</span><span class="o">=</span><span class="n">newElements</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span><span class="s1">&#39;QUADS&#39;</span><span class="p">,</span><span class="n">CGK</span><span class="o">.</span><span class="n">QUAD_4</span><span class="p">,</span><span class="n">quad_array</span><span class="p">,</span><span class="n">NPY</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">start</span><span class="p">,</span><span class="n">end</span><span class="p">]))</span><span class="s1">&#39;</span>
 </pre></div>
@@ -887,7 +889,7 @@ TemperatureExponent,AngleExponent</li>
 <div><ul class="simple">
 <li><cite>parent</cite>: the parent node (<cite>&lt;node&gt;</cite> or <cite>None</cite>)</li>
 <li><cite>name</cite>: element node name (<cite>string</cite>)</li>
-<li><cite>etype</cite>: the type of element (<cite>string</cite> or &#8216;int&#8217;)</li>
+<li><cite>etype</cite>: the type of element (<cite>string</cite> or ‘int’)</li>
 <li><cite>econnectivity</cite>: actual array of point connectivities (<cite>numpy.ndarray</cite>)</li>
 <li><cite>erange</cite>: the first and last index of the connectivity (<cite>numpy.ndarray</cite>)</li>
 <li><cite>eboundary</cite>: number of boundary elements (<cite>int</cite>)</li>
@@ -910,7 +912,7 @@ TemperatureExponent,AngleExponent</li>
 <li>The <cite>elementsrange</cite> <em>should</em> insure a unique and continuous index for
 all elements nodes in the same parent zone.</li>
 <li>Element type can be set as <cite>int</cite> such as <cite>CGK.QUAD_4</cite> or 7, or
-as <cite>string</cite> such as <cite>CGK.QUAD_4_s</cite> or <cite>&#8220;QUAD_4&#8221;</cite></li>
+as <cite>string</cite> such as <cite>CGK.QUAD_4_s</cite> or <cite>“QUAD_4”</cite></li>
 </ul>
 </div></blockquote>
 <ul class="simple">
@@ -925,9 +927,9 @@ as <cite>string</cite> such as <cite>CGK.QUAD_4_s</cite> or <cite>&#8220;QUAD_4&
 
 <dl class="function">
 <dt id="CGNS.PAT.cgnslib.newBoundary">
-<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newBoundary</code><span class="sig-paren">(</span><em>parent</em>, <em>bname</em>, <em>brange</em>, <em>btype='Null'</em>, <em>family=None</em>, <em>pttype='PointRange'</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newBoundary" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newBoundary</code><span class="sig-paren">(</span><em>parent</em>, <em>bname</em>, <em>brange</em>, <em>btype=u'Null'</em>, <em>family=None</em>, <em>pttype=u'PointRange'</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newBoundary" title="Permalink to this definition">¶</a></dt>
 <dd><p>-BC node creation -BC</p>
-<p>&#8216;newNode:N=&#8217;<em>newBoundary</em>&#8216;(parent:N,bname:S,brange:[<a href="#id1"><span class="problematic" id="id2">*</span></a>i],btype:S)&#8217;</p>
+<p>‘newNode:N=’<em>newBoundary</em>’(parent:N,bname:S,brange:[<a href="#id3"><span class="problematic" id="id4">*</span></a>i],btype:S)’</p>
 <p>Returns a new &lt;node&gt; representing a BC_t sub-tree.
 If a parent is given, the new &lt;node&gt; is added to the parent children list.
 Parent should be Zone_t, returned node is parent.
@@ -938,32 +940,32 @@ chapter 9.3 Add IndexRange_t required</p>
 
 <dl class="function">
 <dt id="CGNS.PAT.cgnslib.newBCDataSet">
-<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newBCDataSet</code><span class="sig-paren">(</span><em>parent</em>, <em>name</em>, <em>valueType='Null'</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newBCDataSet" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newBCDataSet</code><span class="sig-paren">(</span><em>parent</em>, <em>name</em>, <em>valueType=u'Null'</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newBCDataSet" title="Permalink to this definition">¶</a></dt>
 <dd><p>-BCDataSet node creation -BCDataSet</p>
-<p>&#8216;newNode:N=&#8217;<em>newBCDataSet</em>&#8216;(parent:N,name:S,valueType:CK.BCTypeSimple)&#8217;</p>
+<p>‘newNode:N=’<em>newBCDataSet</em>’(parent:N,name:S,valueType:CK.BCTypeSimple)’</p>
 <blockquote>
 <div>If a parent is given, the new &lt;node&gt; is added to the parent children list.
-Returns a new &lt;node&gt; representing a BCDataSet_t sub-tree.  
+Returns a new &lt;node&gt; representing a BCDataSet_t sub-tree.
 chapter 9.4 Add node BCTypeSimple is required</div></blockquote>
 </dd></dl>
 
 <dl class="function">
 <dt id="CGNS.PAT.cgnslib.newBCData">
-<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newBCData</code><span class="sig-paren">(</span><em>parent</em>, <em>name='NeumannData'</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newBCData" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newBCData</code><span class="sig-paren">(</span><em>parent</em>, <em>name=u'NeumannData'</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newBCData" title="Permalink to this definition">¶</a></dt>
 <dd><p>-BCData node creation -BCData</p>
-<p>&#8216;newNode:N=&#8217;<em>newBCData</em>&#8216;(parent:N,name:S)&#8217;</p>
+<p>‘newNode:N=’<em>newBCData</em>’(parent:N,name:S)’</p>
 <blockquote>
-<div>Returns a new &lt;node&gt; representing a BCData_t sub-tree. 
+<div>Returns a new &lt;node&gt; representing a BCData_t sub-tree.
 chapter 9.5</div></blockquote>
 </dd></dl>
 
 <dl class="function">
 <dt id="CGNS.PAT.cgnslib.newBCProperty">
-<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newBCProperty</code><span class="sig-paren">(</span><em>parent</em>, <em>wallfunction='Null'</em>, <em>area='Null'</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newBCProperty" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newBCProperty</code><span class="sig-paren">(</span><em>parent</em>, <em>wallfunction=u'Null'</em>, <em>area=u'Null'</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newBCProperty" title="Permalink to this definition">¶</a></dt>
 <dd><p>-BCProperty node creation -BCProperty</p>
-<p>&#8216;newNode:N=&#8217;<em>newBCProperty</em>&#8216;(parent:N)&#8217;</p>
+<p>‘newNode:N=’<em>newBCProperty</em>’(parent:N)’</p>
 <blockquote>
-<div>Returns a new &lt;node&gt; representing a BCProperty_t sub-tree.  
+<div>Returns a new &lt;node&gt; representing a BCProperty_t sub-tree.
 If a parent is given, the new &lt;node&gt; is added to the parent children list.
 chapter 9.6</div></blockquote>
 </dd></dl>
@@ -972,9 +974,9 @@ chapter 9.6</div></blockquote>
 <dt id="CGNS.PAT.cgnslib.newAxisymmetry">
 <code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newAxisymmetry</code><span class="sig-paren">(</span><em>parent</em>, <em>refpoint=array([ 0.</em>, <em>0.</em>, <em>0.])</em>, <em>axisvector=array([ 0.</em>, <em>0.</em>, <em>0.])</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newAxisymmetry" title="Permalink to this definition">¶</a></dt>
 <dd><p>-Axisymmetry node creation -Axisymmetry</p>
-<p>&#8216;newNode:N=&#8217;<em>newAxisymmetry</em>&#8216;(parent:N,refpoint:A,axisvector:A)&#8217;</p>
+<p>‘newNode:N=’<em>newAxisymmetry</em>’(parent:N,refpoint:A,axisvector:A)’</p>
 <p>refpoint,axisvector should be a real array.
-Returns a new &lt;node&gt; representing a CK.Axisymmetry_t sub-tree.   
+Returns a new &lt;node&gt; representing a CK.Axisymmetry_t sub-tree.
 chapter 7.5 Add DataArray AxisymmetryAxisVector,AxisymmetryReferencePoint are required</p>
 </dd></dl>
 
@@ -982,9 +984,9 @@ chapter 7.5 Add DataArray AxisymmetryAxisVector,AxisymmetryReferencePoint are re
 <dt id="CGNS.PAT.cgnslib.newRotatingCoordinates">
 <code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newRotatingCoordinates</code><span class="sig-paren">(</span><em>parent</em>, <em>rotcenter=array([ 0.</em>, <em>0.</em>, <em>0.])</em>, <em>ratev=array([ 0.</em>, <em>0.</em>, <em>0.])</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newRotatingCoordinates" title="Permalink to this definition">¶</a></dt>
 <dd><p>-RotatingCoordinates node creation -RotatingCoordinates</p>
-<p>&#8216;newNode:N=&#8217;<em>newRotatingCoordinates</em>&#8216;(parent:N,rotcenter=A,ratev=A)&#8217;</p>
+<p>‘newNode:N=’<em>newRotatingCoordinates</em>’(parent:N,rotcenter=A,ratev=A)’</p>
 <blockquote>
-<div>Returns a new &lt;node&gt; representing a RotatingCoordinates_t sub-tree. 
+<div>Returns a new &lt;node&gt; representing a RotatingCoordinates_t sub-tree.
 If a parent is given, the new &lt;node&gt; is added to the parent children list.
 rotcenter,ratev should be a real array.
 chapter  7.6 Add DataArray RotationRateVector,RotationCenter are required</div></blockquote>
@@ -992,18 +994,18 @@ chapter  7.6 Add DataArray RotationRateVector,RotationCenter are required</div><
 
 <dl class="function">
 <dt id="CGNS.PAT.cgnslib.newFlowSolution">
-<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newFlowSolution</code><span class="sig-paren">(</span><em>parent</em>, <em>name='{FlowSolution}'</em>, <em>gridlocation=None</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newFlowSolution" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newFlowSolution</code><span class="sig-paren">(</span><em>parent</em>, <em>name=u'{FlowSolution}'</em>, <em>gridlocation=None</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newFlowSolution" title="Permalink to this definition">¶</a></dt>
 <dd><p>-Solution node creation -Solution</p>
-<p>&#8216;newNode:N=&#8217;<em>newSolution</em>&#8216;(parent:N,name:S,gridlocation:None)&#8217;</p>
-<p>Returns a new &lt;node&gt; representing a FlowSolution_t sub-tree. 
+<p>‘newNode:N=’<em>newSolution</em>’(parent:N,name:S,gridlocation:None)’</p>
+<p>Returns a new &lt;node&gt; representing a FlowSolution_t sub-tree.
 chapter 7.7</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="CGNS.PAT.cgnslib.newZoneGridConnectivity">
-<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newZoneGridConnectivity</code><span class="sig-paren">(</span><em>parent</em>, <em>name='ZoneGridConnectivity'</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newZoneGridConnectivity" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newZoneGridConnectivity</code><span class="sig-paren">(</span><em>parent</em>, <em>name=u'ZoneGridConnectivity'</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newZoneGridConnectivity" title="Permalink to this definition">¶</a></dt>
 <dd><p>-GridConnectivity node creation -Grid</p>
-<p>&#8216;newNode:N=&#8217;<em>newZoneGridConnectivity</em>&#8216;(parent:N,name:S)&#8217;</p>
+<p>‘newNode:N=’<em>newZoneGridConnectivity</em>’(parent:N,name:S)’</p>
 <p>Creates a ZoneGridConnectivity_t sub-tree
 This sub-node is returned.
 If a parent is given, the new &lt;node&gt; is added to the parent children list,
@@ -1015,7 +1017,7 @@ chapter 8.1</p>
 <dt id="CGNS.PAT.cgnslib.newGridConnectivity1to1">
 <code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newGridConnectivity1to1</code><span class="sig-paren">(</span><em>parent</em>, <em>name</em>, <em>dname</em>, <em>window</em>, <em>dwindow</em>, <em>trans</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newGridConnectivity1to1" title="Permalink to this definition">¶</a></dt>
 <dd><p>-GridConnectivity1to1 node creation -Grid</p>
-<p>&#8216;newNode:N=&#8217;<em>newGridConnectivity1to1</em>&#8216;(parent:N,name:S,dname:S,window:[i*],dwindow:[i*],trans:[i*])&#8217;</p>
+<p>‘newNode:N=’<em>newGridConnectivity1to1</em>’(parent:N,name:S,dname:S,window:[i*],dwindow:[i*],trans:[i*])’</p>
 <p>Creates a GridConnectivity1to1_t sub-tree.
 If a parent is given, the new &lt;node&gt; is added to the parent children list,
 the parent should be a Zone_t.
@@ -1025,9 +1027,9 @@ chapter 8.2</p>
 
 <dl class="function">
 <dt id="CGNS.PAT.cgnslib.newGridConnectivity">
-<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newGridConnectivity</code><span class="sig-paren">(</span><em>parent</em>, <em>name</em>, <em>dname</em>, <em>ctype='Overset'</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newGridConnectivity" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newGridConnectivity</code><span class="sig-paren">(</span><em>parent</em>, <em>name</em>, <em>dname</em>, <em>ctype=u'Overset'</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newGridConnectivity" title="Permalink to this definition">¶</a></dt>
 <dd><p>-GridConnectivity node creation -Grid</p>
-<p>&#8216;newNode:N=&#8217;<em>newGridConnectivity</em>&#8216;(parent:N,name:S,dname:S,ctype:S)&#8217;</p>
+<p>‘newNode:N=’<em>newGridConnectivity</em>’(parent:N,name:S,dname:S,ctype:S)’</p>
 <p>Creates a GridConnectivity sub-tree.
 If a parent is given, the new &lt;node&gt; is added to the parent children list,
 the parent should be a ZoneGridConnectivity_t.
@@ -1037,9 +1039,9 @@ chapter 8.4</p>
 
 <dl class="function">
 <dt id="CGNS.PAT.cgnslib.newGridConnectivityType">
-<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newGridConnectivityType</code><span class="sig-paren">(</span><em>parent</em>, <em>ctype='Overset'</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newGridConnectivityType" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newGridConnectivityType</code><span class="sig-paren">(</span><em>parent</em>, <em>ctype=u'Overset'</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newGridConnectivityType" title="Permalink to this definition">¶</a></dt>
 <dd><p>-GridConnectivityType node creation -Grid</p>
-<p>&#8216;newNode:N=&#8217;<em>newGridConnectivityType</em>&#8216;(parent:N,ctype:S)&#8217;</p>
+<p>‘newNode:N=’<em>newGridConnectivityType</em>’(parent:N,ctype:S)’</p>
 <p>Creates a GridConnectivityType sub-tree.
 If a parent is given, the new &lt;node&gt; is added to the parent children list,
 the parent should be a GridConnectivity_t.
@@ -1051,9 +1053,9 @@ chapter 8</p>
 <dt id="CGNS.PAT.cgnslib.newGridConnectivityProperty">
 <code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newGridConnectivityProperty</code><span class="sig-paren">(</span><em>parent</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newGridConnectivityProperty" title="Permalink to this definition">¶</a></dt>
 <dd><p>-GridConnectivityProperty node creation -GridConnectivityProperty</p>
-<p>&#8216;newNode:N=&#8217;<em>newGridConnectivityProperty</em>&#8216;(parent:N)&#8217;</p>
+<p>‘newNode:N=’<em>newGridConnectivityProperty</em>’(parent:N)’</p>
 <blockquote>
-<div>Returns a new &lt;node&gt; representing a GridConnectivityProperty_t sub-tree. 
+<div>Returns a new &lt;node&gt; representing a GridConnectivityProperty_t sub-tree.
 If a parent is given, the new &lt;node&gt; is added to the parent children list.
 chapter 8.5</div></blockquote>
 </dd></dl>
@@ -1062,9 +1064,9 @@ chapter 8.5</div></blockquote>
 <dt id="CGNS.PAT.cgnslib.newPeriodic">
 <code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newPeriodic</code><span class="sig-paren">(</span><em>parent</em>, <em>rotcenter=array([ 0.</em>, <em>0.</em>, <em>0.])</em>, <em>ratev=array([ 0.</em>, <em>0.</em>, <em>0.])</em>, <em>trans=array([ 0.</em>, <em>0.</em>, <em>0.])</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newPeriodic" title="Permalink to this definition">¶</a></dt>
 <dd><p>-Periodic node creation -Periodic</p>
-<p>&#8216;newNode:N=&#8217;<em>newPeriodic</em>&#8216;(parent:N,rotcenter=A,ratev=A,trans=A)&#8217;</p>
+<p>‘newNode:N=’<em>newPeriodic</em>’(parent:N,rotcenter=A,ratev=A,trans=A)’</p>
 <blockquote>
-<div>Returns a new &lt;node&gt; representing a Periodic_t sub-tree. 
+<div>Returns a new &lt;node&gt; representing a Periodic_t sub-tree.
 If a parent is given, the new &lt;node&gt; is added to the parent children list.
 If the parent has already a child name Periodic then
 only the RotationCenter,RotationAngle,Translation are created.
@@ -1074,12 +1076,12 @@ chapter 8.5.1 Add DataArray RotationCenter,RotationAngle,Translation are require
 
 <dl class="function">
 <dt id="CGNS.PAT.cgnslib.newAverageInterface">
-<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newAverageInterface</code><span class="sig-paren">(</span><em>parent</em>, <em>valueType='Null'</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newAverageInterface" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newAverageInterface</code><span class="sig-paren">(</span><em>parent</em>, <em>valueType=u'Null'</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newAverageInterface" title="Permalink to this definition">¶</a></dt>
 <dd><p>-AverageInterface node creation -AverageInterface</p>
-<p>&#8216;newNode:N=&#8217;<em>newAverageInterface</em>&#8216;(parent:N,valueType:CK.AverageInterfaceType)&#8217;</p>
+<p>‘newNode:N=’<em>newAverageInterface</em>’(parent:N,valueType:CK.AverageInterfaceType)’</p>
 <blockquote>
-<div>Returns a new &lt;node&gt; representing a AverageInterface_t sub-tree. 
-If a parent is given, the new &lt;node&gt; is added to the parent children list. 
+<div>Returns a new &lt;node&gt; representing a AverageInterface_t sub-tree.
+If a parent is given, the new &lt;node&gt; is added to the parent children list.
 If the parent has already a child name AverageInterface then
 only the AverageInterfaceType is created.
 chapter 8.5.2</div></blockquote>
@@ -1089,8 +1091,8 @@ chapter 8.5.2</div></blockquote>
 <dt id="CGNS.PAT.cgnslib.newOversetHoles">
 <code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newOversetHoles</code><span class="sig-paren">(</span><em>parent</em>, <em>name</em>, <em>hrange</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newOversetHoles" title="Permalink to this definition">¶</a></dt>
 <dd><p>-OversetHoles node creation -OversetHoles</p>
-<p>&#8216;node:N=&#8217;<em>newOversetHoles</em>&#8216;(parent:N,name:S,hrange:list)&#8217;</p>
-<p>Creates a OversetHoles_t sub-tree.  
+<p>‘node:N=’<em>newOversetHoles</em>’(parent:N,name:S,hrange:list)’</p>
+<p>Creates a OversetHoles_t sub-tree.
 the parent should be a Zone_t.
 If a parent is given, the new &lt;node&gt; is added to the parent children list.
 chapter 8.6 Add PointList or List( PointRange ) are required</p>
@@ -1100,21 +1102,21 @@ chapter 8.6 Add PointList or List( PointRange ) are required</p>
 <dt id="CGNS.PAT.cgnslib.newFlowEquationSet">
 <code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newFlowEquationSet</code><span class="sig-paren">(</span><em>parent</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newFlowEquationSet" title="Permalink to this definition">¶</a></dt>
 <dd><p>-FlowEquationSet node creation -FlowEquationSet</p>
-<p>&#8216;newNode:N=&#8217;<em>newFlowEquationSet</em>&#8216;(parent:N)&#8217;</p>
+<p>‘newNode:N=’<em>newFlowEquationSet</em>’(parent:N)’</p>
 <dl class="docutils">
 <dt>If a parent is given, the new &lt;node&gt; is added to the parent children list.</dt>
-<dd>Returns a new &lt;node&gt; representing a CK.FlowEquationSet_t sub-tree.  
+<dd>Returns a new &lt;node&gt; representing a CK.FlowEquationSet_t sub-tree.
 chapter 10.1</dd>
 </dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="CGNS.PAT.cgnslib.newGoverningEquations">
-<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newGoverningEquations</code><span class="sig-paren">(</span><em>parent</em>, <em>valueType='Euler'</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newGoverningEquations" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newGoverningEquations</code><span class="sig-paren">(</span><em>parent</em>, <em>valueType=u'Euler'</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newGoverningEquations" title="Permalink to this definition">¶</a></dt>
 <dd><p>-GoverningEquations node creation -GoverningEquations</p>
-<p>&#8216;newNode:N=&#8217;<em>newGoverningEquations</em>&#8216;(parent:N,valueType:CK.GoverningEquationsType)&#8217;</p>
+<p>‘newNode:N=’<em>newGoverningEquations</em>’(parent:N,valueType:CK.GoverningEquationsType)’</p>
 <blockquote>
-<div>Returns a new &lt;node&gt; representing a CK.GoverningEquations_t sub-tree. 
+<div>Returns a new &lt;node&gt; representing a CK.GoverningEquations_t sub-tree.
 If a parent is given, the new &lt;node&gt; is added to the parent children list.
 If the parent has already a child name GoverningEquations then
 only the GoverningEquationsType is created.
@@ -1123,50 +1125,50 @@ chapter  10.2 Add node GoverningEquationsType is required</div></blockquote>
 
 <dl class="function">
 <dt id="CGNS.PAT.cgnslib.newGasModel">
-<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newGasModel</code><span class="sig-paren">(</span><em>parent</em>, <em>valueType='Ideal'</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newGasModel" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newGasModel</code><span class="sig-paren">(</span><em>parent</em>, <em>valueType=u'Ideal'</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newGasModel" title="Permalink to this definition">¶</a></dt>
 <dd><p>-GasModel node creation -GasModel</p>
-<p>&#8216;newNode:N=&#8217;<em>newGasModel</em>&#8216;(parent:N,valueType:CK.GasModelType)&#8217;</p>
+<p>‘newNode:N=’<em>newGasModel</em>’(parent:N,valueType:CK.GasModelType)’</p>
 <blockquote>
 <div>Returns a new &lt;node&gt; representing a CK.GasModel_t sub-tree.
 If a parent is given, the new &lt;node&gt; is added to the parent children list.
 If the parent has already a child name GasModel then
-only the GasModelType is created. 
+only the GasModelType is created.
 chapter 10.3 Add node GasModelType is required</div></blockquote>
 </dd></dl>
 
 <dl class="function">
 <dt id="CGNS.PAT.cgnslib.newThermalConductivityModel">
-<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newThermalConductivityModel</code><span class="sig-paren">(</span><em>parent</em>, <em>valueType='SutherlandLaw'</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newThermalConductivityModel" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newThermalConductivityModel</code><span class="sig-paren">(</span><em>parent</em>, <em>valueType=u'SutherlandLaw'</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newThermalConductivityModel" title="Permalink to this definition">¶</a></dt>
 <dd><p>-ThermalConductivityModel node creation -ThermalConductivityModel</p>
-<p>&#8216;newNode:N=&#8217;<em>newThermalConductivityModel</em>&#8216;(parent:N,valueType:CK.ThermalConductivityModelType)&#8217;</p>
+<p>‘newNode:N=’<em>newThermalConductivityModel</em>’(parent:N,valueType:CK.ThermalConductivityModelType)’</p>
 <blockquote>
 <div>Returns a new &lt;node&gt; representing a CK.ThermalConductivityModel_t sub-tree.
 If a parent is given, the new &lt;node&gt; is added to the parent children list.
 If the parent has already a child name ThermalConductivityModel then
-only the ThermalConductivityModelType is created. 
+only the ThermalConductivityModelType is created.
 chapter 10.5 Add node ThermalConductivityModelType is required</div></blockquote>
 </dd></dl>
 
 <dl class="function">
 <dt id="CGNS.PAT.cgnslib.newViscosityModel">
-<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newViscosityModel</code><span class="sig-paren">(</span><em>parent</em>, <em>valueType='SutherlandLaw'</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newViscosityModel" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newViscosityModel</code><span class="sig-paren">(</span><em>parent</em>, <em>valueType=u'SutherlandLaw'</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newViscosityModel" title="Permalink to this definition">¶</a></dt>
 <dd><p>-ViscosityModel node creation -ViscosityModel</p>
-<p>&#8216;newNode:N=&#8217;<em>newViscosityModel</em>&#8216;(parent:N,valueType:CK.ViscosityModelType)&#8217;</p>
+<p>‘newNode:N=’<em>newViscosityModel</em>’(parent:N,valueType:CK.ViscosityModelType)’</p>
 <blockquote>
 <div>Returns a new &lt;node&gt; representing a CK.ViscosityModel_t sub-tree.
 If a parent is given, the new &lt;node&gt; is added to the parent children list.
 If the parent has already a child name ViscosityModel then
-only the ViscosityModelType is created. 
+only the ViscosityModelType is created.
 chapter 10.4 Add node ViscosityModelType is (r)</div></blockquote>
 </dd></dl>
 
 <dl class="function">
 <dt id="CGNS.PAT.cgnslib.newTurbulenceClosure">
-<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newTurbulenceClosure</code><span class="sig-paren">(</span><em>parent</em>, <em>valueType='Null'</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newTurbulenceClosure" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newTurbulenceClosure</code><span class="sig-paren">(</span><em>parent</em>, <em>valueType=u'Null'</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newTurbulenceClosure" title="Permalink to this definition">¶</a></dt>
 <dd><p>-TurbulenceClosure node creation -TurbulenceClosure</p>
 <dl class="docutils">
-<dt>&#8216;newNode:N=&#8217;<em>newTurbulenceClosure</em>&#8216;(parent:N,valueType:CK.TurbulenceClosureType)&#8217;  </dt>
-<dd>Returns a new &lt;node&gt; representing a CK.TurbulenceClosure_t sub-tree.  
+<dt>‘newNode:N=’<em>newTurbulenceClosure</em>’(parent:N,valueType:CK.TurbulenceClosureType)’</dt>
+<dd>Returns a new &lt;node&gt; representing a CK.TurbulenceClosure_t sub-tree.
 If a parent is given, the new &lt;node&gt; is added to the parent children list.
 If the parent has already a child name TurbulenceClosure then
 only the ViscosityModelType is created.
@@ -1176,11 +1178,11 @@ chapter 10.5 Add node TurbulenceClosureType is (r)</dd>
 
 <dl class="function">
 <dt id="CGNS.PAT.cgnslib.newTurbulenceModel">
-<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newTurbulenceModel</code><span class="sig-paren">(</span><em>parent</em>, <em>valueType='OneEquation_SpalartAllmaras'</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newTurbulenceModel" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newTurbulenceModel</code><span class="sig-paren">(</span><em>parent</em>, <em>valueType=u'OneEquation_SpalartAllmaras'</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newTurbulenceModel" title="Permalink to this definition">¶</a></dt>
 <dd><p>-TurbulenceModel node creation -TurbulenceModel</p>
-<p>&#8216;newNode:N=&#8217;<em>newTurbulenceModel</em>&#8216;(parent:N,valueType:CK.TurbulenceModelType)&#8217;</p>
+<p>‘newNode:N=’<em>newTurbulenceModel</em>’(parent:N,valueType:CK.TurbulenceModelType)’</p>
 <blockquote>
-<div>Returns a new &lt;node&gt; representing a CK.TurbulenceModel_t sub-tree. 
+<div>Returns a new &lt;node&gt; representing a CK.TurbulenceModel_t sub-tree.
 If a parent is given, the new &lt;node&gt; is added to the parent children list.
 If the parent has already a child name TurbulenceModel then
 only the TurbulenceModelType is created.
@@ -1189,78 +1191,78 @@ chapter 10.6.2 Add node TurbulenceModelType is (r)</div></blockquote>
 
 <dl class="function">
 <dt id="CGNS.PAT.cgnslib.newThermalRelaxationModel">
-<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newThermalRelaxationModel</code><span class="sig-paren">(</span><em>parent</em>, <em>valueType='Null'</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newThermalRelaxationModel" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newThermalRelaxationModel</code><span class="sig-paren">(</span><em>parent</em>, <em>valueType=u'Null'</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newThermalRelaxationModel" title="Permalink to this definition">¶</a></dt>
 <dd><p>-ThermalRelaxationModel node creation -ThermalRelaxationModel</p>
-<p>&#8216;newNode:N=&#8217;<em>newThermalRelaxationModel</em>&#8216;(parent:N,valueType:CK.ThermalRelaxationModelType)&#8217;</p>
+<p>‘newNode:N=’<em>newThermalRelaxationModel</em>’(parent:N,valueType:CK.ThermalRelaxationModelType)’</p>
 <blockquote>
 <div>Returns a new &lt;node&gt; representing a CK.ThermalRelaxationModel_t sub-tree.
 If a parent is given, the new &lt;node&gt; is added to the parent children list.
 If the parent has already a child name ThermalRelaxationModel then
-only the ThermalRelaxationModelType is created.  
+only the ThermalRelaxationModelType is created.
 chapter 10.7 Add node ThermalRelaxationModelType is (r)</div></blockquote>
 </dd></dl>
 
 <dl class="function">
 <dt id="CGNS.PAT.cgnslib.newChemicalKineticsModel">
-<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newChemicalKineticsModel</code><span class="sig-paren">(</span><em>parent</em>, <em>valueType='Null'</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newChemicalKineticsModel" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newChemicalKineticsModel</code><span class="sig-paren">(</span><em>parent</em>, <em>valueType=u'Null'</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newChemicalKineticsModel" title="Permalink to this definition">¶</a></dt>
 <dd><p>-ChemicalKineticsModel node creation -ChemicalKineticsModel</p>
-<p>&#8216;newNode:N=&#8217;<em>newChemicalKineticsModel</em>&#8216;(parent:N,valueType:CK.ChemicalKineticsModelType)&#8217;</p>
+<p>‘newNode:N=’<em>newChemicalKineticsModel</em>’(parent:N,valueType:CK.ChemicalKineticsModelType)’</p>
 <blockquote>
 <div>Returns a new &lt;node&gt; representing a CK.ChemicalKineticsModel_t sub-tree.
 If a parent is given, the new &lt;node&gt; is added to the parent children list.
 If the parent has already a child name ChemicalKineticsModel then
-only the ChemicalKineticsModelType is created. 
+only the ChemicalKineticsModelType is created.
 chapter 10.8 Add node ChemicalKineticsModelType is (r)</div></blockquote>
 </dd></dl>
 
 <dl class="function">
 <dt id="CGNS.PAT.cgnslib.newEMElectricFieldModel">
-<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newEMElectricFieldModel</code><span class="sig-paren">(</span><em>parent</em>, <em>valueType='Null'</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newEMElectricFieldModel" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newEMElectricFieldModel</code><span class="sig-paren">(</span><em>parent</em>, <em>valueType=u'Null'</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newEMElectricFieldModel" title="Permalink to this definition">¶</a></dt>
 <dd><p>-EMElectricFieldModel node creation -EMElectricFieldModel</p>
-<p>&#8216;newNode:N=&#8217;<em>newEMElectricFieldModel</em>&#8216;(parent:N,valueType:CK.EMElectricFieldModelType)&#8217;</p>
+<p>‘newNode:N=’<em>newEMElectricFieldModel</em>’(parent:N,valueType:CK.EMElectricFieldModelType)’</p>
 <blockquote>
 <div><p>Returns a new &lt;node&gt; representing a CK.EMElectricFieldModel_t sub-tree.
 If a parent is given, the new &lt;node&gt; is added to the parent children list.</p>
 <blockquote>
 <div>If the parent has already a child name EMElectricFieldModel then</div></blockquote>
-<p>only the EMElectricFieldModelType is created. 
+<p>only the EMElectricFieldModelType is created.
 chapter 10.9 Add node EMElectricFieldModelType is (r)</p>
 </div></blockquote>
 </dd></dl>
 
 <dl class="function">
 <dt id="CGNS.PAT.cgnslib.newEMMagneticFieldModel">
-<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newEMMagneticFieldModel</code><span class="sig-paren">(</span><em>parent</em>, <em>valueType='Null'</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newEMMagneticFieldModel" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newEMMagneticFieldModel</code><span class="sig-paren">(</span><em>parent</em>, <em>valueType=u'Null'</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newEMMagneticFieldModel" title="Permalink to this definition">¶</a></dt>
 <dd><p>-EMMagneticFieldModel node creation -EMMagneticFieldModel</p>
-<p>&#8216;newNode:N=&#8217;<em>newEMMagneticFieldModel</em>&#8216;(parent:N,valueType:CK.EMMagneticFieldModelType)&#8217;</p>
+<p>‘newNode:N=’<em>newEMMagneticFieldModel</em>’(parent:N,valueType:CK.EMMagneticFieldModelType)’</p>
 <blockquote>
-<div>Returns a new &lt;node&gt; representing a CK.EMMagneticFieldModel_t sub-tree.  
+<div>Returns a new &lt;node&gt; representing a CK.EMMagneticFieldModel_t sub-tree.
 If a parent is given, the new &lt;node&gt; is added to the parent children list.
 If the parent has already a child name EMMagneticFieldModel_s then
-only the EMMagneticFieldModelType is created. 
+only the EMMagneticFieldModelType is created.
 chapter 10.9.2 Add node EMMagneticFieldModelType is (r)</div></blockquote>
 </dd></dl>
 
 <dl class="function">
 <dt id="CGNS.PAT.cgnslib.newEMConductivityModel">
-<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newEMConductivityModel</code><span class="sig-paren">(</span><em>parent</em>, <em>valueType='Null'</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newEMConductivityModel" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newEMConductivityModel</code><span class="sig-paren">(</span><em>parent</em>, <em>valueType=u'Null'</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newEMConductivityModel" title="Permalink to this definition">¶</a></dt>
 <dd><p>-EMConductivityModel node creation -EMConductivityModel</p>
-<p>&#8216;newNode:N=&#8217;<em>newEMConductivityModel</em>&#8216;(parent:N,valueType:CK.EMConductivityModelType)&#8217;</p>
+<p>‘newNode:N=’<em>newEMConductivityModel</em>’(parent:N,valueType:CK.EMConductivityModelType)’</p>
 <blockquote>
-<div>Returns a new &lt;node&gt; representing a CK.EMConductivityModel_t sub-tree. 
+<div>Returns a new &lt;node&gt; representing a CK.EMConductivityModel_t sub-tree.
 If a parent is given, the new &lt;node&gt; is added to the parent children list.
 If the parent has already a child name EMConductivityModel then
-only the EMConductivityModelType is created. 
+only the EMConductivityModelType is created.
 chapter 10.9.3 Add node EMConductivityModelType is (r)</div></blockquote>
 </dd></dl>
 
 <dl class="function">
 <dt id="CGNS.PAT.cgnslib.newBaseIterativeData">
-<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newBaseIterativeData</code><span class="sig-paren">(</span><em>parent</em>, <em>name</em>, <em>nsteps=0</em>, <em>itype='IterationValues'</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newBaseIterativeData" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newBaseIterativeData</code><span class="sig-paren">(</span><em>parent</em>, <em>name</em>, <em>nsteps=0</em>, <em>itype=u'IterationValues'</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newBaseIterativeData" title="Permalink to this definition">¶</a></dt>
 <dd><p>-BaseIterativeData node creation -BaseIterativeData</p>
-<p>&#8216;newNode:N=&#8217;<em>newBaseIterativeData</em>&#8216;(parent:N,name:S,nsteps:I,itype:E)&#8217;</p>
-<p>Returns a new &lt;node&gt; representing a BaseIterativeData_t sub-tree. 
-If a parent is given, the new &lt;node&gt; is added to the parent children list. 
+<p>‘newNode:N=’<em>newBaseIterativeData</em>’(parent:N,name:S,nsteps:I,itype:E)’</p>
+<p>Returns a new &lt;node&gt; representing a BaseIterativeData_t sub-tree.
+If a parent is given, the new &lt;node&gt; is added to the parent children list.
 chapter 11.1.1
 NumberOfSteps is required, TimeValues or IterationValues are required</p>
 </dd></dl>
@@ -1269,21 +1271,21 @@ NumberOfSteps is required, TimeValues or IterationValues are required</p>
 <dt id="CGNS.PAT.cgnslib.newZoneIterativeData">
 <code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newZoneIterativeData</code><span class="sig-paren">(</span><em>parent</em>, <em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newZoneIterativeData" title="Permalink to this definition">¶</a></dt>
 <dd><p>-ZoneIterativeData node creation -ZoneIterativeData</p>
-<p>&#8216;newNode:N=&#8217;<em>newZoneIterativeData</em>&#8216;(parent:N,name:S)&#8217;</p>
+<p>‘newNode:N=’<em>newZoneIterativeData</em>’(parent:N,name:S)’</p>
 <blockquote>
-<div>Returns a new &lt;node&gt; representing a ZoneIterativeData_t sub-tree. 
-If a parent is given, the new &lt;node&gt; is added to the parent children list. 
+<div>Returns a new &lt;node&gt; representing a ZoneIterativeData_t sub-tree.
+If a parent is given, the new &lt;node&gt; is added to the parent children list.
 chapter  11.1.2</div></blockquote>
 </dd></dl>
 
 <dl class="function">
 <dt id="CGNS.PAT.cgnslib.newRigidGridMotion">
-<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newRigidGridMotion</code><span class="sig-paren">(</span><em>parent</em>, <em>name</em>, <em>valueType='Null'</em>, <em>vector=array([ 0.</em>, <em>0.</em>, <em>0.])</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newRigidGridMotion" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newRigidGridMotion</code><span class="sig-paren">(</span><em>parent</em>, <em>name</em>, <em>valueType=u'Null'</em>, <em>vector=array([ 0.</em>, <em>0.</em>, <em>0.])</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newRigidGridMotion" title="Permalink to this definition">¶</a></dt>
 <dd><p>-RigidGridMotion node creation -RigidGridMotion</p>
-<p>&#8216;newNode:N=&#8217;<em>newRigidGridMotion</em>&#8216;(parent:N,name:S,valueType:CK.RigidGridMotionType,vector:A)&#8217;</p>
+<p>‘newNode:N=’<em>newRigidGridMotion</em>’(parent:N,name:S,valueType:CK.RigidGridMotionType,vector:A)’</p>
 <dl class="docutils">
 <dt>If a parent is given, the new &lt;node&gt; is added to the parent children list.</dt>
-<dd>Returns a new &lt;node&gt; representing a CK.RigidGridMotion_t sub-tree.  
+<dd>Returns a new &lt;node&gt; representing a CK.RigidGridMotion_t sub-tree.
 If the parent has already a child name RigidGridMotion then
 only the RigidGridMotionType is created and OriginLocation is created
 chapter 11.2 Add Node RigidGridMotionType and add DataArray OriginLocation are the only required</dd>
@@ -1292,23 +1294,23 @@ chapter 11.2 Add Node RigidGridMotionType and add DataArray OriginLocation are t
 
 <dl class="function">
 <dt id="CGNS.PAT.cgnslib.newReferenceState">
-<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newReferenceState</code><span class="sig-paren">(</span><em>parent</em>, <em>name='ReferenceState'</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newReferenceState" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newReferenceState</code><span class="sig-paren">(</span><em>parent</em>, <em>name=u'ReferenceState'</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newReferenceState" title="Permalink to this definition">¶</a></dt>
 <dd><p>-ReferenceState node creation -ReferenceState</p>
-<p>&#8216;newNode:N=&#8217;<em>newReferenceState</em>&#8216;(parent:N,name:S)&#8217;</p>
+<p>‘newNode:N=’<em>newReferenceState</em>’(parent:N,name:S)’</p>
 <blockquote>
-<div>Returns a new &lt;node&gt; representing a ReferenceState_t sub-tree. 
-If a parent is given, the new &lt;node&gt; is added to the parent children list. 
+<div>Returns a new &lt;node&gt; representing a ReferenceState_t sub-tree.
+If a parent is given, the new &lt;node&gt; is added to the parent children list.
 chapter  12.1</div></blockquote>
 </dd></dl>
 
 <dl class="function">
 <dt id="CGNS.PAT.cgnslib.newConvergenceHistory">
-<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newConvergenceHistory</code><span class="sig-paren">(</span><em>parent</em>, <em>name='GlobalConvergenceHistory'</em>, <em>iterations=0</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newConvergenceHistory" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newConvergenceHistory</code><span class="sig-paren">(</span><em>parent</em>, <em>name=u'GlobalConvergenceHistory'</em>, <em>iterations=0</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newConvergenceHistory" title="Permalink to this definition">¶</a></dt>
 <dd><p>-ConvergenceHistory node creation -ConvergenceHistory</p>
-<p>&#8216;newNode:N=&#8217;<em>newConvergenceHistory</em>&#8216;(parent:N,name:S,iterations:i)&#8217;</p>
+<p>‘newNode:N=’<em>newConvergenceHistory</em>’(parent:N,name:S,iterations:i)’</p>
 <blockquote>
-<div>Returns a new &lt;node&gt; representing a ConvergenceHistory_t sub-tree. 
-If a parent is given, the new &lt;node&gt; is added to the parent children list. 
+<div>Returns a new &lt;node&gt; representing a ConvergenceHistory_t sub-tree.
+If a parent is given, the new &lt;node&gt; is added to the parent children list.
 chapter  12.3</div></blockquote>
 </dd></dl>
 
@@ -1316,20 +1318,20 @@ chapter  12.3</div></blockquote>
 <dt id="CGNS.PAT.cgnslib.newFamily">
 <code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newFamily</code><span class="sig-paren">(</span><em>parent</em>, <em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newFamily" title="Permalink to this definition">¶</a></dt>
 <dd><p>-Family node creation -Family</p>
-<p>&#8216;newNode:N=&#8217;<em>newFamily</em>&#8216;(parent:N,name:S)&#8217;</p>
+<p>‘newNode:N=’<em>newFamily</em>’(parent:N,name:S)’</p>
 <blockquote>
-<div>Returns a new &lt;node&gt; representing a Family_t sub-tree. 
-If a parent is given, the new &lt;node&gt; is added to the parent children list. 
+<div>Returns a new &lt;node&gt; representing a Family_t sub-tree.
+If a parent is given, the new &lt;node&gt; is added to the parent children list.
 chapter  12.6</div></blockquote>
 </dd></dl>
 
 <dl class="function">
 <dt id="CGNS.PAT.cgnslib.newGeometryReference">
-<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newGeometryReference</code><span class="sig-paren">(</span><em>parent</em>, <em>name='{GeometryReference}'</em>, <em>valueType='UserDefined'</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newGeometryReference" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newGeometryReference</code><span class="sig-paren">(</span><em>parent</em>, <em>name=u'{GeometryReference}'</em>, <em>valueType=u'UserDefined'</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newGeometryReference" title="Permalink to this definition">¶</a></dt>
 <dd><p>-GeometryReference node creation -GeometryReference</p>
-<p>&#8216;newNode:N=&#8217;<em>newGeometryReference</em>&#8216;(parent:N,name:S,valueType:CK.GeometryFormat)&#8217;</p>
+<p>‘newNode:N=’<em>newGeometryReference</em>’(parent:N,name:S,valueType:CK.GeometryFormat)’</p>
 <blockquote>
-<div>Returns a new &lt;node&gt; representing a CK.GeometryFormat_t sub-tree. 
+<div>Returns a new &lt;node&gt; representing a CK.GeometryFormat_t sub-tree.
 If a parent is given, the new &lt;node&gt; is added to the parent children list.
 If the parent has already a child name CK.GeometryReference then
 only the .GeometryFormat is created
@@ -1338,11 +1340,11 @@ chapter  12.7 Add node CK.GeometryFormat_t is (r) and GeometryFile_t definition 
 
 <dl class="function">
 <dt id="CGNS.PAT.cgnslib.newFamilyBC">
-<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newFamilyBC</code><span class="sig-paren">(</span><em>parent</em>, <em>valueType='UserDefined'</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newFamilyBC" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newFamilyBC</code><span class="sig-paren">(</span><em>parent</em>, <em>valueType=u'UserDefined'</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newFamilyBC" title="Permalink to this definition">¶</a></dt>
 <dd><p>-FamilyBC node creation -FamilyBC</p>
-<p>&#8216;newNode:N=&#8217;<em>newFamilyBC</em>&#8216;(parent:N,valueType:CK.BCTypeSimple/CK.BCTypeCompound)&#8217;</p>
+<p>‘newNode:N=’<em>newFamilyBC</em>’(parent:N,valueType:CK.BCTypeSimple/CK.BCTypeCompound)’</p>
 <blockquote>
-<div>Returns a new &lt;node&gt; representing a CK.FamilyBC_t sub-tree. 
+<div>Returns a new &lt;node&gt; representing a CK.FamilyBC_t sub-tree.
 If a parent is given, the new &lt;node&gt; is added to the parent children list.
 If the parent has already a child name FamilyBC then
 only the BCType is created
@@ -1351,16 +1353,16 @@ chapter  12.8 Add node BCType is required</div></blockquote>
 
 <dl class="function">
 <dt id="CGNS.PAT.cgnslib.newArbitraryGridMotion">
-<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newArbitraryGridMotion</code><span class="sig-paren">(</span><em>parent</em>, <em>name</em>, <em>valuetype='Null'</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newArbitraryGridMotion" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newArbitraryGridMotion</code><span class="sig-paren">(</span><em>parent</em>, <em>name</em>, <em>valuetype=u'Null'</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newArbitraryGridMotion" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a <strong>new node</strong> representing a <a class="reference internal" href="cgnstypes.html#xarbitrarygridmotiontype-t"><span class="std std-ref">ArbitraryGridMotionType_t</span></a></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>parent</strong> &#8211; CGNS/Python node</li>
-<li><strong>name</strong> &#8211; String</li>
-<li><strong>valuetype</strong> &#8211; String (<code class="docutils literal"><span class="pre">CGNS.PAT.cgnskeywords.ArbitraryGridMotionType</span></code>)</li>
+<li><strong>parent</strong> – CGNS/Python node</li>
+<li><strong>name</strong> – String</li>
+<li><strong>valuetype</strong> – String (<code class="docutils literal"><span class="pre">CGNS.PAT.cgnskeywords.ArbitraryGridMotionType</span></code>)</li>
 </ul>
 </td>
 </tr>
@@ -1375,9 +1377,9 @@ name <code class="docutils literal"><span class="pre">RigidGridMotion</span></co
 <dt id="CGNS.PAT.cgnslib.newUserDefinedData">
 <code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newUserDefinedData</code><span class="sig-paren">(</span><em>parent</em>, <em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newUserDefinedData" title="Permalink to this definition">¶</a></dt>
 <dd><p>-UserDefinedData node creation -UserDefinedData</p>
-<p>&#8216;newNode:N=&#8217;<em>newUserDefinedData</em>&#8216;(parent:N,name:S)&#8217;</p>
+<p>‘newNode:N=’<em>newUserDefinedData</em>’(parent:N,name:S)’</p>
 <blockquote>
-<div>Returns a new &lt;node&gt; representing a UserDefinedData_t sub-tree. 
+<div>Returns a new &lt;node&gt; representing a UserDefinedData_t sub-tree.
 If a parent is given, the new &lt;node&gt; is added to the parent children list.
 chapter  12.9</div></blockquote>
 </dd></dl>
@@ -1386,9 +1388,9 @@ chapter  12.9</div></blockquote>
 <dt id="CGNS.PAT.cgnslib.newGravity">
 <code class="descclassname">CGNS.PAT.cgnslib.</code><code class="descname">newGravity</code><span class="sig-paren">(</span><em>parent</em>, <em>gvector=array([ 0.</em>, <em>0.</em>, <em>0.])</em><span class="sig-paren">)</span><a class="headerlink" href="#CGNS.PAT.cgnslib.newGravity" title="Permalink to this definition">¶</a></dt>
 <dd><p>-Gravity node creation -Gravity</p>
-<p>&#8216;newNode:N=&#8217;<em>newGravity</em>&#8216;(parent:N,gvector:A)&#8217;</p>
+<p>‘newNode:N=’<em>newGravity</em>’(parent:N,gvector:A)’</p>
 <blockquote>
-<div>Returns a new &lt;node&gt; representing a Gravity_t sub-tree. 
+<div>Returns a new &lt;node&gt; representing a Gravity_t sub-tree.
 If a parent is given, the new &lt;node&gt; is added to the parent children list.
 gvector should be a real array
 chapter  12.10 Add DataArray GravityVector is required</div></blockquote>
@@ -1404,7 +1406,7 @@ chapter  12.10 Add DataArray GravityVector is required</div></blockquote>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2001-2016, Marc Poinot.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
     </div>
   </body>
 </html>

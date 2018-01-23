@@ -1,23 +1,21 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>CGNS.MAP &#8212; MAP</title>
-    
     <link rel="stylesheet" href="_static/pycgns.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
         VERSION:     '4.2.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -26,10 +24,9 @@
     <link rel="shortcut icon" href="_static/pyCGNS-logo-tiny.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="top" title="MAP" href="#" />
     <link rel="next" title="CGNS/Python Tree" href="sids-to-python.html" /> 
   </head>
-  <body role="document">
+  <body>
     <div class="related">
       <h3>Navigation</h3>
       <ul>
@@ -193,7 +190,7 @@ by a <em>load</em> and used as command parameters during the <em>save</em>. You 
 your own <code class="docutils literal"><span class="pre">links</span></code> list or change the list you obtain after a <em>load</em>.
 The structure of a <code class="docutils literal"><span class="pre">links</span></code> list is detailled
 in <a class="reference internal" href="sids-to-python.html#reference-sids-to-python"><span class="std std-ref">SIDS-to-Python</span></a>.
-See also &#8216;about links&#8217;</p>
+See also ‘about links’</p>
 </li>
 <li><p class="first"><strong>filename</strong>:
 The name of the target file, to read or to write. The <code class="docutils literal"><span class="pre">filename</span></code> can
@@ -286,7 +283,7 @@ The boolean operators are used for the flag settings:</p>
 <td>Set all flags, set to one.</td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">S2P_TRACE</span></code></td>
-<td>Set the trace on, messages are sent to &#8216;stdout&#8217;</td>
+<td>Set the trace on, messages are sent to ‘stdout’</td>
 </tr>
 <tr class="row-odd"><td><code class="docutils literal"><span class="pre">S2P_FOLLOWLINKS</span></code></td>
 <td>Continue to parse the linked-to tree (1)</td>
@@ -295,13 +292,13 @@ The boolean operators are used for the flag settings:</p>
 <td>Forget all link specifications.  (2)</td>
 </tr>
 <tr class="row-odd"><td><code class="docutils literal"><span class="pre">S2P_COMPRESS</span></code></td>
-<td>Sets the compress flag for &#8216;DataArray_t&#8217; (2)</td>
+<td>Sets the compress flag for ‘DataArray_t’ (2)</td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">S2P_NOOWNDATA</span></code></td>
 <td>Forces the <cite>numpy</cite> flag <code class="docutils literal"><span class="pre">\~NPY_OWNDATA</span></code> (1) (3)</td>
 </tr>
 <tr class="row-odd"><td><code class="docutils literal"><span class="pre">S2P_NODATA</span></code></td>
-<td>Do not load large &#8216;DataArray_t&#8217; (1)</td>
+<td>Do not load large ‘DataArray_t’ (1)</td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">S2P_UPDATE</span></code></td>
 <td>Save updates existing file (6)</td>
@@ -402,32 +399,32 @@ change.</li>
 <dl class="glossary docutils">
 <dt id="term-cgns-org">cgns.org</dt>
 <dd>The official CGNS web site, by extension any document on this web
-site has an <em>official</em> taste...</dd>
+site has an <em>official</em> taste…</dd>
 <dt id="term-cgns">CGNS</dt>
 <dd>The specific purpose of the
 <a class="reference external" href="http://www.cgns.org">CFD General Notation System (CGNS)</a>
 project is to provide a standard for recording and recovering
 computer data associated with the numerical solution of the
 equations of fluid dynamics. See also the
-<a class="reference external" href="/scratch/MOSAIC/W/Marc/pycgns/doc/../build/doc/html/ch2/cgnshowto.html#cgnshowto" title="(in pyCGNS v4)"><span class="xref std std-ref">How to?</span></a>.</dd>
+<a class="reference external" href="D:\Users\u0568134\Documents\GitHub\pyCGNS\doc/../build/doc/html/ch2/cgnshowto.html#cgnshowto" title="(in pyCGNS v4)"><span class="xref std std-ref">How to?</span></a>.</dd>
 <dt id="term-cgns-sids">CGNS/SIDS</dt>
-<dd>The <a class="reference external" href="http://www.grc.nasa.gov/WWW/cgns/CGNS_docs_current/sids/index.html">Standard Interface Data Structure</a> is the
+<dd>The <a class="reference external" href="http://cgns.github.io/CGNS_docs_current/sids/index.html">Standard Interface Data Structure</a> is the
 specification of the data model.  This public document describes
 the syntax and the semantics of all tree-structured data required
 or proposed for a CFD simulation.</dd>
 <dt id="term-cgns-mll">CGNS/MLL</dt>
-<dd>The <a class="reference external" href="http://www.grc.nasa.gov/WWW/cgns/CGNS_docs_current/lidlevel/index.html">Mid-Level Library</a>
+<dd>The <a class="reference external" href="http://cgns.github.io/CGNS_docs_current/lidlevel/index.html">Mid-Level Library</a>
 is an example implementation of
 <em>CGNS/SIDS</em> on top of <em>CGNS/ADF</em> and <em>CGNS/HDF5</em> mappings. This
 library has a C and a Fortran API.</dd>
 <dt id="term-cgns-adf">CGNS/ADF</dt>
-<dd>The <a class="reference external" href="http://www.grc.nasa.gov/WWW/cgns/CGNS_docs_current/adf/index.html">Advanced Data Format *CGNS/SIDS* implementation</a>. A binary
+<dd>The <a class="reference external" href="http://cgns.github.io/CGNS_docs_current/adf/index.html">Advanced Data Format *CGNS/SIDS* implementation</a>. A binary
 storage format and its companion library, developped by <em>Boeing</em>.</dd>
 <dt id="term-cgns-hdf5">CGNS/HDF5</dt>
-<dd>The <a class="reference external" href="http://www.grc.nasa.gov/WWW/cgns/CGNS_docs_current/hdf5/index.html">Hierarchical Data Format *CGNS/SIDS* implementation</a>. A binary
+<dd>The <a class="reference external" href="http://cgns.github.io/CGNS_docs_current/hdf5/index.html">Hierarchical Data Format *CGNS/SIDS* implementation</a>. A binary
 storage format and its companion library (see below).</dd>
 <dt id="term-cgns-python">CGNS/Python</dt>
-<dd>The <a class="reference external" href="http://www.grc.nasa.gov/WWW/cgns/CGNS_docs_current/python/index.html">Python programming language *CGNS/SIDS*
+<dd>The <a class="reference external" href="http://cgns.github.io/CGNS_docs_current/python/index.html">Python programming language *CGNS/SIDS*
 implementation</a>.</dd>
 <dt id="term-chlone">CHLone</dt>
 <dd>A <em>CGNS/HDF5</em> compliant implementation. The <a class="reference external" href="http://chlone.sourceforge.net">CHLone</a> library is available on
@@ -472,7 +469,7 @@ under LGPL v2 in pyCGNS.</dd>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2001-2016, Marc Poinot.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
     </div>
   </body>
 </html>

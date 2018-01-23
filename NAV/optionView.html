@@ -1,23 +1,21 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>Option View &#8212; NAV</title>
-    
     <link rel="stylesheet" href="_static/pycgns.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
         VERSION:     '4.2.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -26,11 +24,10 @@
     <link rel="shortcut icon" href="_static/pyCGNS-logo-tiny.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="top" title="NAV" href="_index.html" />
     <link rel="next" title="Pattern View" href="patternView.html" />
     <link rel="prev" title="Tree View" href="treeView.html" /> 
   </head>
-  <body role="document">
+  <body>
     <div class="related">
       <h3>Navigation</h3>
       <ul>
@@ -132,59 +129,40 @@ Some are only related to the display of the data, some other are driving
 the way <em>CGNS.NAV</em> reads or writes the data on disk and have a strong
 impact on the  actual CGNS file you will obtain.</p>
 <blockquote>
-<div><ul>
+<div><ul class="simple">
 <li><dl class="first docutils">
 <dt><cite>Recursive tree display</cite> forces the <em>Tree view</em> to open all the children</dt>
-<dd><p class="first last">recursively. We strongly suggest you <em>un-check</em> this box on large files.</p>
-</dd>
+<dd>recursively. We strongly suggest you <em>un-check</em> this box on large files.</dd>
 </dl>
 </li>
-<li><p class="first"><cite>One view per tree/node</cite> (Not available) when active you cannot open
-more than one view per tree/node.</p>
-</li>
-<li><p class="first"><cite>Show columns titles</cite> is used to show/hide the top titles of tables</p>
-</li>
-<li><p class="first"><cite>Show menu help balloons</cite> activates ugly yelllow balloons giving a hint
-on the purpose of the icons in the views menus.</p>
-</li>
-<li><p class="first"><cite>Recurse SIDS patterns load/copy</cite> indicates that you want to load or
+<li><cite>One view per tree/node</cite> (Not available) when active you cannot open
+more than one view per tree/node.</li>
+<li><cite>Show columns titles</cite> is used to show/hide the top titles of tables</li>
+<li><cite>Show menu help balloons</cite> activates ugly yelllow balloons giving a hint
+on the purpose of the icons in the views menus.</li>
+<li><cite>Recurse SIDS patterns load/copy</cite> indicates that you want to load or
 copy the SIDS CGNS sub-trees in a recursive way. For example, if you
 load the <cite>CGNSBase_t</cite> pattern you will obtain the whole SIDS pattern,
-all pattern children of <cite>CGNSBase_t</cite> will be loaded as well.</p>
-</li>
-<li><p class="first"><cite>Load node on display required</cite> (Not available) to save memory and time,
-CGNS node is read from the file only when <em>CGNS.NAV</em> needs to display it.</p>
-</li>
-<li><p class="first"><cite>Check on the fly</cite> (Not available) forces a check each time you modify
-a tree.</p>
-</li>
-<li><p class="first"><cite>Follow links during file load</cite> indicates that the links <em>CGNS.NAV</em>
-encounters into a CGNS file have to be followed or not.</p>
-</li>
-<li><p class="first"><cite>Do NOT follow links during file save</cite> means that the links will be
+all pattern children of <cite>CGNSBase_t</cite> will be loaded as well.</li>
+<li><cite>Load node on display required</cite> (Not available) to save memory and time,
+CGNS node is read from the file only when <em>CGNS.NAV</em> needs to display it.</li>
+<li><cite>Check on the fly</cite> (Not available) forces a check each time you modify
+a tree.</li>
+<li><cite>Follow links during file load</cite> indicates that the links <em>CGNS.NAV</em>
+encounters into a CGNS file have to be followed or not.</li>
+<li><cite>Do NOT follow links during file save</cite> means that the links will be
 ignored during save which has the effect to <em>merge</em> all the tree nodes
-into the same root file.</p>
-</li>
-<li><p class="first"><cite>Do not load large DataArrays</cite></p>
-</li>
-<li><p class="first"><cite>Show 1D values as plain Python types</cite></p>
-</li>
-<li><p class="first"><cite>Show SIDS status column</cite></p>
-</li>
-<li><p class="first"><cite>Max tree parse recursion level</cite></p>
-</li>
-<li><p class="first"><cite>Max length of data displayed in table</cite></p>
-</li>
-<li><p class="first"><cite>History file name</cite></p>
-</li>
-<li><p class="first"><cite>Default profile</cite></p>
-</li>
-<li><p class="first"><cite>Profile path list</cite></p>
-</li>
-<li><p class="first"><cite>Force fortran flag in numpy arrays</cite></p>
-</li>
-<li><p class="first"><cite>Transpose array for edit/view</cite></p>
-</li>
+into the same root file.</li>
+<li><cite>Do not load large DataArrays</cite></li>
+<li><cite>Show 1D values as plain Python types</cite></li>
+<li><cite>Show SIDS status column</cite></li>
+<li><cite>Max tree parse recursion level</cite></li>
+<li><cite>Max length of data displayed in table</cite></li>
+<li><cite>History file name</cite></li>
+<li><cite>Default profile</cite></li>
+<li><cite>Profile path list</cite></li>
+<li><cite>Force fortran flag in numpy arrays</cite></li>
+<li><cite>Transpose array for edit/view</cite></li>
 </ul>
 </div></blockquote>
 </div>
@@ -241,13 +219,13 @@ children windows</p>
 <p>Opens the pop-up menu for selected node</p>
 <p>Copy selected node</p>
 <p>Cut selected node</p>
-<p>Paste buffered tree as selected node&#8217;s brother</p>
-<p>Paste buffered tree as selected node&#8217;s child</p>
+<p>Paste buffered tree as selected node’s brother</p>
+<p>Paste buffered tree as selected node’s child</p>
 <p>Opens a new <em>Tree window</em> for selected node</p>
 <p>Opens a new <em>Table window</em> for selected node</p>
-<p>Change selected node&#8217;s name</p>
-<p>Change selected node&#8217;s CGNS type</p>
-<p>Change selected node&#8217;s value</p>
+<p>Change selected node’s name</p>
+<p>Change selected node’s CGNS type</p>
+<p>Change selected node’s value</p>
 <p>Add brother node to selected node</p>
 <p>Add child node to selected node</p>
 <p>Copy selected node as link destination</p>
@@ -272,7 +250,7 @@ children windows</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2001-2016, Marc Poinot.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
     </div>
   </body>
 </html>

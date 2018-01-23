@@ -1,23 +1,21 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>Tools &#8212; APP</title>
-    
     <link rel="stylesheet" href="_static/pycgns.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
         VERSION:     '4.2.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -26,10 +24,9 @@
     <link rel="shortcut icon" href="_static/pyCGNS-logo-tiny.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="top" title="APP" href="_index.html" />
     <link rel="prev" title="CGNS.APP" href="_index.html" /> 
   </head>
-  <body role="document">
+  <body>
     <div class="related">
       <h3>Navigation</h3>
       <ul>
@@ -116,7 +113,7 @@ data.</p>
 <h2>cg_list<a class="headerlink" href="#cg-list" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal"><span class="pre">cg_list</span></code> is a kind of <code class="docutils literal"><span class="pre">ls</span></code> for CGNS files. There are many options
 to help you decide wether this is the file you are looking for or not, its size,
-its contents type...</p>
+its contents type…</p>
 <p>You typically run <code class="docutils literal"><span class="pre">cg_list</span></code> to find out which are the CGNS files in
 a directory:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ cg_list
@@ -211,7 +208,7 @@ some large files:</p>
 <h2>cg_grep<a class="headerlink" href="#cg-grep" title="Permalink to this headline">¶</a></h2>
 <p>This tool is a grep on the CGNS file contents. It parses the file and
 depending on your actual request it searches on node names, types, values,
-paths, links...</p>
+paths, links…</p>
 <p>For example you are looking for a file having a link to another one. The
 following command looks at all CGNS files, stops at the first having a link:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ cg_grep -sel &#39;.*&#39; *
@@ -334,7 +331,7 @@ or just to recursively browse existing links:</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2001-2016, Marc Poinot.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
     </div>
   </body>
 </html>

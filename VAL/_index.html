@@ -1,23 +1,21 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>CGNS.VAL &#8212; VAL</title>
-    
     <link rel="stylesheet" href="_static/pycgns.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
         VERSION:     '4.2.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -26,10 +24,9 @@
     <link rel="shortcut icon" href="_static/pyCGNS-logo-tiny.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="top" title="VAL" href="#" />
     <link rel="next" title="Command line" href="commandline.html" /> 
   </head>
-  <body role="document">
+  <body>
     <div class="related">
       <h3>Navigation</h3>
       <ul>
@@ -116,7 +113,7 @@
 tree and applies three kind of verifications. The first is the structural
 check, the second is the CGNS/SIDS check and the last is the user defined
 check.</p>
-<p>The <strong>CGNS.VAL</strong> tool has a command line interface, it can be run in a user&#8217;s
+<p>The <strong>CGNS.VAL</strong> tool has a command line interface, it can be run in a user’s
 shell window and returns a set of diagnostics on the standard output.
 The <strong>CGNS.VAL</strong> tool has an embedded check tool which actually makes calls
 to the <em>VALidator</em> API. Then any user can use this <em>VALidator</em> API to make
@@ -197,32 +194,32 @@ or diagnostics messages:</p>
 <dl class="glossary docutils">
 <dt id="term-cgns-org">cgns.org</dt>
 <dd>The official CGNS web site, by extension any document on this web
-site has an <em>official</em> taste...</dd>
+site has an <em>official</em> taste…</dd>
 <dt id="term-cgns">CGNS</dt>
 <dd>The specific purpose of the
 <a class="reference external" href="http://www.cgns.org">CFD General Notation System (CGNS)</a>
 project is to provide a standard for recording and recovering
 computer data associated with the numerical solution of the
 equations of fluid dynamics. See also the
-<a class="reference external" href="/scratch/MOSAIC/W/Marc/pycgns/doc/../build/doc/html/ch2/cgnshowto.html#cgnshowto" title="(in pyCGNS v4)"><span class="xref std std-ref">How to?</span></a>.</dd>
+<a class="reference external" href="D:\Users\u0568134\Documents\GitHub\pyCGNS\doc/../build/doc/html/ch2/cgnshowto.html#cgnshowto" title="(in pyCGNS v4)"><span class="xref std std-ref">How to?</span></a>.</dd>
 <dt id="term-cgns-sids">CGNS/SIDS</dt>
-<dd>The <a class="reference external" href="http://www.grc.nasa.gov/WWW/cgns/CGNS_docs_current/sids/index.html">Standard Interface Data Structure</a> is the
+<dd>The <a class="reference external" href="http://cgns.github.io/CGNS_docs_current/sids/index.html">Standard Interface Data Structure</a> is the
 specification of the data model.  This public document describes
 the syntax and the semantics of all tree-structured data required
 or proposed for a CFD simulation.</dd>
 <dt id="term-cgns-mll">CGNS/MLL</dt>
-<dd>The <a class="reference external" href="http://www.grc.nasa.gov/WWW/cgns/CGNS_docs_current/lidlevel/index.html">Mid-Level Library</a>
+<dd>The <a class="reference external" href="http://cgns.github.io/CGNS_docs_current/lidlevel/index.html">Mid-Level Library</a>
 is an example implementation of
 <em>CGNS/SIDS</em> on top of <em>CGNS/ADF</em> and <em>CGNS/HDF5</em> mappings. This
 library has a C and a Fortran API.</dd>
 <dt id="term-cgns-adf">CGNS/ADF</dt>
-<dd>The <a class="reference external" href="http://www.grc.nasa.gov/WWW/cgns/CGNS_docs_current/adf/index.html">Advanced Data Format *CGNS/SIDS* implementation</a>. A binary
+<dd>The <a class="reference external" href="http://cgns.github.io/CGNS_docs_current/adf/index.html">Advanced Data Format *CGNS/SIDS* implementation</a>. A binary
 storage format and its companion library, developped by <em>Boeing</em>.</dd>
 <dt id="term-cgns-hdf5">CGNS/HDF5</dt>
-<dd>The <a class="reference external" href="http://www.grc.nasa.gov/WWW/cgns/CGNS_docs_current/hdf5/index.html">Hierarchical Data Format *CGNS/SIDS* implementation</a>. A binary
+<dd>The <a class="reference external" href="http://cgns.github.io/CGNS_docs_current/hdf5/index.html">Hierarchical Data Format *CGNS/SIDS* implementation</a>. A binary
 storage format and its companion library (see below).</dd>
 <dt id="term-cgns-python">CGNS/Python</dt>
-<dd>The <a class="reference external" href="http://www.grc.nasa.gov/WWW/cgns/CGNS_docs_current/python/index.html">Python programming language *CGNS/SIDS*
+<dd>The <a class="reference external" href="http://cgns.github.io/CGNS_docs_current/python/index.html">Python programming language *CGNS/SIDS*
 implementation</a>.</dd>
 <dt id="term-chlone">CHLone</dt>
 <dd>A <em>CGNS/HDF5</em> compliant implementation. The <a class="reference external" href="http://chlone.sourceforge.net">CHLone</a> library is available on
@@ -267,7 +264,7 @@ under LGPL v2 in pyCGNS.</dd>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2001-2016, Marc Poinot.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
     </div>
   </body>
 </html>
