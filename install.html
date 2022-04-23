@@ -1,33 +1,23 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Build and Install &#8212; intro</title>
-    <link rel="stylesheet" href="_static/pycgns.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '4.2.0',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pycgns.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
     <link rel="shortcut icon" href="_static/pyCGNS-logo-tiny.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Glossary" href="glossary.html" />
     <link rel="prev" title="Which patterns in which example?" href="ch2/crosstable.html" /> 
-  </head>
-  <body>
+  </head><body>
     <div class="related">
       <h3>Navigation</h3>
       <ul>
@@ -81,35 +71,36 @@
    </a></h1>
 
 
-  <h3><a href="index.html">Table Of Contents</a></h3>
-  <ul>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
 <li><a class="reference internal" href="#">Build and Install</a><ul>
 <li><a class="reference internal" href="#required-libraries">Required libraries</a></li>
-<li><a class="reference internal" href="#optional-libraries">Optional libraries</a></li>
 <li><a class="reference internal" href="#installation-process">Installation process</a></li>
 <li><a class="reference internal" href="#single-module-installation">Single module installation</a></li>
 <li><a class="reference internal" href="#configuration-file-contents">Configuration file contents</a><ul>
+<li><a class="reference internal" href="#anaconda-installation">Anaconda installation</a></li>
 <li><a class="reference internal" href="#module-dependancies">Module dependancies</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#nav-depends">NAV depends</a></li>
 <li><a class="reference internal" href="#map-depends">MAP depends</a></li>
-<li><a class="reference internal" href="#cgns-mll">CGNS/MLL</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#test">Test</a></li>
 </ul>
 
+  </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
     </form>
+    </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
 
@@ -121,7 +112,7 @@
   <div class="section" id="build-and-install">
 <h1>Build and Install<a class="headerlink" href="#build-and-install" title="Permalink to this headline">¶</a></h1>
 <p id="index-0">The installation described here is for UNIX platforms only. The MS-Windows version is distributed as
-a self-installable Windows package.</p>
+a self-installable Windows package. You can also use an <em>Anaconda</em> prebuilt package, see below.</p>
 <p>The installation process is easy in the case you already have the required
 libraries and a standard configuration.</p>
 <div class="section" id="required-libraries">
@@ -130,55 +121,44 @@ libraries and a standard configuration.</p>
 libraries. We have now a quite large set of libraries, we are trying hard to
 use well known and easy to install libraries but we must admit this could
 be a difficult task to install all by yourself…</p>
-<p>The mandatory libs are <em>Python</em>, <em>numpy</em>, <em>HDF5</em> and <em>CHLone</em>, <em>VTK</em>
-and <em>Qt</em>. The <em>cython</em> compiler and <em>scons</em> (for CHLone) are also required.</p>
+<p>The mandatory libs are <em>Python</em>, <em>numpy</em>, <em>HDF5</em>, <em>Cython</em>.
+The libs <em>PyQT</em>, <em>Qt</em>, <em>VTK</em> are optional.</p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">The <em>libcgns</em> (<a class="reference internal" href="glossary.html#term-cgns-mll"><span class="xref std std-term">CGNS/MLL</span></a>) is <strong>NOT</strong> required for pyCGNS.</p>
+<p class="admonition-title">Warning</p>
+<p>The <em>libcgns</em> (<a class="reference internal" href="glossary.html#term-CGNS-MLL"><span class="xref std std-term">CGNS/MLL</span></a>) is <strong>NOT</strong> used by pyCGNS.</p>
 </div>
 <p>The complete set of required tools/modules/libraries contains Python, HDF5
 and other graphical toolkits:</p>
 <ul class="simple">
-<li><a class="reference external" href="http://www.python.org">Python</a> (starting from v2.7 or v3.6)</li>
-<li><a class="reference external" href="http://numpy.scipy.org">numpy</a> (v1.1 +)</li>
-<li><a class="reference external" href="http://www.cython.org">cython</a> (v0.19 +)</li>
-<li><a class="reference external" href="http://www.hdfgroup.org">hdf5</a> (v1.8.5 +)</li>
-<li><a class="reference external" href="http://chlone.sourceforge.net">CHLone</a> (v0.39 +)</li>
-<li><a class="reference external" href="http://www.vtk.org">VTK</a> (v8.0 +)</li>
-<li><a class="reference external" href="http://www.qt.io/download">Qt</a> (v4.7 +)</li>
-<li><a class="reference external" href="http://www.pyside.org">pySide</a> (v4.7 +)</li>
+<li><p><a class="reference external" href="http://www.python.org">Python</a> (starting from v2.7 or v3.6)</p></li>
+<li><p><a class="reference external" href="http://numpy.scipy.org">numpy</a> (v1.1 +)</p></li>
+<li><p><a class="reference external" href="http://www.cython.org">cython</a> (v0.19 +)</p></li>
+<li><p><a class="reference external" href="http://www.hdfgroup.org">hdf5</a> (v1.8.5 +)</p></li>
+<li><p><a class="reference external" href="http://www.vtk.org">VTK</a> (v8.0 +)</p></li>
+<li><p><a class="reference external" href="http://www.qt.io/download">Qt</a> (v4.7 +)</p></li>
 </ul>
 <p>The <em>VTK</em> and the <em>Qt</em> graphical toolkits need to have a Python binding.
 The important point is to use the <strong>native</strong> Python binding of these toolkits,
 not any other (see installation details hereafter).</p>
 <p>No Python binding is required for HDF5.</p>
 </div>
-<div class="section" id="optional-libraries">
-<span id="index-1"></span><h2>Optional libraries<a class="headerlink" href="#optional-libraries" title="Permalink to this headline">¶</a></h2>
-<p>The so-called <cite>mid-level</cite> library is not mandatory,</p>
-<blockquote>
-<div><ul class="simple">
-<li><a class="reference external" href="http://www.cgns.org">CGNS/MLL (libcgns)</a> (starting v3.0)</li>
-</ul>
-</div></blockquote>
-</div>
 <div class="section" id="installation-process">
-<h2>Installation process<a class="headerlink" href="#installation-process" title="Permalink to this headline">¶</a></h2>
+<span id="index-1"></span><h2>Installation process<a class="headerlink" href="#installation-process" title="Permalink to this headline">¶</a></h2>
 <p>Once you have these installed you can proceed with pyCGNS.
-You go into the top directory and you edit the <code class="docutils literal"><span class="pre">pyCGNSconfig.py.in</span></code>
+You go into the top directory and you edit the <code class="docutils literal notranslate"><span class="pre">pyCGNSconfig.py.in</span></code>
 (see <a class="reference internal" href="#pycgnsconfigpyin"><span class="std std-ref">Configuration file contents</span></a>).
 You have to set the correct paths and various values such as directory search
 libs or flags.</p>
 <p id="index-2">Then you run:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">build</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">build</span>
 </pre></div>
 </div>
 <p>and then:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
 </pre></div>
 </div>
 <p>or:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span> <span class="o">--</span><span class="n">prefix</span><span class="o">=/</span><span class="n">local</span><span class="o">/</span><span class="n">tools</span><span class="o">/</span><span class="n">installation</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span> <span class="o">--</span><span class="n">prefix</span><span class="o">=/</span><span class="n">local</span><span class="o">/</span><span class="n">tools</span><span class="o">/</span><span class="n">installation</span>
 </pre></div>
 </div>
 <p>All the modules of the pyCGNS package are installed and you can now
@@ -187,7 +167,7 @@ proceed with tutorial examples.</p>
 <div class="section" id="single-module-installation">
 <h2>Single module installation<a class="headerlink" href="#single-module-installation" title="Permalink to this headline">¶</a></h2>
 <p>You can ask for a single module installation:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">build</span> <span class="o">--</span><span class="n">single</span><span class="o">-</span><span class="n">module</span><span class="o">=</span><span class="n">MAP</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">build</span> <span class="o">--</span><span class="n">single</span><span class="o">-</span><span class="n">module</span><span class="o">=</span><span class="n">MAP</span>
 <span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
 </pre></div>
 </div>
@@ -196,14 +176,14 @@ installation with the other pyCGNS modules.</p>
 </div>
 <div class="section" id="configuration-file-contents">
 <span id="pycgnsconfigpyin"></span><h2>Configuration file contents<a class="headerlink" href="#configuration-file-contents" title="Permalink to this headline">¶</a></h2>
-<p id="index-3">The <code class="docutils literal"><span class="pre">pyCGNSconfig_user.py</span></code> should work with no modification if you have
+<p id="index-3">The <code class="docutils literal notranslate"><span class="pre">pyCGNSconfig_user.py</span></code> should work with no modification if you have
 a standard installation. All you have to declare is the directory in which
 we can find <em>Python/numpy/hdf5/CHLone/cgns</em> libraries.</p>
 <p>If you have specific installations you can change some paths/flags for each
 external library: <em>hdf5</em>, <em>numpy</em>. The configuration
 file is a Python file, it is imported after the default configuration. The
 changes you make in the configuration file will overwrite the defaults:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># --- stuff to add for HDF5</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># --- stuff to add for HDF5</span>
 
 <span class="c1">#HDF5_VERSION          = &#39;&#39;</span>
 <span class="n">HDF5_PATH_INCLUDES</span>    <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;/home/myself/hdf5/include&#39;</span><span class="p">]</span>
@@ -213,7 +193,7 @@ changes you make in the configuration file will overwrite the defaults:</p>
 </pre></div>
 </div>
 <p>To avoid overwriting, use Python to update the config:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># --- stuff to add for HDF5</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># --- stuff to add for HDF5</span>
 
 <span class="c1">#HDF5_VERSION          = &#39;&#39;</span>
 <span class="n">HDF5_PATH_INCLUDES</span>    <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;/home/myself/hdf5/include&#39;</span><span class="p">]</span>
@@ -224,16 +204,30 @@ changes you make in the configuration file will overwrite the defaults:</p>
 </div>
 <p>You do not have to specify the VTK nor the Qt libraries, there is no direct
 link to these libraries: the Python modules will do that.</p>
+<div class="section" id="anaconda-installation">
+<h3>Anaconda installation<a class="headerlink" href="#anaconda-installation" title="Permalink to this headline">¶</a></h3>
+<p>Anaconda framework is a good options for your windows installation.
+You have to carefully check your Anaconda/HDF5 version:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>with HDF5 v1.8 you are 100% compatible CGNS/HDF5</p></li>
+<li><p>with HDF5 v1.10.1 not yet compatible would require on the fly translation</p></li>
+<li><p>with HDF5 v1.10.2 (some checks still on the way…)</p></li>
+</ul>
+</div></blockquote>
+<p>If you have version issues, check this thread:
+<a class="reference external" href="https://groups.google.com/forum/#!topic/h5py/j6wolQ1vJgE">https://groups.google.com/forum/#!topic/h5py/j6wolQ1vJgE</a></p>
+</div>
 <div class="section" id="module-dependancies">
 <h3>Module dependancies<a class="headerlink" href="#module-dependancies" title="Permalink to this headline">¶</a></h3>
 <p>The pyCGNS modules have dependancies with their brothers. The list below
 gives you the required modules (or optional) for each of them.</p>
 <blockquote>
 <div><ul class="simple">
-<li>MAP : None</li>
-<li>PAT : MAP</li>
-<li>APP : PAT MAP</li>
-<li>NAV : PAT MAP APP</li>
+<li><p>MAP : None</p></li>
+<li><p>PAT : MAP</p></li>
+<li><p>APP : PAT MAP</p></li>
+<li><p>NAV : PAT MAP APP</p></li>
 </ul>
 </div></blockquote>
 </div>
@@ -245,14 +239,14 @@ one for the graphical view window (VTK). The VTK toolkit must have its
 Python binding installed. You should not use <cite>pyVTK</cite> but the native Python
 binding of VTK. To do so, edit the VTK configuration file to set the Python
 wrapping and all associated paths. And example of production could be:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">VTK</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">VTK</span>
 <span class="n">mkdir</span> <span class="n">B</span>
 <span class="n">cd</span> <span class="n">B</span>
 <span class="n">cmake</span> <span class="o">..</span>
 </pre></div>
 </div>
 <p>Then edit the <cite>CMakeCache.txt</cite> file:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">Wrap</span> <span class="n">VTK</span> <span class="n">classes</span> <span class="n">into</span> <span class="n">the</span> <span class="n">Python</span> <span class="n">language</span><span class="o">.</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">Wrap</span> <span class="n">VTK</span> <span class="n">classes</span> <span class="n">into</span> <span class="n">the</span> <span class="n">Python</span> <span class="n">language</span><span class="o">.</span>
 <span class="n">VTK_WRAP_PYTHON</span><span class="p">:</span><span class="n">BOOL</span><span class="o">=</span><span class="n">ON</span>
 </pre></div>
 </div>
@@ -260,7 +254,7 @@ wrapping and all associated paths. And example of production could be:</p>
 <p>The Qt toolkit is used with the qtpy package and provides support for PyQt5 or PySide Python bindings, which are official
 binding with this langage. You can check you have the
 correct bindings by typing:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span>
 <span class="o">&gt;&gt;&gt;</span><span class="kn">import</span> <span class="nn">vtk</span>
 <span class="o">&gt;&gt;&gt;</span><span class="kn">import</span> <span class="nn">qtpy</span>
 </pre></div>
@@ -270,43 +264,20 @@ correct bindings by typing:</p>
 <div class="section" id="map-depends">
 <h2>MAP depends<a class="headerlink" href="#map-depends" title="Permalink to this headline">¶</a></h2>
 <p>The embedded <em>CHLone</em> library is required and thus <em>HDF5</em> is required.</p>
-</div>
-<div class="section" id="cgns-mll">
-<h2>CGNS/MLL<a class="headerlink" href="#cgns-mll" title="Permalink to this headline">¶</a></h2>
-<p><em>CGNS/MLL</em> and <em>CGNS/ADF</em> libraries are required.
-Set the following variable to <code class="docutils literal"><span class="pre">ON</span></code> in the <code class="docutils literal"><span class="pre">CMakeCache.txt</span></code> file:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">Build</span> <span class="n">the</span> <span class="n">CGNSTools</span> <span class="n">package</span>
-<span class="n">BUILD_CGNSTOOLS</span><span class="p">:</span><span class="n">BOOL</span><span class="o">=</span><span class="n">ON</span>
-
-<span class="o">//</span><span class="n">Build</span> <span class="n">a</span> <span class="n">shared</span> <span class="n">version</span> <span class="n">of</span> <span class="n">the</span> <span class="n">library</span>
-<span class="n">CGNS_BUILD_SHARED</span><span class="p">:</span><span class="n">BOOL</span><span class="o">=</span><span class="n">ON</span>
-
-<span class="o">//</span><span class="n">Enable</span> <span class="ow">or</span> <span class="n">disable</span> <span class="n">the</span> <span class="n">use</span> <span class="n">of</span> <span class="n">Fortran</span>
-<span class="n">ENABLE_FORTRAN</span><span class="p">:</span><span class="n">BOOL</span><span class="o">=</span><span class="n">ON</span>
-
-<span class="o">//</span><span class="n">Enable</span> <span class="ow">or</span> <span class="n">disable</span> <span class="n">HDF5</span> <span class="n">interface</span>
-<span class="n">ENABLE_HDF5</span><span class="p">:</span><span class="n">BOOL</span><span class="o">=</span><span class="n">ON</span>
-</pre></div>
-</div>
-<p>The NAV module (and CHLone by the way) is using cython. You can
-check your cython is present using:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cython</span> <span class="o">--</span><span class="n">version</span>
-</pre></div>
-</div>
-<p>That should not fail…</p>
+<p>Map also depends on <em>Cython</em>.</p>
 </div>
 </div>
 <div class="section" id="test">
 <span id="testsupport"></span><h1>Test<a class="headerlink" href="#test" title="Permalink to this headline">¶</a></h1>
 <p>Some of the pyCGNS modules have embedded tests. Once you have installed
 pyCGNS, you can run each test suite from another user account/directory:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">c</span> <span class="s1">&#39;import CGNS.MAP.test;CGNS.MAP.test.run()&#39;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">c</span> <span class="s1">&#39;import CGNS.MAP.test;CGNS.MAP.test.run()&#39;</span>
 </pre></div>
 </div>
-<p>All modules tests can be run the same way, replace <code class="docutils literal"><span class="pre">MAP</span></code> by any of
-<code class="docutils literal"><span class="pre">PAT</span></code>, <code class="docutils literal"><span class="pre">VAL</span></code>, <code class="docutils literal"><span class="pre">NAV</span></code>, <code class="docutils literal"><span class="pre">APP</span></code>, <code class="docutils literal"><span class="pre">DAT</span></code>. You can run all the
-tests by importing <code class="docutils literal"><span class="pre">CGNS.test</span></code>:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">c</span> <span class="s1">&#39;import CGNS.PAT.test;CGNS.PAT.test.run()&#39;</span>
+<p>All modules tests can be run the same way, replace <code class="docutils literal notranslate"><span class="pre">MAP</span></code> by any of
+<code class="docutils literal notranslate"><span class="pre">PAT</span></code>, <code class="docutils literal notranslate"><span class="pre">VAL</span></code>, <code class="docutils literal notranslate"><span class="pre">NAV</span></code>, <code class="docutils literal notranslate"><span class="pre">APP</span></code>. You can run all the
+tests by importing <code class="docutils literal notranslate"><span class="pre">CGNS.test</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">c</span> <span class="s1">&#39;import CGNS.PAT.test;CGNS.PAT.test.run()&#39;</span>
 
 <span class="n">python</span> <span class="o">-</span><span class="n">c</span> <span class="s1">&#39;import CGNS.test&#39;</span>
 </pre></div>
@@ -316,14 +287,15 @@ error on the output.</p>
 </div>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2001-2016, Marc Poinot.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+        &#169; Copyright 2018-2022, M. P..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
     </div>
   </body>
 </html>

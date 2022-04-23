@@ -1,33 +1,23 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Command line &#8212; VAL</title>
-    <link rel="stylesheet" href="_static/pycgns.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '4.2.0',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pycgns.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
     <link rel="shortcut icon" href="_static/pyCGNS-logo-tiny.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Diagnostics" href="checklevels.html" />
     <link rel="prev" title="CGNS.VAL" href="_index.html" /> 
-  </head>
-  <body>
+  </head><body>
     <div class="related">
       <h3>Navigation</h3>
       <ul>
@@ -82,15 +72,15 @@
 
 
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
     </form>
+    </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
 
@@ -105,7 +95,7 @@
 this API as well, and in this case the diagnostics output are displayed into
 a graphical window in a hierarchical form.</p>
 <p>The <strong>CGNS.VAL</strong> command line usage is the following:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">CGNS</span><span class="o">.</span><span class="n">VAL</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">file</span><span class="o">.</span><span class="n">hdf</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CGNS</span><span class="o">.</span><span class="n">VAL</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">file</span><span class="o">.</span><span class="n">hdf</span>
 
 <span class="o">-</span><span class="n">p</span> <span class="o">&lt;</span><span class="n">path</span><span class="o">&gt;</span>   <span class="p">:</span> <span class="n">Start</span> <span class="n">check</span> <span class="n">at</span> <span class="n">this</span> <span class="n">node</span>
 <span class="o">-</span><span class="n">f</span>          <span class="p">:</span> <span class="n">Flat</span> <span class="n">mode</span><span class="p">,</span> <span class="n">do</span> <span class="ow">not</span> <span class="n">recurse</span> <span class="n">on</span> <span class="n">tree</span>
@@ -119,17 +109,17 @@ a graphical window in a hierarchical form.</p>
 </pre></div>
 </div>
 <p>The usual command line such as:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">CGNS</span><span class="o">.</span><span class="n">VAL</span> <span class="o">-</span><span class="n">r</span> <span class="n">U103</span><span class="p">:</span><span class="n">U104</span> <span class="o">-</span><span class="n">v</span> <span class="o">-</span><span class="n">u</span> <span class="n">elsA</span> <span class="n">naca012</span><span class="o">.</span><span class="n">hdf</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CGNS</span><span class="o">.</span><span class="n">VAL</span> <span class="o">-</span><span class="n">r</span> <span class="n">U103</span><span class="p">:</span><span class="n">U104</span> <span class="o">-</span><span class="n">v</span> <span class="o">-</span><span class="n">u</span> <span class="n">elsA</span> <span class="n">naca012</span><span class="o">.</span><span class="n">hdf</span>
 </pre></div>
 </div>
 <p>runs a check on the <strong>elsA</strong> user defined grammar, excluding the
 diagnostics <cite>U103</cite> and <cite>U104</cite>.</p>
 <p>You want to known the complete diagnostics list, you run:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">CGNS</span><span class="o">.</span><span class="n">VAL</span> <span class="o">-</span><span class="n">lu</span> <span class="n">elsA</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CGNS</span><span class="o">.</span><span class="n">VAL</span> <span class="o">-</span><span class="n">lu</span> <span class="n">elsA</span>
 </pre></div>
 </div>
 <p>and you get the messages for the <cite>U103</cite> and <cite>U104</cite> diagnostics:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">U103</span><span class="p">:</span><span class="n">W</span><span class="p">]</span> <span class="n">No</span> <span class="n">ReferenceState</span> <span class="n">found</span> <span class="n">at</span> <span class="n">Base</span> <span class="n">level</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">U103</span><span class="p">:</span><span class="n">W</span><span class="p">]</span> <span class="n">No</span> <span class="n">ReferenceState</span> <span class="n">found</span> <span class="n">at</span> <span class="n">Base</span> <span class="n">level</span>
 <span class="p">[</span><span class="n">U104</span><span class="p">:</span><span class="n">W</span><span class="p">]</span> <span class="n">No</span> <span class="n">ReferenceState</span> <span class="n">found</span> <span class="n">at</span> <span class="n">Zone</span> <span class="n">level</span>
 </pre></div>
 </div>
@@ -138,14 +128,15 @@ diagnostics <cite>U103</cite> and <cite>U104</cite>.</p>
 </div>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2001-2016, Marc Poinot.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+        &#169; Copyright 2018-2022, Marc Poinot.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
     </div>
   </body>
 </html>

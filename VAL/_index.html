@@ -1,32 +1,22 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CGNS.VAL &#8212; VAL</title>
-    <link rel="stylesheet" href="_static/pycgns.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '4.2.0',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pycgns.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
     <link rel="shortcut icon" href="_static/pyCGNS-logo-tiny.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Command line" href="commandline.html" /> 
-  </head>
-  <body>
+  </head><body>
     <div class="related">
       <h3>Navigation</h3>
       <ul>
@@ -75,8 +65,9 @@
    </a></h1>
 
 
-  <h3><a href="#">Table Of Contents</a></h3>
-  <ul>
+  <div>
+    <h3><a href="#">Table of Contents</a></h3>
+    <ul>
 <li><a class="reference internal" href="#">CGNS.VAL</a><ul>
 <li><a class="reference internal" href="#quick-start">Quick start</a></li>
 <li><a class="reference internal" href="#api">API</a></li>
@@ -89,16 +80,17 @@
 </li>
 </ul>
 
+  </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
     </form>
+    </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
 
@@ -123,11 +115,11 @@ his own embedded check tool.</p>
 <p>The <strong>CGNS.VAL</strong> tool takes a CGNS/HDF5 file as argument and checks its
 contents, with respect to tree structure and CGNS/SIDS recommandations.
 The simple command line is:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">CGNS</span><span class="o">.</span><span class="n">VAL</span> <span class="n">naca012</span><span class="o">.</span><span class="n">hdf</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CGNS</span><span class="o">.</span><span class="n">VAL</span> <span class="n">naca012</span><span class="o">.</span><span class="n">hdf</span>
 </pre></div>
 </div>
 <p>Which loads the file, runs the checks and returns a list of diagnostics:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">---------------------------------------------------------------------------</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---------------------------------------------------------------------------</span>
 <span class="o">/</span><span class="n">Base</span><span class="c1">#1/domain21/blockName</span>
 <span class="p">[</span><span class="n">S004</span><span class="p">:</span><span class="n">E</span><span class="p">]</span> <span class="n">DataType</span> <span class="p">[</span><span class="n">MT</span><span class="p">]</span> <span class="ow">not</span> <span class="n">allowed</span> <span class="k">for</span> <span class="n">this</span> <span class="n">node</span>
 <span class="p">[</span><span class="n">S007</span><span class="p">:</span><span class="n">E</span><span class="p">]</span> <span class="n">Node</span> <span class="p">[</span><span class="n">ElementRange</span><span class="p">]</span> <span class="n">of</span> <span class="nb">type</span> <span class="p">[</span><span class="n">IndexRange_t</span><span class="p">]</span> <span class="ow">is</span> <span class="n">mandatory</span>
@@ -155,7 +147,7 @@ diagnostic. This latter can be printed using <em>showdiag</em>.</p>
 <p>The <em>compliant</em> function parses a full CGNS/Python tree and returns two values,
 a boolean telling you if the CGNS/Python is compliant or not and a list
 or diagnostics messages:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">CGNS.PAT.cgnslib</span> <span class="k">as</span> <span class="nn">CGL</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">CGNS.PAT.cgnslib</span> <span class="k">as</span> <span class="nn">CGL</span>
 <span class="kn">import</span> <span class="nn">CGNS.VAL.simplecheck</span> <span class="k">as</span> <span class="nn">CGV</span>
 <span class="kn">import</span> <span class="nn">CGNS.MAP</span> <span class="k">as</span> <span class="nn">CGM</span>
 
@@ -191,80 +183,81 @@ or diagnostics messages:</p>
 </div>
 <div class="section" id="glossary">
 <h1>Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h1>
-<dl class="glossary docutils">
-<dt id="term-cgns-org">cgns.org</dt>
-<dd>The official CGNS web site, by extension any document on this web
-site has an <em>official</em> taste…</dd>
-<dt id="term-cgns">CGNS</dt>
-<dd>The specific purpose of the
+<dl class="glossary simple">
+<dt id="term-cgns.org">cgns.org<a class="headerlink" href="#term-cgns.org" title="Permalink to this term">¶</a></dt><dd><p>The official CGNS web site, by extension any document on this web
+site has an <em>official</em> taste…</p>
+</dd>
+<dt id="term-CGNS">CGNS<a class="headerlink" href="#term-CGNS" title="Permalink to this term">¶</a></dt><dd><p>The specific purpose of the
 <a class="reference external" href="http://www.cgns.org">CFD General Notation System (CGNS)</a>
 project is to provide a standard for recording and recovering
 computer data associated with the numerical solution of the
 equations of fluid dynamics. See also the
-<a class="reference external" href="D:\Users\u0568134\Documents\GitHub\pyCGNS\doc/../build/doc/html/ch2/cgnshowto.html#cgnshowto" title="(in pyCGNS v4)"><span class="xref std std-ref">How to?</span></a>.</dd>
-<dt id="term-cgns-sids">CGNS/SIDS</dt>
-<dd>The <a class="reference external" href="http://cgns.github.io/CGNS_docs_current/sids/index.html">Standard Interface Data Structure</a> is the
+<a class="reference external" href="ch2/cgnshowto.html#cgnshowto" title="(in pyCGNS v6)"><span class="xref std std-ref">How to?</span></a>.</p>
+</dd>
+<dt id="term-CGNS-SIDS">CGNS/SIDS<a class="headerlink" href="#term-CGNS-SIDS" title="Permalink to this term">¶</a></dt><dd><p>The <a class="reference external" href="http://cgns.github.io/CGNS_docs_current/sids/index.html">Standard Interface Data Structure</a> is the
 specification of the data model.  This public document describes
 the syntax and the semantics of all tree-structured data required
-or proposed for a CFD simulation.</dd>
-<dt id="term-cgns-mll">CGNS/MLL</dt>
-<dd>The <a class="reference external" href="http://cgns.github.io/CGNS_docs_current/lidlevel/index.html">Mid-Level Library</a>
+or proposed for a CFD simulation.</p>
+</dd>
+<dt id="term-CGNS-MLL">CGNS/MLL<a class="headerlink" href="#term-CGNS-MLL" title="Permalink to this term">¶</a></dt><dd><p>The <a class="reference external" href="http://cgns.github.io/CGNS_docs_current/midlevel/index.html">Mid-Level Library</a>
 is an example implementation of
 <em>CGNS/SIDS</em> on top of <em>CGNS/ADF</em> and <em>CGNS/HDF5</em> mappings. This
-library has a C and a Fortran API.</dd>
-<dt id="term-cgns-adf">CGNS/ADF</dt>
-<dd>The <a class="reference external" href="http://cgns.github.io/CGNS_docs_current/adf/index.html">Advanced Data Format *CGNS/SIDS* implementation</a>. A binary
-storage format and its companion library, developped by <em>Boeing</em>.</dd>
-<dt id="term-cgns-hdf5">CGNS/HDF5</dt>
-<dd>The <a class="reference external" href="http://cgns.github.io/CGNS_docs_current/hdf5/index.html">Hierarchical Data Format *CGNS/SIDS* implementation</a>. A binary
-storage format and its companion library (see below).</dd>
-<dt id="term-cgns-python">CGNS/Python</dt>
-<dd>The <a class="reference external" href="http://cgns.github.io/CGNS_docs_current/python/index.html">Python programming language *CGNS/SIDS*
-implementation</a>.</dd>
-<dt id="term-chlone">CHLone</dt>
-<dd>A <em>CGNS/HDF5</em> compliant implementation. The <a class="reference external" href="http://chlone.sourceforge.net">CHLone</a> library is available on
-SourceForge.</dd>
-<dt id="term-hdf5">HDF5</dt>
-<dd>A powerful storage system for large data.
+library has a C and a Fortran API.</p>
+</dd>
+<dt id="term-CGNS-ADF">CGNS/ADF<a class="headerlink" href="#term-CGNS-ADF" title="Permalink to this term">¶</a></dt><dd><p>The <a class="reference external" href="http://cgns.github.io/CGNS_docs_current/adf/index.html">Advanced Data Format *CGNS/SIDS* implementation</a>. A binary
+storage format and its companion library, developped by <em>Boeing</em>.</p>
+</dd>
+<dt id="term-CGNS-HDF5">CGNS/HDF5<a class="headerlink" href="#term-CGNS-HDF5" title="Permalink to this term">¶</a></dt><dd><p>The <a class="reference external" href="http://cgns.github.io/CGNS_docs_current/hdf5/index.html">Hierarchical Data Format *CGNS/SIDS* implementation</a>. A binary
+storage format and its companion library (see below).</p>
+</dd>
+<dt id="term-CGNS-Python">CGNS/Python<a class="headerlink" href="#term-CGNS-Python" title="Permalink to this term">¶</a></dt><dd><p>The <a class="reference external" href="http://cgns.github.io/CGNS_docs_current/python/index.html">Python programming language *CGNS/SIDS*
+implementation</a>.</p>
+</dd>
+<dt id="term-CHLone">CHLone<a class="headerlink" href="#term-CHLone" title="Permalink to this term">¶</a></dt><dd><p>A <em>CGNS/HDF5</em> compliant implementation. The <a class="reference external" href="http://chlone.sourceforge.net">CHLone</a> library is available on
+SourceForge.</p>
+</dd>
+<dt id="term-HDF5">HDF5<a class="headerlink" href="#term-HDF5" title="Permalink to this term">¶</a></dt><dd><p>A powerful storage system for large data.
 The <a class="reference external" href="http://www.hdfgroup.org/HDF5">HDF5</a>
 library should be seen as a middleware system with a lot of powerful
-features related to efficient, portable and trustable storage mean.</dd>
-<dt id="term-python">python</dt>
-<dd><a class="reference external" href="http://www.python.org">An object oriented interpreted programming language</a>.</dd>
-<dt id="term-cython">cython</dt>
-<dd>A <a class="reference external" href="http://cython.org">compiler tool</a> that translate Python/Numpy
-into C code for performance purpose.</dd>
-<dt id="term-numpy">numpy</dt>
-<dd>The <a class="reference external" href="http://numpy.scipy.org">numerical library</a> for Python. <em>Numpy</em>
+features related to efficient, portable and trustable storage mean.</p>
+</dd>
+<dt id="term-python">python<a class="headerlink" href="#term-python" title="Permalink to this term">¶</a></dt><dd><p><a class="reference external" href="http://www.python.org">An object oriented interpreted programming language</a>.</p>
+</dd>
+<dt id="term-cython">cython<a class="headerlink" href="#term-cython" title="Permalink to this term">¶</a></dt><dd><p>A <a class="reference external" href="http://cython.org">compiler tool</a> that translate Python/Numpy
+into C code for performance purpose.</p>
+</dd>
+<dt id="term-numpy">numpy<a class="headerlink" href="#term-numpy" title="Permalink to this term">¶</a></dt><dd><p>The <a class="reference external" href="http://numpy.scipy.org">numerical library</a> for Python. <em>Numpy</em>
 is used to store the data in Python arrays which have a direct memory
-mapping to actual C or Fortran memory.</dd>
-<dt id="term-vtk">VTK</dt>
-<dd>A <a class="reference external" href="http://www.vtk.org">visualization toolkit</a> used to display
-3D objects ni <em>CGNS.NAV</em>.</dd>
-<dt id="term-pyside">PySide</dt>
-<dd>The <a class="reference external" href="http://www.pyside.org">Python interface</a> for the Qt toolkit. PySide</dd>
-<dt id="term-qt">Qt</dt>
-<dd><a class="reference external" href="http://qt.nokia.com/products">A powerful graphical toolkit</a> available
+mapping to actual C or Fortran memory.</p>
+</dd>
+<dt id="term-VTK">VTK<a class="headerlink" href="#term-VTK" title="Permalink to this term">¶</a></dt><dd><p>A <a class="reference external" href="http://www.vtk.org">visualization toolkit</a> used to display
+3D objects in <em>CGNS.NAV</em>.</p>
+</dd>
+<dt id="term-PySide">PySide<a class="headerlink" href="#term-PySide" title="Permalink to this term">¶</a></dt><dd><p>The <a class="reference external" href="http://www.pyside.org">Python interface</a> for the Qt toolkit. PySide</p>
+</dd>
+<dt id="term-Qt">Qt<a class="headerlink" href="#term-Qt" title="Permalink to this term">¶</a></dt><dd><p><a class="reference external" href="http://www.qt.io/download">A powerful graphical toolkit</a> available
 under GPL v3, LGPL v2 and a commercial license. The current use of Qt is
-under LGPL v2 in pyCGNS.</dd>
+under LGPL v2 in pyCGNS.</p>
+</dd>
 </dl>
 <div class="section" id="val-index">
 <span id="id1"></span><h2>VAL Index<a class="headerlink" href="#val-index" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
 </ul>
 </div>
 </div>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2001-2016, Marc Poinot.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+        &#169; Copyright 2018-2022, Marc Poinot.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
     </div>
   </body>
 </html>

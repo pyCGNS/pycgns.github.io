@@ -1,32 +1,22 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MAP Examples &#8212; MAP</title>
-    <link rel="stylesheet" href="_static/pycgns.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '4.2.0',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pycgns.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
     <link rel="shortcut icon" href="_static/pyCGNS-logo-tiny.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="prev" title="About links" href="links.html" /> 
-  </head>
-  <body>
+  </head><body>
     <div class="related">
       <h3>Navigation</h3>
       <ul>
@@ -75,8 +65,9 @@
    </a></h1>
 
 
-  <h3><a href="_index.html">Table Of Contents</a></h3>
-  <ul>
+  <div>
+    <h3><a href="_index.html">Table of Contents</a></h3>
+    <ul>
 <li><a class="reference internal" href="#">MAP Examples</a><ul>
 <li><a class="reference internal" href="#complete-load-of-a-cgns-hdf5-file">Complete load of a <em>CGNS/HDF5</em> file</a></li>
 <li><a class="reference internal" href="#complete-save-of-a-cgns-python-tree">Complete save of a <em>CGNS/Python</em> tree</a></li>
@@ -93,16 +84,17 @@
 </li>
 </ul>
 
+  </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
     </form>
+    </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
 
@@ -113,18 +105,18 @@
             
   <div class="section" id="map-examples">
 <span id="mapexamples"></span><h1>MAP Examples<a class="headerlink" href="#map-examples" title="Permalink to this headline">¶</a></h1>
-<p>The <em>CGNS.MAP</em> provides the user with the two functions <code class="docutils literal"><span class="pre">load</span></code> and <code class="docutils literal"><span class="pre">save</span></code>,
+<p>The <em>CGNS.MAP</em> provides the user with the two functions <code class="docutils literal notranslate"><span class="pre">load</span></code> and <code class="docutils literal notranslate"><span class="pre">save</span></code>,
 these are direct mapping of
 the <a class="reference external" href="http://chlone.sourceforge.net/pythonCHLone.html#pythonchlone">CHLone</a>
 functions.
 The actual actions these functions are performing heavily depends on the
-arguments you pass to these functions, the <code class="docutils literal"><span class="pre">load</span></code> takes a <em>CGNS/HDF5</em> tree
-and returns at least a <em>CGNS/Python</em> tree, while the <code class="docutils literal"><span class="pre">save</span></code> takes a
+arguments you pass to these functions, the <code class="docutils literal notranslate"><span class="pre">load</span></code> takes a <em>CGNS/HDF5</em> tree
+and returns at least a <em>CGNS/Python</em> tree, while the <code class="docutils literal notranslate"><span class="pre">save</span></code> takes a
 <em>CGNS/Python</em> tree and writes (modifies) a <em>CGNS/HDF5</em> tree.
 Rather than listing all options, we suggest your try to figure out how to
 use these functions reading the examples.</p>
 <p>All the examples are assuming the following imports:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">CGNS.MAP</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">CGNS.MAP</span>
 <span class="kn">import</span> <span class="nn">CGNS.PAT.cgnsutils</span>    <span class="k">as</span> <span class="nn">CGU</span>
 <span class="kn">import</span> <span class="nn">CGNS.PAT.cgnskeywords</span> <span class="k">as</span> <span class="nn">CGK</span>
 <span class="kn">import</span> <span class="nn">CGNS.PAT.cgnslib</span>      <span class="k">as</span> <span class="nn">CGL</span>
@@ -136,14 +128,14 @@ use these functions reading the examples.</p>
 <h2>Complete load of a <em>CGNS/HDF5</em> file<a class="headerlink" href="#complete-load-of-a-cgns-hdf5-file" title="Permalink to this headline">¶</a></h2>
 <p>The translation of a <em>CGNS/HDF5</em> file into a <em>CGNS/Python</em> tree is
 performed with the simple line:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">tree</span><span class="p">,</span><span class="n">links</span><span class="p">,</span><span class="n">paths</span><span class="p">)</span><span class="o">=</span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;mesh.cgns&quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">tree</span><span class="p">,</span><span class="n">links</span><span class="p">,</span><span class="n">paths</span><span class="p">)</span><span class="o">=</span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;mesh.cgns&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>If the <code class="docutils literal"><span class="pre">testfile.cgns</span></code> has no link the <code class="docutils literal"><span class="pre">links</span></code> and <code class="docutils literal"><span class="pre">paths</span></code> are
-empty lists and <code class="docutils literal"><span class="pre">tree</span></code> contains the <em>CGNS/Python</em> tree.
+<p>If the <code class="docutils literal notranslate"><span class="pre">testfile.cgns</span></code> has no link the <code class="docutils literal notranslate"><span class="pre">links</span></code> and <code class="docutils literal notranslate"><span class="pre">paths</span></code> are
+empty lists and <code class="docutils literal notranslate"><span class="pre">tree</span></code> contains the <em>CGNS/Python</em> tree.
 The file name extension is not required, if the file doesn’t exist
 or if it is not a <em>CGNS/HDF5</em> file exceptions are raised:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">T</span><span class="o">=</span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;a.hdf&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">T</span><span class="o">=</span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;a.hdf&#39;</span><span class="p">)</span>
 <span class="gt">Traceback (most recent call last):</span>
   File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
   File <span class="nb">&quot;pyCHLone.pyx&quot;</span>, line <span class="m">137</span>, in <span class="n">CHLone.load (pyCHLone.c:2130)</span>
@@ -156,10 +148,10 @@ or if it is not a <em>CGNS/HDF5</em> file exceptions are raised:</p>
 <span class="gr">CHLone.CHLoneException</span>: <span class="n">(101, &#39;Target is not an HDF5 file [cgnscheck.pdf]&#39;)</span>
 </pre></div>
 </div>
-<p>You can see here the exception are coming from <code class="docutils literal"><span class="pre">CHLone</span></code> interface,
+<p>You can see here the exception are coming from <code class="docutils literal notranslate"><span class="pre">CHLone</span></code> interface,
 but as <em>CGNS.MAP</em> wraps <em>CHLone</em> you can also catch them as a <em>CGNS.MAP</em>
 error:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">try</span><span class="p">:</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">try</span><span class="p">:</span>
 <span class="gp">... </span>  <span class="n">T</span><span class="o">=</span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;cgnscheck.pdf&#39;</span><span class="p">)</span>
 <span class="gp">... </span><span class="k">except</span> <span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">error</span><span class="p">,</span> <span class="n">e</span><span class="p">:</span>
 <span class="gp">... </span>  <span class="nb">print</span> <span class="n">e</span>
@@ -168,7 +160,7 @@ error:</p>
 </pre></div>
 </div>
 <p>And if you write your own function, this leads to:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">myload</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">myload</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
   <span class="k">try</span><span class="p">:</span>
     <span class="n">T</span><span class="o">=</span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;cgnscheck.pdf&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
   <span class="k">except</span> <span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">error</span><span class="p">,</span> <span class="n">e</span><span class="p">:</span>
@@ -176,28 +168,28 @@ error:</p>
   <span class="k">return</span> <span class="n">T</span>
 </pre></div>
 </div>
-<p>In this latter example, we are forgetting <code class="docutils literal"><span class="pre">links</span></code> and <code class="docutils literal"><span class="pre">paths</span></code>.</p>
+<p>In this latter example, we are forgetting <code class="docutils literal notranslate"><span class="pre">links</span></code> and <code class="docutils literal notranslate"><span class="pre">paths</span></code>.</p>
 </div>
 <div class="section" id="complete-save-of-a-cgns-python-tree">
 <h2>Complete save of a <em>CGNS/Python</em> tree<a class="headerlink" href="#complete-save-of-a-cgns-python-tree" title="Permalink to this headline">¶</a></h2>
-<p>Now you have a <em>CGNS/Python</em> tree of your own, use the <code class="docutils literal"><span class="pre">save</span></code>
+<p>Now you have a <em>CGNS/Python</em> tree of your own, use the <code class="docutils literal notranslate"><span class="pre">save</span></code>
 to write the contents in a <em>CGNS/HDF5</em> file:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;solution.hdf&quot;</span><span class="p">,</span> <span class="n">tree</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;solution.hdf&quot;</span><span class="p">,</span> <span class="n">tree</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Again, the file extension is not significant. You can save your file with
 the name you want as far as the file system is happy with it:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;../solution.cgns&#39;</span><span class="p">,</span><span class="n">T</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;../solution.cgns&#39;</span><span class="p">,</span><span class="n">T</span><span class="p">)</span>
 <span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;RESULT&#39;</span><span class="p">,</span><span class="n">T</span><span class="p">)</span>
 <span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;solution.doc&#39;</span><span class="p">,</span><span class="n">T</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Of course, all these files are <em>HDF5</em> files, and you may have problem
 with tools is you play with file names. Then we strongly suggest you
-stay with usual file extensions such as <code class="docutils literal"><span class="pre">cgns</span></code> or <code class="docutils literal"><span class="pre">hdf</span></code>.</p>
+stay with usual file extensions such as <code class="docutils literal notranslate"><span class="pre">cgns</span></code> or <code class="docutils literal notranslate"><span class="pre">hdf</span></code>.</p>
 <p>If the file exist or if your file system doesn’t want you to write
 for any reason, you have an exception.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">T</span><span class="o">=</span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;r.hdf&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">T</span><span class="o">=</span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;r.hdf&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;r.hdf&#39;</span><span class="p">,</span><span class="n">T</span><span class="p">)</span>
 <span class="gt">Traceback (most recent call last):</span>
   File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
@@ -222,23 +214,23 @@ The <em>CGNS.MAP</em> load allows you to filter your target in the <em>CGNS/HDF5
 <p>In this first example we load only the zone layout of the tree. You want
 to distribute your zones on a cluster processors and you need to now the number
 of zones and their sizes:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">T</span><span class="o">=</span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;z.hdf&#39;</span><span class="p">,</span><span class="n">depth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">T</span><span class="o">=</span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;z.hdf&#39;</span><span class="p">,</span><span class="n">depth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal"><span class="pre">depth</span></code> argument tells <em>CGNS.MAP</em> to stop loading at level 3, which is
-the <code class="docutils literal"><span class="pre">Zone_t</span></code> level; The first level is the root of the tree (<code class="docutils literal"><span class="pre">CGNSTree_t</span></code>)
-then you have the base level (<code class="docutils literal"><span class="pre">CGNSBase_t</span></code>) and the zones.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">depth</span></code> argument tells <em>CGNS.MAP</em> to stop loading at level 3, which is
+the <code class="docutils literal notranslate"><span class="pre">Zone_t</span></code> level; The first level is the root of the tree (<code class="docutils literal notranslate"><span class="pre">CGNSTree_t</span></code>)
+then you have the base level (<code class="docutils literal notranslate"><span class="pre">CGNSBase_t</span></code>) and the zones.</p>
 <p>Note you have all nodes at level 3, not only the zones. You need to
 select the zones:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">zlist</span><span class="o">=</span><span class="n">CGU</span><span class="o">.</span><span class="n">getAllNodesByTypeSet</span><span class="p">(</span><span class="n">T</span><span class="p">[</span><span class="mi">0</span><span class="p">],[</span><span class="s1">&#39;Zone_t&#39;</span><span class="p">])</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">zlist</span><span class="o">=</span><span class="n">CGU</span><span class="o">.</span><span class="n">getAllNodesByTypeSet</span><span class="p">(</span><span class="n">T</span><span class="p">[</span><span class="mi">0</span><span class="p">],[</span><span class="s1">&#39;Zone_t&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
-<p>In the case you have several <code class="docutils literal"><span class="pre">CGNSBase_t</span></code> you may want to filter
-a specific base, use the <code class="docutils literal"><span class="pre">subtree</span></code> to tell to <code class="docutils literal"><span class="pre">load</span></code> to select only
+<p>In the case you have several <code class="docutils literal notranslate"><span class="pre">CGNSBase_t</span></code> you may want to filter
+a specific base, use the <code class="docutils literal notranslate"><span class="pre">subtree</span></code> to tell to <code class="docutils literal notranslate"><span class="pre">load</span></code> to select only
 the nodes with the given prefix, all together this leads to the following
 lines.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">T</span><span class="o">=</span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;z.hdf&#39;</span><span class="p">,</span><span class="n">subtree</span><span class="o">=</span><span class="s1">&#39;/Base_1&#39;</span><span class="p">,</span><span class="n">depth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">CGU</span><span class="o">.</span><span class="n">getAllPaths</span><span class="p">(</span><span class="n">T</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">T</span><span class="o">=</span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;z.hdf&#39;</span><span class="p">,</span><span class="n">subtree</span><span class="o">=</span><span class="s1">&#39;/Base_1&#39;</span><span class="p">,</span><span class="n">depth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">CGU</span><span class="o">.</span><span class="n">getAllPaths</span><span class="p">(</span><span class="n">T</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="go">[&#39;/Base_1&#39;, &#39;/Base_1/About&#39;, &#39;/Base_1/Zone_0001&#39;, &#39;/Base_1/Zone_0002&#39;]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">zlist</span><span class="o">=</span><span class="n">CGU</span><span class="o">.</span><span class="n">getAllNodesByTypeSet</span><span class="p">(</span><span class="n">T</span><span class="p">[</span><span class="mi">0</span><span class="p">],[</span><span class="s1">&#39;Zone_t&#39;</span><span class="p">])</span>
 </pre></div>
@@ -249,18 +241,18 @@ lines.</p>
 <p>The previous example actually reads all the data of the <em>CGNS/HDF5</em> file,
 its stops parsing the tree but every node is retrieved with its associated
 array. Now we would like to find out the coordinates names, the node names
-of the children of <code class="docutils literal"><span class="pre">GridCoordinates_t</span></code>, but we do not want to load a
-probably large amount of data. We use the <code class="docutils literal"><span class="pre">madata</span></code> threshold parameter,
+of the children of <code class="docutils literal notranslate"><span class="pre">GridCoordinates_t</span></code>, but we do not want to load a
+probably large amount of data. We use the <code class="docutils literal notranslate"><span class="pre">madata</span></code> threshold parameter,
 all data above this size is returned as a <em>no-data</em> node:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">flags</span><span class="o">=</span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">S2P_DEFAULT</span><span class="o">|</span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">S2P_NODATA</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">flags</span><span class="o">=</span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">S2P_DEFAULT</span><span class="o">|</span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">S2P_NODATA</span>
 <span class="n">T</span><span class="o">=</span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;mesh.hdf&#39;</span><span class="p">,</span><span class="n">maxdata</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">flags</span><span class="o">=</span><span class="n">flags</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal"><span class="pre">CGNS.MAP.S2P_NODATA</span></code> is required, without it the <code class="docutils literal"><span class="pre">maxdata</span></code> is
+<p>The <code class="docutils literal notranslate"><span class="pre">CGNS.MAP.S2P_NODATA</span></code> is required, without it the <code class="docutils literal notranslate"><span class="pre">maxdata</span></code> is
 ignored. Here all the <em>CGNS/HDF5</em> tree is retrieved but nodes with a
-data array with more than 20 entries is set as an <code class="docutils literal"><span class="pre">MT</span></code> (<em>empty</em>) node.
+data array with more than 20 entries is set as an <code class="docutils literal notranslate"><span class="pre">MT</span></code> (<em>empty</em>) node.
 We can still parse the node names:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">g</span><span class="o">=</span><span class="n">CGU</span><span class="o">.</span><span class="n">getNodeByPath</span><span class="p">(</span><span class="n">T</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="s1">&#39;/Mesh/Zone-004/GridCoordinates&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">g</span><span class="o">=</span><span class="n">CGU</span><span class="o">.</span><span class="n">getNodeByPath</span><span class="p">(</span><span class="n">T</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="s1">&#39;/Mesh/Zone-004/GridCoordinates&#39;</span><span class="p">)</span>
 <span class="go">[&#39;GridCoordinates&#39;, None, [[&#39;CoordinateX&#39;, None, [], &#39;DataArray_t&#39;],</span>
 <span class="go">[&#39;CoordinateY&#39;, None, [], &#39;DataArray_t&#39;],</span>
 <span class="go">[&#39;CoordinateZ&#39;, None, [], &#39;DataArray_t&#39;]], &#39;GridCoordinates_t&#39;]</span>
@@ -268,12 +260,12 @@ We can still parse the node names:</p>
 </div>
 <p>You should <strong>not</strong> save this tree, because you would overwrite the
 coordinates nodes with empty arrays.</p>
-<p>When you use the <code class="docutils literal"><span class="pre">S2P_NODATA</span></code> flag your result tree may contain <code class="docutils literal"><span class="pre">MT</span></code>
+<p>When you use the <code class="docutils literal notranslate"><span class="pre">S2P_NODATA</span></code> flag your result tree may contain <code class="docutils literal notranslate"><span class="pre">MT</span></code>
 nodes that actually have no data in the <em>CGNS/HDF5</em> file or node arrays that
-have been ignored because of the <code class="docutils literal"><span class="pre">maxdata</span></code> threshold. The third entry
-in the <code class="docutils literal"><span class="pre">load</span></code> return tuple is the <code class="docutils literal"><span class="pre">paths</span></code>, it contains the paths of the
+have been ignored because of the <code class="docutils literal notranslate"><span class="pre">maxdata</span></code> threshold. The third entry
+in the <code class="docutils literal notranslate"><span class="pre">load</span></code> return tuple is the <code class="docutils literal notranslate"><span class="pre">paths</span></code>, it contains the paths of the
 nodes that were ignored:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">flags</span><span class="o">=</span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">S2P_DEFAULT</span><span class="o">|</span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">S2P_NODATA</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">flags</span><span class="o">=</span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">S2P_DEFAULT</span><span class="o">|</span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">S2P_NODATA</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">T</span><span class="o">=</span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;mesh.hdf&#39;</span><span class="p">,</span><span class="n">maxdata</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">flags</span><span class="o">=</span><span class="n">flags</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">T</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
 <span class="go">[(&#39;/Mesh/Zone-004/GridCoordinates/CoordinateX&#39;,1),</span>
@@ -281,20 +273,20 @@ nodes that were ignored:</p>
 <span class="go"> (&#39;/Mesh/Zone-004/GridCoordinates/CoordinateZ&#39;,1)]</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal"><span class="pre">1</span></code> associated with the path is the integer value corresponding to
-the <code class="docutils literal"><span class="pre">S2P_NODATA</span></code> flag, it is useless at this time.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">1</span></code> associated with the path is the integer value corresponding to
+the <code class="docutils literal notranslate"><span class="pre">S2P_NODATA</span></code> flag, it is useless at this time.</p>
 </div>
 <div class="section" id="update-a-nodata-node-from-a-cgns-hdf-file">
 <h2>Update a nodata node from a <em>CGNS/HDF</em> file<a class="headerlink" href="#update-a-nodata-node-from-a-cgns-hdf-file" title="Permalink to this headline">¶</a></h2>
 <p>Now next step is to load the data for a node. Your first step was to parse the
 tree layout an discover the nodes you are intersted in. You have a list with
 node paths taken from your previously loaded tree. Some nodes have data, because
-their size was below the <code class="docutils literal"><span class="pre">maxdata</span></code> threshold, some other have <code class="docutils literal"><span class="pre">None</span></code> and
-they appear in the <code class="docutils literal"><span class="pre">paths</span></code> as the third returned value of the load function.</p>
-<p>First case, we want to load data from a <code class="docutils literal"><span class="pre">None</span></code> valued node. We use the
-<code class="docutils literal"><span class="pre">subtree</span></code> named argument of the load. It creates all the nodes of the
+their size was below the <code class="docutils literal notranslate"><span class="pre">maxdata</span></code> threshold, some other have <code class="docutils literal notranslate"><span class="pre">None</span></code> and
+they appear in the <code class="docutils literal notranslate"><span class="pre">paths</span></code> as the third returned value of the load function.</p>
+<p>First case, we want to load data from a <code class="docutils literal notranslate"><span class="pre">None</span></code> valued node. We use the
+<code class="docutils literal notranslate"><span class="pre">subtree</span></code> named argument of the load. It creates all the nodes of the
 subtree starting from the path you give:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">flags</span><span class="o">=</span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">S2P_DEFAULT</span><span class="o">|</span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">S2P_NODATA</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">flags</span><span class="o">=</span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">S2P_DEFAULT</span><span class="o">|</span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">S2P_NODATA</span>
 <span class="p">(</span><span class="n">t1</span><span class="p">,</span><span class="n">l1</span><span class="p">,</span><span class="n">p1</span><span class="p">)</span><span class="o">=</span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;mesh.hdf&#39;</span><span class="p">,</span><span class="n">maxdata</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">flags</span><span class="o">=</span><span class="n">flags</span><span class="p">)</span>
 
 <span class="c1"># this path is in p1</span>
@@ -308,11 +300,11 @@ subtree starting from the path you give:</p>
 </pre></div>
 </div>
 <p>The numpy array is replaced in the list, python insures this is not a copy
-and also takes care of the object references. So you can remore <code class="docutils literal"><span class="pre">t2</span></code> now.
+and also takes care of the object references. So you can remore <code class="docutils literal notranslate"><span class="pre">t2</span></code> now.
 In that case a new numpy array has been created. You can give an actual
 subtree instead of a leaf, the result is the same, all children nodes are
 recursively loaded:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">flags</span><span class="o">=</span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">S2P_DEFAULT</span><span class="o">|</span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">S2P_NODATA</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">flags</span><span class="o">=</span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">S2P_DEFAULT</span><span class="o">|</span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">S2P_NODATA</span>
 <span class="p">(</span><span class="n">t1</span><span class="p">,</span><span class="n">l1</span><span class="p">,</span><span class="n">p1</span><span class="p">)</span><span class="o">=</span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;mesh.hdf&#39;</span><span class="p">),</span><span class="n">maxdata</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">flags</span><span class="o">=</span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">S2P_NODATA</span><span class="p">)</span>
 
 <span class="n">pth</span><span class="o">=</span><span class="s1">&#39;/Mesh/Zone-004/GridCoordinates&#39;</span>
@@ -326,9 +318,9 @@ recursively loaded:</p>
 </pre></div>
 </div>
 <p>Sometimes you just want a node that already exists to be updated. The
-<code class="docutils literal"><span class="pre">update</span></code> argument of the load is a dictionnary of path/value
+<code class="docutils literal notranslate"><span class="pre">update</span></code> argument of the load is a dictionnary of path/value
 entries:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">t1</span><span class="p">,</span><span class="n">l1</span><span class="p">,</span><span class="n">p1</span><span class="p">)</span><span class="o">=</span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;mesh.hdf&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">t1</span><span class="p">,</span><span class="n">l1</span><span class="p">,</span><span class="n">p1</span><span class="p">)</span><span class="o">=</span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;mesh.hdf&#39;</span><span class="p">)</span>
 <span class="n">pth_g</span><span class="o">=</span><span class="s1">&#39;/Mesh/Zone-004/GridCoordinates&#39;</span>
 <span class="n">pth_x</span><span class="o">=</span><span class="n">pth_g</span><span class="o">+</span><span class="s1">&#39;/CoordinateX&#39;</span>
 <span class="n">targetnode</span><span class="o">=</span><span class="n">CGU</span><span class="o">.</span><span class="n">getNodeByPath</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">pth_x</span><span class="p">)</span>
@@ -341,17 +333,17 @@ entries:</p>
 <span class="c1"># in the update</span>
 </pre></div>
 </div>
-<p>The previous example loads the X,Y and Z arrays in the <code class="docutils literal"><span class="pre">t2</span></code> tree. However,
-only Y and Z had a new memory allocation. If you do not set the <code class="docutils literal"><span class="pre">subtree</span></code> arg
-the <code class="docutils literal"><span class="pre">t2</span></code> tree will contain a completely new CGNS/Python, only the X coordinate
-array is shared with <code class="docutils literal"><span class="pre">t1</span></code>.</p>
+<p>The previous example loads the X,Y and Z arrays in the <code class="docutils literal notranslate"><span class="pre">t2</span></code> tree. However,
+only Y and Z had a new memory allocation. If you do not set the <code class="docutils literal notranslate"><span class="pre">subtree</span></code> arg
+the <code class="docutils literal notranslate"><span class="pre">t2</span></code> tree will contain a completely new CGNS/Python, only the X coordinate
+array is shared with <code class="docutils literal notranslate"><span class="pre">t1</span></code>.</p>
 <p>Another way to load the coordinates X,Y,Z having the X shared and Y and Z
-new numpy array is to set <code class="docutils literal"><span class="pre">None</span></code> in the <code class="docutils literal"><span class="pre">update</span></code> dictionnary and to
-add the <code class="docutils literal"><span class="pre">S2P_UPDATEONLY</span></code> flag. Only the paths into <code class="docutils literal"><span class="pre">update</span></code> would be
-parsed in the CGNS/HDF5 file, if the <code class="docutils literal"><span class="pre">update</span></code> is <code class="docutils literal"><span class="pre">None</span></code> a new numpy array
+new numpy array is to set <code class="docutils literal notranslate"><span class="pre">None</span></code> in the <code class="docutils literal notranslate"><span class="pre">update</span></code> dictionnary and to
+add the <code class="docutils literal notranslate"><span class="pre">S2P_UPDATEONLY</span></code> flag. Only the paths into <code class="docutils literal notranslate"><span class="pre">update</span></code> would be
+parsed in the CGNS/HDF5 file, if the <code class="docutils literal notranslate"><span class="pre">update</span></code> is <code class="docutils literal notranslate"><span class="pre">None</span></code> a new numpy array
 is allocated, otherwise the existing numpy array found in the dictionnary
 is updated:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">t1</span><span class="p">,</span><span class="n">l1</span><span class="p">,</span><span class="n">p1</span><span class="p">)</span><span class="o">=</span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;mesh.hdf&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">t1</span><span class="p">,</span><span class="n">l1</span><span class="p">,</span><span class="n">p1</span><span class="p">)</span><span class="o">=</span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;mesh.hdf&#39;</span><span class="p">)</span>
 <span class="n">pth_g</span><span class="o">=</span><span class="s1">&#39;/Mesh/Zone-004/GridCoordinates&#39;</span>
 <span class="n">pth_x</span><span class="o">=</span><span class="n">pth_g</span><span class="o">+</span><span class="s1">&#39;/CoordinateX&#39;</span>
 <span class="n">pth_y</span><span class="o">=</span><span class="n">pth_g</span><span class="o">+</span><span class="s1">&#39;/CoordinateY&#39;</span>
@@ -365,7 +357,7 @@ is updated:</p>
 </pre></div>
 </div>
 <p>We suggest you use this last method instead of calling as many load with as
-many <code class="docutils literal"><span class="pre">subtree</span></code> you want to update. The CGNS/HDF5 file would be opened only
+many <code class="docutils literal notranslate"><span class="pre">subtree</span></code> you want to update. The CGNS/HDF5 file would be opened only
 once, you increase parsing performance, you limit the file system access and
 you reduce the critical section for other applications trying to read/write
 simultaneously the same file.</p>
@@ -373,12 +365,12 @@ simultaneously the same file.</p>
 <div class="section" id="load-a-tree-without-links">
 <h2>Load a tree without links<a class="headerlink" href="#load-a-tree-without-links" title="Permalink to this headline">¶</a></h2>
 <p>If you want to parse a CGNS/HDF5 file and avoid to load any linked-file found
-during the parse, remove the <code class="docutils literal"><span class="pre">S2P_FOLLOWLINKS</span></code> from the flags:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">flags</span><span class="o">=</span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">S2P_DEFAULT</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">S2P_FOLLOWLINKS</span>
+during the parse, remove the <code class="docutils literal notranslate"><span class="pre">S2P_FOLLOWLINKS</span></code> from the flags:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">flags</span><span class="o">=</span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">S2P_DEFAULT</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">S2P_FOLLOWLINKS</span>
 <span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">l</span><span class="p">,</span><span class="n">p</span><span class="p">)</span><span class="o">=</span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;mesh.hdf&#39;</span><span class="p">,</span><span class="n">flags</span><span class="o">=</span><span class="n">flags</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal"><span class="pre">l</span></code> list is empty.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">l</span></code> list is empty.</p>
 </div>
 <div class="section" id="save-with-links">
 <h2>Save with links<a class="headerlink" href="#save-with-links" title="Permalink to this headline">¶</a></h2>
@@ -387,24 +379,24 @@ CGNS/Python tree with actual node data. The only way to find out from which
 file comes a specific node you have to check the link list, returned as the
 second value of the load function. The way back, that is when you want to save
 this previously loaded file, you have to give back this link list:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">l</span><span class="p">,</span><span class="n">p</span><span class="p">)</span><span class="o">=</span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;mesh.hdf&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">l</span><span class="p">,</span><span class="n">p</span><span class="p">)</span><span class="o">=</span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;mesh.hdf&#39;</span><span class="p">)</span>
 
 <span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;mesh.hdf&#39;</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">links</span><span class="o">=</span><span class="n">l</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>If you miss this <code class="docutils literal"><span class="pre">links</span></code> argument, the save will store all the nodes ot <code class="docutils literal"><span class="pre">t</span></code>
+<p>If you miss this <code class="docutils literal notranslate"><span class="pre">links</span></code> argument, the save will store all the nodes ot <code class="docutils literal notranslate"><span class="pre">t</span></code>
 in the file. This is a merge like describe <a class="reference internal" href="#mergenolink"><span class="std std-ref">here</span></a>.</p>
 <p>The save will only write the first top file, all other sub parts of the
 tree having an ancestor in the links list would be ignored. If you want
 the save modifications of nodes coming from a linked-to file, you have
-to force the <code class="docutils literal"><span class="pre">S2P_PROPAGATE</span></code> flag:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">l</span><span class="p">,</span><span class="n">p</span><span class="p">)</span><span class="o">=</span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;mesh.hdf&#39;</span><span class="p">)</span>
+to force the <code class="docutils literal notranslate"><span class="pre">S2P_PROPAGATE</span></code> flag:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">l</span><span class="p">,</span><span class="n">p</span><span class="p">)</span><span class="o">=</span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;mesh.hdf&#39;</span><span class="p">)</span>
 
 <span class="n">flags</span><span class="o">=</span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">S2P_DEFAULT</span><span class="o">|</span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">S2P_PROPAGATE</span>
 <span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;mesh.hdf&#39;</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">links</span><span class="o">=</span><span class="n">l</span><span class="p">,</span><span class="n">flags</span><span class="o">=</span><span class="n">flags</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>In that latter case, the linked-to file are set in the <code class="docutils literal"><span class="pre">update</span></code> mode as
+<p>In that latter case, the linked-to file are set in the <code class="docutils literal notranslate"><span class="pre">update</span></code> mode as
 described <a class="reference internal" href="#updatemode"><span class="std std-ref">here</span></a>.</p>
 </div>
 <div class="section" id="save-with-new-links">
@@ -421,19 +413,20 @@ described <a class="reference internal" href="#updatemode"><span class="std std-
 </div>
 <div class="section" id="some-usual-issues">
 <h2>Some usual issues<a class="headerlink" href="#some-usual-issues" title="Permalink to this headline">¶</a></h2>
-<p><em>to do: add here users’ usual mistakes</em></p>
+<p><em>to do: add here users' usual mistakes</em></p>
 </div>
 </div>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2001-2016, Marc Poinot.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+        &#169; Copyright 2018-2022, Marc Poinot.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
     </div>
   </body>
 </html>

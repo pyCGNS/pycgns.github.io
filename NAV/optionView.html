@@ -1,33 +1,23 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Option View &#8212; NAV</title>
-    <link rel="stylesheet" href="_static/pycgns.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '4.2.0',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pycgns.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
     <link rel="shortcut icon" href="_static/pyCGNS-logo-tiny.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Pattern View" href="patternView.html" />
     <link rel="prev" title="Tree View" href="treeView.html" /> 
-  </head>
-  <body>
+  </head><body>
     <div class="related">
       <h3>Navigation</h3>
       <ul>
@@ -81,8 +71,9 @@
    </a></h1>
 
 
-  <h3><a href="_index.html">Table Of Contents</a></h3>
-  <ul>
+  <div>
+    <h3><a href="_index.html">Table of Contents</a></h3>
+    <ul>
 <li><a class="reference internal" href="#">Option View</a><ul>
 <li><a class="reference internal" href="#options">Options</a></li>
 <li><a class="reference internal" href="#default-key-mouse-bindings-per-view">Default key/mouse bindings per view</a></li>
@@ -90,16 +81,17 @@
 </li>
 </ul>
 
+  </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
     </form>
+    </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
 
@@ -115,12 +107,12 @@ for <em>CGNS.NAV</em>. You should be sure the right options are set because some
 of these are very important and could change the actual contents of a
 file you want to store.</p>
 <a class="reference internal image-reference" href="_images/options_view_1.png"><img alt="_images/options_view_1.png" src="_images/options_view_1.png" style="width: 22cm;" /></a>
-<p>You can change values in the <em>Option view</em> or edit the <code class="docutils literal"><span class="pre">.cgnsnavoptions.py</span></code>
+<p>You can change values in the <em>Option view</em> or edit the <code class="docutils literal notranslate"><span class="pre">.cgnsnavoptions.py</span></code>
 file you can find in your home directory. For example you can customize the
-key bindings only in the <code class="docutils literal"><span class="pre">.cgnsnavoptions.py</span></code> file. This file is a plain
+key bindings only in the <code class="docutils literal notranslate"><span class="pre">.cgnsnavoptions.py</span></code> file. This file is a plain
 Python file, it is imported and re-generated each time you run
-<code class="docutils literal"><span class="pre">CGNS.NAV</span></code>.</p>
-<p>The <code class="docutils literal"><span class="pre">.CGNS.NAV/historyfile.py</span></code> contains the history of directories where you
+<code class="docutils literal notranslate"><span class="pre">CGNS.NAV</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">.CGNS.NAV/historyfile.py</span></code> contains the history of directories where you
 opened a <em>CGNS</em> file.</p>
 <div class="section" id="options">
 <h2>Options<a class="headerlink" href="#options" title="Permalink to this headline">¶</a></h2>
@@ -130,39 +122,39 @@ the way <em>CGNS.NAV</em> reads or writes the data on disk and have a strong
 impact on the  actual CGNS file you will obtain.</p>
 <blockquote>
 <div><ul class="simple">
-<li><dl class="first docutils">
-<dt><cite>Recursive tree display</cite> forces the <em>Tree view</em> to open all the children</dt>
-<dd>recursively. We strongly suggest you <em>un-check</em> this box on large files.</dd>
+<li><dl class="simple">
+<dt><cite>Recursive tree display</cite> forces the <em>Tree view</em> to open all the children</dt><dd><p>recursively. We strongly suggest you <em>un-check</em> this box on large files.</p>
+</dd>
 </dl>
 </li>
-<li><cite>One view per tree/node</cite> (Not available) when active you cannot open
-more than one view per tree/node.</li>
-<li><cite>Show columns titles</cite> is used to show/hide the top titles of tables</li>
-<li><cite>Show menu help balloons</cite> activates ugly yelllow balloons giving a hint
-on the purpose of the icons in the views menus.</li>
-<li><cite>Recurse SIDS patterns load/copy</cite> indicates that you want to load or
+<li><p><cite>One view per tree/node</cite> (Not available) when active you cannot open
+more than one view per tree/node.</p></li>
+<li><p><cite>Show columns titles</cite> is used to show/hide the top titles of tables</p></li>
+<li><p><cite>Show menu help balloons</cite> activates ugly yelllow balloons giving a hint
+on the purpose of the icons in the views menus.</p></li>
+<li><p><cite>Recurse SIDS patterns load/copy</cite> indicates that you want to load or
 copy the SIDS CGNS sub-trees in a recursive way. For example, if you
 load the <cite>CGNSBase_t</cite> pattern you will obtain the whole SIDS pattern,
-all pattern children of <cite>CGNSBase_t</cite> will be loaded as well.</li>
-<li><cite>Load node on display required</cite> (Not available) to save memory and time,
-CGNS node is read from the file only when <em>CGNS.NAV</em> needs to display it.</li>
-<li><cite>Check on the fly</cite> (Not available) forces a check each time you modify
-a tree.</li>
-<li><cite>Follow links during file load</cite> indicates that the links <em>CGNS.NAV</em>
-encounters into a CGNS file have to be followed or not.</li>
-<li><cite>Do NOT follow links during file save</cite> means that the links will be
+all pattern children of <cite>CGNSBase_t</cite> will be loaded as well.</p></li>
+<li><p><cite>Load node on display required</cite> (Not available) to save memory and time,
+CGNS node is read from the file only when <em>CGNS.NAV</em> needs to display it.</p></li>
+<li><p><cite>Check on the fly</cite> (Not available) forces a check each time you modify
+a tree.</p></li>
+<li><p><cite>Follow links during file load</cite> indicates that the links <em>CGNS.NAV</em>
+encounters into a CGNS file have to be followed or not.</p></li>
+<li><p><cite>Do NOT follow links during file save</cite> means that the links will be
 ignored during save which has the effect to <em>merge</em> all the tree nodes
-into the same root file.</li>
-<li><cite>Do not load large DataArrays</cite></li>
-<li><cite>Show 1D values as plain Python types</cite></li>
-<li><cite>Show SIDS status column</cite></li>
-<li><cite>Max tree parse recursion level</cite></li>
-<li><cite>Max length of data displayed in table</cite></li>
-<li><cite>History file name</cite></li>
-<li><cite>Default profile</cite></li>
-<li><cite>Profile path list</cite></li>
-<li><cite>Force fortran flag in numpy arrays</cite></li>
-<li><cite>Transpose array for edit/view</cite></li>
+into the same root file.</p></li>
+<li><p><cite>Do not load large DataArrays</cite></p></li>
+<li><p><cite>Show 1D values as plain Python types</cite></p></li>
+<li><p><cite>Show SIDS status column</cite></p></li>
+<li><p><cite>Max tree parse recursion level</cite></p></li>
+<li><p><cite>Max length of data displayed in table</cite></p></li>
+<li><p><cite>History file name</cite></p></li>
+<li><p><cite>Default profile</cite></p></li>
+<li><p><cite>Profile path list</cite></p></li>
+<li><p><cite>Force fortran flag in numpy arrays</cite></p></li>
+<li><p><cite>Transpose array for edit/view</cite></p></li>
 </ul>
 </div></blockquote>
 </div>
@@ -171,30 +163,30 @@ into the same root file.</li>
 <p>The <em>&lt;C-x&gt;</em> notation stands for <em>&lt;Control-X&gt;</em>, that is pressing the <em>Control</em>
 key and the <em>X</em> letter key at the same time. The mouse actions can be a
 <em>Single</em> or a <em>Double</em> click on the Left, Middle or Right button.</p>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="18%" />
-<col width="18%" />
-<col width="65%" />
+<col style="width: 18%" />
+<col style="width: 18%" />
+<col style="width: 65%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">View</th>
-<th class="head">Key/Mouse</th>
-<th class="head">Action</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>View</p></th>
+<th class="head"><p>Key/Mouse</p></th>
+<th class="head"><p>Action</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>ControlView</td>
-<td><p class="first">&lt;Return&gt;</p>
-<p class="last">&lt;Delete&gt;</p>
+<tbody>
+<tr class="row-even"><td><p>ControlView</p></td>
+<td><p>&lt;Return&gt;</p>
+<p>&lt;Delete&gt;</p>
 </td>
-<td><p class="first">On a view line, raises this view window</p>
-<p class="last">On a view line, closes the window and its
+<td><p>On a view line, raises this view window</p>
+<p>On a view line, closes the window and its
 children windows</p>
 </td>
 </tr>
-<tr class="row-odd"><td>TreeView</td>
-<td><p class="first">&lt;Backspace&gt;</p>
+<tr class="row-odd"><td><p>TreeView</p></td>
+<td><p>&lt;Backspace&gt;</p>
 <p>&lt;Single-L&gt;</p>
 <p>&lt;Return&gt;</p>
 <p>&lt;Single-R&gt;</p>
@@ -211,9 +203,9 @@ children windows</p>
 <p>&lt;C-u&gt;</p>
 <p>&lt;C-d&gt;</p>
 <p>&lt;C-l&gt;</p>
-<p class="last">&lt;C-z&gt;</p>
+<p>&lt;C-z&gt;</p>
 </td>
-<td><p class="first">Raises the ControlView window</p>
+<td><p>Raises the ControlView window</p>
 <p>Select current node</p>
 <p>On a node, open/close the selected node</p>
 <p>Opens the pop-up menu for selected node</p>
@@ -230,12 +222,12 @@ children windows</p>
 <p>Add child node to selected node</p>
 <p>Copy selected node as link destination</p>
 <p>Add link to buffered link node destination</p>
-<p class="last">Check selected node and its sub-tree</p>
+<p>Check selected node and its sub-tree</p>
 </td>
 </tr>
-<tr class="row-even"><td>TableView</td>
-<td>&lt;Backspace&gt;</td>
-<td>Raises the ControlView window</td>
+<tr class="row-even"><td><p>TableView</p></td>
+<td><p>&lt;Backspace&gt;</p></td>
+<td><p>Raises the ControlView window</p></td>
 </tr>
 </tbody>
 </table>
@@ -243,14 +235,15 @@ children windows</p>
 </div>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2001-2016, Marc Poinot.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+        &#169; Copyright 2018-2022, M. P..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
     </div>
   </body>
 </html>

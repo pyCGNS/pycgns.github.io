@@ -20,7 +20,7 @@ body {
     letter-spacing: -0.01em;
     line-height: 150%;
     text-align: center;
-    background-color: #BFD1D4;
+    background-color: #EFEFEF;
     color: black;
     padding: 0;
     border: 1px solid #aaa;
@@ -43,6 +43,7 @@ div.bodywrapper {
 div.body {
     margin: 0;
     padding: 0.5em 20px 20px 20px;
+    overflow-y: hidden;
 }
 
 div.related {
@@ -72,7 +73,7 @@ div.related ul li a {
     margin: 0;
     padding: 0 5px 0 5px;
     line-height: 1.75em;
-    color: #EE9816;
+    color: #444444;
 }
 
 div.related ul li a:hover {
@@ -96,13 +97,13 @@ div.sphinxsidebar h3, div.sphinxsidebar h4 {
     margin: 1em 0 0.5em 0;
     font-size: 1em;
     padding: 0.1em 0 0.1em 0.5em;
-    color: white;
-    border: 1px solid #86989B;
-    background-color: #AFC1C4;
+    color: #343131;
+    border: 1px solid #343131;
+    background-color: #eeeeee;
 }
 
 div.sphinxsidebar h3 a {
-    color: white;
+    color: #343131;
 }
 
 div.sphinxsidebar ul {
@@ -118,7 +119,7 @@ div.sphinxsidebar ul ul {
 
 div.footer {
     background-color: #E3EFF1;
-    color: #86989B;
+    color: #343131;
     padding: 3px 8px 3px 0;
     clear: both;
     font-size: 0.8em;
@@ -126,8 +127,12 @@ div.footer {
 }
 
 div.footer a {
-    color: #86989B;
+    color: #343131;
     text-decoration: underline;
+}
+
+div.sidebar {
+    background: #eeeeee; 
 }
 
 /* -- body styles ---------------------------------------------------------- */
@@ -137,7 +142,7 @@ p {
 }
 
 a {
-    color: #86989B;
+    color: #757171;
     text-decoration: none;
 }
 
@@ -149,7 +154,7 @@ h1 {
     margin: 0;
     padding: 0.7em 0 0.3em 0;
     font-size: 2em;
-    color: #86989B;
+    color: #343131;
 }
 
 h1.sphinxsidebar {
@@ -160,12 +165,12 @@ h2 {
     margin: 1.3em 0 0.2em 0;
     font-size: 1.35em;
     padding: 0;
-    color: #86989B;
+    color: #343131;
 }
 
 h3 {
     margin: 1em 0 -0.3em 0;
-    color: #86989B;
+    color: #343131;
     font-size: 1.2em;
 }
 
@@ -193,7 +198,7 @@ h5 a.anchor:hover, h6 a.anchor:hover {
 }
 
 a.headerlink {
-    color: #c60f0f!important;
+    color: #444444!important;
     font-size: 1em;
     margin-left: 6px;
     padding: 0 4px 0 4px;
@@ -246,11 +251,12 @@ dd {
 
 dl.function {
     font-family: 'Arial', serif;
-    border-top: 1px solid #86989B;
+    border-top: 1px solid #343131;
     margin-top: 0px;
     margin-bottom: 0px;
     padding-top: 0px;
     padding-bottom: 30px;
+    overflow-y: hidden;
 }
 
 dl.function em {
@@ -272,7 +278,7 @@ dl.function li {
 }
 
 th.field-name {
-    color: #86989B;
+    color: #757171;
 }
 
 tt {
@@ -324,7 +330,7 @@ span.pre {
     padding: 0em;
     border: none;
     background-color: none;
-    color: #86989B;
+    color: #757171;
 }
 
 pre {
@@ -358,6 +364,12 @@ div.topic {
     background-color: #f8f8f8;
 }
 
+
+table.align-default {
+    text-align: left;
+    margin-left: 5px;
+}
+
 table {
     border-collapse: collapse;
     margin: 0 -0.5em 0 -0.5em;
@@ -370,7 +382,7 @@ table td, table th {
 div.admonition, div.warning {
     font-size: 0.9em;
     margin: 1em 0 1em 0;
-    border: 1px solid #86989B;
+    border: 1px solid #343131;
     background-color: #f7f7f7;
     padding: 0;
 }
@@ -389,7 +401,7 @@ div.warning p.admonition-title {
     margin: 0;
     padding: 0.1em 0 0.1em 0.5em;
     color: white;
-    border-bottom: 1px solid #86989B;
+    border-bottom: 1px solid #343131;
     font-weight: bold;
     background-color: #AFC1C4;
 }

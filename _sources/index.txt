@@ -27,16 +27,13 @@ A Python package for CGNS
   <td align="center" valign="middle"><a href="VAL/_index.html">
     <img src="images/VAL-logo-small.png" height="48" alt="VAL"/></a></td>
 
-  <td align="center" valign="middle"><a href="DAT/_index.html">
-    <img src="images/DAT-logo-small.png" height="48" alt="DAT"/></a></td>
-
   <td align="center" valign="middle"><a href="APP/_index.html">
     <img src="images/APP-logo-small.png" height="48" alt="APP"/></a></td>
  
  </tr></table></div>
 
 The package gathers various tools and libraries for CGNS end-users and
-Python application developpers. The The main object of *pyCGNS* is to
+Python application developpers. The main object of *pyCGNS* is to
 provide the application developpers with a Python interface to
 :term:`CGNS/SIDS`, the CGNS data model.  The `CFD General Notation System
 (CGNS) <http://www.cgns.org>`_ is both a data model for CFD and an
@@ -45,14 +42,16 @@ file format, you can use pyCGNS without any file at all for your
 actual CFD data! 
 
 
-.. sidebar:: Release 5.0 (Feb 2017)
+.. sidebar:: Release 6.0 (Resume 04/2022)
 
    - Embedded CHLone (CGNS/HDF5 mapping)
-   - Windows version update
-   - Python 3.6 support
+   - Python 3 support
+   - Drop of Python 2 support
+   - Add compact storage feature
 
-There are seven sub-modules in
-*pyCGNS*, some of them are libraries of functions, some other are
+   - `Github repository and tickets <http://github.com/pyCGNS/pyCGNS>`_
+
+*pyCGNS* has several sub-modules, some of them are libraries of functions, some other are
 tools and some are gathering various scripts and examples.
 The *MAP* and *PAT* modules are the most important modules, they map the 
 :term:`CGNS/SIDS` data model as :term:`CGNS/Python` implementation and

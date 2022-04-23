@@ -1,32 +1,22 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CGNS.MAP &#8212; MAP</title>
-    <link rel="stylesheet" href="_static/pycgns.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '4.2.0',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pycgns.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
     <link rel="shortcut icon" href="_static/pyCGNS-logo-tiny.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="CGNS/Python Tree" href="sids-to-python.html" /> 
-  </head>
-  <body>
+  </head><body>
     <div class="related">
       <h3>Navigation</h3>
       <ul>
@@ -75,8 +65,9 @@
    </a></h1>
 
 
-  <h3><a href="#">Table Of Contents</a></h3>
-  <ul>
+  <div>
+    <h3><a href="#">Table of Contents</a></h3>
+    <ul>
 <li><a class="reference internal" href="#">CGNS.MAP</a><ul>
 <li><a class="reference internal" href="#quick-start">Quick start</a></li>
 <li><a class="reference internal" href="#user-interface">User interface</a><ul>
@@ -94,16 +85,17 @@
 </li>
 </ul>
 
+  </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
     </form>
+    </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
 
@@ -115,28 +107,28 @@
   <div class="section" id="cgns-map">
 <h1>CGNS.MAP<a class="headerlink" href="#cgns-map" title="Permalink to this headline">¶</a></h1>
 <p>The MAP module is one of the most important modules of <em>pyCGNS</em>.
-MAP is the translator to get <a class="reference internal" href="#term-cgns-python"><span class="xref std std-term">CGNS/Python</span></a> trees from
-a <a class="reference internal" href="#term-cgns-hdf5"><span class="xref std std-term">CGNS/HDF5</span></a> file and back, to save <a class="reference internal" href="#term-cgns-python"><span class="xref std std-term">CGNS/Python</span></a> trees
-as a <a class="reference internal" href="#term-cgns-hdf5"><span class="xref std std-term">CGNS/HDF5</span></a> file. MAP uses <a class="reference internal" href="#term-chlone"><span class="xref std std-term">CHLone</span></a> and has no dependancy
-to <a class="reference internal" href="#term-cgns-mll"><span class="xref std std-term">CGNS/MLL</span></a> or <a class="reference internal" href="#term-cgns-adf"><span class="xref std std-term">CGNS/ADF</span></a>.</p>
+MAP is the translator to get <a class="reference internal" href="#term-CGNS-Python"><span class="xref std std-term">CGNS/Python</span></a> trees from
+a <a class="reference internal" href="#term-CGNS-HDF5"><span class="xref std std-term">CGNS/HDF5</span></a> file and back, to save <a class="reference internal" href="#term-CGNS-Python"><span class="xref std std-term">CGNS/Python</span></a> trees
+as a <a class="reference internal" href="#term-CGNS-HDF5"><span class="xref std std-term">CGNS/HDF5</span></a> file. MAP uses <a class="reference internal" href="#term-CHLone"><span class="xref std std-term">CHLone</span></a> and has no dependancy
+to <a class="reference internal" href="#term-CGNS-MLL"><span class="xref std std-term">CGNS/MLL</span></a> or <a class="reference internal" href="#term-CGNS-ADF"><span class="xref std std-term">CGNS/ADF</span></a>.</p>
 <div class="section" id="quick-start">
 <h2>Quick start<a class="headerlink" href="#quick-start" title="Permalink to this headline">¶</a></h2>
 <p>The MAPper is a module implementing
-the <a class="reference internal" href="#term-cgns-python"><span class="xref std std-term">CGNS/Python</span></a> mapping.
+the <a class="reference internal" href="#term-CGNS-Python"><span class="xref std std-term">CGNS/Python</span></a> mapping.
 There are only two functions in the module: the <strong>load</strong> and the <strong>save</strong>.
-A simple exemple to load a <em>CGNS/HDF5</em> file as a <a class="reference internal" href="#term-cgns-python"><span class="xref std std-term">CGNS/Python</span></a> tree:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">CGNS.MAP</span>
+A simple exemple to load a <em>CGNS/HDF5</em> file as a <a class="reference internal" href="#term-CGNS-Python"><span class="xref std std-term">CGNS/Python</span></a> tree:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">CGNS.MAP</span>
 
 <span class="p">(</span><span class="n">tree</span><span class="p">,</span><span class="n">links</span><span class="p">,</span><span class="n">paths</span><span class="p">)</span><span class="o">=</span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;T0.cgns&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal"><span class="pre">tree</span></code> value contains the actual CGNS/Python tree,
-<code class="docutils literal"><span class="pre">links</span></code> value is a list of links found during the <em>HDF5</em> file parse.
+<p>The <code class="docutils literal notranslate"><span class="pre">tree</span></code> value contains the actual CGNS/Python tree,
+<code class="docutils literal notranslate"><span class="pre">links</span></code> value is a list of links found during the <em>HDF5</em> file parse.
 The default behavior of the load is to follow linked-to files.
-The <code class="docutils literal"><span class="pre">paths</span></code> has the list of linked-to nodes that failed.
+The <code class="docutils literal notranslate"><span class="pre">paths</span></code> has the list of linked-to nodes that failed.
 Now we can use the <cite>CGNS.PAT</cite> module to handle this tree. For example
 you can print the whole tree path hierarchy:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">CGNS.MAP</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">CGNS.MAP</span>
 <span class="kn">import</span> <span class="nn">CGNS.PAT.cgnsutils</span> <span class="k">as</span> <span class="nn">CGU</span>
 
 <span class="p">(</span><span class="n">tree</span><span class="p">,</span><span class="n">links</span><span class="p">,</span><span class="n">paths</span><span class="p">)</span><span class="o">=</span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;T0.cgns&quot;</span><span class="p">)</span>
@@ -152,100 +144,91 @@ such a GCNS/Python tree.</p>
 <p>MAP is a lightweight module, its purpose is to be as small as possible
 in order to be embedded separatly in an application
 (not yet available).
-It uses the <a class="reference internal" href="#term-chlone"><span class="xref std std-term">CHLone</span></a> library and its Python binding.
+It uses the <a class="reference internal" href="#term-CHLone"><span class="xref std std-term">CHLone</span></a> library and its Python binding.
 <cite>MAP</cite> is a powerful reader/writer of CGNS/HDF5 and CGNS/Python trees. The
 use of <cite>CGNS.PAT</cite> and the flags combination can help to achieve complex
 operations on a CGNS tree with a fast access and a low memory footprint.
 See the <a class="reference internal" href="examples.html#mapexamples"><span class="std std-ref">examples</span></a>.</p>
 <div class="section" id="functions">
 <h3>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
-<p>There are two functions: the <code class="docutils literal"><span class="pre">load</span></code> and the <code class="docutils literal"><span class="pre">save</span></code>. The <code class="docutils literal"><span class="pre">load</span></code> reads
-a <em>CGNS/HDF5</em> file and produces a <em>CGNS/Python</em> tree. The <code class="docutils literal"><span class="pre">save</span></code> takes a
+<p>There are two functions: the <code class="docutils literal notranslate"><span class="pre">load</span></code> and the <code class="docutils literal notranslate"><span class="pre">save</span></code>. The <code class="docutils literal notranslate"><span class="pre">load</span></code> reads
+a <em>CGNS/HDF5</em> file and produces a <em>CGNS/Python</em> tree. The <code class="docutils literal notranslate"><span class="pre">save</span></code> takes a
 <em>CGNS/Python</em> tree and writes the contents in a <em>CGNS/HDF5</em> file:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">tree</span><span class="p">,</span><span class="n">links</span><span class="p">,</span><span class="n">paths</span><span class="p">)</span><span class="o">=</span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="n">flags</span><span class="p">,</span><span class="n">depth</span><span class="p">,</span><span class="n">maxdata</span><span class="p">,</span><span class="n">subtree</span><span class="p">,</span><span class="n">linkpaths</span><span class="p">,</span><span class="n">updatepaths</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">tree</span><span class="p">,</span><span class="n">links</span><span class="p">,</span><span class="n">paths</span><span class="p">)</span><span class="o">=</span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="n">flags</span><span class="p">,</span><span class="n">depth</span><span class="p">,</span><span class="n">maxdata</span><span class="p">,</span><span class="n">subtree</span><span class="p">,</span><span class="n">linkpaths</span><span class="p">,</span><span class="n">updatepaths</span><span class="p">)</span>
 
 <span class="n">status</span><span class="o">=</span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="n">tree</span><span class="p">,</span><span class="n">links</span><span class="p">,</span><span class="n">flags</span><span class="p">,</span><span class="n">depth</span><span class="p">,</span><span class="n">linkpaths</span><span class="p">,</span><span class="n">updatepaths</span><span class="p">,</span><span class="n">skiplist</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal"><span class="pre">load</span></code> and <code class="docutils literal"><span class="pre">save</span></code> arguments are python <em>named</em> arguments, you have
-to set them with the correct key. Except <code class="docutils literal"><span class="pre">filename</span></code> for <code class="docutils literal"><span class="pre">load</span></code>
-and <code class="docutils literal"><span class="pre">filename</span></code> and <code class="docutils literal"><span class="pre">tree</span></code> for <code class="docutils literal"><span class="pre">save</span></code>, all others arguments are optional.
+<p>The <code class="docutils literal notranslate"><span class="pre">load</span></code> and <code class="docutils literal notranslate"><span class="pre">save</span></code> arguments are python <em>named</em> arguments, you have
+to set them with the correct key. Except <code class="docutils literal notranslate"><span class="pre">filename</span></code> for <code class="docutils literal notranslate"><span class="pre">load</span></code>
+and <code class="docutils literal notranslate"><span class="pre">filename</span></code> and <code class="docutils literal notranslate"><span class="pre">tree</span></code> for <code class="docutils literal notranslate"><span class="pre">save</span></code>, all others arguments are optional.
 The arguments and the return values are:</p>
 <blockquote>
 <div><ul>
-<li><p class="first"><strong>tree</strong>:
-The <code class="docutils literal"><span class="pre">tree</span></code> is the list representing the CGNS/Python tree.
-The structure of a <code class="docutils literal"><span class="pre">tree</span></code> list is detailled
+<li><p><strong>tree</strong>:
+The <code class="docutils literal notranslate"><span class="pre">tree</span></code> is the list representing the CGNS/Python tree.
+The structure of a <code class="docutils literal notranslate"><span class="pre">tree</span></code> list is detailled
 in <a class="reference internal" href="sids-to-python.html#reference-sids-to-python"><span class="std std-ref">SIDS-to-Python</span></a>.
 There is no link information in this tree either for <em>load</em> or for <em>save</em>.</p>
 <p>During the <em>load</em>, the links are silently replaced by the linked-to tree
-they are referring. The <code class="docutils literal"><span class="pre">links</span></code> value keeps track of these link
+they are referring. The <code class="docutils literal notranslate"><span class="pre">links</span></code> value keeps track of these link
 references found while parsing the <em>CGNS/HDF5</em> file.</p>
 <p>During the <em>save</em>, the tree is splitted into separate files/nodes depending
-on the references found in the <code class="docutils literal"><span class="pre">links</span></code> value.</p>
+on the references found in the <code class="docutils literal notranslate"><span class="pre">links</span></code> value.</p>
 </li>
-<li><p class="first"><strong>links</strong>:
-The <code class="docutils literal"><span class="pre">links</span></code> is a list with the link node information. It is returned
+<li><p><strong>links</strong>:
+The <code class="docutils literal notranslate"><span class="pre">links</span></code> is a list with the link node information. It is returned
 by a <em>load</em> and used as command parameters during the <em>save</em>. You can write
-your own <code class="docutils literal"><span class="pre">links</span></code> list or change the list you obtain after a <em>load</em>.
-The structure of a <code class="docutils literal"><span class="pre">links</span></code> list is detailled
+your own <code class="docutils literal notranslate"><span class="pre">links</span></code> list or change the list you obtain after a <em>load</em>.
+The structure of a <code class="docutils literal notranslate"><span class="pre">links</span></code> list is detailled
 in <a class="reference internal" href="sids-to-python.html#reference-sids-to-python"><span class="std std-ref">SIDS-to-Python</span></a>.
-See also ‘about links’</p>
-</li>
-<li><p class="first"><strong>filename</strong>:
-The name of the target file, to read or to write. The <code class="docutils literal"><span class="pre">filename</span></code> can
+See also ‘about links’</p></li>
+<li><p><strong>filename</strong>:
+The name of the target file, to read or to write. The <code class="docutils literal notranslate"><span class="pre">filename</span></code> can
 be absolute or relative, it should be accessible in read/write depending
-on the action you perform on it. The file extension is unused.</p>
-</li>
-<li><p class="first"><strong>flags</strong>:
+on the action you perform on it. The file extension is unused.</p></li>
+<li><p><strong>flags</strong>:
 You can control the behavior of a load/save using the
 <a class="reference internal" href="#mapflags"><span class="std std-ref">flags</span></a>. You have to look a these carefully, the same
 tree can load/save in a completely different way depending
-on these <code class="docutils literal"><span class="pre">flags</span></code>.</p>
-</li>
-<li><p class="first"><strong>maxdata</strong>:
-Sets the threshold for array creation. If the array size (<code class="docutils literal"><span class="pre">ndarray.size</span></code>)
-is greater than <code class="docutils literal"><span class="pre">maxdata</span></code>, the returned node value is <code class="docutils literal"><span class="pre">None</span></code> and the
-path is added into the <code class="docutils literal"><span class="pre">paths</span></code> return of the <code class="docutils literal"><span class="pre">load</span></code>.</p>
-</li>
-<li><p class="first"><strong>depth</strong>:
+on these <code class="docutils literal notranslate"><span class="pre">flags</span></code>.</p></li>
+<li><p><strong>maxdata</strong>:
+Sets the threshold for array creation. If the array size (<code class="docutils literal notranslate"><span class="pre">ndarray.size</span></code>)
+is greater than <code class="docutils literal notranslate"><span class="pre">maxdata</span></code>, the returned node value is <code class="docutils literal notranslate"><span class="pre">None</span></code> and the
+path is added into the <code class="docutils literal notranslate"><span class="pre">paths</span></code> return of the <code class="docutils literal notranslate"><span class="pre">load</span></code>.</p></li>
+<li><p><strong>depth</strong>:
 This positive integer value sets the level of children the load/save
 takes into account. For example, a depth of 2 would stop load/save
 the CGNS tree once the children of the children of the start node
 is reached. This level two child is used, its children are not.
-If you want to have all the children, use a 0 <code class="docutils literal"><span class="pre">depth</span></code> which means
-no limit on depth.</p>
-</li>
-<li><p class="first"><strong>subtree</strong>:
-This <code class="docutils literal"><span class="pre">path</span></code> defines the start node of the load/save. It should be
+If you want to have all the children, use a 0 <code class="docutils literal notranslate"><span class="pre">depth</span></code> which means
+no limit on depth.</p></li>
+<li><p><strong>subtree</strong>:
+This <code class="docutils literal notranslate"><span class="pre">path</span></code> defines the start node of the load/save. It should be
 an absolute path of an existing node in the argument filename.
 All the nodes along this path are taken into account for load/save
-actions.</p>
-</li>
-<li><p class="first"><strong>linkpaths</strong>:
+actions.</p></li>
+<li><p><strong>linkpaths</strong>:
 The load may need a <em>link files search path</em> if your linked-to files
-are not in the current directory. The <code class="docutils literal"><span class="pre">linkpath</span></code> argument is a list
+are not in the current directory. The <code class="docutils literal notranslate"><span class="pre">linkpath</span></code> argument is a list
 of strings, during the load <em>CGNS.MAP</em> will look for linked-to files using
 this list: it is parsed from the first element to the last,
-the selected file is the first found in this directory list.</p>
-</li>
-<li><p class="first"><strong>updatepaths</strong>:
+the selected file is the first found in this directory list.</p></li>
+<li><p><strong>updatepaths</strong>:
 A dictionnary of paths (string) as keys and CGNS/Python nodes as values.
 When the load reaches a node with the path in the keys, the numpy value
 is updated instead of creating a new array. You can pass your own array
-with an already allocated memory zone or update and already loaded numpy.</p>
-</li>
-<li><p class="first"><strong>skiplist</strong>:
+with an already allocated memory zone or update and already loaded numpy.</p></li>
+<li><p><strong>skiplist</strong>:
 A list of paths of nodes that should not be updated. For exemple if you
-<code class="docutils literal"><span class="pre">load</span></code> a tree without data, you do not want the <code class="docutils literal"><span class="pre">save</span></code> to overwrite
+<code class="docutils literal notranslate"><span class="pre">load</span></code> a tree without data, you do not want the <code class="docutils literal notranslate"><span class="pre">save</span></code> to overwrite
 actual data on disk with empty arrays. This list can be retrieved from
-the <code class="docutils literal"><span class="pre">paths</span></code> return of the <code class="docutils literal"><span class="pre">load</span></code> function.</p>
-</li>
+the <code class="docutils literal notranslate"><span class="pre">paths</span></code> return of the <code class="docutils literal notranslate"><span class="pre">load</span></code> function.</p></li>
 </ul>
 </div></blockquote>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">The current directory is <strong>not</strong> in the link search path. So if your
+<p class="admonition-title">Warning</p>
+<p>The current directory is <strong>not</strong> in the link search path. So if your
 linked-to file is in current directory, you should add <cite>.</cite> in the
 link search path list.
 If the filename is an absolute path name (not recommended !) then
@@ -257,7 +240,7 @@ you should add and empty path in the search path list.</p>
 <p>The flags are integers that can be OR-ed or XOR-ed to set/unset specific
 behavior during the load and the save.
 The boolean operators are used for the flag settings:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">flags</span><span class="o">=</span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">S2P_FOLLOWLINKS</span><span class="o">|</span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">S2P_TRACE</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">flags</span><span class="o">=</span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">S2P_FOLLOWLINKS</span><span class="o">|</span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">S2P_TRACE</span>
 
 <span class="n">flags</span> <span class="o">=</span><span class="n">flags</span><span class="o">&amp;~</span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">S2P_TRACE</span>
 <span class="n">flags</span><span class="o">&amp;=~</span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">S2P_TRACE</span>
@@ -265,77 +248,77 @@ The boolean operators are used for the flag settings:</p>
 </div>
 <p>The table below gives the <cite>CGNS.MAP</cite> flags.</p>
 <blockquote>
-<div><table border="1" class="docutils">
+<div><table class="docutils align-default">
 <colgroup>
-<col width="30%" />
-<col width="70%" />
+<col style="width: 30%" />
+<col style="width: 70%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head"><em>Flag variable</em></th>
-<th class="head"><em>Function</em></th>
+<thead>
+<tr class="row-odd"><th class="head"><p><em>Flag variable</em></p></th>
+<th class="head"><p><em>Function</em></p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">S2P_NONE</span></code></td>
-<td>Clear all flags, set to zero.</td>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">S2P_NONE</span></code></p></td>
+<td><p>Clear all flags, set to zero.</p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">S2P_ALL</span></code></td>
-<td>Set all flags, set to one.</td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">S2P_ALL</span></code></p></td>
+<td><p>Set all flags, set to one.</p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">S2P_TRACE</span></code></td>
-<td>Set the trace on, messages are sent to ‘stdout’</td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">S2P_TRACE</span></code></p></td>
+<td><p>Set the trace on, messages are sent to ‘stdout’</p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">S2P_FOLLOWLINKS</span></code></td>
-<td>Continue to parse the linked-to tree (1)</td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">S2P_FOLLOWLINKS</span></code></p></td>
+<td><p>Continue to parse the linked-to tree (1)</p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">S2P_MERGELINKS</span></code></td>
-<td>Forget all link specifications.  (2)</td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">S2P_MERGELINKS</span></code></p></td>
+<td><p>Forget all link specifications.  (2)</p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">S2P_COMPRESS</span></code></td>
-<td>Sets the compress flag for ‘DataArray_t’ (2)</td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">S2P_COMPRESS</span></code></p></td>
+<td><p>Sets the compress flag for ‘DataArray_t’ (2)</p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">S2P_NOOWNDATA</span></code></td>
-<td>Forces the <cite>numpy</cite> flag <code class="docutils literal"><span class="pre">\~NPY_OWNDATA</span></code> (1) (3)</td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">S2P_NOOWNDATA</span></code></p></td>
+<td><p>Forces the <cite>numpy</cite> flag <code class="docutils literal notranslate"><span class="pre">\~NPY_OWNDATA</span></code> (1) (3)</p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">S2P_NODATA</span></code></td>
-<td>Do not load large ‘DataArray_t’ (1)</td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">S2P_NODATA</span></code></p></td>
+<td><p>Do not load large ‘DataArray_t’ (1)</p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">S2P_UPDATE</span></code></td>
-<td>Save updates existing file (6)</td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">S2P_UPDATE</span></code></p></td>
+<td><p>Save updates existing file (6)</p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">S2P_DELETEMISSING</span></code></td>
-<td>not used</td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">S2P_DELETEMISSING</span></code></p></td>
+<td><p>not used</p></td>
 </tr>
 </tbody>
 </table>
 </div></blockquote>
-<p>The <code class="docutils literal"><span class="pre">S2P_DEFAULT</span></code> flag corresponds to <code class="docutils literal"><span class="pre">S2P_NONE</span> <span class="pre">|</span> <span class="pre">S2P_FOLLOWLINKS</span> <span class="pre">&amp;</span> <span class="pre">S2P_REVERSEDIMS</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">S2P_DEFAULT</span></code> flag corresponds to <code class="docutils literal notranslate"><span class="pre">S2P_NONE</span> <span class="pre">|</span> <span class="pre">S2P_FOLLOWLINKS</span> <span class="pre">&amp;</span> <span class="pre">S2P_REVERSEDIMS</span></code>.</p>
 <p>There is no requirements or check on which flag can or cannot be associated
 with another flag.</p>
 <p><strong>Remarks:</strong></p>
 <blockquote>
 <div><ol class="arabic simple">
-<li>Only when you are <em>loading</em> a tree.</li>
-<li>Only when you are <em>saving</em> a tree.</li>
-<li>Which means all <code class="docutils literal"><span class="pre">DataArray_t</span></code> actual memory zones will <strong>NOT</strong> be
-released by Python.</li>
+<li><p>Only when you are <em>loading</em> a tree.</p></li>
+<li><p>Only when you are <em>saving</em> a tree.</p></li>
+<li><p>Which means all <code class="docutils literal notranslate"><span class="pre">DataArray_t</span></code> actual memory zones will <strong>NOT</strong> be
+released by Python.</p></li>
 </ol>
 <ol class="arabic simple" start="3">
-<li>The term <cite>large</cite> has to be defined. The <em>save</em> will <strong>NOT</strong> check if
-the CGNS/Python tree was performed with the <code class="docutils literal"><span class="pre">S2P_NODATA</span></code> flag on,
+<li><p>The term <cite>large</cite> has to be defined. The <em>save</em> will <strong>NOT</strong> check if
+the CGNS/Python tree was performed with the <code class="docutils literal notranslate"><span class="pre">S2P_NODATA</span></code> flag on,
 then you have to check by yourself that your <em>save</em> will not overwrite
-an existing file with empty data!</li>
-<li>The default behavior is to transpose array and dimensions of an array if
-this is not a <code class="docutils literal"><span class="pre">NPY_FORTRAN</span></code> array. If you set this
+an existing file with empty data!</p></li>
+<li><p>The default behavior is to transpose array and dimensions of an array if
+this is not a <code class="docutils literal notranslate"><span class="pre">NPY_FORTRAN</span></code> array. If you set this
 flag to 1, no transpose
 would be performed and the array and its dimensions would be stored
-without modification even if the <code class="docutils literal"><span class="pre">NY_FORTRAN</span></code> flag is not there.</li>
+without modification even if the <code class="docutils literal notranslate"><span class="pre">NY_FORTRAN</span></code> flag is not there.</p></li>
 </ol>
 <ol class="arabic simple" start="6">
-<li>The file should exist, all new nodes are added, thus modifying the
+<li><p>The file should exist, all new nodes are added, thus modifying the
 children list of their parents. Existing nodes are updated only in
 the case of value change. There no children removal, name or label
-change.</li>
+change.</p></li>
 </ol>
 </div></blockquote>
 </div>
@@ -396,80 +379,81 @@ change.</li>
 </div>
 <div class="section" id="glossary">
 <h1>Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h1>
-<dl class="glossary docutils">
-<dt id="term-cgns-org">cgns.org</dt>
-<dd>The official CGNS web site, by extension any document on this web
-site has an <em>official</em> taste…</dd>
-<dt id="term-cgns">CGNS</dt>
-<dd>The specific purpose of the
+<dl class="glossary simple">
+<dt id="term-cgns.org">cgns.org<a class="headerlink" href="#term-cgns.org" title="Permalink to this term">¶</a></dt><dd><p>The official CGNS web site, by extension any document on this web
+site has an <em>official</em> taste…</p>
+</dd>
+<dt id="term-CGNS">CGNS<a class="headerlink" href="#term-CGNS" title="Permalink to this term">¶</a></dt><dd><p>The specific purpose of the
 <a class="reference external" href="http://www.cgns.org">CFD General Notation System (CGNS)</a>
 project is to provide a standard for recording and recovering
 computer data associated with the numerical solution of the
 equations of fluid dynamics. See also the
-<a class="reference external" href="D:\Users\u0568134\Documents\GitHub\pyCGNS\doc/../build/doc/html/ch2/cgnshowto.html#cgnshowto" title="(in pyCGNS v4)"><span class="xref std std-ref">How to?</span></a>.</dd>
-<dt id="term-cgns-sids">CGNS/SIDS</dt>
-<dd>The <a class="reference external" href="http://cgns.github.io/CGNS_docs_current/sids/index.html">Standard Interface Data Structure</a> is the
+<a class="reference external" href="ch2/cgnshowto.html#cgnshowto" title="(in pyCGNS v6)"><span class="xref std std-ref">How to?</span></a>.</p>
+</dd>
+<dt id="term-CGNS-SIDS">CGNS/SIDS<a class="headerlink" href="#term-CGNS-SIDS" title="Permalink to this term">¶</a></dt><dd><p>The <a class="reference external" href="http://cgns.github.io/CGNS_docs_current/sids/index.html">Standard Interface Data Structure</a> is the
 specification of the data model.  This public document describes
 the syntax and the semantics of all tree-structured data required
-or proposed for a CFD simulation.</dd>
-<dt id="term-cgns-mll">CGNS/MLL</dt>
-<dd>The <a class="reference external" href="http://cgns.github.io/CGNS_docs_current/lidlevel/index.html">Mid-Level Library</a>
+or proposed for a CFD simulation.</p>
+</dd>
+<dt id="term-CGNS-MLL">CGNS/MLL<a class="headerlink" href="#term-CGNS-MLL" title="Permalink to this term">¶</a></dt><dd><p>The <a class="reference external" href="http://cgns.github.io/CGNS_docs_current/midlevel/index.html">Mid-Level Library</a>
 is an example implementation of
 <em>CGNS/SIDS</em> on top of <em>CGNS/ADF</em> and <em>CGNS/HDF5</em> mappings. This
-library has a C and a Fortran API.</dd>
-<dt id="term-cgns-adf">CGNS/ADF</dt>
-<dd>The <a class="reference external" href="http://cgns.github.io/CGNS_docs_current/adf/index.html">Advanced Data Format *CGNS/SIDS* implementation</a>. A binary
-storage format and its companion library, developped by <em>Boeing</em>.</dd>
-<dt id="term-cgns-hdf5">CGNS/HDF5</dt>
-<dd>The <a class="reference external" href="http://cgns.github.io/CGNS_docs_current/hdf5/index.html">Hierarchical Data Format *CGNS/SIDS* implementation</a>. A binary
-storage format and its companion library (see below).</dd>
-<dt id="term-cgns-python">CGNS/Python</dt>
-<dd>The <a class="reference external" href="http://cgns.github.io/CGNS_docs_current/python/index.html">Python programming language *CGNS/SIDS*
-implementation</a>.</dd>
-<dt id="term-chlone">CHLone</dt>
-<dd>A <em>CGNS/HDF5</em> compliant implementation. The <a class="reference external" href="http://chlone.sourceforge.net">CHLone</a> library is available on
-SourceForge.</dd>
-<dt id="term-hdf5">HDF5</dt>
-<dd>A powerful storage system for large data.
+library has a C and a Fortran API.</p>
+</dd>
+<dt id="term-CGNS-ADF">CGNS/ADF<a class="headerlink" href="#term-CGNS-ADF" title="Permalink to this term">¶</a></dt><dd><p>The <a class="reference external" href="http://cgns.github.io/CGNS_docs_current/adf/index.html">Advanced Data Format *CGNS/SIDS* implementation</a>. A binary
+storage format and its companion library, developped by <em>Boeing</em>.</p>
+</dd>
+<dt id="term-CGNS-HDF5">CGNS/HDF5<a class="headerlink" href="#term-CGNS-HDF5" title="Permalink to this term">¶</a></dt><dd><p>The <a class="reference external" href="http://cgns.github.io/CGNS_docs_current/hdf5/index.html">Hierarchical Data Format *CGNS/SIDS* implementation</a>. A binary
+storage format and its companion library (see below).</p>
+</dd>
+<dt id="term-CGNS-Python">CGNS/Python<a class="headerlink" href="#term-CGNS-Python" title="Permalink to this term">¶</a></dt><dd><p>The <a class="reference external" href="http://cgns.github.io/CGNS_docs_current/python/index.html">Python programming language *CGNS/SIDS*
+implementation</a>.</p>
+</dd>
+<dt id="term-CHLone">CHLone<a class="headerlink" href="#term-CHLone" title="Permalink to this term">¶</a></dt><dd><p>A <em>CGNS/HDF5</em> compliant implementation. The <a class="reference external" href="http://chlone.sourceforge.net">CHLone</a> library is available on
+SourceForge.</p>
+</dd>
+<dt id="term-HDF5">HDF5<a class="headerlink" href="#term-HDF5" title="Permalink to this term">¶</a></dt><dd><p>A powerful storage system for large data.
 The <a class="reference external" href="http://www.hdfgroup.org/HDF5">HDF5</a>
 library should be seen as a middleware system with a lot of powerful
-features related to efficient, portable and trustable storage mean.</dd>
-<dt id="term-python">python</dt>
-<dd><a class="reference external" href="http://www.python.org">An object oriented interpreted programming language</a>.</dd>
-<dt id="term-cython">cython</dt>
-<dd>A <a class="reference external" href="http://cython.org">compiler tool</a> that translate Python/Numpy
-into C code for performance purpose.</dd>
-<dt id="term-numpy">numpy</dt>
-<dd>The <a class="reference external" href="http://numpy.scipy.org">numerical library</a> for Python. <em>Numpy</em>
+features related to efficient, portable and trustable storage mean.</p>
+</dd>
+<dt id="term-python">python<a class="headerlink" href="#term-python" title="Permalink to this term">¶</a></dt><dd><p><a class="reference external" href="http://www.python.org">An object oriented interpreted programming language</a>.</p>
+</dd>
+<dt id="term-cython">cython<a class="headerlink" href="#term-cython" title="Permalink to this term">¶</a></dt><dd><p>A <a class="reference external" href="http://cython.org">compiler tool</a> that translate Python/Numpy
+into C code for performance purpose.</p>
+</dd>
+<dt id="term-numpy">numpy<a class="headerlink" href="#term-numpy" title="Permalink to this term">¶</a></dt><dd><p>The <a class="reference external" href="http://numpy.scipy.org">numerical library</a> for Python. <em>Numpy</em>
 is used to store the data in Python arrays which have a direct memory
-mapping to actual C or Fortran memory.</dd>
-<dt id="term-vtk">VTK</dt>
-<dd>A <a class="reference external" href="http://www.vtk.org">visualization toolkit</a> used to display
-3D objects ni <em>CGNS.NAV</em>.</dd>
-<dt id="term-pyside">PySide</dt>
-<dd>The <a class="reference external" href="http://www.pyside.org">Python interface</a> for the Qt toolkit. PySide</dd>
-<dt id="term-qt">Qt</dt>
-<dd><a class="reference external" href="http://qt.nokia.com/products">A powerful graphical toolkit</a> available
+mapping to actual C or Fortran memory.</p>
+</dd>
+<dt id="term-VTK">VTK<a class="headerlink" href="#term-VTK" title="Permalink to this term">¶</a></dt><dd><p>A <a class="reference external" href="http://www.vtk.org">visualization toolkit</a> used to display
+3D objects in <em>CGNS.NAV</em>.</p>
+</dd>
+<dt id="term-PySide">PySide<a class="headerlink" href="#term-PySide" title="Permalink to this term">¶</a></dt><dd><p>The <a class="reference external" href="http://www.pyside.org">Python interface</a> for the Qt toolkit. PySide</p>
+</dd>
+<dt id="term-Qt">Qt<a class="headerlink" href="#term-Qt" title="Permalink to this term">¶</a></dt><dd><p><a class="reference external" href="http://www.qt.io/download">A powerful graphical toolkit</a> available
 under GPL v3, LGPL v2 and a commercial license. The current use of Qt is
-under LGPL v2 in pyCGNS.</dd>
+under LGPL v2 in pyCGNS.</p>
+</dd>
 </dl>
 <div class="section" id="map-index">
 <span id="id1"></span><h2>MAP Index<a class="headerlink" href="#map-index" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
 </ul>
 </div>
 </div>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2001-2016, Marc Poinot.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+        &#169; Copyright 2018-2022, Marc Poinot.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
     </div>
   </body>
 </html>

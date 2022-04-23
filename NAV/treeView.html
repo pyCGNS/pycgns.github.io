@@ -1,33 +1,23 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tree View &#8212; NAV</title>
-    <link rel="stylesheet" href="_static/pycgns.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '4.2.0',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pycgns.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
     <link rel="shortcut icon" href="_static/pyCGNS-logo-tiny.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Option View" href="optionView.html" />
     <link rel="prev" title="QuickStart" href="quickstart.html" /> 
-  </head>
-  <body>
+  </head><body>
     <div class="related">
       <h3>Navigation</h3>
       <ul>
@@ -81,8 +71,9 @@
    </a></h1>
 
 
-  <h3><a href="_index.html">Table Of Contents</a></h3>
-  <ul>
+  <div>
+    <h3><a href="_index.html">Table of Contents</a></h3>
+    <ul>
 <li><a class="reference internal" href="#">Tree View</a><ul>
 <li><a class="reference internal" href="#the-icon-menu">The icon menu</a></li>
 <li><a class="reference internal" href="#selection-and-flags">Selection and flags</a></li>
@@ -91,16 +82,17 @@
 </li>
 </ul>
 
+  </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
     </form>
+    </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
 
@@ -111,7 +103,7 @@
             
   <div class="section" id="tree-view">
 <h1>Tree View<a class="headerlink" href="#tree-view" title="Permalink to this headline">¶</a></h1>
-<p>The first window <code class="docutils literal"><span class="pre">CGNS.NAV</span></code> opens when you read a <em>CGNS</em> file is the
+<p>The first window <code class="docutils literal notranslate"><span class="pre">CGNS.NAV</span></code> opens when you read a <em>CGNS</em> file is the
 <em>Tree view</em>. This is you main view of the tree, the browsing or modification
 of your tree has to be performed in this view or in a sub-window created
 from this view.</p>
@@ -120,15 +112,15 @@ see at the same time many informations on a complete sub-tree.</p>
 <a class="reference internal image-reference" href="_images/tree_view_3.png"><img alt="_images/tree_view_3.png" src="_images/tree_view_3.png" style="width: 20cm;" /></a>
 <p>A <em>Tree view</em> can be a view of a sub-tree of your current view. Select the
 top node you want as sub-tree root, press <em>&lt;Control-W&gt;</em> and the new window
-appears (see <a class="footnote-reference" href="#n0" id="id1">[1]</a>).</p>
+appears (see <a class="footnote-reference brackets" href="#n0" id="id1">1</a>).</p>
 <a class="reference internal image-reference" href="_images/tree_view_4.png"><img alt="_images/tree_view_4.png" src="_images/tree_view_4.png" style="width: 20cm;" /></a>
 <p>You can track with the <em>Control view</em> wich window you have on which node.
 To find back the <em>Control view</em> when you are in a <em>Tree view</em>, press
 <em>&lt;BackSpace&gt;</em>.</p>
 <a class="reference internal image-reference" href="_images/tree_view_5.png"><img alt="_images/tree_view_5.png" src="_images/tree_view_5.png" style="width: 20cm;" /></a>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The sub-tree window is another view of the <strong>same</strong> <em>CGNS</em> tree.
+<p class="admonition-title">Note</p>
+<p>The sub-tree window is another view of the <strong>same</strong> <em>CGNS</em> tree.
 If you change something in one window, all existing windows displaying
 the same tree are updated.</p>
 </div>
@@ -147,38 +139,35 @@ in a view, paste it into another view (even a view that belongs to another
 <p>When you <em>Cut/Copy</em>, the selected node uses as the root node of your
 buffered tree. When you <em>Paste</em>, the selected node can act as the
 parent node of the new sub-tree (using <em>&lt;Control-Y&gt;</em>) or as the brother
-of your new sub-tree (usinf <em>&lt;Control-V&gt;</em> (see <a class="footnote-reference" href="#n1" id="id2">[2]</a>).</p>
+of your new sub-tree (usinf <em>&lt;Control-V&gt;</em> (see <a class="footnote-reference brackets" href="#n1" id="id2">2</a>).</p>
 <p class="rubric">Footnotes</p>
-<table class="docutils footnote" frame="void" id="n0" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>All key bindings can be customized, the bindings we give here
-are the <a class="reference internal" href="optionView.html#keymousebindings"><span class="std std-ref">default bindings</span></a>.</td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="n1" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>A <em>Cut</em> or a <em>Copy</em> action puts the selected root node path
-into a buffer. There is a single buffer for all <code class="docutils literal"><span class="pre">CGNS.NAV</span></code>, so
+<dl class="footnote brackets">
+<dt class="label" id="n0"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>All key bindings can be customized, the bindings we give here
+are the <a class="reference internal" href="optionView.html#keymousebindings"><span class="std std-ref">default bindings</span></a>.</p>
+</dd>
+<dt class="label" id="n1"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
+<dd><p>A <em>Cut</em> or a <em>Copy</em> action puts the selected root node path
+into a buffer. There is a single buffer for all <code class="docutils literal notranslate"><span class="pre">CGNS.NAV</span></code>, so
 if you <em>Cut</em> or <em>Copy</em> several times only the last one is taken
 into account. A <em>Copy</em> actually copies the sub-tree starting from
 the path in the buffer, recursively up to the end of all branches.
-The root node of the resulting copy is</td></tr>
-</tbody>
-</table>
+The root node of the resulting copy is</p>
+</dd>
+</dl>
 </div>
 </div>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2001-2016, Marc Poinot.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+        &#169; Copyright 2018-2022, M. P..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
     </div>
   </body>
 </html>

@@ -1,33 +1,23 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>About pyCGNS &#8212; intro</title>
-    <link rel="stylesheet" href="_static/pycgns.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '4.2.0',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pycgns.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
     <link rel="shortcut icon" href="_static/pyCGNS-logo-tiny.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="CGNS How to?" href="ch2/cgnshowto.html" />
     <link rel="prev" title="A Python package for CGNS" href="index.html" /> 
-  </head>
-  <body>
+  </head><body>
     <div class="related">
       <h3>Navigation</h3>
       <ul>
@@ -81,8 +71,9 @@
    </a></h1>
 
 
-  <h3><a href="index.html">Table Of Contents</a></h3>
-  <ul>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
 <li><a class="reference internal" href="#">About pyCGNS</a><ul>
 <li><a class="reference internal" href="#cgns-standard">CGNS Standard</a></li>
 <li><a class="reference internal" href="#package-contents">Package contents</a></li>
@@ -97,16 +88,17 @@
 </li>
 </ul>
 
+  </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
     </form>
+    </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
 
@@ -120,7 +112,7 @@
 <div class="section" id="cgns-standard">
 <h2>CGNS Standard<a class="headerlink" href="#cgns-standard" title="Permalink to this headline">¶</a></h2>
 <p>The purpose of these pages is not to describe the standard. There is
-the <a class="reference internal" href="glossary.html#term-cgns-org"><span class="xref std std-term">cgns.org</span></a> web site with a lot of documentation. Anyway, there is
+the <a class="reference internal" href="glossary.html#term-cgns.org"><span class="xref std std-term">cgns.org</span></a> web site with a lot of documentation. Anyway, there is
 a set of <a class="reference internal" href="ch2/cgnshowto.html#cgnshowto"><span class="std std-ref">How to’s</span></a> using <em>pyCGNS</em> you can browse and learn
 a bit about this standard.</p>
 <div class="toctree-wrapper compound">
@@ -136,22 +128,22 @@ better consistency between them.</p>
 <p>The pyCGNS module now includes (former package names)</p>
 <blockquote>
 <div><ul class="simple">
-<li><a class="reference external" href="MAP/readme.html">MAP</a>, the Mapper, new in v4 gives basic load/save
+<li><p><a class="reference external" href="MAP/readme.html">MAP</a>, the Mapper, new in v4 gives basic load/save
 function from/to <em>CGNS/SIDS</em> and <em>CGNS/HDF5</em>. This very sinple module is
 able to read/write GCNS/HDF5 files and translate them to CGNS/Python.
-This is the main feature of pyCGNS v4.0.</li>
-<li><a class="reference external" href="PAT/readme.html">PAT</a>, the PatterMaker, a full <em>CGNS/SIDS</em> patterns using
+This is the main feature of pyCGNS v4.0.</p></li>
+<li><p><a class="reference external" href="PAT/readme.html">PAT</a>, the PatterMaker, a full <em>CGNS/SIDS</em> patterns using
 the <em>CGNS/Python</em> mapping. This is pure python module, it creates and modify
-CGNS/Python trees without the help of any HDF5 or even ADf calls.</li>
-<li><a class="reference external" href="NAV/readme.html">NAV</a>, the Navigater (was pyS7), a graphical browser that can
+CGNS/Python trees without the help of any HDF5 or even ADf calls.</p></li>
+<li><p><a class="reference external" href="NAV/readme.html">NAV</a>, the Navigater (was pyS7), a graphical browser that can
 handle <em>CGNS/Python</em>, <em>CGNS/HDF5</em> and <em>CGNS/ADF</em> file formats. It is slightly
 different to <em>cgnsviewer</em> because it actually is a tree editor, you can
-copy/cut/paste CGNS/Python trees and quickly draft or modify your CGNS tree.</li>
-<li>VAL,the Validater (was pyC5), an XML grammar based validation of a <em>CGNS/Python</em>
-tree, for example produced using <em>MAP</em> or <em>PAT</em>.</li>
-<li>DAT, the DataTracer (was pyDAX), some DBMS services for <em>CGNS/HDF5</em> files.
-<em>Not maintained anymore in v4.0 (to be resumed 2014/2015)</em></li>
-<li>APP, the ApplicationSampler, a set of applications using other modules.</li>
+copy/cut/paste CGNS/Python trees and quickly draft or modify your CGNS tree.</p></li>
+<li><p>VAL,the Validater (was pyC5), an XML grammar based validation of a <em>CGNS/Python</em>
+tree, for example produced using <em>MAP</em> or <em>PAT</em>.</p></li>
+<li><p>DAT, the DataTracer (was pyDAX), some DBMS services for <em>CGNS/HDF5</em> files.
+<em>Not maintained anymore in v4.0 (to be resumed 2014/2015)</em></p></li>
+<li><p>APP, the ApplicationSampler, a set of applications using other modules.</p></li>
 </ul>
 </div></blockquote>
 </div>
@@ -161,8 +153,8 @@ tree, for example produced using <em>MAP</em> or <em>PAT</em>.</li>
 <h3>Loading a CGNS/HDF file with MAP<a class="headerlink" href="#loading-a-cgns-hdf-file-with-map" title="Permalink to this headline">¶</a></h3>
 <p>The <em>CGNS.MAP</em> module implements the <em>CGNS/Python</em> mapping. You can
 load/save a <em>CGNS/HDF5</em> file using the simple <em>MAP</em> functions (below,
-the <code class="docutils literal"><span class="pre">&gt;&gt;&gt;</span></code> string is the python interpreter prompt):</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">CGNS.MAP</span>
+the <code class="docutils literal notranslate"><span class="pre">&gt;&gt;&gt;</span></code> string is the python interpreter prompt):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">CGNS.MAP</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">tree</span><span class="p">,</span><span class="n">links</span><span class="p">,</span><span class="n">paths</span><span class="p">)</span><span class="o">=</span><span class="n">CGNS</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;./001Disk.hdf&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">tree</span>
 <span class="go">[&#39;CGNSTree&#39;, None, [[&#39;CGNSLibraryVersion&#39;,array([ 2.4000001],dtype=float32),</span>
@@ -170,18 +162,18 @@ the <code class="docutils literal"><span class="pre">&gt;&gt;&gt;</span></code> 
 <span class="go">[[&#39;.Solver#Command&#39;, ... ]</span>
 </pre></div>
 </div>
-<p>Now <code class="docutils literal"><span class="pre">tree</span></code> is a Python list with <code class="docutils literal"><span class="pre">./001Disk.hdf</span></code> CGNS tree
+<p>Now <code class="docutils literal notranslate"><span class="pre">tree</span></code> is a Python list with <code class="docutils literal notranslate"><span class="pre">./001Disk.hdf</span></code> CGNS tree
 into, with the data structure as described
-in <a class="reference external" href="D:\Users\u0568134\Documents\GitHub\pyCGNS\doc/../build/doc/html/MAP\sids-to-python.html#reference-sids-to-python" title="(in pyCGNS v4)"><span class="xref std std-ref">SIDS-to-Python</span></a>.</p>
+in <span class="xref std std-ref">SIDS-to-Python</span>.</p>
 </div>
 <div class="section" id="using-pat-to-modify-a-cgns-tree">
 <h3>Using PAT to modify a CGNS tree<a class="headerlink" href="#using-pat-to-modify-a-cgns-tree" title="Permalink to this headline">¶</a></h3>
 <p>The previously loaded <em>CGNS/Python</em> tree is modified using plain Python
 functions and types. The <em>CGNS.APP</em> module contains utilities, we use the
-<code class="docutils literal"><span class="pre">getNodeByPath</span></code> function which returns a <em>CGNS/Python</em> node with the
+<code class="docutils literal notranslate"><span class="pre">getNodeByPath</span></code> function which returns a <em>CGNS/Python</em> node with the
 target tree and the target node path as parameters. In the example hereafter,
 we are loading a sample tree from the <em>pyCGNS</em> test suite:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">CGNS.PAT.cgnsutils</span> <span class="k">as</span> <span class="nn">CGU</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">CGNS.PAT.cgnsutils</span> <span class="k">as</span> <span class="nn">CGU</span>
 <span class="kn">import</span> <span class="nn">CGNS.PAT.test.disk</span> <span class="k">as</span> <span class="nn">data</span>
 
 <span class="n">node</span><span class="o">=</span><span class="n">CGU</span><span class="o">.</span><span class="n">getNodeByPath</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">T</span><span class="p">,</span><span class="s2">&quot;/{Base#1}/{Zone-D1}/ZoneGridConnectivity/{CT-D1-D2}&quot;</span><span class="p">)</span>
@@ -192,13 +184,13 @@ we are loading a sample tree from the <em>pyCGNS</em> test suite:</p>
 <p>The returned node is a list of 4 Python values, the name (a string),
 the value of the node (a <em>Numpy</em> array), the list of children and
 the CGNS type of the node (string). The returned node of the example is a string
-array, you may want to use the <code class="docutils literal"><span class="pre">tostring</span></code> function to make it more readable.</p>
+array, you may want to use the <code class="docutils literal notranslate"><span class="pre">tostring</span></code> function to make it more readable.</p>
 </div>
 <div class="section" id="using-pat-to-create-a-cgns-tree">
 <h3>Using PAT to create a CGNS tree<a class="headerlink" href="#using-pat-to-create-a-cgns-tree" title="Permalink to this headline">¶</a></h3>
 <p>We want to create a <em>CGNS/HDF5</em> file with a simple <em>base</em> and a <em>reference
 state</em>:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">CGNS.PAT.cgnslib</span> <span class="k">as</span> <span class="nn">CGL</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">CGNS.PAT.cgnslib</span> <span class="k">as</span> <span class="nn">CGL</span>
 
 <span class="n">T</span><span class="o">=</span><span class="n">CGL</span><span class="o">.</span><span class="n">newCGNSTree</span><span class="p">()</span>
 <span class="n">CGL</span><span class="o">.</span><span class="n">newBase</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="s1">&#39;Test Case 01&#39;</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="c1"># name, physical dim, topological dim</span>
@@ -207,28 +199,29 @@ state</em>:</p>
 </pre></div>
 </div>
 <p>Each time you call a function you pass the parent node and some parameters.
-The tree is built as a python list, the top list is referenced by the <code class="docutils literal"><span class="pre">T</span></code>
+The tree is built as a python list, the top list is referenced by the <code class="docutils literal notranslate"><span class="pre">T</span></code>
 variable here. As it is passed as argument to each call the new nodes are
-added to <code class="docutils literal"><span class="pre">T</span></code> into the function. The the resulting <code class="docutils literal"><span class="pre">T</span></code> is changed in place.</p>
+added to <code class="docutils literal notranslate"><span class="pre">T</span></code> into the function. The the resulting <code class="docutils literal notranslate"><span class="pre">T</span></code> is changed in place.</p>
 </div>
 <div class="section" id="browsing-your-cgns-tree-with-nav">
 <h3>Browsing your CGNS tree with NAV<a class="headerlink" href="#browsing-your-cgns-tree-with-nav" title="Permalink to this headline">¶</a></h3>
-<p>The CGNS.NAV tool is a CGNS tree brower. You start it typing <code class="docutils literal"><span class="pre">CGNS.NAV</span></code>
-(or <code class="docutils literal"><span class="pre">cg_look</span></code>) and you can open several views on your file.</p>
+<p>The CGNS.NAV tool is a CGNS tree brower. You start it typing <code class="docutils literal notranslate"><span class="pre">CGNS.NAV</span></code>
+(or <code class="docutils literal notranslate"><span class="pre">cg_look</span></code>) and you can open several views on your file.</p>
 <a class="reference internal image-reference" href="_images/cgnsnav_quick_1.png"><img alt="_images/cgnsnav_quick_1.png" class="align-center" src="_images/cgnsnav_quick_1.png" style="width: 24cm;" /></a>
 </div>
 </div>
 </div>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2001-2016, Marc Poinot.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+        &#169; Copyright 2018-2022, M. P..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
     </div>
   </body>
 </html>

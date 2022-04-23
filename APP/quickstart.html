@@ -1,32 +1,22 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tools &#8212; APP</title>
-    <link rel="stylesheet" href="_static/pycgns.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '4.2.0',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pycgns.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
     <link rel="shortcut icon" href="_static/pyCGNS-logo-tiny.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="prev" title="CGNS.APP" href="_index.html" /> 
-  </head>
-  <body>
+  </head><body>
     <div class="related">
       <h3>Navigation</h3>
       <ul>
@@ -75,8 +65,9 @@
    </a></h1>
 
 
-  <h3><a href="_index.html">Table Of Contents</a></h3>
-  <ul>
+  <div>
+    <h3><a href="_index.html">Table of Contents</a></h3>
+    <ul>
 <li><a class="reference internal" href="#">Tools</a><ul>
 <li><a class="reference internal" href="#cg-list">cg_list</a></li>
 <li><a class="reference internal" href="#cg-grep">cg_grep</a></li>
@@ -85,16 +76,17 @@
 </li>
 </ul>
 
+  </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
     </form>
+    </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
 
@@ -111,12 +103,12 @@ effects of the tools on your own test data before any attempt on valuable
 data.</p>
 <div class="section" id="cg-list">
 <h2>cg_list<a class="headerlink" href="#cg-list" title="Permalink to this headline">¶</a></h2>
-<p>The <code class="docutils literal"><span class="pre">cg_list</span></code> is a kind of <code class="docutils literal"><span class="pre">ls</span></code> for CGNS files. There are many options
+<p>The <code class="docutils literal notranslate"><span class="pre">cg_list</span></code> is a kind of <code class="docutils literal notranslate"><span class="pre">ls</span></code> for CGNS files. There are many options
 to help you decide wether this is the file you are looking for or not, its size,
 its contents type…</p>
-<p>You typically run <code class="docutils literal"><span class="pre">cg_list</span></code> to find out which are the CGNS files in
+<p>You typically run <code class="docutils literal notranslate"><span class="pre">cg_list</span></code> to find out which are the CGNS files in
 a directory:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ cg_list
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cg_list
  C.hdf
  SUB.hdf
  cubes_T1.hdf
@@ -128,17 +120,17 @@ a directory:</p>
 </pre></div>
 </div>
 <p>Then you can go into further details on some of these files:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ cg_list -tBZVLM *cubes*
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cg_list -tBZVLM *cubes*
     V  L  B  Z     M N
  3.20  0  1  1  0.35 cube0_tetra.hdf
  3.20  0  1  5  0.12 cubes.hdf
  3.20  0  1  5  0.12 cubes_T1.hdf
 </pre></div>
 </div>
-<p>The default is to skip files with a size &gt;1Gb, but <code class="docutils literal"><span class="pre">cg_list</span></code> gives you
-the list anyway and you can add the <code class="docutils literal"><span class="pre">-f</span></code> option to force the read of very
+<p>The default is to skip files with a size &gt;1Gb, but <code class="docutils literal notranslate"><span class="pre">cg_list</span></code> gives you
+the list anyway and you can add the <code class="docutils literal notranslate"><span class="pre">-f</span></code> option to force the read of very
 large files:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ cg_list
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cg_list
 # skip file &gt;1Gb : Validation-Triggers.hdf
 # skip file &gt;1Gb : JTI-GRC2-FUS+HEAD-ROD_Near.hdf
 # skip file &gt;1Gb : Last25.hdf
@@ -148,7 +140,7 @@ large files:</p>
 </div>
 <p>And you can set sorting option, to get a better view on number of items
 some large files:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ cg_list -fs PZF -PZFt
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cg_list -fs PZF -PZFt
     F    Z          P N
     1    1          5 ex_uns.hdf
     2   50      76002 naca12_50dom.hdf
@@ -165,7 +157,7 @@ some large files:</p>
 </pre></div>
 </div>
 <p>The -h option returns the following usage notice:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">cg_list</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">file1</span> <span class="n">file2</span> <span class="o">...</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">cg_list</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">file1</span> <span class="n">file2</span> <span class="o">...</span>
 
   <span class="n">List</span> <span class="n">tool</span> <span class="n">on</span> <span class="n">CGNS</span><span class="o">/</span><span class="n">HDF5</span> <span class="n">files</span>
   <span class="p">(</span><span class="n">part</span> <span class="n">of</span> <span class="n">pyCGNS</span> <span class="n">distribution</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">pycgns</span><span class="o">.</span><span class="n">sourceforge</span><span class="o">.</span><span class="n">net</span><span class="p">)</span><span class="s1">&#39;</span>
@@ -211,12 +203,12 @@ depending on your actual request it searches on node names, types, values,
 paths, links…</p>
 <p>For example you are looking for a file having a link to another one. The
 following command looks at all CGNS files, stops at the first having a link:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ cg_grep -sel &#39;.*&#39; *
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cg_grep -sel &#39;.*&#39; *
 C.hdf:/Blocks:S/WEST/ZAZA
 </pre></div>
 </div>
 <p>To get all nodes having a link a a given file name:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ cg_grep -ef &#39;naca12_50dom_dom4.*&#39; naca12_50dom_TOP.hdf
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cg_grep -ef &#39;naca12_50dom_dom4.*&#39; naca12_50dom_TOP.hdf
 naca12_50dom_TOP.hdf:/base1/dom4
 naca12_50dom_TOP.hdf:/base1/dom40
 naca12_50dom_TOP.hdf:/base1/dom41
@@ -232,9 +224,9 @@ naca12_50dom_TOP.hdf:/base1/dom49
 </div>
 <p>Beware, as any other result of the grep command, the return is the matching
 node, not the value. Once you have this node list, you can proceed to another
-filter with <code class="docutils literal"><span class="pre">cg_list</span></code> for example:</p>
+filter with <code class="docutils literal notranslate"><span class="pre">cg_list</span></code> for example:</p>
 <p>The -h option returns the following usage notice:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">cg_grep</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">file1</span> <span class="n">file2</span> <span class="o">...</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">cg_grep</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">file1</span> <span class="n">file2</span> <span class="o">...</span>
 
   <span class="n">Grep</span> <span class="n">tool</span> <span class="n">on</span> <span class="n">CGNS</span><span class="o">/</span><span class="n">HDF5</span> <span class="n">files</span>
   <span class="p">(</span><span class="n">part</span> <span class="n">of</span> <span class="n">pyCGNS</span> <span class="n">distribution</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">pycgns</span><span class="o">.</span><span class="n">sourceforge</span><span class="o">.</span><span class="n">net</span><span class="p">)</span><span class="s1">&#39;</span>
@@ -287,11 +279,11 @@ filter with <code class="docutils literal"><span class="pre">cg_list</span></cod
 <h2>cg_link<a class="headerlink" href="#cg-link" title="Permalink to this headline">¶</a></h2>
 <p>The link tool can be used to translate ADF links to HDF links for example,
 or just to recursively browse existing links:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">cg_link</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">file1</span> <span class="n">file2</span> <span class="o">...</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">cg_link</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">file1</span> <span class="n">file2</span> <span class="o">...</span>
 
   <span class="n">Browsing</span> <span class="ow">and</span> <span class="n">editing</span> <span class="n">links</span> <span class="n">on</span> <span class="n">CGNS</span><span class="o">/</span><span class="n">HDF5</span> <span class="n">files</span>
   <span class="p">(</span><span class="n">part</span> <span class="n">of</span> <span class="n">pyCGNS</span> <span class="n">distribution</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">pycgns</span><span class="o">.</span><span class="n">sourceforge</span><span class="o">.</span><span class="n">net</span><span class="p">)</span>
-  <span class="n">pyCGNS</span> <span class="n">v4</span><span class="o">.</span><span class="mf">4.481</span>
+  <span class="n">pyCGNS</span> <span class="n">v4</span><span class="mf">.4.481</span>
 
   <span class="ne">Warning</span><span class="p">:</span> <span class="n">translation</span> <span class="n">of</span> <span class="n">ADF</span> <span class="n">files</span> <span class="ow">is</span> <span class="n">made</span> <span class="o">*</span><span class="ow">in</span> <span class="n">place</span><span class="o">*</span><span class="p">,</span> <span class="ow">in</span> <span class="n">other</span> <span class="n">word</span> <span class="k">if</span> <span class="n">a</span> <span class="n">link</span>
   <span class="k">with</span> <span class="n">the</span> <span class="n">path</span> <span class="s1">&#39;/A/C/D.adf&#39;</span> <span class="ow">is</span> <span class="n">found</span><span class="p">,</span> <span class="n">its</span> <span class="n">translation</span> <span class="ow">is</span> <span class="s1">&#39;/A/C/D.hdf&#39;</span><span class="o">.</span> <span class="n">Then</span>
@@ -324,14 +316,15 @@ or just to recursively browse existing links:</p>
 </div>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2001-2016, Marc Poinot.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+        &#169; Copyright 2018-2022, Marc Poinot.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
     </div>
   </body>
 </html>
